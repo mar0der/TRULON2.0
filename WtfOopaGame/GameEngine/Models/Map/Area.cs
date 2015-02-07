@@ -7,7 +7,7 @@ using GameEngine.Models.Entities;
 
 namespace GameEngine.Models.Map
 {
-    public abstract class Area : IMovable
+    public abstract class Area :GameObject, IMovable
     {
         public Rectangle Boundary { get; set; }
 
