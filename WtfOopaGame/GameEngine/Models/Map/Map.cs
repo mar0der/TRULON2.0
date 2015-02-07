@@ -14,11 +14,6 @@ namespace GameEngine.Models.Map
 
         Player Player { get; set; }
 
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update(Enums.Direction direction)
         {
             throw new NotImplementedException();
