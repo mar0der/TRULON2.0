@@ -79,7 +79,7 @@
     <Compile Include="Models\Items\Item.cs" />
     <Compile Include="Models\Items\ItemTypes\Equipables\HandableTypes\Axe.cs" />
     <Compile Include="Models\Items\ItemTypes\Equipables\Boots.cs" />
-    <Compile Include="Models\Items\ItemTypes\Equipables\Handable.cs" />
+    <Compile Include="Models\Items\ItemTypes\Equipables\HandEquipment.cs" />
     <Compile Include="Models\Items\ItemTypes\Equipables\Helmet.cs" />
     <Compile Include="Models\Items\ItemTypes\Equipables\Pants.cs" />
     <Compile Include="Models\Items\ItemTypes\Equipables\HandableTypes\Shield.cs" />

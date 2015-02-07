@@ -72,7 +72,7 @@ namespace GameEngine
         public static readonly int PantsDefenseEffect = 10;
         public static readonly int PantsAttackEffect = 0;
         public static readonly int PantsAttackSpeedEffect = 30;
-        public static readonly string HelmetDescription = "Iron pants";
+        public static readonly string PantsDescription = "Iron pants";
         //Vest
         public static readonly int VestCost = 25;
         public static readonly int VestLevelRequirement = 5;
@@ -105,7 +105,7 @@ namespace GameEngine
         public static readonly int SwordDefenseEffect = 0;
         public static readonly int SwordAttackEffect = 30;
         public static readonly int SwordAttackSpeedEffect = 5;
-        public static readonly string SworddDescription = "Mega Sword";
+        public static readonly string SwordDescription = "Mega Sword";
         //Timeoutable Items
         //DemagePotion
         public static readonly int DemagePotionCost = 10;
@@ -114,7 +114,7 @@ namespace GameEngine
         public static readonly int DemagePotionDefenseEffect = 0;
         public static readonly int DemagePotionAttackEffect = 10;
         public static readonly int DemagePotionAttackSpeedEffect = 50;
-        public static readonly string DemagePotiondDescription = "Drink it and you will hit harder";
+        public static readonly string DemagePotionDescription = "Drink it and you will hit harder";
         public static readonly int DemagePotionTimeout = 30;
         public static readonly int DemagePotionCountdown = 30;
         public static readonly bool DemagePotionHasTimedOut = false;
@@ -128,6 +128,6 @@ namespace GameEngine
         public static readonly string HealthPotionDescription = "Drink it and you get 100 extra hitpoints";
         public static readonly int HealthPotionTimeout = 30;
         public static readonly int HealthPotionCountdown = 30;
-        public static readonly bool DemagePotionHasTimedOut = false;
+        public static readonly bool HealthPotionHasTimedOut = false;
      }
 }

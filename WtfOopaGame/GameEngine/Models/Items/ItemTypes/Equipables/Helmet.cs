@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameEngine.Models.Items.ItemTypes.Equipables
+﻿namespace GameEngine.Models.Items.ItemTypes.Equipables
 {
     public class Helmet : Equipment
     {
+        public Helmet(){
+            this.Cost = Config.HelmetCost;
+            this.LevelRequirement = Config.HelmetLevelRequirement;
+            this.HealthEffect = Config.HelmetHealthEffect;
+            this.DefenseEffect = Config.HelmetDefenseEffect;
+            this.AttackEffect = Config.HelmetAttackEffect;
+            this.AttackSpeedEffect = Config.HelmetAttackSpeedEffect;
+            this.Description = Config.HelmetDescription;
+        }
+        
     }
 }
