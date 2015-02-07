@@ -10,9 +10,9 @@ namespace GameEngine.CoreLogic
 {
     public class AttackManager
     {
-        public void CalculateAttack(FightingEntity attacker, FightingEntity defender)
+        public void ApplyAttack(FightingEntity attacker, FightingEntity defender)
         {
-            //To Do: Set Up Attac Calculations
+            //To Do: Set Up Attack Calculations
         }
     }
 }
