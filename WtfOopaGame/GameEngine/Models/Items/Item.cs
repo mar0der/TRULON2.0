@@ -13,41 +13,11 @@ namespace GameEngine.Models.Items
 
         public int LevelRequirement { get; set; }
 
-        public int HealthEffect
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public int HealthEffect { get; set; }
 
-        public int DefenseEffect
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public int DefenseEffect { get; set; }
 
-        public int AttackEffect
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public int AttackEffect { get; set; }
 
         public int AttackSpeedEffect { get; set; }
 

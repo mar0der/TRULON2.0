@@ -1,155 +1,141 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="GameEngine.Config" Collapsed="true">
-    <Position X="58.75" Y="0.5" Width="1.5" />
+    <Position X="19.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Config.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Generator" Collapsed="true">
-    <Position X="57" Y="1.5" Width="1.5" />
+    <Position X="19.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Generator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Validator" Collapsed="true">
-    <Position X="60.5" Y="2.5" Width="1.5" />
+    <Position X="19.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Validator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.CoreLogic.AttackManager" Collapsed="true">
-    <Position X="57" Y="0.5" Width="1.5" />
+    <Position X="17.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
       <FileName>CoreLogic\AttackManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.CoreLogic.Engine" Collapsed="true">
-    <Position X="60.5" Y="0.5" Width="1.5" />
+    <Position X="17.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>CoreLogic\Engine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.CoreLogic.ItemManager" Collapsed="true">
-    <Position X="58.75" Y="1.5" Width="1.5" />
+    <Position X="17.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>CoreLogic\ItemManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameEngine.CoreLogic.ResourceManager" Collapsed="true">
-    <Position X="57" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CoreLogic\ResourceManager.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="GameEngine.CoreLogic.SkillManager" Collapsed="true">
-    <Position X="58.75" Y="2.5" Width="1.5" />
+    <Position X="17.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>CoreLogic\SkillManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Models.Entities.Entity" Collapsed="true">
-    <Position X="47.75" Y="1.75" Width="1.5" />
+    <Position X="2.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\Entity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="GameEngine.Models.Entities.EntityTypes.FightingEntity" Collapsed="true">
-    <Position X="45.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQAAAAAAQAAACAAgAAAAAAAIAIAAAAIBAAAAAQAAAAA=</HashCode>
-      <FileName>Models\Entities\EntityTypes\FightingEntity.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Entities.EntityTypes.NonPlayingComputer" Collapsed="true">
-    <Position X="53.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Entities\EntityTypes\NonPlayingComputer.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.Enemy" Collapsed="true">
-    <Position X="43.25" Y="4.75" Width="1.5" />
+    <Position X="2.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\FightingTypes\Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.Player" Collapsed="true">
-    <Position X="49" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAgAAAACAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
-      <FileName>Models\Entities\EntityTypes\FightingTypes\Player.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.PlayerEquipment" Collapsed="true">
-    <Position X="60.5" Y="1.5" Width="1.5" />
+    <Position X="19.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIQAAAAAAAAAIAAAAABAACAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\FightingTypes\PlayerEquipment.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="GameEngine.Models.Entities.EntityTypes.NonPlayingComputer" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\EntityTypes\NonPlayingComputer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.Player" Collapsed="true">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAgAAAACAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Entities\EntityTypes\FightingTypes\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.EnemyTypes.Goblin" Collapsed="true">
-    <Position X="41" Y="6.25" Width="1.5" />
+    <Position X="2.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\FightingTypes\EnemyTypes\Goblin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.EnemyTypes.Orc" Collapsed="true">
-    <Position X="43.25" Y="6.25" Width="1.5" />
+    <Position X="2.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\FightingTypes\EnemyTypes\Orc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.EnemyTypes.Troll" Collapsed="true">
-    <Position X="45.5" Y="6.25" Width="1.5" />
+    <Position X="2.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\FightingTypes\EnemyTypes\Troll.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.PlayerTypes.Barbarian" Collapsed="true">
-    <Position X="47.75" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Entities\EntityTypes\FightingTypes\PlayerTypes\Barbarian.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.PlayerTypes.Paladin" Collapsed="true">
-    <Position X="50" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Entities\EntityTypes\FightingTypes\PlayerTypes\Paladin.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="GameEngine.Models.Entities.EntityTypes.NPCTypes.Trainer" Collapsed="true">
-    <Position X="52.25" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\NPCTypes\Trainer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Models.Entities.EntityTypes.NPCTypes.Vendor" Collapsed="true">
-    <Position X="54.5" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\NPCTypes\Vendor.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.PlayerTypes.Barbarian" Collapsed="true">
+    <Position X="5.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\EntityTypes\FightingTypes\PlayerTypes\Barbarian.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Entities.EntityTypes.FightingTypes.PlayerTypes.Paladin" Collapsed="true">
+    <Position X="5.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\EntityTypes\FightingTypes\PlayerTypes\Paladin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="GameEngine.Models.GameObject" Collapsed="true">
-    <Position X="27.5" Y="0.5" Width="1.5" />
+    <Position X="8.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\GameObject.cs</FileName>
@@ -157,223 +143,238 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="GameEngine.Models.Items.Item" Collapsed="true">
-    <Position X="29.75" Y="1.75" Width="1.5" />
+    <Position X="8.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAABgBAAAAAAAABAAAAAEAAACAAAAAQAAAAA=</HashCode>
       <FileName>Models\Items\Item.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.Boots" Collapsed="true">
-    <Position X="27.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Equipables\Boots.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.HandEquipment" Collapsed="true">
-    <Position X="32" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Equipables\Handable.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.Helmet" Collapsed="true">
-    <Position X="20.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Equipables\Helmet.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.Pants" Collapsed="true">
-    <Position X="23" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Equipables\Pants.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.Vest" Collapsed="true">
-    <Position X="25.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Equipables\Vest.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.HandableTypes.Axe" Collapsed="true">
-    <Position X="29.75" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Equipables\HandableTypes\Axe.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.HandableTypes.Shield" Collapsed="true">
-    <Position X="32" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Equipables\HandableTypes\Shield.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.HandableTypes.Sword" Collapsed="true">
-    <Position X="34.25" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Equipables\HandableTypes\Sword.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Equipment" Collapsed="true">
-    <Position X="27.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Equipment.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Potion" Collapsed="true">
-    <Position X="37.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAAAAAQAAAAAAAEAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Potion.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Potions.DamagePotion" Collapsed="true">
-    <Position X="36.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Potions\DamagePotion.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Items.ItemTypes.Potions.HealthPotion" Collapsed="true">
-    <Position X="38.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Items\ItemTypes\Potions\HealthPotion.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Map.Area" Collapsed="true">
-    <Position X="13" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEAAAAABAA=</HashCode>
-      <FileName>Models\Map\Area.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="GameEngine.Models.Map.Map" Collapsed="true">
-    <Position X="18.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAQAAAAA=</HashCode>
-      <FileName>Models\Map\Map.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="GameEngine.Models.Map.AreaTypes.GoblinArea" Collapsed="true">
-    <Position X="9.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Map\AreaTypes\GoblinArea.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Map.AreaTypes.Obstacle" Collapsed="true">
-    <Position X="11.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Map\AreaTypes\Obstacle.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="GameEngine.Models.Map.AreaTypes.OrcArea" Collapsed="true">
-    <Position X="14" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Map\AreaTypes\OrcArea.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GameEngine.Models.Map.AreaTypes.TrollArea" Collapsed="true">
-    <Position X="16.25" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Map\AreaTypes\TrollArea.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="GameEngine.Models.Skills.Skill" Collapsed="true">
-    <Position X="4" Y="1.75" Width="1.5" />
+    <Position X="12.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAEAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Skills\Skill.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Equipment" Collapsed="true">
+    <Position X="7.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Potion" Collapsed="true">
+    <Position X="10" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAQAAAAAAAEAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Potion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.Boots" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Equipables\Boots.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.HandEquipment" Collapsed="true">
+    <Position X="7.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Equipables\Handable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.Helmet" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Equipables\Helmet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.Pants" Collapsed="true">
+    <Position X="7.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Equipables\Pants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.Vest" Collapsed="true">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Equipables\Vest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.HandableTypes.Axe" Collapsed="true">
+    <Position X="9.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Equipables\HandableTypes\Axe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.HandableTypes.Shield" Collapsed="true">
+    <Position X="5.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Equipables\HandableTypes\Shield.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Equipables.HandableTypes.Sword" Collapsed="true">
+    <Position X="7.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Equipables\HandableTypes\Sword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="GameEngine.Models.Skills.SkillTypes.Attack" Collapsed="true">
-    <Position X="0.5" Y="3.25" Width="1.5" />
+    <Position X="12.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Skills\SkillTypes\Attack.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Models.Skills.SkillTypes.Heal" Collapsed="true">
-    <Position X="2.75" Y="3.25" Width="1.5" />
+    <Position X="12.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Skills\SkillTypes\Heal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Models.Skills.SkillTypes.Recall" Collapsed="true">
-    <Position X="5" Y="3.25" Width="1.5" />
+    <Position X="12.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Skills\SkillTypes\Recall.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Models.Skills.SkillTypes.Smite" Collapsed="true">
-    <Position X="7.25" Y="3.25" Width="1.5" />
+    <Position X="12.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Skills\SkillTypes\Smite.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="GameEngine.Interfaces.ICastable" Collapsed="true">
-    <Position X="57" Y="3.75" Width="1.5" />
+  <Class Name="GameEngine.Models.Map.Area" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\ICastable.cs</FileName>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEAAAAABAA=</HashCode>
+      <FileName>Models\Map\Area.cs</FileName>
     </TypeIdentifier>
-  </Interface>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameEngine.Models.Map.Map" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Map\Map.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameEngine.CoreLogic.ResourceManager" Collapsed="true">
+    <Position X="17.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoreLogic\ResourceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Entities.EntityTypes.FightingEntity" Collapsed="true">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAQAAACAAgAAAAAAAIAIAAAAIBAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Entities\EntityTypes\FightingEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Potions.DamagePotion" Collapsed="true">
+    <Position X="10" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Potions\DamagePotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Items.ItemTypes.Potions.HealthPotion" Collapsed="true">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\ItemTypes\Potions\HealthPotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Map.AreaTypes.GoblinArea" Collapsed="true">
+    <Position X="15" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Map\AreaTypes\GoblinArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Map.AreaTypes.OrcArea" Collapsed="true">
+    <Position X="15" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Map\AreaTypes\OrcArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Map.AreaTypes.TrollArea" Collapsed="true">
+    <Position X="15" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Map\AreaTypes\TrollArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Models.Map.AreaTypes.Obstacle" Collapsed="true">
+    <Position X="15" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Map\AreaTypes\Obstacle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="GameEngine.Interfaces.ICollidable" Collapsed="true">
-    <Position X="58.75" Y="3.75" Width="1.5" />
+    <Position X="21.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\ICollidable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="GameEngine.Interfaces.IDrawable" Collapsed="true">
-    <Position X="60.5" Y="3.75" Width="1.5" />
+    <Position X="21.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IDrawable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="GameEngine.Interfaces.IMovable" Collapsed="true">
-    <Position X="57" Y="4.5" Width="1.5" />
+    <Position X="21.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IMovable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="GameEngine.Interfaces.ITimeoutable" Collapsed="true">
-    <Position X="58.75" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\ITimeoutable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="GameEngine.Interfaces.IUsable" Collapsed="true">
-    <Position X="60.5" Y="4.5" Width="1.5" />
+    <Position X="21.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IUsable.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="GameEngine.Interfaces.ICastable" Collapsed="true">
+    <Position X="21.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICastable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameEngine.Interfaces.ITimeoutable" Collapsed="true">
+    <Position X="21.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ITimeoutable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Enum Name="GameEngine.Enums.Direction" Collapsed="true">
-    <Position X="57" Y="5.5" Width="1.5" />
+    <Position X="19.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACACABABAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAEBAgQ=</HashCode>
       <FileName>Enums\Direction.cs</FileName>
