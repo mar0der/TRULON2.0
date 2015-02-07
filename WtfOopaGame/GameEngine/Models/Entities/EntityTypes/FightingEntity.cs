@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace GameEngine.Models.Entities.EntityTypes
 {
-    public abstract class FightingEntity : Entity, ICollidable
+    public abstract class FightingEntity : Entity
     {
         public int Range { get; set; }
 
