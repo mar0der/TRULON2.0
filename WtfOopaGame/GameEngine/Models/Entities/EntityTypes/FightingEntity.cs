@@ -1,9 +1,10 @@
-﻿using System;
+﻿using GameEngine.Interfaces;
+using System;
 using System.Linq.Expressions;
 
 namespace GameEngine.Models.Entities.EntityTypes
 {
-    public abstract class FightingEntity : Entity, IColidable
+    public abstract class FightingEntity : Entity, ICollidable
     {
         public int Range { get; set; }
 
