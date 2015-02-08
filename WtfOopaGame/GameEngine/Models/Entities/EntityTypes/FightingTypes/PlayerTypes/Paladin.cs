@@ -1,6 +1,20 @@
-﻿namespace GameEngine.Models.Entities.EntityTypes.FightingTypes.PlayerTypes
+﻿using System.Collections.Generic;
+namespace GameEngine.Models.Entities.EntityTypes.FightingTypes.PlayerTypes
 {
     public class Paladin : Player
     {
+        public Paladin()
+        {
+            this.Coins = Config.InitialCoins;
+            //this.Equipment = new List<PlayerEquipment>();
+            //this.Inventory = new List<Items>();
+            //this.Skills = new List<Skills>();
+            this.Range = Config.PaladinRange;
+            this.AttackPoints = Config.PaladinAttackPoints;
+            this.DefensePoints = Config.PaladinDefensePoints;
+            this.HealthPoints = Config.PaladinHealthPoints;
+            this.AttackSpeed = Config.PaladinAttackSpeed;
+            this.Level = Config.PaladinLevel;
+        }
     }
 }

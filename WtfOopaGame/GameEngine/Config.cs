@@ -13,6 +13,7 @@ namespace GameEngine
     {
         //Players base constatnts
         public static readonly int InventorySize = 20;
+        public static readonly int InitialCoins = 100;
         //Barbarian base constants
         public static readonly int BarbarianRange = 100;
         public static readonly int BarbarianAttackPoints = 10;
