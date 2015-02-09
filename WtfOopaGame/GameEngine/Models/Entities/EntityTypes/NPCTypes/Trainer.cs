@@ -9,6 +9,10 @@ namespace GameEngine.Models.Entities.EntityTypes.NPCTypes
 {
     public class Trainer : NonPlayingComputer
     {
+        public Trainer()
+        {
+            this.Images = Assets.Trainer;
+        }
         public IList<Skill> Skills { get; set; }
     }
 }

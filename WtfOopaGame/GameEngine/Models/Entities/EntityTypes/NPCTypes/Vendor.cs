@@ -9,6 +9,11 @@ namespace GameEngine.Models.Entities.EntityTypes.NPCTypes
 {
     public class Vendor : NonPlayingComputer
     {
+        public Vendor()
+        {
+            this.Images = Assets.Vendor;
+        }
+
         public IList<Item> Items { get; set; }
     }
 }

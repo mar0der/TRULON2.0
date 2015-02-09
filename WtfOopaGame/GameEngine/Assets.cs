@@ -82,6 +82,18 @@ namespace GameEngine
             CreateImageFromSource("Troll/West.png"),
             CreateImageFromSource("Troll/NorthWest.png")
         };
+        //NPCs
+        //Vendor
+        public static readonly Image[] Vendor = new Image[1]
+        {
+            CreateImageFromSource("NPCs/Vendor.png")
+        };
+
+        //Trainer
+        public static readonly Image[] Trainer = new Image[1]
+        {
+            CreateImageFromSource("NPCs/Trainer.png")
+        };
 
         //Items
         //Boots
