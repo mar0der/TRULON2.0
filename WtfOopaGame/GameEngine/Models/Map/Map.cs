@@ -38,6 +38,10 @@ namespace GameEngine.Models.Map
             }
         }
 
+        /// <summary>
+        /// Updates the position of all game objects
+        /// </summary>
+        /// <param name="direction">The direction to move them to</param>
         public void Update(Enums.Direction direction)
         {
             this.Player.Update(direction);
@@ -46,6 +50,15 @@ namespace GameEngine.Models.Map
             {
                 area.Update(direction);
             }
+        }
+
+        /// <summary>
+        /// Refreshes the position of all Game Objects in the map by given new
+        /// GameGrid size.
+        /// </summary>
+        public void Refresh()
+        {
+            throw new NotImplementedException();
         }
     }
 }
