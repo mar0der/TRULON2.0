@@ -21,7 +21,7 @@ namespace GameEngine
         {
             var areas = new List<Area>();
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
 
             return areas;
         }
@@ -34,7 +34,7 @@ namespace GameEngine
         {
             var map = new Map();
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
 
             return map;
         }

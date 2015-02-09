@@ -14,6 +14,11 @@ namespace GameEngine.Models
     /// </summary>
     public abstract class GameObject : IDrawable
     {
+        protected GameObject()
+        {
+            this.ObjectImage = new Image();
+        }
+
         public string Name { get; set; }
         public Image ObjectImage { get; set; }
     }

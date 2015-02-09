@@ -103,6 +103,17 @@
       <Name>GameEngine</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressoruces\Images\PlayerDefault\East.png" />
+    <Resource Include="Ressoruces\Images\PlayerDefault\None.png" />
+    <Resource Include="Ressoruces\Images\PlayerDefault\North.png" />
+    <Resource Include="Ressoruces\Images\PlayerDefault\NorthEast.png" />
+    <Resource Include="Ressoruces\Images\PlayerDefault\NorthWest.png" />
+    <Resource Include="Ressoruces\Images\PlayerDefault\South.png" />
+    <Resource Include="Ressoruces\Images\PlayerDefault\SouthEast.png" />
+    <Resource Include="Ressoruces\Images\PlayerDefault\SouthWest.png" />
+    <Resource Include="Ressoruces\Images\PlayerDefault\West.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

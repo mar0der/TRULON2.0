@@ -39,8 +39,13 @@ namespace GameEngine.Models.Map
         {
             get
             {
+                var output = new List<Image>();
+
+                output.Add(Player.ObjectImage);
                 //To Do
-                return new List<Image>();
+
+                return output;
+
             }
         }
 
