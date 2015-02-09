@@ -19,7 +19,24 @@ namespace GameEngine
         /// <returns>Collection of areas</returns>
         internal static List<Area> GetMapAreas(Map map)
         {
+            var areas = new List<Area>();
+
             throw new NotImplementedException();
+
+            return areas;
+        }
+
+        /// <summary>
+        /// Generates map with the correct image and size
+        /// </summary>
+        /// <returns>the needed map</returns>
+        internal static Map GetMap()
+        {
+            var map = new Map();
+
+            throw new NotImplementedException();
+
+            return map;
         }
     }
 }

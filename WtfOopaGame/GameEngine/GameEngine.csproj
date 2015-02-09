@@ -53,9 +53,11 @@
     <Compile Include="Config.cs" />
     <Compile Include="CoreLogic\Engine.cs" />
     <Compile Include="CoreLogic\ItemManager.cs" />
+    <Compile Include="CoreLogic\PlayerManager.cs" />
     <Compile Include="CoreLogic\ResourceManager.cs" />
     <Compile Include="CoreLogic\SkillManager.cs" />
     <Compile Include="Enums\Direction.cs" />
+    <Compile Include="Enums\PlayerType.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="Interfaces\ICastable.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />

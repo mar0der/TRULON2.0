@@ -24,7 +24,7 @@ namespace GameEngine.CoreLogic
         /// <summary>
         /// The map that contains all Game Objects
         /// </summary>
-        public readonly Map Map = new Map();
+        public readonly Map Map = Generator.GetMap();
 
         /// <summary>
         /// Initializes an instance of the Engine class.
