@@ -22,8 +22,14 @@ namespace GameEngine.Models.Map
             this.Player = PlayerManager.GetPlayer();
         }
 
+        /// <summary>
+        /// Gets or sets the Areas property.
+        /// </summary>
         List<Area> Areas { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Player property.
+        /// </summary>
         Player Player { get; set; }
 
         /// <summary>
