@@ -18,7 +18,7 @@ namespace GameEngine.Models.Map
         /// </summary>
         public Map()
         {
-            this.Areas = Generator.GetMapAreas();
+            this.Areas = Generator.GetMapAreas(this);
             this.Player = PlayerManager.GetPlayer();
         }
 
