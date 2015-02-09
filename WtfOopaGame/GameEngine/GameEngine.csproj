@@ -119,6 +119,17 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ressources\Images\PlayerDefault\East.png" />
+    <Content Include="Ressources\Images\PlayerDefault\None.png" />
+    <Content Include="Ressources\Images\PlayerDefault\North.png" />
+    <Content Include="Ressources\Images\PlayerDefault\NorthEast.png" />
+    <Content Include="Ressources\Images\PlayerDefault\NorthWest.png" />
+    <Content Include="Ressources\Images\PlayerDefault\South.png" />
+    <Content Include="Ressources\Images\PlayerDefault\SouthEast.png" />
+    <Content Include="Ressources\Images\PlayerDefault\SouthWest.png" />
+    <Content Include="Ressources\Images\PlayerDefault\West.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
