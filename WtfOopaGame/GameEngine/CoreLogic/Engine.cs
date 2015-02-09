@@ -41,11 +41,6 @@ namespace GameEngine.CoreLogic
             }
         }
 
-        public Image GetAllImages()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// The main game method that updates all the Game Objects
         /// </summary>
