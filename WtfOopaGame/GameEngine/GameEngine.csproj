@@ -38,6 +38,8 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -101,17 +103,19 @@
     <Compile Include="Models\Map\Area.cs" />
     <Compile Include="Models\Map\Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\GameGrid.xaml.cs">
+      <DependentUpon>GameGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validator.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WtfOopaGame\WtfOopaGame.csproj">
-      <Project>{1ee8a861-3bf2-4b80-ad56-eb3586db1c2e}</Project>
-      <Name>WtfOopaGame</Name>
-    </ProjectReference>
+    <Page Include="UI\GameGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

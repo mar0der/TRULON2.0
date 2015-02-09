@@ -12,21 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using GameEngine.CoreLogic;
 
-namespace WtfOopaGame
+namespace GameEngine.UI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GameGrid.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class GameGrid : UserControl
     {
-        public MainWindow()
+        public GameGrid()
         {
             InitializeComponent();
-
-            var engine = new Engine(OopaGameGrid);
-            CompositionTarget.Rendering += (sender, args) => engine.Run();
         }
     }
 }
