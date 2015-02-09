@@ -15,6 +15,7 @@ namespace GameEngine.Models.Entities.EntityTypes.FightingTypes.PlayerTypes
             this.HealthPoints = Config.PaladinHealthPoints;
             this.AttackSpeed = Config.PaladinAttackSpeed;
             this.Level = Config.PaladinLevel;
+            this.Images = Assets.PaladinImages;
         }
     }
 }

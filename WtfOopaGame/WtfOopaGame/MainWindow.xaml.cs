@@ -129,6 +129,11 @@ namespace WtfOopaGame
             SetDirection();
         }
 
+        private void OopaGameGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
     }
 }

@@ -67,14 +67,14 @@
   <Class Name="GameEngine.Models.Entities.EntityTypes.FightingEntity" Collapsed="true">
     <Position X="45.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAQAAACAAgAAAAAAAIAIAAAAIBAAAAAQAAAAA=</HashCode>
+      <HashCode>AQQAAAAAQAAACAAgAAAAAAAIAIAAAAIBAIAAAQAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\FightingEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Models.Entities.EntityTypes.NonPlayingComputer" Collapsed="true">
     <Position X="53.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\NonPlayingComputer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -257,7 +257,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="GameEngine.Models.Map.Map" Collapsed="true">
+  <Class Name="GameEngine.Models.Map.Map">
     <Position X="18.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAABAAAAAAAAAAAAAAACAABAAAAAAAQAAAAA=</HashCode>
@@ -295,7 +295,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="GameEngine.Models.Skills.Skill" Collapsed="true">
-    <Position X="4" Y="1.75" Width="1.5" />
+    <Position X="4" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAEAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Skills\Skill.cs</FileName>

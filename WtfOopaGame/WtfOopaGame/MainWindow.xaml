@@ -3,5 +3,5 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ui="clr-namespace:GameEngine.UI;assembly=GameEngine"
         Title="MainWindow" Height="350" Width="500" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
-    <ui:GameGrid x:Name="OopaGameGrid"></ui:GameGrid>
+    <ui:GameGrid x:Name="OopaGameGrid" Loaded="OopaGameGrid_Loaded"></ui:GameGrid>
 </Window>

@@ -91,7 +91,7 @@ namespace GameEngine
         public static readonly int AxeAttackEffect = 15;
         public static readonly int AxeAttackSpeedEffect = 15;
         public static readonly string AxeDescription = "Brutal Axe";
-        //Axe
+        //Shield
         public static readonly int ShieldCost = 20;
         public static readonly int ShieldLevelRequirement = 3;
         public static readonly int ShieldHealthEffect = 0;
