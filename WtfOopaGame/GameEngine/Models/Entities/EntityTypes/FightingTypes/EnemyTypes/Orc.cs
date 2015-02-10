@@ -4,7 +4,7 @@
     {
         public Orc()
         {
-            this.Range = Config.OrcRange;
+            this.RangeRadius = Config.OrcRange;
             this.AttackPoints = Config.OrcAttackPoints;
             this.DefensePoints = Config.OrcDefensePoints;
             this.HealthPoints = Config.OrcHealthPoints;

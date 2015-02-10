@@ -11,7 +11,7 @@ namespace GameEngine
 {
     public static class Assets
     {
-         private static Uri baseUri = new Uri(@"pack://application:,,,/Ressoruces/Images/");
+         private static Uri _baseUri = new Uri(@"pack://application:,,,/Ressoruces/Images/");
 
         //Barbarian base constants
         public static readonly Image[] BarbarianImages = new Image[9]
@@ -120,7 +120,7 @@ namespace GameEngine
 
         private static Image CreateImageFromSource(string path)
         {
-            Uri uri = new Uri(baseUri + path);
+            Uri uri = new Uri(_baseUri + path);
             BitmapImage bitmapImage = new BitmapImage(uri);
             Image image = new Image();
             image.Source = bitmapImage;

@@ -9,7 +9,7 @@ namespace GameEngine.Models.Entities.EntityTypes.FightingTypes.PlayerTypes
             //this.Equipment = new List<PlayerEquipment>();
             //this.Inventory = new List<Items>();
             //this.Skills = new List<Skills>();
-            this.Range = Config.PaladinRange;
+            this.RangeRadius = Config.PaladinRange;
             this.AttackPoints = Config.PaladinAttackPoints;
             this.DefensePoints = Config.PaladinDefensePoints;
             this.HealthPoints = Config.PaladinHealthPoints;

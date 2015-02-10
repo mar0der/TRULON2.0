@@ -48,7 +48,7 @@ namespace GameEngine.Models.Entities.EntityTypes
             this.ObjectImage = none;
         }
 
-        public int Range { get; set; }
+        public int RangeRadius { get; set; }
 
         public int AttackPoints { get; set; }
 

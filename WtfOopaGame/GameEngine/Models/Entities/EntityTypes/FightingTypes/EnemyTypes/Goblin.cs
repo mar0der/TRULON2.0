@@ -4,7 +4,7 @@
     {
         public Goblin()
         {
-            this.Range = Config.GoblinRange;
+            this.RangeRadius = Config.GoblinRange;
             this.AttackPoints = Config.GoblinAttackPoints;
             this.DefensePoints = Config.GoblinDefensePoints;
             this.HealthPoints = Config.GoblinHealthPoints;

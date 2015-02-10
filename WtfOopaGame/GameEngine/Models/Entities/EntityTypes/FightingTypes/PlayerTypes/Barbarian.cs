@@ -8,7 +8,7 @@
             //this.Equipment = new List<PlayerEquipment>();
             //this.Inventory = new List<Items>();
             //this.Skills = new List<Skills>();
-            this.Range = Config.BarbarianRange;
+            this.RangeRadius = Config.BarbarianRange;
             this.AttackPoints = Config.BarbarianAttackPoints;
             this.DefensePoints = Config.BarbarianDefensePoints;
             this.HealthPoints = Config.BarbarianHealthPoints;
