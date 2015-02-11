@@ -10,11 +10,12 @@
             int defencePoints, 
             int speedPoints, 
             int healthPoints, 
-            int level, 
+            int level,
             List<Item> inventory)
             : base(name, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
         {
 
         }
+
     }
 }
