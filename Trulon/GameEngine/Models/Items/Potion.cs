@@ -2,7 +2,8 @@
 {
     public abstract class Potion : Item
     {
-        protected Potion(int timeout, int countdown, bool hasTimedOut)
+        protected Potion(string name, int timeout, int countdown, bool hasTimedOut)
+            : base(name)
         {
             this.Timeout = timeout;
             this.Countdown = countdown;

@@ -2,10 +2,10 @@
 {
     public class SpeedPotion : Potion
     {
-        public SpeedPotion(int timeout, int countdown, bool hasTimedOut, int speedPointsBuff)
-            : base(timeout, countdown, hasTimedOut)
+        public SpeedPotion(string name, int timeout, int countdown, bool hasTimedOut, int speedPointsBuff)
+            : base(name, timeout, countdown, hasTimedOut)
         {
-            this.SpeedPointsBuff = speedPointsBuff;
+            //this.SpeedPointsBuff = Config;
         }
 
         public int SpeedPointsBuff { get; set; }
