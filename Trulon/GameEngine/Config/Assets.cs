@@ -9,7 +9,7 @@ namespace GameEngine
          private static Uri _baseUri = new Uri(@"pack://application:,,,/Ressoruces/Images/");
 
         //Barbarian base constants
-        public static readonly System.Net.Mime.MediaTypeNames.Image[] BarbarianImages = new System.Net.Mime.MediaTypeNames.Image[9]
+        public static readonly Image[] BarbarianImages = new Image[9]
         {
             CreateImageFromSource("Barbarian/None.png"),
             CreateImageFromSource("Barbarian/North.png"),
