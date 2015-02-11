@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-namespace GameEngine.Models.Entities.Players
+﻿namespace GameEngine.Models.Entities.Players
 {
+    using System.Collections.Generic;
+
     public class Paladin : Player
     {
         private const string Name = "Paladin";

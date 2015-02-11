@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
 
-    using Config;
     public class Barbarian : Player
     {
         private const string Name = "Barbarian";
