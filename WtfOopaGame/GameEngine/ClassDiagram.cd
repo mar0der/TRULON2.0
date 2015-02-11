@@ -59,7 +59,7 @@
   <Class Name="GameEngine.Models.Entities.Entity" Collapsed="true">
     <Position X="47.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\Entity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -67,7 +67,7 @@
   <Class Name="GameEngine.Models.Entities.EntityTypes.FightingEntity" Collapsed="true">
     <Position X="45.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQQAAAAAQAAACAAgAAAAAAAIAIAAAAIBAIAAAQAAAAA=</HashCode>
+      <HashCode>AQQAAAAAQAAAAAAgAAAAAAAIAIAAQAIBAIAAAQAAAAA=</HashCode>
       <FileName>Models\Entities\EntityTypes\FightingEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -257,7 +257,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="GameEngine.Models.Map.Map">
+  <Class Name="GameEngine.Models.Map.Map" Collapsed="true">
     <Position X="18.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAABAAAAAAAAAAAAAAACAABAAAAAAAQAAAAA=</HashCode>
