@@ -29,10 +29,9 @@ namespace FrontEnd
         public MainWindow()
         {
             InitializeComponent();
-<<<<<<< HEAD
 
             //GameBoard is a canvas comming from the xaml
-            Engine engine = new Engine(this.GameBoard);
+            GameEngine engine = new GameEngine(this.GameBoard);
             engine.Init();
             CompositionTarget.Rendering += (sender, args) => engine.Update(PlayButton);
 
@@ -51,8 +50,6 @@ namespace FrontEnd
             }
 
             //SetDirection();
-=======
->>>>>>> parent of ac92738... WPF runs engine.Init() once and calling engine.Update() 25 - 30 times a second
         }
 
     }
