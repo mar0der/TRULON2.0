@@ -2,9 +2,10 @@
 {
     public class Helmet : Equipment
     {
-        public Helmet(Equipment equipment, int defensePointsBuff) : base(equipment)
+        public Helmet(string name) 
+            : base(name)
         {
-            this.DefensePointsBuff = defensePointsBuff;
+            //this.DefensePointsBuff = Config ;
         }
 
         public int DefensePointsBuff { get; set; }

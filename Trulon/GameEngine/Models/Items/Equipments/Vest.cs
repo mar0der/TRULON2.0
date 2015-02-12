@@ -2,12 +2,12 @@
 {
     public class Vest : Equipment
     {
-        public Vest(Equipment equipment, int defensePointsBuff) : base(equipment)
+        public Vest(string name) 
+            : base(name)
         {
-            this.DefensePointsBuff = defensePointsBuff;
+            //this.DefensePointsBuff = Config;
         }
 
         public int DefensePointsBuff { get; set; }
-
     }
 }

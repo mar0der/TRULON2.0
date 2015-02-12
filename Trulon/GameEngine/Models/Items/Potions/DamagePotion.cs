@@ -2,10 +2,10 @@
 {
     public class DamagePotion : Potion
     {
-        public DamagePotion(int timeout, int countdown, bool hasTimedOut, int attackPointsBuff)
-            : base(timeout, countdown, hasTimedOut)
+        public DamagePotion(string name, int timeout, int countdown, bool hasTimedOut, int attackPointsBuff)
+            : base(name, timeout, countdown, hasTimedOut)
         {
-            this.AttackPointsBuff = attackPointsBuff;
+            //this.AttackPointsBuff = Config;
         }
 
         public int AttackPointsBuff { get; set; }

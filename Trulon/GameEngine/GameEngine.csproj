@@ -30,17 +30,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\Assets.cs" />
+    <Compile Include="Config\Config.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="GameObject.cs" />
@@ -76,11 +84,68 @@
   <ItemGroup>
     <Folder Include="Exceptions\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Resources\Images\" />
     <Folder Include="Resources\Sounds\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Images\Barbarian\East.png" />
+    <Content Include="Resources\Images\Barbarian\None.png" />
+    <Content Include="Resources\Images\Barbarian\North.png" />
+    <Content Include="Resources\Images\Barbarian\NorthEast.png" />
+    <Content Include="Resources\Images\Barbarian\NorthWest.png" />
+    <Content Include="Resources\Images\Barbarian\South.png" />
+    <Content Include="Resources\Images\Barbarian\SouthEast.png" />
+    <Content Include="Resources\Images\Barbarian\SouthWest.png" />
+    <Content Include="Resources\Images\Barbarian\West.png" />
+    <Content Include="Resources\Images\Goblin\East.png" />
+    <Content Include="Resources\Images\Goblin\None.png" />
+    <Content Include="Resources\Images\Goblin\North.png" />
+    <Content Include="Resources\Images\Goblin\NorthEast.png" />
+    <Content Include="Resources\Images\Goblin\NorthWest.png" />
+    <Content Include="Resources\Images\Goblin\South.png" />
+    <Content Include="Resources\Images\Goblin\SouthEast.png" />
+    <Content Include="Resources\Images\Goblin\SouthWest.png" />
+    <Content Include="Resources\Images\Goblin\West.png" />
+    <Content Include="Resources\Images\Items\Axe.png" />
+    <Content Include="Resources\Images\Items\Boots.png" />
+    <Content Include="Resources\Images\Items\DamagePotion.png" />
+    <Content Include="Resources\Images\Items\HealthPotion.png" />
+    <Content Include="Resources\Images\Items\Helmet.png" />
+    <Content Include="Resources\Images\Items\Pants.png" />
+    <Content Include="Resources\Images\Items\Shield.png" />
+    <Content Include="Resources\Images\Items\Sword.png" />
+    <Content Include="Resources\Images\Items\Vest.png" />
+    <Content Include="Resources\Images\NPCs\Trainer.png" />
+    <Content Include="Resources\Images\NPCs\Vendor.png" />
+    <Content Include="Resources\Images\Orc\East.png" />
+    <Content Include="Resources\Images\Orc\None.png" />
+    <Content Include="Resources\Images\Orc\North.png" />
+    <Content Include="Resources\Images\Orc\NorthEast.png" />
+    <Content Include="Resources\Images\Orc\NorthWest.png" />
+    <Content Include="Resources\Images\Orc\South.png" />
+    <Content Include="Resources\Images\Orc\SouthEast.png" />
+    <Content Include="Resources\Images\Orc\SouthWest.png" />
+    <Content Include="Resources\Images\Orc\West.png" />
+    <Content Include="Resources\Images\Paladin\East.png" />
+    <Content Include="Resources\Images\Paladin\None.png" />
+    <Content Include="Resources\Images\Paladin\North.png" />
+    <Content Include="Resources\Images\Paladin\NorthEast.png" />
+    <Content Include="Resources\Images\Paladin\NorthWest.png" />
+    <Content Include="Resources\Images\Paladin\South.png" />
+    <Content Include="Resources\Images\Paladin\SouthEast.png" />
+    <Content Include="Resources\Images\Paladin\SouthWest.png" />
+    <Content Include="Resources\Images\Paladin\West.png" />
+    <Content Include="Resources\Images\Troll\East.png" />
+    <Content Include="Resources\Images\Troll\None.png" />
+    <Content Include="Resources\Images\Troll\North.png" />
+    <Content Include="Resources\Images\Troll\NorthEast.png" />
+    <Content Include="Resources\Images\Troll\NorthWest.png" />
+    <Content Include="Resources\Images\Troll\South.png" />
+    <Content Include="Resources\Images\Troll\SouthEast.png" />
+    <Content Include="Resources\Images\Troll\SouthWest.png" />
+    <Content Include="Resources\Images\Troll\West.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
