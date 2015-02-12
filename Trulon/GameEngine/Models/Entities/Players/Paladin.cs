@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 namespace GameEngine.Models.Entities.Players
 {
+    using System.Collections.Generic;
+
     public class Paladin : Player
     {
         private const string Name = "Paladin";
@@ -15,7 +17,7 @@ namespace GameEngine.Models.Entities.Players
         private const int AttackSkill = 0;
         private const int HealthSkill = 0;
         private const int DefenceSkill = 0;
-
+        
         protected Paladin()
             : base(
             Name,
@@ -32,7 +34,7 @@ namespace GameEngine.Models.Entities.Players
             HealthSkill,
             DefenceSkill)
         {
-
+            
         }
     }
 }
