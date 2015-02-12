@@ -21,12 +21,37 @@ namespace FrontEnd
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        /// <summary>
+        /// Contains all pressed keys at given time
+        /// </summary>
+        private readonly List<Key> PressedKeys = new List<Key>();
+
         public MainWindow()
         {
             InitializeComponent();
-            Engine engine = new Engine();
+
+            //GameBoard is a canvas comming from the xaml
+            Engine engine = new Engine(this.GameBoard);
             engine.Init();
-            CompositionTarget.Rendering += (sender, args) => engine.Update();
+            CompositionTarget.Rendering += (sender, args) => engine.Update(PlayButton);
+
         }
+
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlayButton.Visibility = Visibility.Hidden;   
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!PressedKeys.Contains(e.Key))
+            {
+                PressedKeys.Add(e.Key);
+            }
+
+            //SetDirection();
+        }
+
     }
 }

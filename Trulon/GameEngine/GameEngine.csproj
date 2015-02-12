@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Config\Assets.cs" />
     <Compile Include="Config\Config.cs" />
+    <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="GameObject.cs" />
