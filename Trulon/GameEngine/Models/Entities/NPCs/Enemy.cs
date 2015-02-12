@@ -12,7 +12,7 @@
             int healthPoints,
             int level, 
             List<Item> inventory, 
-            int experienceReward, 
+            int experienceReward,
             int coinsReward)
             : base(name, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
         {
@@ -22,5 +22,6 @@
 
         public int ExperienceReward { get; set; }
         public int CoinsReward { get; set; }
+        
     }
 }

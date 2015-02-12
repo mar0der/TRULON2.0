@@ -29,6 +29,12 @@
         public int Level { get; set; }
         public List<Item> Inventory { get; set; }
 
-        //protected abstract void Interact();
+        protected abstract void Interact();
+
+        protected abstract void Move();
+
+        protected abstract void Die();
+
+
     }
 }

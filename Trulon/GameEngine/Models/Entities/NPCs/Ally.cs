@@ -16,5 +16,15 @@
         {
 
         }
+
+        protected override void Move()
+        {
+            //stop moving
+        }
+
+        protected override void Interact()
+        {
+            //sell items or skills
+        }
     }
 }

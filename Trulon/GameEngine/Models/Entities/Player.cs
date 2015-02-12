@@ -35,12 +35,20 @@
         public int HealthSkill { get; set; }
         public int DefenceSkill { get; set; }
 
-        //protected abstract void AddExperience();
 
-        //protected abstract void AddCoins();
+        protected abstract void AddExperience();
 
-        //protected abstract void AddSkillPoints();
+        protected abstract void AddCoins();
 
-        
+        protected abstract void Buy();
+
+        protected abstract void AddSkillPoints();
+
+        protected abstract void UseEquipment();
+
+        protected abstract void DrinkPotion();
+
+        protected abstract void Attack();
+
     }
 }
