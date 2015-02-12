@@ -50,7 +50,7 @@
     <Compile Include="Config\Assets.cs" />
     <Compile Include="Config\Config.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
-    <Compile Include="GameEngine.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Models\Entities\NonPlayerCharacter.cs" />
     <Compile Include="Models\Entities\NPCs\Enemies\Boss.cs" />

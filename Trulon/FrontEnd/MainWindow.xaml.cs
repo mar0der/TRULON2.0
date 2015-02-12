@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GameEngine;
 
 namespace FrontEnd
 {
@@ -23,6 +24,9 @@ namespace FrontEnd
         public MainWindow()
         {
             InitializeComponent();
+            Engine engine = new Engine();
+            engine.Init();
+            CompositionTarget.Rendering += (sender, args) => engine.Update();
         }
     }
 }
