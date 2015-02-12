@@ -4,7 +4,7 @@
 
     public abstract class Player : Entity
     {
-        protected Player(
+        public Player(
             string name,
             int attackPoints,
             int defencePoints,
@@ -36,19 +36,19 @@
         public int DefenceSkill { get; set; }
 
 
-        protected abstract void AddExperience();
+        public abstract void AddExperience();
 
-        protected abstract void AddCoins();
+        public abstract void AddCoins();
 
-        protected abstract void Buy();
+        public abstract void Buy();
 
-        protected abstract void AddSkillPoints();
+        public abstract void AddSkillPoints();
 
-        protected abstract void UseEquipment();
+        public abstract void UseEquipment();
 
-        protected abstract void DrinkPotion();
+        public abstract void DrinkPotion();
 
-        protected abstract void Attack();
+        public abstract void Attack();
 
     }
 }

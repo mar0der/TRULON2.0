@@ -4,7 +4,7 @@
 
     public abstract class NonPlayerCharacter : Entity
     {
-        protected NonPlayerCharacter(
+        public NonPlayerCharacter(
             string name, 
             int attackPoints, 
             int defencePoints, 

@@ -4,7 +4,7 @@
 
     public abstract class Enemy : NonPlayerCharacter
     {
-        protected Enemy(
+        public Enemy(
             string name, 
             int attackPoints,
             int defencePoints,

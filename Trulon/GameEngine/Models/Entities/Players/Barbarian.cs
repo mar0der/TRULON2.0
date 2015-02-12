@@ -17,7 +17,7 @@
         private const int HealthSkill = 0;
         private const int DefenceSkill = 0;
 
-        protected Barbarian()
+        public Barbarian(string name)
             : base(
             Name,
             AttackPoints,

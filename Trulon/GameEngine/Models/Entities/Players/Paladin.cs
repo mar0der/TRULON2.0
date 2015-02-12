@@ -18,7 +18,7 @@ namespace GameEngine.Models.Entities.Players
         private const int HealthSkill = 0;
         private const int DefenceSkill = 0;
         
-        protected Paladin()
+        public Paladin(string name)
             : base(
             Name,
             AttackPoints,

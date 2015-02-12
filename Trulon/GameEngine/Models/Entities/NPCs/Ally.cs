@@ -4,7 +4,7 @@
 
     public abstract class Ally : NonPlayerCharacter
     {
-        protected Ally(
+        public Ally(
             string name,
             int attackPoints,
             int defencePoints,
@@ -17,12 +17,12 @@
 
         }
 
-        protected override void Move()
+        public override void Move()
         {
             //stop moving
         }
 
-        protected override void Interact()
+        public override void Interact()
         {
             //sell items or skills
         }

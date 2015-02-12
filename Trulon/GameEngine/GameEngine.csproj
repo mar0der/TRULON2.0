@@ -51,6 +51,7 @@
     <Compile Include="Config\Config.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
+    <Compile Include="Enums\PlayerTypes.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Models\Entities\NonPlayerCharacter.cs" />

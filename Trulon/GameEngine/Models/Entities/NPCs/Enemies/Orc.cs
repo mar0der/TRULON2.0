@@ -28,17 +28,17 @@
 
         }
 
-        protected override void Interact()
+        public override void Interact()
         {
             //Attack();
         }
 
-        protected override void Move()
+        public override void Move()
         {
             //arteficial intelligence
         }
 
-        protected override void Die()
+        public override void Die()
         {
             //die and drop item.
         }

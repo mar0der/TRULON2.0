@@ -4,7 +4,7 @@
 
     public abstract class Entity : GameObject
     {
-        protected Entity(
+        public Entity(
             string name,
             int attackPoints,
             int defencePoints,
@@ -29,11 +29,11 @@
         public int Level { get; set; }
         public List<Item> Inventory { get; set; }
 
-        protected abstract void Interact();
+        public abstract void Interact();
 
-        protected abstract void Move();
+        public abstract void Move();
 
-        protected abstract void Die();
+        public abstract void Die();
 
 
     }
