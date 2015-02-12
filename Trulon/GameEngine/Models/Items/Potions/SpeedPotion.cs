@@ -2,10 +2,15 @@
 {
     public class SpeedPotion : Potion
     {
-        public SpeedPotion(string name, int timeout, int countdown, bool hasTimedOut, int speedPointsBuff)
-            : base(name, timeout, countdown, hasTimedOut)
+        private const string Name = "Speed Potion";
+        private const int Timeout = 5;
+        private const int Countdown = 5;
+        private const bool HasTimedOut = false;
+
+        public SpeedPotion(int speedPointsBuff = 10)
+            : base(Name, Timeout, Countdown, HasTimedOut)
         {
-            //this.SpeedPointsBuff = Config;
+            this.SpeedPointsBuff = speedPointsBuff;
         }
 
         public int SpeedPointsBuff { get; set; }

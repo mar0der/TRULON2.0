@@ -2,10 +2,15 @@
 {
     public class HealthPotion : Potion
     {
-        public HealthPotion(string name, int timeout, int countdown, bool hasTimedOut, int healthPointsBuff)
-            : base(name, timeout, countdown, hasTimedOut)
+        private const string Name = "Health Potion";
+        private const int Timeout = 5;
+        private const int Countdown = 5;
+        private const bool HasTimedOut = false;
+
+        public HealthPotion(int healthPointsBuff = 10)
+            : base(Name, Timeout, Countdown, HasTimedOut)
         {
-            //this.HealthPointsBuff = Confgi;
+            this.HealthPointsBuff = healthPointsBuff;
         }
 
         public int HealthPointsBuff { get; set; }

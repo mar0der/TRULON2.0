@@ -1,11 +1,16 @@
-﻿namespace GameEngine.Models.Items.Equipments
+﻿using GameEngine.Enums;
+
+namespace GameEngine.Models.Items.Equipments
 {
     public class Boots : Equipment
     {
-        public Boots(string name) 
-            : base(name)
+        private const string Name = "Boots";
+        private const EquipmentSlots Slot = EquipmentSlots.Feet;
+
+        public Boots(int speedPointsBuff = 10)
+            : base(Name, Slot)
         {
-            //this.SpeedPointsBuff = Config.Config.Spee;
+            this.SpeedPointsBuff = speedPointsBuff;
         }
 
         public int SpeedPointsBuff { get; set; }
