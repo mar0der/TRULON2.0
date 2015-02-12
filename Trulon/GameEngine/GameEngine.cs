@@ -1,8 +1,6 @@
 ﻿namespace GameEngine
 {
     using System;
-
-    using global::GameEngine.Enums;
     using global::GameEngine.Models.Entities;
     using global::GameEngine.Models.Entities.Players;
 
