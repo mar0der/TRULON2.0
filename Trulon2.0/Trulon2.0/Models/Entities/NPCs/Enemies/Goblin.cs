@@ -1,4 +1,7 @@
-﻿namespace GameEngine.Models.Entities.NPCs.Enemies
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace GameEngine.Models.Entities.NPCs.Enemies
 {
     using System.Collections.Generic;
 
@@ -6,6 +9,8 @@
     {
         public Goblin(
             string name = "Goblin",
+            Texture2D image = null,
+            Rectangle bounds = new Rectangle(),
             int attackPoints = 15,
             int defencePoints = 15,
             int speedPoints = 7,
@@ -16,6 +21,8 @@
             int coinsReward = 50)
             : base(
             name, 
+            image,
+            bounds,
             attackPoints,
             defencePoints, 
             speedPoints, 

@@ -1,4 +1,7 @@
-﻿namespace GameEngine.Models.Entities.NPCs.Enemies
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace GameEngine.Models.Entities.NPCs.Enemies
 {
     using System.Collections.Generic;
 
@@ -6,6 +9,8 @@
     {
         public Orc(
             string name = "Orc",
+            Texture2D image = null,
+            Rectangle bounds = new Rectangle(),
             int attackPoints = 10,
             int defencePoints = 10,
             int speedPoints = 6,
@@ -16,6 +21,8 @@
             int coinsReward = 40)
             : base(
             name, 
+            image,
+            bounds,
             attackPoints,
             defencePoints, 
             speedPoints, 

@@ -1,4 +1,7 @@
-﻿namespace GameEngine.Models.Entities.NPCs.Enemies
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace GameEngine.Models.Entities.NPCs.Enemies
 {
     using System.Collections.Generic;
 
@@ -6,6 +9,8 @@
     {
         public Demon(
             string name = "Demon",
+            Texture2D image = null,
+            Rectangle bounds = new Rectangle(),
             int attackPoints = 20,
             int defencePoints = 20,
             int speedPoints = 8,
@@ -16,6 +21,8 @@
             int coinsReward = 60)
             : base(
             name,
+            image,
+            bounds,
             attackPoints,
             defencePoints,
             speedPoints,

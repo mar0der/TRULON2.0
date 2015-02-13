@@ -67,6 +67,7 @@
     <Compile Include="Models\Items\Potions\HealthPotion.cs" />
     <Compile Include="Models\Items\Potions\SpeedPotion.cs" />
     <Compile Include="Models\Map.cs" />
+    <Compile Include="PlayerManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs\Area.cs" />
@@ -108,53 +109,147 @@
     <Content Include="Resources\Images\Barbarian\West.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goblin\East.png" />
-    <Content Include="Resources\Images\Goblin\None.png" />
-    <Content Include="Resources\Images\Goblin\North.png" />
-    <Content Include="Resources\Images\Goblin\NorthEast.png" />
-    <Content Include="Resources\Images\Goblin\NorthWest.png" />
-    <Content Include="Resources\Images\Goblin\South.png" />
-    <Content Include="Resources\Images\Goblin\SouthEast.png" />
-    <Content Include="Resources\Images\Goblin\SouthWest.png" />
-    <Content Include="Resources\Images\Goblin\West.png" />
-    <Content Include="Resources\Images\Items\Axe.png" />
-    <Content Include="Resources\Images\Items\Boots.png" />
-    <Content Include="Resources\Images\Items\DamagePotion.png" />
-    <Content Include="Resources\Images\Items\HealthPotion.png" />
-    <Content Include="Resources\Images\Items\Helmet.png" />
-    <Content Include="Resources\Images\Items\Pants.png" />
-    <Content Include="Resources\Images\Items\Shield.png" />
-    <Content Include="Resources\Images\Items\Sword.png" />
-    <Content Include="Resources\Images\Items\Vest.png" />
-    <Content Include="Resources\Images\NPCs\Trainer.png" />
-    <Content Include="Resources\Images\NPCs\Vendor.png" />
-    <Content Include="Resources\Images\Orc\East.png" />
-    <Content Include="Resources\Images\Orc\None.png" />
-    <Content Include="Resources\Images\Orc\North.png" />
-    <Content Include="Resources\Images\Orc\NorthEast.png" />
-    <Content Include="Resources\Images\Orc\NorthWest.png" />
-    <Content Include="Resources\Images\Orc\South.png" />
-    <Content Include="Resources\Images\Orc\SouthEast.png" />
-    <Content Include="Resources\Images\Orc\SouthWest.png" />
-    <Content Include="Resources\Images\Orc\West.png" />
-    <Content Include="Resources\Images\Paladin\East.png" />
-    <Content Include="Resources\Images\Paladin\None.png" />
-    <Content Include="Resources\Images\Paladin\North.png" />
-    <Content Include="Resources\Images\Paladin\NorthEast.png" />
-    <Content Include="Resources\Images\Paladin\NorthWest.png" />
-    <Content Include="Resources\Images\Paladin\South.png" />
-    <Content Include="Resources\Images\Paladin\SouthEast.png" />
-    <Content Include="Resources\Images\Paladin\SouthWest.png" />
-    <Content Include="Resources\Images\Paladin\West.png" />
-    <Content Include="Resources\Images\Troll\East.png" />
-    <Content Include="Resources\Images\Troll\None.png" />
-    <Content Include="Resources\Images\Troll\North.png" />
-    <Content Include="Resources\Images\Troll\NorthEast.png" />
-    <Content Include="Resources\Images\Troll\NorthWest.png" />
-    <Content Include="Resources\Images\Troll\South.png" />
-    <Content Include="Resources\Images\Troll\SouthEast.png" />
-    <Content Include="Resources\Images\Troll\SouthWest.png" />
-    <Content Include="Resources\Images\Troll\West.png" />
+    <Content Include="Resources\Images\Goblin\East.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Goblin\None.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Goblin\North.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Goblin\NorthEast.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Goblin\NorthWest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Goblin\South.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Goblin\SouthEast.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Goblin\SouthWest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Goblin\West.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\Axe.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\Boots.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\DamagePotion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\HealthPotion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\Helmet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\Pants.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\Shield.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\Sword.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\Vest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\NPCs\Trainer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\NPCs\Vendor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Orc\East.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Orc\None.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Orc\North.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Orc\NorthEast.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Orc\NorthWest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Orc\South.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Orc\SouthEast.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Orc\SouthWest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Orc\West.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Paladin\East.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Paladin\None.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Paladin\North.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Paladin\NorthEast.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Paladin\NorthWest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Paladin\South.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Paladin\SouthEast.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Paladin\SouthWest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Paladin\West.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Troll\East.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Troll\None.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Troll\North.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Troll\NorthEast.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Troll\NorthWest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Troll\South.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Troll\SouthEast.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Troll\SouthWest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Troll\West.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />

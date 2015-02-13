@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using GameEngine;
 using GameEngine.Models.Entities;
+using GameEngine.Models.Entities.NPCs.Allies;
 using GameEngine.Models.Entities.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -24,12 +25,15 @@ namespace Trulon2._0
 
         Texture2D player;
         Rectangle playerBound;
+        public readonly double PlayerSpeed = 5f;
+
+        private Vendor vendor;
 
         public Engine()
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Resources/Images/";
+            Content.RootDirectory = "Resources/Images";
         }
 
         /// <summary>
@@ -42,6 +46,7 @@ namespace Trulon2._0
         {
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
+
             base.Initialize();
         }
 
@@ -58,6 +63,12 @@ namespace Trulon2._0
 
             player = Content.Load<Texture2D>(Assets.BarbarianImages[0]);
             playerBound = new Rectangle(0, 0, player.Width, player.Height);
+
+            vendor = new Vendor("Bai Gosho",
+                Content.Load<Texture2D>(Assets.Vendor[0]),
+                new Rectangle(15, 15,
+                    Content.Load<Texture2D>(Assets.Vendor[0]).Width,
+                    Content.Load<Texture2D>(Assets.Vendor[0]).Height));
 
         }
 
@@ -96,6 +107,7 @@ namespace Trulon2._0
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             spriteBatch.Draw(player, playerBound, Color.White); //Draws our current player
+            spriteBatch.Draw(vendor.Image,vendor.Bounds,Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -1,4 +1,7 @@
-﻿namespace GameEngine.Models.Entities
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace GameEngine.Models.Entities
 {
     using System.Collections.Generic;
 
@@ -6,6 +9,8 @@
     {
         protected Player(
             string name,
+            Texture2D image,
+            Rectangle bounds,
             int attackPoints,
             int defencePoints,
             int speedPoints,
@@ -18,7 +23,7 @@
             int attackSkill,
             int healthSkill,
             int defenceSkill)
-            : base(name, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            : base(name, image, bounds, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
         {
             this.Experience = experience;
             this.Coins = coins;

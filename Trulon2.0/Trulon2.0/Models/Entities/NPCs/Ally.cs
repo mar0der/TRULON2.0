@@ -1,4 +1,7 @@
-﻿namespace GameEngine.Models.Entities.NPCs
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace GameEngine.Models.Entities.NPCs
 {
     using System.Collections.Generic;
 
@@ -6,13 +9,15 @@
     {
         protected Ally(
             string name,
+            Texture2D image,
+            Rectangle bounds,
             int attackPoints,
             int defencePoints,
             int speedPoints,
             int healthPoints,
             int level, 
             List<Item> inventory)
-            : base(name, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            : base(name, image, bounds, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
         {
 
         }

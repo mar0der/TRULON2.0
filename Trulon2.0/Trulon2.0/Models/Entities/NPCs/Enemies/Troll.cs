@@ -1,4 +1,7 @@
-﻿namespace GameEngine.Models.Entities.NPCs.Enemies
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace GameEngine.Models.Entities.NPCs.Enemies
 {
     using System.Collections.Generic;
 
@@ -6,6 +9,8 @@
     {
         public Troll(
             string name = "Troll",
+            Texture2D image = null,
+            Rectangle bounds = new Rectangle(),
             int attackPoints = 5,
             int defencePoints = 5,
             int speedPoints = 5,
@@ -16,6 +21,8 @@
             int coinsReward = 30)
             : base(
             name, 
+            image,
+            bounds,
             attackPoints,
             defencePoints, 
             speedPoints, 

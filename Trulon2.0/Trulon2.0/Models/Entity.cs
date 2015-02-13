@@ -1,4 +1,7 @@
-﻿namespace GameEngine.Models
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace GameEngine.Models
 {
     using System.Collections.Generic;
 
@@ -6,13 +9,15 @@
     {
         protected Entity(
             string name,
+            Texture2D image,
+            Rectangle bounds,
             int attackPoints,
             int defencePoints,
             int speedPoints,
             int healthPoints,
             int level,
             List<Item> inventory)
-            : base(name)
+            : base(name, image, bounds)
         {
             this.AttackPoints = attackPoints;
             this.DefencePoints = defencePoints;

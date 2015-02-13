@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace GameEngine.Models.Entities.Players
 {
     using System.Collections.Generic;
@@ -7,6 +10,8 @@ namespace GameEngine.Models.Entities.Players
     {
         public Paladin(
             string name = "Paladin",
+            Texture2D image = null,
+            Rectangle bounds = new Rectangle(),
             int attackPoints = 7,
             int defencePoints = 3,
             int speedPoints = 6,
@@ -21,6 +26,8 @@ namespace GameEngine.Models.Entities.Players
             int defenceSkill = 0)
             : base(
             name, 
+            image,
+            bounds,
             attackPoints, 
             defencePoints, 
             speedPoints, 
