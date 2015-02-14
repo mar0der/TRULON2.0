@@ -8,7 +8,7 @@
     <ProjectGuid>{CB397BDE-6676-459A-88D0-EBDF7D1926AB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Trulon2._0</RootNamespace>
+    <RootNamespace>Trulon</RootNamespace>
     <AssemblyName>Trulon2.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -37,6 +37,8 @@
   <ItemGroup>
     <Compile Include="Config\Assets.cs" />
     <Compile Include="Config\Config.cs" />
+    <Compile Include="CoreLogics\DemagePotion.cs" />
+    <Compile Include="CoreLogics\ItemGenerator.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
@@ -255,6 +257,9 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Resources\Sounds\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
