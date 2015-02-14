@@ -1,21 +1,50 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameEngine
 {
-    public abstract class GameObject
+    public abstract class GameObject : IDrawable
     {
-        protected GameObject(string name, Texture2D image, Rectangle bounds)
-        {
-            this.Name = name;
-            this.Image = image;
-            this.Bounds = bounds;
-        }
-
         public string Name { get; set; }
 
         public Texture2D Image { get; set; }
 
         public Rectangle Bounds { get; set; }
+
+        public Vector2 Position { get; set; }
+
+        protected GameObject(string name, Texture2D image, Rectangle bounds, Vector2 position)
+        {
+            this.Name = name;
+            this.Image = image;
+            this.Bounds = bounds;
+            this.Position = position;
+        }
+
+        public abstract void Initialize(Texture2D texture, Vector2 position);
+
+        public abstract void Update();
+
+        public abstract void Draw(SpriteBatch spriteBatch);
+
+        public void Draw(GameTime gameTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int DrawOrder
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool Visible
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public event EventHandler<EventArgs> DrawOrderChanged;
+
+        public event EventHandler<EventArgs> VisibleChanged;
     }
 }

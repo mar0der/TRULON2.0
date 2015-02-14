@@ -11,13 +11,14 @@ namespace GameEngine.Models.Entities.NPCs
             string name,
             Texture2D image,
             Rectangle bounds,
+            Vector2 position,
             int attackPoints,
             int defencePoints,
             int speedPoints,
             int healthPoints,
-            int level, 
+            int level,
             List<Item> inventory)
-            : base(name, image, bounds, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
         {
 
         }

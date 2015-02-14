@@ -5,8 +5,8 @@ namespace GameEngine.Models.Items
 {
     public abstract class Potion : Item
     {
-        protected Potion(string name, Texture2D image, Rectangle bounds, int timeout, int countdown, bool hasTimedOut)
-            : base(name, image, bounds)
+        protected Potion(string name, Texture2D image, Rectangle bounds, Vector2 position, int timeout, int countdown, bool hasTimedOut)
+            : base(name, image, bounds, position)
         {
             this.Timeout = timeout;
             this.Countdown = countdown;

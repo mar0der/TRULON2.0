@@ -11,6 +11,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             string name = "Troll",
             Texture2D image = null,
             Rectangle bounds = new Rectangle(),
+            Vector2 position = new Vector2(),
             int attackPoints = 5,
             int defencePoints = 5,
             int speedPoints = 5,
@@ -20,16 +21,17 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             int experienceReward = 50,
             int coinsReward = 30)
             : base(
-            name, 
+            name,
             image,
             bounds,
+            position,
             attackPoints,
-            defencePoints, 
-            speedPoints, 
-            healthPoints, 
-            level, 
-            inventory, 
-            experienceReward, 
+            defencePoints,
+            speedPoints,
+            healthPoints,
+            level,
+            inventory,
+            experienceReward,
             coinsReward)
         {
 
@@ -50,5 +52,19 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             //die and drop item.
         }
 
+        public override void Initialize(Texture2D texture, Vector2 position)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Update()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

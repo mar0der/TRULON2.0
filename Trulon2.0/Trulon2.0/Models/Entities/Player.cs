@@ -11,6 +11,7 @@ namespace GameEngine.Models.Entities
             string name,
             Texture2D image,
             Rectangle bounds,
+            Vector2 position,
             int attackPoints,
             int defencePoints,
             int speedPoints,
@@ -23,7 +24,7 @@ namespace GameEngine.Models.Entities
             int attackSkill,
             int healthSkill,
             int defenceSkill)
-            : base(name, image, bounds, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
         {
             this.Experience = experience;
             this.Coins = coins;
@@ -31,6 +32,7 @@ namespace GameEngine.Models.Entities
             this.AttackSkill = attackSkill;
             this.HealthSkill = healthSkill;
             this.DefenceSkill = defenceSkill;
+            this.Position = position;
         }
 
         public int Experience { get; set; }
@@ -39,7 +41,7 @@ namespace GameEngine.Models.Entities
         public int AttackSkill { get; set; }
         public int HealthSkill { get; set; }
         public int DefenceSkill { get; set; }
-
+        public new Vector2 Position { get; set; }
 
         protected abstract void AddExperience();
 

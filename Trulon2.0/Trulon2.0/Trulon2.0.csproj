@@ -43,6 +43,7 @@
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="Models\Entities\NonPlayerCharacter.cs" />
     <Compile Include="Models\Entities\NPCs\Allies\Trainer.cs" />
     <Compile Include="Models\Entities\NPCs\Allies\Vendor.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Models\Items\Potions\HealthPotion.cs" />
     <Compile Include="Models\Items\Potions\SpeedPotion.cs" />
     <Compile Include="Models\Map.cs" />
-    <Compile Include="PlayerManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs\Area.cs" />
@@ -255,7 +255,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Resources\Sounds\" />
   </ItemGroup>
   <ItemGroup>

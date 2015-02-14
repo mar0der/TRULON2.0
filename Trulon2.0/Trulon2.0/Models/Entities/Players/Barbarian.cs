@@ -1,11 +1,17 @@
-﻿namespace GameEngine.Models.Entities.Players
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace GameEngine.Models.Entities.Players
 {
     using System.Collections.Generic;
 
     public class Barbarian : Player
     {
-        protected Barbarian(
+        public Barbarian(
             string name = "Paladin",
+            Texture2D image = null,
+            Rectangle bounds = new Rectangle(),
+            Vector2 position = new Vector2(),
             int attackPoints = 7,
             int defencePoints = 3,
             int speedPoints = 6,
@@ -17,25 +23,25 @@
             int skillPoints = 0,
             int attackSkill = 0,
             int healthSkill = 0,
-            int defenceSkill = 0)
+            int defenceSkill = 0, int x = 0, int y = 0)
             : base(
-            name, 
-            attackPoints, 
-            defencePoints, 
-            speedPoints, 
-            healthPoints, 
-            level, 
-            inventory, 
-            experience, 
-            coins, 
-            skillPoints, 
-            attackPoints, 
-            healthPoints, 
+            name,
+            image,
+            bounds,
+            position,
+            attackPoints,
+            defencePoints,
+            speedPoints,
+            healthPoints,
+            level,
+            inventory,
+            experience,
+            coins,
+            skillPoints,
+            attackPoints,
+            healthPoints,
             defencePoints)
         {
-            this.AttackSkill = attackSkill;
-            this.HealthSkill = healthSkill;
-            this.DefenceSkill = defenceSkill;
         }
 
         protected override void Interact()
@@ -86,6 +92,27 @@
         protected override void Attack()
         {
             throw new System.NotImplementedException();
+        }
+
+        public override void Initialize(Texture2D texture, Vector2 position)
+        {
+            this.Image = texture;
+            //Starting position of the player
+            this.Position = position;
+
+            //Set the player to be active
+
+            //Set player health
+        }
+
+        public override void Update()
+        {
+
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Image, Position, null, Color.White, 0F, Vector2.Zero, 1F, SpriteEffects.None, 0F);
         }
     }
 }

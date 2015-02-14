@@ -15,6 +15,6 @@
             this.currentEquipment.Add(EquipmentSlots.LeftHand, null);
             this.currentEquipment.Add(EquipmentSlots.RightHand, null);
         }
-        
+
     }
 }

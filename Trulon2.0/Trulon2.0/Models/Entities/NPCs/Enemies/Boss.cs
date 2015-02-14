@@ -11,6 +11,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             string name = "Boss",
             Texture2D image = null,
             Rectangle bounds = new Rectangle(),
+            Vector2 position = new Vector2(),
             int attackPoints = 50,
             int defencePoints = 50,
             int speedPoints = 5,
@@ -23,6 +24,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             name,
             image,
             bounds,
+            position,
             attackPoints,
             defencePoints,
             speedPoints,
@@ -48,6 +50,21 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
         protected override void Die()
         {
             //die and drop item.
+        }
+
+        public override void Initialize(Texture2D texture, Vector2 position)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Update()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

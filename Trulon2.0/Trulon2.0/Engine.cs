@@ -23,11 +23,18 @@ namespace Trulon2._0
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Texture2D player;
-        Rectangle playerBound;
-        public readonly double PlayerSpeed = 5f;
+        private Player player;
 
-        private Vendor vendor;
+        private KeyboardState currentKeyboardState;
+        private KeyboardState previousKeyboardState;
+
+        private KeyboardState enemyCurrentKey;
+        private KeyboardState enemyPreviousKey;
+
+        private MouseState currentMouseState;
+        private MouseState previousMouseState;
+
+        private float playerMoveSpeed;
 
         public Engine()
             : base()
@@ -46,7 +53,8 @@ namespace Trulon2._0
         {
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
-
+            player = new Barbarian();
+            playerMoveSpeed = 5.0F;
             base.Initialize();
         }
 
@@ -58,17 +66,12 @@ namespace Trulon2._0
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             // TODO: use this.Content to load your game content here
 
-            player = Content.Load<Texture2D>(Assets.BarbarianImages[0]);
-            playerBound = new Rectangle(0, 0, player.Width, player.Height);
-
-            vendor = new Vendor("Bai Gosho",
-                Content.Load<Texture2D>(Assets.Vendor[0]),
-                new Rectangle(15, 15,
-                    Content.Load<Texture2D>(Assets.Vendor[0]).Width,
-                    Content.Load<Texture2D>(Assets.Vendor[0]).Height));
+            //Load the player resources
+            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+            player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), playerPosition);
 
         }
 
@@ -92,8 +95,45 @@ namespace Trulon2._0
                 Exit();
 
             // TODO: Add your update logic here
+            //Save previous state of the keyboard to determine single key presses
+            previousKeyboardState = currentKeyboardState;
+            enemyPreviousKey = enemyCurrentKey;
+            previousMouseState = currentMouseState;
+
+            //Read the current state of the keyboard and store it
+            currentKeyboardState = Keyboard.GetState();
+            enemyCurrentKey = Keyboard.GetState();
+            currentMouseState = Mouse.GetState();
+
+            //Update player
+            this.UpdatePlayer(gameTime, player);
 
             base.Update(gameTime);
+        }
+
+        private void UpdatePlayer(GameTime gameTime, Player player)
+        {
+            //Keyboard input
+            if (currentKeyboardState.IsKeyDown(Keys.Left))
+            {
+                player.Position = new Vector2(player.Position.X - playerMoveSpeed, player.Position.Y);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Right))
+            {
+                player.Position = new Vector2(player.Position.X + playerMoveSpeed, player.Position.Y);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Up))
+            {
+                player.Position = new Vector2(player.Position.X, player.Position.Y - playerMoveSpeed);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Down))
+            {
+                player.Position = new Vector2(player.Position.X, player.Position.Y + playerMoveSpeed);
+            }
+            //this.player.Position.X = 5f;
+            //Make sure that player doesn't go out of bounds
+            player.Position = new Vector2(MathHelper.Clamp(player.Position.X, 0, GraphicsDevice.Viewport.Width - player.Image.Width),
+                                            MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height - player.Image.Height));
         }
 
         /// <summary>
@@ -106,8 +146,7 @@ namespace Trulon2._0
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(player, playerBound, Color.White); //Draws our current player
-            spriteBatch.Draw(vendor.Image,vendor.Bounds,Color.White);
+            player.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

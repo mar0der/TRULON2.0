@@ -11,15 +11,16 @@ namespace GameEngine.Models.Entities.NPCs
             string name,
             Texture2D image,
             Rectangle bounds,
+            Vector2 position,
             int attackPoints,
             int defencePoints,
             int speedPoints,
             int healthPoints,
-            int level, 
-            List<Item> inventory, 
+            int level,
+            List<Item> inventory,
             int experienceReward,
             int coinsReward)
-            : base(name, image, bounds, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
         {
             this.ExperienceReward = experienceReward;
             this.CoinsReward = coinsReward;
@@ -27,6 +28,6 @@ namespace GameEngine.Models.Entities.NPCs
 
         public int ExperienceReward { get; set; }
         public int CoinsReward { get; set; }
-        
+
     }
 }

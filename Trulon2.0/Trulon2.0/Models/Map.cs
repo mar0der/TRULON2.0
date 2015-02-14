@@ -5,8 +5,8 @@ namespace GameEngine.Models
 {
     public abstract class Map : GameObject
     {
-        public Map(string name, Texture2D image, Rectangle bounds)
-            : base(name, image, bounds)
+        protected Map(string name, Texture2D image, Rectangle bounds, Vector2 position)
+            : base(name, image, bounds, position)
         {
 
         }

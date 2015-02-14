@@ -11,13 +11,14 @@ namespace GameEngine.Models
             string name,
             Texture2D image,
             Rectangle bounds,
+            Vector2 position,
             int attackPoints,
             int defencePoints,
             int speedPoints,
             int healthPoints,
             int level,
             List<Item> inventory)
-            : base(name, image, bounds)
+            : base(name, image, bounds, position)
         {
             this.AttackPoints = attackPoints;
             this.DefencePoints = defencePoints;

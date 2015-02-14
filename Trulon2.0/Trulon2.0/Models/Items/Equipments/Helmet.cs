@@ -10,13 +10,29 @@ namespace GameEngine.Models.Items.Equipments
             string name = "Helmet",
             Texture2D image = null,
             Rectangle bounds = new Rectangle(),
-            EquipmentSlots slot = EquipmentSlots.Head, 
+            Vector2 position = new Vector2(),
+            EquipmentSlots slot = EquipmentSlots.Head,
             int defensePointsBuff = 10)
-            : base(name, image, bounds, slot)
+            : base(name, image, bounds, position, slot)
         {
-            this.DefensePointsBuff = defensePointsBuff ;
+            this.DefensePointsBuff = defensePointsBuff;
         }
 
         public int DefensePointsBuff { get; set; }
+
+        public override void Initialize(Texture2D texture, Vector2 position)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Update()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

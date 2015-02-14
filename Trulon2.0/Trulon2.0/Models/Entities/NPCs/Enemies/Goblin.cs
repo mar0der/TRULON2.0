@@ -11,6 +11,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             string name = "Goblin",
             Texture2D image = null,
             Rectangle bounds = new Rectangle(),
+            Vector2 position = new Vector2(),
             int attackPoints = 15,
             int defencePoints = 15,
             int speedPoints = 7,
@@ -20,16 +21,17 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             int experienceReward = 70,
             int coinsReward = 50)
             : base(
-            name, 
+            name,
             image,
             bounds,
+            position,
             attackPoints,
-            defencePoints, 
-            speedPoints, 
-            healthPoints, 
-            level, 
-            inventory, 
-            experienceReward, 
+            defencePoints,
+            speedPoints,
+            healthPoints,
+            level,
+            inventory,
+            experienceReward,
             coinsReward)
         {
 
@@ -48,6 +50,21 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
         protected override void Die()
         {
             //die and drop item.
+        }
+
+        public override void Initialize(Texture2D texture, Vector2 position)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Update()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
