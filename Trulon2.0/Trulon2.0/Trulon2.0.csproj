@@ -165,10 +165,10 @@
     <Content Include="Resources\Images\Items\Vest.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\NPCs\Trainer.png">
+    <Content Include="Resources\Images\NPCs\Vendor.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\NPCs\Vendor.png">
+    <Content Include="Resources\Images\NPCs\Trainer.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Orc\East.png">

@@ -23,7 +23,7 @@ namespace GameEngine.Models.Entities.Players
             int skillPoints = 0,
             int attackSkill = 0,
             int healthSkill = 0,
-            int defenceSkill = 0, int x = 0, int y = 0)
+            int defenceSkill = 0)
             : base(
             name,
             image,
@@ -38,9 +38,9 @@ namespace GameEngine.Models.Entities.Players
             experience,
             coins,
             skillPoints,
-            attackPoints,
-            healthPoints,
-            defencePoints)
+            attackSkill,
+            healthSkill,
+            defenceSkill)
         {
         }
 
@@ -107,7 +107,6 @@ namespace GameEngine.Models.Entities.Players
 
         public override void Update()
         {
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)

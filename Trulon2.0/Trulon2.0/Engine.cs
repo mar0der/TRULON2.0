@@ -24,6 +24,7 @@ namespace Trulon2._0
         SpriteBatch spriteBatch;
 
         private Player player;
+        private Vendor vendor;
 
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
@@ -53,8 +54,14 @@ namespace Trulon2._0
         {
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
+
+            //player init
             player = new Barbarian();
             playerMoveSpeed = 5.0F;
+
+            //vendor init
+            vendor = new Vendor();
+
             base.Initialize();
         }
 
@@ -72,6 +79,10 @@ namespace Trulon2._0
             //Load the player resources
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
             player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), playerPosition);
+
+            //Load the vendor resources
+            Vector2 vendorPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X + GraphicsDevice.Viewport.TitleSafeArea.Width / 2, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+            vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), vendorPosition);
 
         }
 
@@ -147,6 +158,7 @@ namespace Trulon2._0
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             player.Draw(spriteBatch);
+            vendor.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

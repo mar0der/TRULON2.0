@@ -86,7 +86,7 @@ namespace GameEngine
         //Vendor
         public static readonly string[] Vendor = new string[1]
         {
-            "NPCs/Vendor.png"
+            "NPCs/Vendor.gif"
         };
 
         //Trainer
