@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Items
+namespace Trulon.Models.Items
 {
     public abstract class Potion : Item
     {

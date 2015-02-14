@@ -1,14 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Trulon.Models.Items.Equipments;
+using Trulon.Models.Items.Potions;
 
-namespace GameEngine.Models.Entities.NPCs.Allies
+namespace Trulon.Models.Entities.NPCs.Allies
 {
-    using System.Collections.Generic;
-
-    using global::GameEngine.Models.Items;
-    using global::GameEngine.Models.Items.Equipments;
-    using global::GameEngine.Models.Items.Potions;
-
     public class Vendor : Ally
     {
         public static List<Item> VendorInventory;
@@ -22,8 +19,9 @@ namespace GameEngine.Models.Entities.NPCs.Allies
             int speedPoints = 5,
             int healthPoints = 60,
             int level = 10,
-            List<Item> inventory = null)
-            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            List<Item> inventory = null,
+            bool isAlive = true)
+            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
         {
             VendorInventory = new List<Item>()
             {

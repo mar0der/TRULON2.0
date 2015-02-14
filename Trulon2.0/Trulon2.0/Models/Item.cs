@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models
+namespace Trulon.Models
 {
     public abstract class Item : GameObject
     {

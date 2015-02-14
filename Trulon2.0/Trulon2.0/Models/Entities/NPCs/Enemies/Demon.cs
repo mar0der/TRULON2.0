@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Entities.NPCs.Enemies
+namespace Trulon.Models.Entities.NPCs.Enemies
 {
-    using System.Collections.Generic;
-
     public class Demon : Enemy
     {
         public Demon(
@@ -18,6 +17,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             int healthPoints = 100,
             int level = 4,
             List<Item> inventory = null,
+            bool isAlive = true,
             int experienceReward = 80,
             int coinsReward = 60)
             : base(
@@ -31,6 +31,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             healthPoints,
             level,
             inventory,
+            isAlive,
             experienceReward,
             coinsReward)
         {

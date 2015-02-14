@@ -2,18 +2,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine
+namespace Trulon.Models
 {
-    public abstract class GameObject : IDrawable
+    public abstract class GameObject : Microsoft.Xna.Framework.IDrawable
     {
-        public string Name { get; set; }
-
-        public Texture2D Image { get; set; }
-
-        public Rectangle Bounds { get; set; }
-
-        public Vector2 Position { get; set; }
-
         protected GameObject(string name, Texture2D image, Rectangle bounds, Vector2 position)
         {
             this.Name = name;
@@ -21,6 +13,14 @@ namespace GameEngine
             this.Bounds = bounds;
             this.Position = position;
         }
+
+        public string Name { get; set; }
+
+        public Texture2D Image { get; set; }
+
+        public Rectangle Bounds { get; set; }
+
+        public Vector2 Position { get; set; }
 
         public abstract void Initialize(Texture2D texture, Vector2 position);
 

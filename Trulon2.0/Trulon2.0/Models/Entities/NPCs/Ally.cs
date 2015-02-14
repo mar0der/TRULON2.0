@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Entities.NPCs
+namespace Trulon.Models.Entities.NPCs
 {
-    using System.Collections.Generic;
-
     public abstract class Ally : NonPlayerCharacter
     {
         protected Ally(
@@ -17,8 +16,9 @@ namespace GameEngine.Models.Entities.NPCs
             int speedPoints,
             int healthPoints,
             int level,
-            List<Item> inventory)
-            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            List<Item> inventory,
+            bool isAlive)
+            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
         {
 
         }

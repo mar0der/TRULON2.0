@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Items.Equipments
+namespace Trulon.Models.Items.Equipments
 {
     public class Vest : Equipment
     {

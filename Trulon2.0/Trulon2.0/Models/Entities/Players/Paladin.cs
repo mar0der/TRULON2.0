@@ -2,10 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Entities.Players
+namespace Trulon.Models.Entities.Players
 {
-    using System.Collections.Generic;
-
     public class Paladin : Player
     {
         public Paladin(
@@ -19,6 +17,7 @@ namespace GameEngine.Models.Entities.Players
             int healthPoints = 90,
             int level = 1,
             List<Item> inventory = null,
+            bool isAlive = true,
             int experience = 0,
             int coins = 10,
             int skillPoints = 0,
@@ -36,6 +35,7 @@ namespace GameEngine.Models.Entities.Players
             healthPoints,
             level,
             inventory,
+            isAlive,
             experience,
             coins,
             skillPoints,

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Trulon2._0
+namespace Trulon
 {
     /// <summary>
     /// The main class.

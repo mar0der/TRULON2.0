@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Entities
+namespace Trulon.Models.Entities
 {
-    using System.Collections.Generic;
-
     public abstract class Player : Entity
     {
         protected Player(
@@ -18,13 +17,14 @@ namespace GameEngine.Models.Entities
             int healthPoints,
             int level,
             List<Item> inventory,
+            bool isAlive,
             int experience,
             int coins,
             int skillPoints,
             int attackSkill,
             int healthSkill,
             int defenceSkill)
-            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
         {
             this.Experience = experience;
             this.Coins = coins;
@@ -32,7 +32,6 @@ namespace GameEngine.Models.Entities
             this.AttackSkill = attackSkill;
             this.HealthSkill = healthSkill;
             this.DefenceSkill = defenceSkill;
-            this.Position = position;
         }
 
         public int Experience { get; set; }
@@ -41,7 +40,6 @@ namespace GameEngine.Models.Entities
         public int AttackSkill { get; set; }
         public int HealthSkill { get; set; }
         public int DefenceSkill { get; set; }
-        public new Vector2 Position { get; set; }
 
         protected abstract void AddExperience();
 

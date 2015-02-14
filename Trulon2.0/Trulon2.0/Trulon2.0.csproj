@@ -42,7 +42,7 @@
     <Compile Include="Engine.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
-    <Compile Include="GameObject.cs" />
+    <Compile Include="Models\GameObject.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="Models\Entities\NonPlayerCharacter.cs" />
     <Compile Include="Models\Entities\NPCs\Allies\Trainer.cs" />

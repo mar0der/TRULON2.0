@@ -1,19 +1,16 @@
 ﻿#region Using Statements
-using System;
-using System.Collections.Generic;
+
 using GameEngine;
-using GameEngine.Models.Entities;
-using GameEngine.Models.Entities.NPCs.Allies;
-using GameEngine.Models.Entities.Players;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Storage;
-using Microsoft.Xna.Framework.GamerServices;
+using Trulon.Models.Entities;
+using Trulon.Models.Entities.NPCs.Allies;
+using Trulon.Models.Entities.Players;
+
 #endregion
 
-namespace Trulon2._0
+namespace Trulon
 {
     /// <summary>
     /// This is the main type for your game

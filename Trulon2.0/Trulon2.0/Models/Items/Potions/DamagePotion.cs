@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Items.Potions
+namespace Trulon.Models.Items.Potions
 {
     public class DamagePotion : Potion
     {

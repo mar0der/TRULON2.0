@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Entities.NPCs.Enemies
+namespace Trulon.Models.Entities.NPCs.Enemies
 {
-    using System.Collections.Generic;
-
     public class Boss : Enemy
     {
         public Boss(
@@ -18,6 +17,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             int healthPoints = 200,
             int level = 5,
             List<Item> inventory = null,
+            bool isAlive = true,
             int experienceReward = 100,
             int coinsReward = 100)
             : base(
@@ -31,6 +31,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             healthPoints,
             level,
             inventory,
+            isAlive,
             experienceReward,
             coinsReward)
         {

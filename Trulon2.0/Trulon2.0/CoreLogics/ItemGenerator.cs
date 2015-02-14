@@ -1,8 +1,9 @@
-﻿namespace Trulon.CoreLogics
+﻿using Trulon.Models;
+using Trulon.Models.Items.Equipments;
+using Trulon.Models.Items.Potions;
+
+namespace Trulon.CoreLogics
 {
-    using GameEngine.Models;
-    using GameEngine.Models.Items.Equipments;
-    using GameEngine.Models.Items.Potions;
     using System;
     static class  ItemGenerator
     {

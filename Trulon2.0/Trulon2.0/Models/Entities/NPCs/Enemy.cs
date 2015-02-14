@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Entities.NPCs
+namespace Trulon.Models.Entities.NPCs
 {
-    using System.Collections.Generic;
-
     public abstract class Enemy : NonPlayerCharacter
     {
         protected Enemy(
@@ -18,9 +17,10 @@ namespace GameEngine.Models.Entities.NPCs
             int healthPoints,
             int level,
             List<Item> inventory,
+            bool isAlive,
             int experienceReward,
             int coinsReward)
-            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
         {
             this.ExperienceReward = experienceReward;
             this.CoinsReward = coinsReward;

@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models
+namespace Trulon.Models
 {
-    using System.Collections.Generic;
-
     public abstract class Entity : GameObject
     {
         protected Entity(
@@ -17,7 +16,8 @@ namespace GameEngine.Models
             int speedPoints,
             int healthPoints,
             int level,
-            List<Item> inventory)
+            List<Item> inventory,
+            bool isAlive)
             : base(name, image, bounds, position)
         {
             this.AttackPoints = attackPoints;
@@ -26,6 +26,7 @@ namespace GameEngine.Models
             this.HealthPoints = healthPoints;
             this.Level = level;
             this.Inventory = inventory;
+            this.IsAlive = isAlive;
         }
 
         public int AttackPoints { get; set; }
@@ -34,6 +35,7 @@ namespace GameEngine.Models
         public int HealthPoints { get; set; }
         public int Level { get; set; }
         public List<Item> Inventory { get; set; }
+        public bool IsAlive { get; set; }
 
         protected abstract void Interact();
 

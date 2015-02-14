@@ -1,8 +1,8 @@
-﻿namespace GameEngine.Models
-{
-    using System.Collections.Generic;
-    using global::GameEngine.Enums;
+﻿using System.Collections.Generic;
+using GameEngine.Enums;
 
+namespace Trulon.Models
+{
     public class EntityEquipment
     {
         private Dictionary<EquipmentSlots, Item> currentEquipment = new Dictionary<EquipmentSlots, Item>();

@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Entities.NPCs.Enemies
+namespace Trulon.Models.Entities.NPCs.Enemies
 {
-    using System.Collections.Generic;
-
     public class Goblin : Enemy
     {
         public Goblin(
@@ -18,6 +17,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             int healthPoints = 90,
             int level = 3,
             List<Item> inventory = null,
+            bool isAlive = true,
             int experienceReward = 70,
             int coinsReward = 50)
             : base(
@@ -31,6 +31,7 @@ namespace GameEngine.Models.Entities.NPCs.Enemies
             healthPoints,
             level,
             inventory,
+            isAlive,
             experienceReward,
             coinsReward)
         {

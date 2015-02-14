@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameEngine.Models.Entities
+namespace Trulon.Models.Entities
 {
-    using System.Collections.Generic;
-
     public abstract class NonPlayerCharacter : Entity
     {
         protected NonPlayerCharacter(
@@ -17,8 +16,9 @@ namespace GameEngine.Models.Entities
             int speedPoints,
             int healthPoints,
             int level,
-            List<Item> inventory)
-            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory)
+            List<Item> inventory,
+            bool isAlive)
+            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
         {
 
         }
