@@ -5,7 +5,7 @@ namespace Trulon
     /// <summary>
     /// The main class.
     /// </summary>
-    public static class Program
+    public static class Trulon
     {
         /// <summary>
         /// The main entry point for the application.

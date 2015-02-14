@@ -54,7 +54,7 @@ namespace Trulon
 
             //player init
             player = new Barbarian();
-            playerMoveSpeed = 5.0F;
+            playerMoveSpeed = 10.0F;
 
             //vendor init
             vendor = new Vendor();
