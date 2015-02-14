@@ -13,7 +13,7 @@ namespace Trulon.Models.Entities.Players
             Vector2 position = new Vector2(),
             int attackPoints = 7,
             int defencePoints = 3,
-            int speedPoints = 6,
+            int speedPoints = 5,
             int healthPoints = 90,
             int level = 1,
             List<Item> inventory = null,

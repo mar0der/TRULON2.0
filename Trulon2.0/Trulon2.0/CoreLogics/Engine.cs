@@ -32,8 +32,6 @@ namespace Trulon
         private MouseState currentMouseState;
         private MouseState previousMouseState;
 
-        private float playerMoveSpeed;
-
         public Engine()
             : base()
         {
@@ -54,7 +52,6 @@ namespace Trulon
 
             //player init
             player = new Barbarian();
-            playerMoveSpeed = 10.0F;
 
             //vendor init
             vendor = new Vendor();
@@ -124,19 +121,19 @@ namespace Trulon
             //Keyboard input
             if (currentKeyboardState.IsKeyDown(Keys.Left))
             {
-                player.Position = new Vector2(player.Position.X - playerMoveSpeed, player.Position.Y);
+                player.Position = new Vector2(player.Position.X - this.player.SpeedPoints, player.Position.Y);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Right))
             {
-                player.Position = new Vector2(player.Position.X + playerMoveSpeed, player.Position.Y);
+                player.Position = new Vector2(player.Position.X + this.player.SpeedPoints, player.Position.Y);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Up))
             {
-                player.Position = new Vector2(player.Position.X, player.Position.Y - playerMoveSpeed);
+                player.Position = new Vector2(player.Position.X, player.Position.Y - this.player.SpeedPoints);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Down))
             {
-                player.Position = new Vector2(player.Position.X, player.Position.Y + playerMoveSpeed);
+                player.Position = new Vector2(player.Position.X, player.Position.Y + this.player.SpeedPoints);
             }
             //this.player.Position.X = 5f;
             //Make sure that player doesn't go out of bounds
