@@ -104,7 +104,7 @@ namespace Trulon.Models.Entities
             }
         }
 
-        protected override IList<Entity> GetEnemiesInRange(IList<Entity> entities)
+        protected  IList<Entity> GetEnemiesInRange(IList<Entity> entities)
         {
             List<Entity> enemiesInRange = new List<Entity>();
             foreach (var entity in entities)
@@ -117,7 +117,7 @@ namespace Trulon.Models.Entities
             return enemiesInRange;
         }
 
-        protected override Entity GetNPCInRange(IList<Entity> entities)
+        protected  Entity GetNPCInRange(IList<Entity> entities)
         {
             List<Entity> entitiesInRange = new List<Entity>();
             foreach (var entity in entities)
@@ -139,7 +139,7 @@ namespace Trulon.Models.Entities
             //}
         }
 
-        protected override void Attack()
+        protected  void Attack()
         {
             //this.GetEntitiesInRange
         }
@@ -156,7 +156,7 @@ namespace Trulon.Models.Entities
 
         protected abstract void DrinkPotion();
 
-        protected abstract void Attack();
+
 
 
 

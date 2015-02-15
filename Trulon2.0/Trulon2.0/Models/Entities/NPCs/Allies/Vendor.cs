@@ -37,6 +37,11 @@ namespace Trulon.Models.Entities.NPCs.Allies
             this.Image = image;
         }
 
+        protected override IList<Entity> GetEntitiesInRange(IList<Entity> entities)
+        {
+            throw new System.NotImplementedException();
+        }
+
         protected override void Die()
         {
             //immortality

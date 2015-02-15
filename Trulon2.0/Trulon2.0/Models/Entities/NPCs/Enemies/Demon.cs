@@ -38,6 +38,11 @@ namespace Trulon.Models.Entities.NPCs.Enemies
 
         }
 
+        protected override IList<Entity> GetEntitiesInRange(IList<Entity> entities)
+        {
+            throw new System.NotImplementedException();
+        }
+
         protected override void Interact()
         {
             //Attack();

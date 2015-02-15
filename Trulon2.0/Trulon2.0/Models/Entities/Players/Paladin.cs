@@ -53,6 +53,11 @@ namespace Trulon.Models.Entities.Players
         {
         }
 
+        protected override IList<Entity> GetEntitiesInRange(IList<Entity> entities)
+        {
+            throw new System.NotImplementedException();
+        }
+
         protected override void Interact()
         {
             throw new System.NotImplementedException();
@@ -98,7 +103,7 @@ namespace Trulon.Models.Entities.Players
             throw new System.NotImplementedException();
         }
 
-        protected override void Attack()
+        protected void Attack()
         {
             throw new System.NotImplementedException();
         }

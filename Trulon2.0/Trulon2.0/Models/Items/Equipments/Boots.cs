@@ -17,7 +17,7 @@ namespace Trulon.Models.Items.Equipments
             EquipmentSlots slot = EquipmentSlots.Feet,
             int attackPointsBuff = 0,
             int defensePointsBuff = 0,
-            int speedPointsBuff = 10)
+            int speedPointsBuff = 5)
             : base(name, image, bounds, position, slot)
         {
             this.AttackPointsBuff = attackPointsBuff;
