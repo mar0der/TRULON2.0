@@ -22,6 +22,7 @@
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private Texture2D backgroundTexture;
         private Player player;
         private Vendor vendor;
 
@@ -45,6 +46,11 @@
         #endregion
         protected override void Initialize()
         {
+            //Sets screen size
+            this.graphics.PreferredBackBufferWidth = Config.ScreenWidth;
+            this.graphics.PreferredBackBufferHeight = Config.ScreenHeight;
+            this.graphics.ApplyChanges();
+
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
 
@@ -70,7 +76,9 @@
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            // TODO: use this.Content to load your game content here.
+            //Load map image
+            this.backgroundTexture = this.Content.Load<Texture2D>("MapImages/BackgroundImage");
 
             //Load the player resources
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
@@ -113,35 +121,11 @@
             currentKeyboardState = Keyboard.GetState();
 
             //Update player
-            this.UpdatePlayer(gameTime, player);
+            player.Update();
 
             base.Update(gameTime);
         }
 
-        private void UpdatePlayer(GameTime gameTime, Player player)
-        {
-            //Keyboard input
-            if (currentKeyboardState.IsKeyDown(Keys.Left))
-            {
-                player.Position = new Vector2(player.Position.X - this.player.SpeedPoints, player.Position.Y);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Right))
-            {
-                player.Position = new Vector2(player.Position.X + this.player.SpeedPoints, player.Position.Y);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Up))
-            {
-                player.Position = new Vector2(player.Position.X, player.Position.Y - this.player.SpeedPoints);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Down))
-            {
-                player.Position = new Vector2(player.Position.X, player.Position.Y + this.player.SpeedPoints);
-            }
-            //this.player.Position.X = 5f;
-            //Make sure that player doesn't go out of bounds
-            player.Position = new Vector2(MathHelper.Clamp(player.Position.X, 0, GraphicsDevice.Viewport.Width - player.Image.Width),
-                                            MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height - player.Image.Height));
-        }
 
         #region GameDraw Summary
         /// <summary>
@@ -155,6 +139,7 @@
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            this.spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, backgroundTexture.Width, backgroundTexture.Height), Color.White);
             player.Draw(spriteBatch);
             vendor.Draw(spriteBatch);
             spriteBatch.End();
