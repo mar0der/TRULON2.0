@@ -1,4 +1,6 @@
-﻿namespace Trulon.Models.Entities.Players
+﻿using Microsoft.Xna.Framework.Input;
+
+namespace Trulon.Models.Entities.Players
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
@@ -6,7 +8,6 @@
 
     public class Barbarian : Player
     {
-
         public Barbarian()
             :this(new EntityEquipment())
         {
@@ -115,14 +116,10 @@
             this.Image = texture;
             //Starting position of the player
             this.Position = position;
-
+            
             //Set the player to be active
 
             //Set player health
-        }
-
-        public override void Update()
-        {
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -119,11 +119,6 @@
             //Set player health
         }
 
-        public override void Update()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Image, Position, null, Color.White, 0F, Vector2.Zero, 1F, SpriteEffects.None, 0F);
