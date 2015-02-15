@@ -1,4 +1,4 @@
-﻿namespace Trulon
+﻿namespace Trulon.Interfaces
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;

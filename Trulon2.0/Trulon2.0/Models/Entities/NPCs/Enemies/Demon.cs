@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace Trulon.Models.Entities.NPCs.Enemies
+﻿namespace Trulon.Models.Entities.NPCs.Enemies
 {
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
     public class Demon : Enemy
     {
         public Demon(

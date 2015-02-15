@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace Trulon.Models.Entities.NPCs
+﻿namespace Trulon.Models.Entities.NPCs
 {
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public abstract class Enemy : NonPlayerCharacter
     {
         protected Enemy(

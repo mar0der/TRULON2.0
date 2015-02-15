@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Trulon.Models.Items.Equipments;
-using Trulon.Models.Items.Potions;
-
-namespace Trulon.Models.Entities.NPCs.Allies
+﻿namespace Trulon.Models.Entities.NPCs.Allies
 {
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using global::Trulon.Models.Items.Equipments;
+    using global::Trulon.Models.Items.Potions;
+
     public class Vendor : Ally
     {
         public static List<Item> VendorInventory;

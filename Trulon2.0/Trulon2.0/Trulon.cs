@@ -1,7 +1,8 @@
-﻿using System;
-
-namespace Trulon
+﻿namespace Trulon
 {
+    using System;
+    using global::Trulon.CoreLogics;
+
     /// <summary>
     /// The main class.
     /// </summary>

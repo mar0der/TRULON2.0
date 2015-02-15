@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-
-namespace Trulon.Structs
+﻿namespace Trulon.Structs
 {
+    using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Represents a 2D circle.
     /// </summary>

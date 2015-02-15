@@ -1,13 +1,12 @@
-﻿using GameEngine.Enums;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Trulon.GUI
+﻿namespace Trulon.GUI
 {
-    class GUI: IDrawable
+    using System;
+    using System.Collections.Generic;
+    using global::Trulon.Enums;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    public class GUI : IDrawable
     {
         public GUI()
         {
@@ -36,7 +35,7 @@ namespace Trulon.GUI
             }
         }
 
-        public Microsoft.Xna.Framework.Graphics.Texture2D Image
+        public Texture2D Image
         {
             get
             {
@@ -60,14 +59,35 @@ namespace Trulon.GUI
             }
         }
 
-        public void Initialize(Microsoft.Xna.Framework.Graphics.Texture2D texture, Vector2 position)
+        public void Initialize(Texture2D texture, Vector2 position)
         {
             throw new NotImplementedException();
         }
 
-        public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             throw new NotImplementedException();
         }
+
+        public void Draw(GameTime gameTime)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        public int DrawOrder
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public event EventHandler<EventArgs> DrawOrderChanged;
+
+        public bool Visible
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public event EventHandler<EventArgs> VisibleChanged;
     }
 }

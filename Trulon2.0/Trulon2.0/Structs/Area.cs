@@ -1,4 +1,4 @@
-﻿namespace GameEngine.Structs
+﻿namespace Trulon.Structs
 {
     struct Area
     {

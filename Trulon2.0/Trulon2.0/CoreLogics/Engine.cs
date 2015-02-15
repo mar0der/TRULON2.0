@@ -1,19 +1,15 @@
-﻿#region Using Statements
-
-using GameEngine;
-using GameEngine.Enums;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Trulon.Models.Entities;
-using Trulon.Models.Entities.NPCs.Allies;
-using Trulon.Models.Entities.Players;
-using Trulon.Models.Items.Equipments;
-
-#endregion
-
-namespace Trulon
+﻿namespace Trulon.CoreLogics
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+    using global::Trulon.Config;
+    using global::Trulon.Enums;
+    using global::Trulon.Models.Entities;
+    using global::Trulon.Models.Entities.NPCs.Allies;
+    using global::Trulon.Models.Entities.Players;
+    using global::Trulon.Models.Items.Equipments;
+
     /// <summary>
     /// This is the main type for your game
     /// </summary>

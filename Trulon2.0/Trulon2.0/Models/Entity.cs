@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections;
-
-namespace Trulon.Models
+﻿namespace Trulon.Models
 {
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public abstract class Entity : GameObject
     {
         protected Entity(
@@ -18,8 +17,7 @@ namespace Trulon.Models
             int healthPoints,
             int level,
             List<Item> inventory,
-            bool isAlive
-            )
+            bool isAlive)
             : base(name, image, bounds, position)
         {
             this.AttackPoints = attackPoints;

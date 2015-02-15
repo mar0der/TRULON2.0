@@ -1,12 +1,10 @@
-﻿using Trulon.Interfaces;
-
-namespace Trulon.Models.Items.Equipments
+﻿namespace Trulon.Models.Items.Equipments
 {
-    using GameEngine.Enums;
+    using global::Trulon.Enums;
+    using global::Trulon.Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-
-
+    
     public class Boots : Equipment, IEquipable
     {
         public Boots(

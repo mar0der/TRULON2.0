@@ -1,4 +1,4 @@
-﻿namespace GameEngine.Enums
+﻿namespace Trulon.Enums
 {
     public enum Direction
     {

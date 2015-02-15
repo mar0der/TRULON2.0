@@ -1,13 +1,9 @@
-﻿using System;
-using Trulon.Models.Items.Equipments;
-using Trulon.Models.Entities.NPCs;
-
-namespace Trulon.Models.Entities
+﻿namespace Trulon.Models.Entities
 {
     using System.Collections.Generic;
+
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System.Collections;
 
     public abstract class Player : Entity
     {
@@ -30,8 +26,7 @@ namespace Trulon.Models.Entities
             int attackSkill,
             int defenceSkill,
             int speedSkill,
-            int healthSkill
-            )
+            int healthSkill)
             : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
         {
             this.PlayerEquipment = playerEquipment;
@@ -40,7 +35,7 @@ namespace Trulon.Models.Entities
             this.SkillPoints = skillPoints;
             this.AttackSkill = attackSkill;
             this.DefenseSkill = defenceSkill;
-            this.SpeedSkill = defenceSkill;
+            this.SpeedSkill = speedSkill;
             this.HealthSkill = healthSkill;
             
         }
@@ -156,11 +151,5 @@ namespace Trulon.Models.Entities
 
         protected abstract void DrinkPotion();
 
-
-
-
-
-
-        
     }
 }

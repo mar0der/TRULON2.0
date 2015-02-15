@@ -1,4 +1,4 @@
-﻿namespace GameEngine.Config
+﻿namespace Trulon.Config
 {
     /// <summary>
     /// Contains all constants

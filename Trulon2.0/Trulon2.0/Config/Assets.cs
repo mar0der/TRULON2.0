@@ -1,15 +1,4 @@
-﻿#region Using Statements
-using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Storage;
-using Microsoft.Xna.Framework.GamerServices;
-#endregion
-
-namespace GameEngine
+﻿namespace Trulon.Config
 {
     public static class Assets
     {
@@ -82,6 +71,7 @@ namespace GameEngine
             "Troll/West.png",
             "Troll/NorthWest.png"
         };
+
         //NPCs
         //Vendor
         public static readonly string[] Vendor = new string[1]

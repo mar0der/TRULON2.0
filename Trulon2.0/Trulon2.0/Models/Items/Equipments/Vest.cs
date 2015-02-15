@@ -2,7 +2,7 @@
 
 namespace Trulon.Models.Items.Equipments
 {
-    using GameEngine.Enums;
+    using global::Trulon.Enums;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 

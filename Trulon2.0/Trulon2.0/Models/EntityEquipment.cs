@@ -1,9 +1,9 @@
-﻿using Trulon.Interfaces;
-
-namespace Trulon.Models
+﻿namespace Trulon.Models
 {
     using System.Collections.Generic;
-    using GameEngine.Enums;
+    using global::Trulon.Enums;
+    using global::Trulon.Interfaces;
+
     public class EntityEquipment
     {
 

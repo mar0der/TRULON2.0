@@ -1,16 +1,16 @@
-﻿using Trulon.Models;
-using Trulon.Models.Items.Equipments;
-using Trulon.Models.Items.Potions;
-
-namespace Trulon.CoreLogics
+﻿namespace Trulon.CoreLogics
 {
     using System;
-    static class  ItemGenerator
+    using global::Trulon.Models;
+    using global::Trulon.Models.Items.Equipments;
+    using global::Trulon.Models.Items.Potions;
+
+    public static class ItemGenerator
     {
         private static Random rand = new Random();
         public static Item GetEquipmentItem()
         {
-            switch (rand.Next(0,3))
+            switch (rand.Next(0, 3))
             {
                 case 0:
                     return new Boots();
@@ -29,7 +29,7 @@ namespace Trulon.CoreLogics
 
         public static Item GetPotionItem()
         {
-                        switch (rand.Next(0,3))
+            switch (rand.Next(0, 3))
             {
                 case 0:
                     return new DamagePotion();
