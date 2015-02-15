@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections;
 
 namespace Trulon.Models
 {
@@ -37,6 +38,8 @@ namespace Trulon.Models
         public int Level { get; set; }
         public List<Item> Inventory { get; set; }
         public bool IsAlive { get; set; }
+
+        protected abstract IList<Entity> GetEntitiesInRange(IList<Entity> entities);
 
         protected abstract void Interact();
 

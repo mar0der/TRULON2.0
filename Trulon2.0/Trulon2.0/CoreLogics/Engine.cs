@@ -54,6 +54,7 @@ namespace Trulon
 
             //player init
             player = new Barbarian();
+            //adding boots :)
             player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
 
             //vendor init

@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System;
 using Trulon.Models.Items.Equipments;
+using Trulon.Models.Entities.NPCs;
 
 namespace Trulon.Models.Entities
 {
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using System.Collections;
+
     public abstract class Player : Entity
     {
         protected Player(
@@ -98,6 +102,46 @@ namespace Trulon.Models.Entities
                 buffs.Add("speed", speedBuff);
                 return buffs;
             }
+        }
+
+        protected override IList<Entity> GetEnemiesInRange(IList<Entity> entities)
+        {
+            List<Entity> enemiesInRange = new List<Entity>();
+            foreach (var entity in entities)
+            {
+                if(true) //TODO Add algorithm for checking if entity is in range and if it is enemy
+                {
+                    enemiesInRange.Add(entity);
+                }
+            }
+            return enemiesInRange;
+        }
+
+        protected override Entity GetNPCInRange(IList<Entity> entities)
+        {
+            List<Entity> entitiesInRange = new List<Entity>();
+            foreach (var entity in entities)
+            {
+                if (true) //TODO Add algorithm for checking if entity is in range and if it is enemy
+                {
+                    return entity;
+                }
+            }
+            return null;
+        }
+
+        protected override void Interact()
+        {
+            //Entity npc = this.GetNPCInRange();
+            //if(npc != null)
+            //{
+            //    //do some stuff with the npc
+            //}
+        }
+
+        protected override void Attack()
+        {
+            //this.GetEntitiesInRange
         }
 
         protected abstract void AddExperience();
