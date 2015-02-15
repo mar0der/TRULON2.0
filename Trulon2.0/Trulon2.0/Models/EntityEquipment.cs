@@ -1,18 +1,18 @@
-﻿using System.Collections.Generic;
-using GameEngine.Enums;
+﻿using Trulon.Interfaces;
 
 namespace Trulon.Models
 {
+    using System.Collections.Generic;
+    using GameEngine.Enums;
     public class EntityEquipment
     {
-        private Dictionary<EquipmentSlots, Item> currentEquipment = new Dictionary<EquipmentSlots, Item>();
 
         public EntityEquipment()
         {
-            this.CurrentEquipment = currentEquipment;
+            this.CurrentEquipment = new Dictionary<EquipmentSlots, IEquipable>();
         }
 
-        public Dictionary<EquipmentSlots, Item> CurrentEquipment { get; set; }
+        public Dictionary<EquipmentSlots, IEquipable> CurrentEquipment { get; set; }
 
     }
 }

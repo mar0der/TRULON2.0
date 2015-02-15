@@ -24,8 +24,10 @@ namespace Trulon.Models.Entities
             int coins,
             int skillPoints,
             int attackSkill,
-            int healthSkill,
-            int defenceSkill)
+            int defenceSkill,
+            int speedSkill,
+            int healthSkill
+            )
             : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
         {
             this.PlayerEquipment = playerEquipment;
@@ -33,27 +35,36 @@ namespace Trulon.Models.Entities
             this.Coins = coins;
             this.SkillPoints = skillPoints;
             this.AttackSkill = attackSkill;
+            this.DefenseSkill = defenceSkill;
+            this.SpeedSkill = defenceSkill;
             this.HealthSkill = healthSkill;
-            this.DefenceSkill = defenceSkill;
+            
         }
 
         public override int SpeedPoints
         {
             get
             {
-                return base.SpeedPoints;
+                return base.SpeedPoints+this.EquipmentBuffs["attack"];
             }
         }
 
-        private Dictionary<string, int> GetItemBonuses()
+        private Dictionary<string, int> EquipmentBuffs
         {
-            Dictionary<string, int> bonuses = new Dictionary<string, int>();
-            //int attackBonus, defenceBonus, speedBonus, healthBonus;
-            //foreach (var item in this.Inventory)
-            //{
-            //    //attackBonus += item is
-            //}
-            return bonuses;
+            get{
+                Dictionary<string, int> buffs = new Dictionary<string, int>();
+                int attackBuff = 0, defenseBuff = 0, speedBuff = 0;
+                foreach (var item in this.PlayerEquipment.CurrentEquipment)
+                {
+                    attackBuff += item.Value.AttackPointsBuff;
+                    defenseBuff += item.Value.DefensePointsBuff;
+                    speedBuff += item.Value.SpeedPointsBuff;
+                }
+                buffs.Add("attack", attackBuff);
+                buffs.Add("defense", defenseBuff);
+                buffs.Add("speed", speedBuff);
+                return buffs;
+            }
         }
 
         public EntityEquipment PlayerEquipment { get; set; }
@@ -61,8 +72,10 @@ namespace Trulon.Models.Entities
         public int Coins { get; set; }
         public int SkillPoints { get; set; }
         public int AttackSkill { get; set; }
+        public int DefenseSkill { get; set; }
+        public int SpeedSkill { get; set; }
         public int HealthSkill { get; set; }
-        public int DefenceSkill { get; set; }
+        
 
         protected abstract void AddExperience();
 
@@ -77,6 +90,8 @@ namespace Trulon.Models.Entities
         protected abstract void DrinkPotion();
 
         protected abstract void Attack();
+
+
 
 
         

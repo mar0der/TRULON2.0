@@ -28,8 +28,9 @@ namespace Trulon.Models.Entities.Players
             int coins = 10,
             int skillPoints = 0,
             int attackSkill = 0,
-            int healthSkill = 0,
-            int defenceSkill = 0)
+            int defenseSkill = 0,
+            int speedSkill = 0,
+            int healthSkill = 0)
             : base(
             currentEquipment,
             name,
@@ -47,8 +48,10 @@ namespace Trulon.Models.Entities.Players
             coins,
             skillPoints,
             attackSkill,
-            healthSkill,
-            defenceSkill)
+            defenseSkill,
+            speedSkill,
+            healthSkill
+            )
         {
         }
 
