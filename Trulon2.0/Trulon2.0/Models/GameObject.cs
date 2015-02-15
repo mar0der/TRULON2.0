@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public abstract class GameObject : Microsoft.Xna.Framework.IDrawable
+    public abstract class GameObject : IDrawable
     {
         protected GameObject(string name, Texture2D image, Rectangle bounds, Vector2 position)
         {

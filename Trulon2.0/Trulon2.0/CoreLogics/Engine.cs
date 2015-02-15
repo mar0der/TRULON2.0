@@ -1,5 +1,6 @@
 ﻿namespace Trulon.CoreLogics
 {
+    #region Using Statements
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
@@ -9,10 +10,13 @@
     using global::Trulon.Models.Entities.NPCs.Allies;
     using global::Trulon.Models.Entities.Players;
     using global::Trulon.Models.Items.Equipments;
+    #endregion
 
+    #region Engine Summary
     /// <summary>
     /// This is the main type for your game
     /// </summary>
+    #endregion
     public class Engine : Game
     {
         GraphicsDeviceManager graphics;
@@ -23,13 +27,7 @@
 
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
-
-        private KeyboardState enemyCurrentKey;
-        private KeyboardState enemyPreviousKey;
-
-        private MouseState currentMouseState;
-        private MouseState previousMouseState;
-
+        
         public Engine()
             : base()
         {
@@ -37,12 +35,14 @@
             Content.RootDirectory = "Resources/Images";
         }
 
+        #region Initialize Summary
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
+        #endregion
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
@@ -59,10 +59,12 @@
             base.Initialize();
         }
 
+        #region LoadContent Summary
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
+        #endregion
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -80,20 +82,24 @@
 
         }
 
+        #region UnloadContent Summary
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
         /// </summary>
+        #endregion
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
         }
 
+        #region GameUpdate
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        #endregion
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -102,16 +108,12 @@
             // TODO: Add your update logic here
             //Save previous state of the keyboard to determine single key presses
             previousKeyboardState = currentKeyboardState;
-            enemyPreviousKey = enemyCurrentKey;
-            previousMouseState = currentMouseState;
 
             //Read the current state of the keyboard and store it
             currentKeyboardState = Keyboard.GetState();
-            enemyCurrentKey = Keyboard.GetState();
-            currentMouseState = Mouse.GetState();
 
             //Update player
-            this.UpdatePlayer(gameTime, player);
+            this.UpdatePlayer(gameTime, this.player);
 
             base.Update(gameTime);
         }
@@ -119,32 +121,36 @@
         private void UpdatePlayer(GameTime gameTime, Player player)
         {
             //Keyboard input
-            if (currentKeyboardState.IsKeyDown(Keys.Left))
+            if (this.currentKeyboardState.IsKeyDown(Keys.Left))
             {
                 player.Position = new Vector2(player.Position.X - this.player.SpeedPoints, player.Position.Y);
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Right))
+            if (this.currentKeyboardState.IsKeyDown(Keys.Right))
             {
                 player.Position = new Vector2(player.Position.X + this.player.SpeedPoints, player.Position.Y);
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Up))
+            if (this.currentKeyboardState.IsKeyDown(Keys.Up))
             {
                 player.Position = new Vector2(player.Position.X, player.Position.Y - this.player.SpeedPoints);
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Down))
+            if (this.currentKeyboardState.IsKeyDown(Keys.Down))
             {
                 player.Position = new Vector2(player.Position.X, player.Position.Y + this.player.SpeedPoints);
             }
+
             //this.player.Position.X = 5f;
+
             //Make sure that player doesn't go out of bounds
             player.Position = new Vector2(MathHelper.Clamp(player.Position.X, 0, GraphicsDevice.Viewport.Width - player.Image.Width),
                                             MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height - player.Image.Height));
         }
 
+        #region GameDraw Summary
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        #endregion
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
