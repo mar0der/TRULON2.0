@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Trulon.Models.Items.Equipments;
 
 namespace Trulon.Models.Entities
 {
     public abstract class Player : Entity
     {
         protected Player(
+            EntityEquipment playerEquipment,
             string name,
             Texture2D image,
             Rectangle bounds,
@@ -26,6 +28,7 @@ namespace Trulon.Models.Entities
             int defenceSkill)
             : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
         {
+            this.PlayerEquipment = playerEquipment;
             this.Experience = experience;
             this.Coins = coins;
             this.SkillPoints = skillPoints;
@@ -34,6 +37,26 @@ namespace Trulon.Models.Entities
             this.DefenceSkill = defenceSkill;
         }
 
+        public override int SpeedPoints
+        {
+            get
+            {
+                return base.SpeedPoints;
+            }
+        }
+
+        private Dictionary<string, int> GetItemBonuses()
+        {
+            Dictionary<string, int> bonuses = new Dictionary<string, int>();
+            //int attackBonus, defenceBonus, speedBonus, healthBonus;
+            //foreach (var item in this.Inventory)
+            //{
+            //    //attackBonus += item is
+            //}
+            return bonuses;
+        }
+
+        public EntityEquipment PlayerEquipment { get; set; }
         public int Experience { get; set; }
         public int Coins { get; set; }
         public int SkillPoints { get; set; }
@@ -55,5 +78,7 @@ namespace Trulon.Models.Entities
 
         protected abstract void Attack();
 
+
+        
     }
 }

@@ -6,22 +6,22 @@ namespace Trulon.Models.Items.Equipments
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class Vest : Equipment, IEquipable
+    public class Shield : Equipment, IEquipable
     {
-        public Vest(
-            string name = "Vest",
+        public Shield(
+            string name = "Shield",
             Texture2D image = null,
             Rectangle bounds = new Rectangle(),
             Vector2 position = new Vector2(),
             EquipmentSlots slot = EquipmentSlots.Body,
             int attackPointsBuff = 0,
-            int defensePointsBuff = 10,
+            int defensePointsBuff = 15,
             int speedPointsBuff = 0)
             : base(name, image, bounds, position, slot)
         {
-            this.AttackPointsBuff = AttackPointsBuff;
+            this.AttackPointsBuff = attackPointsBuff;
             this.DefensePointsBuff = defensePointsBuff;
-            this.SpeedPointsBuff = SpeedPointsBuff;
+            this.SpeedPointsBuff = speedPointsBuff;
         }
 
         public int AttackPointsBuff { get; set; }

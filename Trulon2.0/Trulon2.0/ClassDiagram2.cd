@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameEngine.Assets" Collapsed="true">
+    <Position X="36.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAgAgAAAAESAAQAABIAAQAAAUCAAABAAEAAAAAAAAI=</HashCode>
+      <FileName>Config\Assets.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEngine.Config.Config" Collapsed="true">
+    <Position X="38.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ho7MQBXMxQCEIDkqG4gBMIQqBtxQJAwBqcQBYrOqlE8=</HashCode>
+      <FileName>Config\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.CoreLogics.DemagePotion" Collapsed="true">
+    <Position X="40.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoreLogics\DemagePotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.CoreLogics.ItemGenerator" Collapsed="true">
+    <Position X="40.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CoreLogics\ItemGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Engine" Collapsed="true">
+    <Position X="36.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAgAAAAAwAAAAAAAWAAAEAAIAgBAAAAAAEQAAQ=</HashCode>
+      <FileName>CoreLogics\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Trulon" Collapsed="true">
+    <Position X="36.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Trulon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.NonPlayerCharacter" Collapsed="true">
+    <Position X="24.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NonPlayerCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.Player" Collapsed="true">
+    <Position X="33.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIIAAAAEAAIABAACAAACEgAAIIAAAAgAAAAAAAEQAA=</HashCode>
+      <FileName>Models\Entities\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.NPCs.Allies.Vendor" Collapsed="true">
+    <Position X="18.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAwAgAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NPCs\Allies\Vendor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.NPCs.Ally" Collapsed="true">
+    <Position X="18.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NPCs\Ally.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.NPCs.Enemy" Collapsed="true">
+    <Position X="25.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Entities\NPCs\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.NPCs.Enemies.Boss" Collapsed="true">
+    <Position X="23" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAAwAgAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NPCs\Enemies\Boss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.NPCs.Enemies.Demon" Collapsed="true">
+    <Position X="25.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAAwAgAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NPCs\Enemies\Demon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.NPCs.Enemies.Goblin" Collapsed="true">
+    <Position X="27.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAAwAgAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NPCs\Enemies\Goblin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.NPCs.Enemies.Orc" Collapsed="true">
+    <Position X="29.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAAwAgAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NPCs\Enemies\Orc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.NPCs.Enemies.Troll" Collapsed="true">
+    <Position X="20.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAAwAgAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NPCs\Enemies\Troll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.Players.Barbarian" Collapsed="true">
+    <Position X="32" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYIAAAAEIAAAwAgAAAAAEAAIIAAAAAgAAAAAAAEAAA=</HashCode>
+      <FileName>Models\Entities\Players\Barbarian.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entities.Players.Paladin" Collapsed="true">
+    <Position X="34.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYIAAAAEIAAAwAgAAAAAEAAIIAAAAAgAAAAAAAEAAA=</HashCode>
+      <FileName>Models\Entities\Players\Paladin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Entity" Collapsed="true">
+    <Position X="26.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAQIAAAAAgAAAAAAAIIIAAAAABAAAAAwAAAAA=</HashCode>
+      <FileName>Models\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.GameObject" Collapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAwBgAAAAAAQAAAAAADAoAAAAAAAAAgA=</HashCode>
+      <FileName>Models\GameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Trulon.Models.Item" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Map" Collapsed="true">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Items.Equipment" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Items\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Items.Potion" Collapsed="true">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\Potion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Items.Equipments.Boots">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAwBAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\Equipments\Boots.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Items.Equipments.Sword">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\Equipments\Sword.cs</FileName>
+      <NewMemberFileName>Models\Items\Equipments\Helmet.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Items.Equipments.Vest">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAwAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\Equipments\Vest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Items.Potions.DamagePotion" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\Potions\DamagePotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Items.Potions.DefencePotion" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAwAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\Potions\DefencePotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Items.Potions.HealthPotion" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAwAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\Potions\HealthPotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.Items.Potions.SpeedPotion" Collapsed="true">
+    <Position X="14" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAwBAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Items\Potions\SpeedPotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trulon.Models.EntityEquipment" Collapsed="true">
+    <Position X="38.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EntityEquipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="GameEngine.Structs.Area" Collapsed="true">
+    <Position X="36.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Structs\Area.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="Trulon.IDrawable" Collapsed="true">
+    <Position X="36.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAwAgAAAAAAAAAAAAABAAAAAAAAAAAgA=</HashCode>
+      <FileName>Interfaces\IDrawable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="GameEngine.Enums.Direction" Collapsed="true">
+    <Position X="36.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACCCABABAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAEBAAQ=</HashCode>
+      <FileName>Enums\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GameEngine.Enums.EquipmentSlots" Collapsed="true">
+    <Position X="38.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQAAAAAAAAAIAAAAABAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\EquipmentSlots.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

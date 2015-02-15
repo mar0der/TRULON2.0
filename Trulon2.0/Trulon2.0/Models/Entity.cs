@@ -29,10 +29,10 @@ namespace Trulon.Models
             this.IsAlive = isAlive;
         }
 
-        public int AttackPoints { get; set; }
-        public int DefencePoints { get; set; }
-        public int SpeedPoints { get; set; }
-        public int HealthPoints { get; set; }
+        public virtual int AttackPoints { get; set; }
+        public virtual int DefencePoints { get; set; }
+        public virtual int SpeedPoints { get; set; }
+        public virtual int HealthPoints { get; set; }
         public int Level { get; set; }
         public List<Item> Inventory { get; set; }
         public bool IsAlive { get; set; }

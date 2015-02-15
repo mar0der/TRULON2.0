@@ -42,6 +42,7 @@
     <Compile Include="CoreLogics\Engine.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
+    <Compile Include="Interfaces\IEquipable.cs" />
     <Compile Include="Models\GameObject.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="Models\Entities\NonPlayerCharacter.cs" />
@@ -63,6 +64,8 @@
     <Compile Include="Models\Items\Equipment.cs" />
     <Compile Include="Models\Items\Equipments\Boots.cs" />
     <Compile Include="Models\Items\Equipments\Helmet.cs" />
+    <Compile Include="Models\Items\Equipments\Shield.cs" />
+    <Compile Include="Models\Items\Equipments\Sword.cs" />
     <Compile Include="Models\Items\Equipments\Vest.cs" />
     <Compile Include="Models\Items\Potion.cs" />
     <Compile Include="Models\Items\Potions\DamagePotion.cs" />
@@ -259,6 +262,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

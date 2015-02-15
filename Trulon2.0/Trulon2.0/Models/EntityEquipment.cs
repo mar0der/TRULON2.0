@@ -9,12 +9,10 @@ namespace Trulon.Models
 
         public EntityEquipment()
         {
-            this.currentEquipment.Add(EquipmentSlots.Head, null);
-            this.currentEquipment.Add(EquipmentSlots.Body, null);
-            this.currentEquipment.Add(EquipmentSlots.Feet, null);
-            this.currentEquipment.Add(EquipmentSlots.LeftHand, null);
-            this.currentEquipment.Add(EquipmentSlots.RightHand, null);
+            this.CurrentEquipment = currentEquipment;
         }
+
+        public Dictionary<EquipmentSlots, Item> CurrentEquipment { get; set; }
 
     }
 }

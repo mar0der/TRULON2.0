@@ -6,7 +6,12 @@ namespace Trulon.Models.Entities.Players
 {
     public class Paladin : Player
     {
+        public Paladin()
+            : this(new EntityEquipment())
+        {
+        }
         public Paladin(
+            EntityEquipment playerEquipment,
             string name = "Paladin",
             Texture2D image = null,
             Rectangle bounds = new Rectangle(),
@@ -25,6 +30,7 @@ namespace Trulon.Models.Entities.Players
             int healthSkill = 0,
             int defenceSkill = 0)
             : base(
+            playerEquipment,
             name,
             image,
             bounds,

@@ -6,7 +6,13 @@ namespace Trulon.Models.Entities.Players
 {
     public class Barbarian : Player
     {
+
+        public Barbarian()
+            :this(new EntityEquipment())
+        {
+        }
         public Barbarian(
+            EntityEquipment currentEquipment,
             string name = "Paladin",
             Texture2D image = null,
             Rectangle bounds = new Rectangle(),
@@ -25,6 +31,7 @@ namespace Trulon.Models.Entities.Players
             int healthSkill = 0,
             int defenceSkill = 0)
             : base(
+            currentEquipment,
             name,
             image,
             bounds,
@@ -44,6 +51,7 @@ namespace Trulon.Models.Entities.Players
             defenceSkill)
         {
         }
+
 
         protected override void Interact()
         {
