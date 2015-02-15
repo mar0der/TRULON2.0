@@ -1,12 +1,14 @@
 ﻿#region Using Statements
 
 using GameEngine;
+using GameEngine.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Trulon.Models.Entities;
 using Trulon.Models.Entities.NPCs.Allies;
 using Trulon.Models.Entities.Players;
+using Trulon.Models.Items.Equipments;
 
 #endregion
 
@@ -52,6 +54,7 @@ namespace Trulon
 
             //player init
             player = new Barbarian();
+            player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
 
             //vendor init
             vendor = new Vendor();

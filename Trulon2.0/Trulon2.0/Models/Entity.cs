@@ -17,7 +17,8 @@ namespace Trulon.Models
             int healthPoints,
             int level,
             List<Item> inventory,
-            bool isAlive)
+            bool isAlive
+            )
             : base(name, image, bounds, position)
         {
             this.AttackPoints = attackPoints;
