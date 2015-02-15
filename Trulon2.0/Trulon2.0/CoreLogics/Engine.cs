@@ -111,35 +111,11 @@
             currentMouseState = Mouse.GetState();
 
             //Update player
-            this.UpdatePlayer(gameTime, player);
+            player.Update();
 
             base.Update(gameTime);
         }
 
-        private void UpdatePlayer(GameTime gameTime, Player player)
-        {
-            //Keyboard input
-            if (currentKeyboardState.IsKeyDown(Keys.Left))
-            {
-                player.Position = new Vector2(player.Position.X - this.player.SpeedPoints, player.Position.Y);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Right))
-            {
-                player.Position = new Vector2(player.Position.X + this.player.SpeedPoints, player.Position.Y);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Up))
-            {
-                player.Position = new Vector2(player.Position.X, player.Position.Y - this.player.SpeedPoints);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Down))
-            {
-                player.Position = new Vector2(player.Position.X, player.Position.Y + this.player.SpeedPoints);
-            }
-            //this.player.Position.X = 5f;
-            //Make sure that player doesn't go out of bounds
-            player.Position = new Vector2(MathHelper.Clamp(player.Position.X, 0, GraphicsDevice.Viewport.Width - player.Image.Width),
-                                            MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height - player.Image.Height));
-        }
 
         /// <summary>
         /// This is called when the game should draw itself.

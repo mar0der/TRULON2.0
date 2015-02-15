@@ -1,12 +1,18 @@
-﻿namespace Trulon.Models.Entities
+﻿using Microsoft.Xna.Framework.Input;
+using Trulon.Config;
+
+namespace Trulon.Models.Entities
 {
     using System.Collections.Generic;
 
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
 
     public abstract class Player : Entity
     {
+        private KeyboardState currentKeyboardState;
+
         protected Player(
             EntityEquipment playerEquipment,
             string name,
@@ -97,6 +103,31 @@
                 buffs.Add("speed", speedBuff);
                 return buffs;
             }
+        }
+
+        public override void Update()
+        {
+            currentKeyboardState = Keyboard.GetState();
+            //Keyboard input
+            if (currentKeyboardState.IsKeyDown(Keys.Left))
+            {
+                this.Position = new Vector2(this.Position.X - this.SpeedPoints, this.Position.Y);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Right))
+            {
+                this.Position = new Vector2(this.Position.X + this.SpeedPoints, this.Position.Y);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Up))
+            {
+                this.Position = new Vector2(this.Position.X, this.Position.Y - this.SpeedPoints);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Down))
+            {
+                this.Position = new Vector2(this.Position.X, this.Position.Y + this.SpeedPoints);
+            }
+            //Make sure that player doesn't go out of bounds
+            this.Position = new Vector2(MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),
+                                            MathHelper.Clamp(this.Position.Y, 0, Config.Config.ScreenHeight - this.Image.Height));
         }
 
         protected  IList<Entity> GetEnemiesInRange(IList<Entity> entities)

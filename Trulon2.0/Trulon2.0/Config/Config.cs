@@ -5,6 +5,9 @@
     /// </summary>
     public static class Config
     {
+        //Screen size
+        public static readonly int ScreenWidth = 800;
+        public static readonly int ScreenHeight = 475;
         //Players base constatnts
         public static readonly int InventorySize = 20;
         public static readonly int InitialCoins = 100;
