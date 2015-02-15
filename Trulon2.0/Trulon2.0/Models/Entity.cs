@@ -21,7 +21,7 @@ namespace Trulon.Models
             : base(name, image, bounds, position)
         {
             this.AttackPoints = attackPoints;
-            this.DefencePoints = defencePoints;
+            this.DefensePoints = defencePoints;
             this.SpeedPoints = speedPoints;
             this.HealthPoints = healthPoints;
             this.Level = level;
@@ -30,7 +30,7 @@ namespace Trulon.Models
         }
 
         public virtual int AttackPoints { get; set; }
-        public virtual int DefencePoints { get; set; }
+        public virtual int DefensePoints { get; set; }
         public virtual int SpeedPoints { get; set; }
         public virtual int HealthPoints { get; set; }
         public int Level { get; set; }

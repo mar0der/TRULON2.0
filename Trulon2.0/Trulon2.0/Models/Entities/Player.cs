@@ -40,18 +40,51 @@ namespace Trulon.Models.Entities
             this.HealthSkill = healthSkill;
             
         }
+        public EntityEquipment PlayerEquipment { get; set; }
+        public int Experience { get; set; }
+        public int Coins { get; set; }
+        public int SkillPoints { get; set; }
+        public int AttackSkill { get; set; }
+        public int DefenseSkill { get; set; }
+        public int SpeedSkill { get; set; }
+        public int HealthSkill { get; set; }
+
+        public override int AttackPoints
+        {
+            get
+            {
+                return base.AttackPoints + this.EquipmentBuffs["attack"] + this.AttackSkill;
+            }
+        }
+
+        public override int DefensePoints
+        {
+            get
+            {
+                return base.DefensePoints + this.EquipmentBuffs["defense"] + this.DefenseSkill;
+            }
+        }
 
         public override int SpeedPoints
         {
             get
             {
-                return base.SpeedPoints+this.EquipmentBuffs["attack"];
+                return base.SpeedPoints+this.EquipmentBuffs["speed"]+this.SpeedSkill;
             }
         }
 
+        public override int HealthPoints
+        {
+            get
+            {
+                return base.HealthPoints + this.HealthSkill;
+            }
+        }
+        
         private Dictionary<string, int> EquipmentBuffs
         {
-            get{
+            get
+            {
                 Dictionary<string, int> buffs = new Dictionary<string, int>();
                 int attackBuff = 0, defenseBuff = 0, speedBuff = 0;
                 foreach (var item in this.PlayerEquipment.CurrentEquipment)
@@ -66,16 +99,6 @@ namespace Trulon.Models.Entities
                 return buffs;
             }
         }
-
-        public EntityEquipment PlayerEquipment { get; set; }
-        public int Experience { get; set; }
-        public int Coins { get; set; }
-        public int SkillPoints { get; set; }
-        public int AttackSkill { get; set; }
-        public int DefenseSkill { get; set; }
-        public int SpeedSkill { get; set; }
-        public int HealthSkill { get; set; }
-        
 
         protected abstract void AddExperience();
 
