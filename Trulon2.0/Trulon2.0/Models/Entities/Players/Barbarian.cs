@@ -1,114 +1,50 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Trulon.Models.Entities.Players
 {
-    using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-
     public class Barbarian : Player
     {
-        public Barbarian()
-            :this(new EntityEquipment())
-        {
-        }
-        public Barbarian(
-            EntityEquipment currentEquipment,
-            string name = "Paladin",
-            Texture2D image = null,
-            Rectangle bounds = new Rectangle(),
-            Vector2 position = new Vector2(),
-            int attackPoints = 7,
-            int defencePoints = 3,
-            int speedPoints = 5,
-            int healthPoints = 90,
-            int level = 1,
-            List<Item> inventory = null,
-            bool isAlive = true,
-            int experience = 0,
-            int coins = 10,
-            int skillPoints = 0,
-            int attackSkill = 0,
-            int defenseSkill = 0,
-            int speedSkill = 0,
-            int healthSkill = 0)
-            : base(
-            currentEquipment,
-            name,
-            image,
-            bounds,
-            position,
-            attackPoints,
-            defencePoints,
-            speedPoints,
-            healthPoints,
-            level,
-            inventory,
-            isAlive,
-            experience,
-            coins,
-            skillPoints,
-            attackSkill,
-            defenseSkill,
-            speedSkill,
-            healthSkill)
-        {
-        }
+        #region Constants
+        private readonly EntityEquipment DefaultEquipment = new EntityEquipment();
+        private const string DefaultName = "Barbarian";
+        private const int DefaultAttackPoints = 7;
+        private const int DefaultDefencePoints = 3;
+        private const int DefaultSpeedPoints = 5;
+        private const int DefaultHealthPoints = 90;
+        private const int DefaultLevel = 1;
+        private const int DefaultExperience = 0;
+        private const int DefaultCoins = 10;
+        private const int DefaultSkillPoints = 0;
+        private const int DefaultAttackSkill = 0;
+        private const int DefaultDefenseSkill = 0;
+        private const int DefaultSpeedSkill = 0;
+        private const int DefaultHealthSkill = 0;
+        private const int DefaultWidth = 64;
+        private const int DefaultHeight = 64;
+        #endregion
 
-
-        protected override IList<Entity> GetEntitiesInRange(IList<Entity> entities)
+        public Barbarian(int x, int y)
         {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Interact()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Move()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Die()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void AddExperience()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void AddCoins()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Buy()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void AddSkillPoints()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void UseEquipment()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void DrinkPotion()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected void Attack()
-        {
-            throw new System.NotImplementedException();
+            this.Position = new Vector2(x, y);
+            this.Name = DefaultName;
+            this.BaseAttack = DefaultAttackPoints;
+            this.BaseDefense = DefaultDefencePoints;
+            this.BaseSpeed = DefaultSpeedPoints;
+            this.BaseHealth = DefaultHealthPoints;
+            this.Level = DefaultLevel;
+            this.Experience = DefaultExperience;
+            this.Coins = DefaultCoins;
+            this.SkillPoints = DefaultSkillPoints;
+            this.AttackSkill = DefaultAttackSkill;
+            this.DefenseSkill = DefaultDefenseSkill;
+            this.SpeedSkill = DefaultSpeedSkill;
+            this.HealthSkill = DefaultHealthSkill;
+            this.Bounds = new Rectangle(x, y, DefaultWidth, DefaultHeight);
+            this.PlayerEquipment = DefaultEquipment;
+            this.IsAlive = true;
         }
 
         public override void Initialize(Texture2D texture, Vector2 position)

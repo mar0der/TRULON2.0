@@ -1,37 +1,35 @@
-﻿namespace Trulon.Models.Entities.NPCs.Allies
-{
-    using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-    using global::Trulon.Models.Items.Equipments;
-    using global::Trulon.Models.Items.Potions;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Trulon.Models.Items.Equipments;
+using Trulon.Models.Items.Potions;
 
+namespace Trulon.Models.Entities.NPCs.Allies
+{
     public class Vendor : Ally
     {
-        public static List<Item> VendorInventory;
+        private const string DefaultName = "Vendor";
+        private const int DefaultAttackPoints = 0;
+        private const int DefaultDefensePoints = 0;
+        private const int DefaultSpeedPoints = 5;
+        private const int DefaultHealthPoints = 60;
+        private const int DefaultLevel = 10;
+        private const int DefaultWidth = 64;
+        private const int DefaultHeight = 64;
 
-        private const string name = "Vendor";
-        private const int attackPoints = 5;
-        private const int defensePoints = 5;
-        private const int speedPoints = 5;
-        private const int healthPoints = 60;
-        private const int level = 10;
-        private const int width;
-        private const int height;
-
-        public Vendor(int x, int y) : base(x, y)
+        public Vendor(int x, int y)
         {
-            this.Name = name;
-            this.AttackPoints = attackPoints;
-            this.DefensePoints = defensePoints;
-            this.SpeedPoints = speedPoints;
-            this.HealthPoints = healthPoints;
-            this.Level = level;
-            this.Width = width;
-            this.Height = height;
-            this.Inventory = VendorInventory;
-
-            VendorInventory = new List<Item>()
+            this.Name = DefaultName;
+            this.BaseAttack = DefaultAttackPoints;
+            this.BaseDefense = DefaultDefensePoints;
+            this.BaseSpeed = DefaultSpeedPoints;
+            this.BaseHealth = DefaultHealthPoints;
+            this.Level = DefaultLevel;
+            this.Width = DefaultWidth;
+            this.Height = DefaultHeight;
+            this.Position = new Vector2(x, y);
+            this.Inventory = new List<Item>()
             {
                 new Helmet(),
                 new Vest(),
@@ -41,16 +39,6 @@
                 new HealthPotion(),
                 new SpeedPotion()
             };
-        }
-
-        protected override IList<Entity> GetEntitiesInRange(IList<Entity> entities)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Die()
-        {
-            //immortality
         }
 
         public override void Initialize(Texture2D texture, Vector2 position)
@@ -66,7 +54,7 @@
 
         public override void Update()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

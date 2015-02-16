@@ -1,50 +1,14 @@
-﻿using Microsoft.Xna.Framework.Input;
-using Trulon.Config;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using Trulon.Models.Entities.NPCs;
 
 namespace Trulon.Models.Entities
 {
-    using System.Collections.Generic;
-
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-    using Microsoft.Xna.Framework.Input;
-
     public abstract class Player : Entity
     {
         private KeyboardState currentKeyboardState;
-
-        protected Player(
-            EntityEquipment playerEquipment,
-            string name,
-            Texture2D image,
-            Rectangle bounds,
-            Vector2 position,
-            int attackPoints,
-            int defencePoints,
-            int speedPoints,
-            int healthPoints,
-            int level,
-            List<Item> inventory,
-            bool isAlive,
-            int experience,
-            int coins,
-            int skillPoints,
-            int attackSkill,
-            int defenceSkill,
-            int speedSkill,
-            int healthSkill)
-            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
-        {
-            this.PlayerEquipment = playerEquipment;
-            this.Experience = experience;
-            this.Coins = coins;
-            this.SkillPoints = skillPoints;
-            this.AttackSkill = attackSkill;
-            this.DefenseSkill = defenceSkill;
-            this.SpeedSkill = speedSkill;
-            this.HealthSkill = healthSkill;
-            
-        }
         public EntityEquipment PlayerEquipment { get; set; }
         public int Experience { get; set; }
         public int Coins { get; set; }
@@ -54,35 +18,35 @@ namespace Trulon.Models.Entities
         public int SpeedSkill { get; set; }
         public int HealthSkill { get; set; }
 
-        public override int AttackPoints
+        public int AttackPoints
         {
             get
             {
-                return base.AttackPoints + this.EquipmentBuffs["attack"] + this.AttackSkill;
+                return this.BaseAttack + this.EquipmentBuffs["attack"] + this.AttackSkill;
             }
         }
 
-        public override int DefensePoints
+        public int DefensePoints
         {
             get
             {
-                return base.DefensePoints + this.EquipmentBuffs["defense"] + this.DefenseSkill;
+                return this.BaseDefense + this.EquipmentBuffs["defense"] + this.DefenseSkill;
             }
         }
 
-        public override int SpeedPoints
+        public int SpeedPoints
         {
             get
             {
-                return base.SpeedPoints+this.EquipmentBuffs["speed"]+this.SpeedSkill;
+                return this.BaseSpeed + this.EquipmentBuffs["speed"] + this.SpeedSkill;
             }
         }
 
-        public override int HealthPoints
+        public int HealthPoints
         {
             get
             {
-                return base.HealthPoints + this.HealthSkill;
+                return this.BaseHealth + this.HealthSkill;
             }
         }
         
@@ -90,7 +54,7 @@ namespace Trulon.Models.Entities
         {
             get
             {
-                Dictionary<string, int> buffs = new Dictionary<string, int>();
+                var buffs = new Dictionary<string, int>();
                 int attackBuff = 0, defenseBuff = 0, speedBuff = 0;
                 foreach (var item in this.PlayerEquipment.CurrentEquipment)
                 {
@@ -109,6 +73,78 @@ namespace Trulon.Models.Entities
         {
             currentKeyboardState = Keyboard.GetState();
             //Keyboard input
+            this.Move(); 
+            //Make sure that player doesn't go out of bounds
+            this.Position = new Vector2(MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),
+                                            MathHelper.Clamp(this.Position.Y, 0, Config.Config.ScreenHeight - this.Image.Height));
+        }
+
+        protected IList<Enemy> GetEnemiesInRange(IList<Enemy> enemies)
+        {
+            var enemiesInRange = new List<Enemy>();
+
+            foreach (var enemy in enemies)
+            {
+                if(this.Bounds.Intersects(enemy.Bounds)) 
+                {
+                    enemiesInRange.Add(enemy);
+                }
+            }
+            return enemiesInRange;
+        }
+
+        protected Ally GetAllyInRange (IList<Entity> entities)
+        {
+            foreach (var entity in entities)
+            {
+                if (this.Bounds.Intersects(entity.Bounds) && entity is Ally) 
+                {
+                    return (Ally)entity;
+                }
+            }
+            return null;
+        }
+
+        protected void Attack(IList<Enemy> enemiesInRange)
+        {
+            foreach (var enemy in enemiesInRange)
+            {
+                enemy.BaseHealth -= this.AttackPoints;
+            }
+        }
+
+        protected void AddExperience(Enemy enemy)
+        {
+            this.Experience += enemy.ExperienceReward;
+        }
+
+        protected void AddCoins(Enemy enemy)
+        {
+            this.Coins += enemy.CoinsReward;
+        }
+
+        protected void Buy()
+        {
+            throw new NotImplementedException("Buy method is not implemented");    
+        }
+
+        protected void AddSkillPoints()
+        {
+            throw new NotImplementedException("Buy method is not implemented");                
+        }
+
+        protected void UseEquipment()
+        {
+            throw new NotImplementedException("Buy method is not implemented");                
+        }
+
+        protected void DrinkPotion()
+        {
+            throw new NotImplementedException("Buy method is not implemented");                
+        }
+
+        protected override void Move()
+        {
             if (currentKeyboardState.IsKeyDown(Keys.Left))
             {
                 this.Position = new Vector2(this.Position.X - this.SpeedPoints, this.Position.Y);
@@ -125,62 +161,6 @@ namespace Trulon.Models.Entities
             {
                 this.Position = new Vector2(this.Position.X, this.Position.Y + this.SpeedPoints);
             }
-            //Make sure that player doesn't go out of bounds
-            this.Position = new Vector2(MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),
-                                            MathHelper.Clamp(this.Position.Y, 0, Config.Config.ScreenHeight - this.Image.Height));
         }
-
-        protected  IList<Entity> GetEnemiesInRange(IList<Entity> entities)
-        {
-            List<Entity> enemiesInRange = new List<Entity>();
-            foreach (var entity in entities)
-            {
-                if(true) //TODO Add algorithm for checking if entity is in range and if it is enemy
-                {
-                    enemiesInRange.Add(entity);
-                }
-            }
-            return enemiesInRange;
-        }
-
-        protected  Entity GetNPCInRange(IList<Entity> entities)
-        {
-            List<Entity> entitiesInRange = new List<Entity>();
-            foreach (var entity in entities)
-            {
-                if (true) //TODO Add algorithm for checking if entity is in range and if it is enemy
-                {
-                    return entity;
-                }
-            }
-            return null;
-        }
-
-        protected override void Interact()
-        {
-            //Entity npc = this.GetNPCInRange();
-            //if(npc != null)
-            //{
-            //    //do some stuff with the npc
-            //}
-        }
-
-        protected  void Attack()
-        {
-            //this.GetEntitiesInRange
-        }
-
-        protected abstract void AddExperience();
-
-        protected abstract void AddCoins();
-
-        protected abstract void Buy();
-
-        protected abstract void AddSkillPoints();
-
-        protected abstract void UseEquipment();
-
-        protected abstract void DrinkPotion();
-
     }
 }

@@ -55,12 +55,10 @@
             IsMouseVisible = true;
 
             //player init
-            player = new Barbarian();
-            //adding boots :)
-            player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
-
-            //vendor init
-            vendor = new Vendor();
+            player = new Barbarian(300, 300);
+            vendor = new Vendor(100, 100);
+            //testing boots
+            //player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
 
             base.Initialize();
         }
@@ -116,7 +114,6 @@
             // TODO: Add your update logic here
             //Save previous state of the keyboard to determine single key presses
             previousKeyboardState = currentKeyboardState;
-
             //Read the current state of the keyboard and store it
             currentKeyboardState = Keyboard.GetState();
 

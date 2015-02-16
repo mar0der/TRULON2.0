@@ -1,50 +1,35 @@
-﻿namespace Trulon.Models.Entities.NPCs.Enemies
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Trulon.Models.Entities.NPCs.Enemies
 {
-    using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
     public class Demon : Enemy
     {
-        public Demon(
-            string name = "Demon",
-            Texture2D image = null,
-            Rectangle bounds = new Rectangle(),
-            Vector2 position = new Vector2(),
-            int attackPoints = 20,
-            int defencePoints = 20,
-            int speedPoints = 8,
-            int healthPoints = 100,
-            int level = 4,
-            List<Item> inventory = null,
-            bool isAlive = true,
-            int experienceReward = 80,
-            int coinsReward = 60)
-            : base(
-            name,
-            image,
-            bounds,
-            position,
-            attackPoints,
-            defencePoints,
-            speedPoints,
-            healthPoints,
-            level,
-            inventory,
-            isAlive,
-            experienceReward,
-            coinsReward)
+        private const string DefaultName = "Demon";
+        private const int DefaultAttackPoints = 20;
+        private const int DefaultDefensePoints = 20;
+        private const int DefaultSpeedPoints = 8;
+        private const int DefaultHealthPoints = 100;
+        private const int DefaultLevel = 4;
+        private const int DefaultExperienceReward = 80;
+        private const int DefaultCoinsReward = 60;
+        private const int DefaultWidth = 64;
+        private const int DefaultHeight = 64;
+        public Demon(int x, int y)
         {
-
-        }
-
-        protected override IList<Entity> GetEntitiesInRange(IList<Entity> entities)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Interact()
-        {
-            //Attack();
+            this.Name = DefaultName;
+            this.BaseAttack = DefaultAttackPoints;
+            this.BaseDefense = DefaultDefensePoints;
+            this.BaseSpeed = DefaultSpeedPoints;
+            this.BaseHealth = DefaultHealthPoints;
+            this.Level = DefaultLevel;
+            this.ExperienceReward = DefaultExperienceReward;
+            this.CoinsReward = DefaultCoinsReward;
+            this.Width = DefaultWidth;
+            this.Height = DefaultHeight;
+            this.Position = new Vector2(x, y);
         }
 
         protected override void Move()
@@ -52,24 +37,19 @@
             //arteficial intelligence
         }
 
-        protected override void Die()
-        {
-            //die and drop item.
-        }
-
         public override void Initialize(Texture2D texture, Vector2 position)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override void Update()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

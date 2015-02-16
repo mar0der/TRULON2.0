@@ -1,16 +1,11 @@
-﻿namespace Trulon.Models
-{
-    using System;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
+namespace Trulon.Models
+{
     public abstract class GameObject : IDrawable
     {
-        protected GameObject(int x, int y)
-        {
-            this.Position = new Vector2(x, y);
-        }
-
         public string Name { get; set; }
 
         public Texture2D Image { get; set; }
