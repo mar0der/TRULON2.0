@@ -1,4 +1,6 @@
-﻿namespace Trulon.Models.Entities.NPCs.Enemies
+﻿using Trulon.Models.Entities.Players;
+
+namespace Trulon.Models.Entities.NPCs.Enemies
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
@@ -6,36 +8,28 @@
 
     public class Troll : Enemy
     {
-        public Troll(
-            string name = "Troll",
-            Texture2D image = null,
-            Rectangle bounds = new Rectangle(),
-            Vector2 position = new Vector2(),
-            int attackPoints = 5,
-            int defencePoints = 5,
-            int speedPoints = 5,
-            int healthPoints = 60,
-            int level = 1,
-            List<Item> inventory = null,
-            bool isAlive = true,
-            int experienceReward = 50,
-            int coinsReward = 30)
-            : base(
-            name,
-            image,
-            bounds,
-            position,
-            attackPoints,
-            defencePoints,
-            speedPoints,
-            healthPoints,
-            level,
-            inventory,
-            isAlive,
-            experienceReward,
-            coinsReward)
+        private const string name = "Troll";
+        private const int attackPoints = 5;
+        private const int defensePoints = 5;
+        private const int speedPoints = 5;
+        private const int healthPoints = 60;
+        private const int level = 1;
+        private const int experienceReward = 50;
+        private const int coinsReward = 30;
+        private const int width = 64;
+        private const int height = 64;
+        public Troll(int x, int y) : base(x, y)
         {
-
+            this.Name = name;
+            this.AttackPoints = attackPoints;
+            this.DefensePoints = defensePoints;
+            this.SpeedPoints = speedPoints;
+            this.HealthPoints = healthPoints;
+            this.Level = level;
+            this.ExperienceReward = experienceReward;
+            this.CoinsReward = coinsReward;
+            this.Width = width;
+            this.Height = height;
         }
 
         protected override IList<Entity> GetEntitiesInRange(IList<Entity> entities)
