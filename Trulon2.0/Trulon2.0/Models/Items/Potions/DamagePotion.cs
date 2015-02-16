@@ -6,19 +6,19 @@ namespace Trulon.Models.Items.Potions
 {
     public class DamagePotion : Potion
     {
-        //public DamagePotion(
-        //    string name = "Damage Potion",
-        //    Texture2D image = null,
-        //    Rectangle bounds = new Rectangle(),
-        //    Vector2 position = new Vector2(),
-        //    int timeout = 5,
-        //    int countdown = 5,
-        //    bool hasTimedOut = false,
-        //    int attackPointsBuff = 10)
-        //    : base(name, image, bounds, position, timeout, countdown, hasTimedOut)
-        //{
-        //    this.AttackPointsBuff = attackPointsBuff;
-        //}
+        private const string DefaultName = "DamagePotion";
+        private const int DefaultTimeout = 5;
+        private const int DefaultCountdown = 5;
+        private const bool DefaultHasTimedOut = false;
+        private const int DefaultAttackPointsBuff = 10;
+        public DamagePotion()
+        {
+            this.Name = DefaultName;
+            this.Timeout = DefaultTimeout;
+            this.Countdown = DefaultCountdown;
+            this.HasTimedOut = DefaultHasTimedOut;
+            this.AttackPointsBuff = DefaultAttackPointsBuff;
+        }
 
         public int AttackPointsBuff { get; set; }
 

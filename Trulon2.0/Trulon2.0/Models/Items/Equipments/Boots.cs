@@ -8,21 +8,19 @@ namespace Trulon.Models.Items.Equipments
 {
     public class Boots : Equipment, IEquipable
     {
-        //public Boots(
-        //    string name = "Boots",
-        //    Texture2D image = null,
-        //    Rectangle bounds = new Rectangle(),
-        //    Vector2 position = new Vector2(),
-        //    EquipmentSlots slot = EquipmentSlots.Feet,
-        //    int attackPointsBuff = 0,
-        //    int defensePointsBuff = 0,
-        //    int speedPointsBuff = 5)
-        //    : base(name, image, bounds, position, slot)
-        //{
-        //    this.AttackPointsBuff = attackPointsBuff;
-        //    this.DefensePointsBuff = defensePointsBuff;
-        //    this.SpeedPointsBuff = speedPointsBuff;
-        //}
+        private const string DefaultName = "Boots";
+        private const EquipmentSlots DefaultSlot = EquipmentSlots.Feet;
+        private const int DefaultAttackPointsBuff = 0;
+        private const int DefaultDefensePointsBuff = 0;
+        private const int DefaultSpeedPointsBuff = 5;
+        public Boots()
+        {
+            this.Name = DefaultName;
+            this.Slot = DefaultSlot;
+            this.AttackPointsBuff = DefaultAttackPointsBuff;
+            this.DefensePointsBuff = DefaultDefensePointsBuff;
+            this.SpeedPointsBuff = DefaultSpeedPointsBuff;
+        }
 
         public int AttackPointsBuff { get; set; }
         public int DefensePointsBuff { get; set; }

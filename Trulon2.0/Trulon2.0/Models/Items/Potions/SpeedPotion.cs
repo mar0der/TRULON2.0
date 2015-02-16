@@ -6,21 +6,19 @@ namespace Trulon.Models.Items.Potions
 {
     public class SpeedPotion : Potion
     {
-        //public SpeedPotion
-        //    (
-        //    string name = "Speed Potion",
-        //    Texture2D image = null,
-        //    Rectangle bounds = new Rectangle(),
-        //    Vector2 position = new Vector2(),
-        //    int timeout = 5,
-        //    int countdown = 5,
-        //    bool hasTimedOut = false,
-        //    int speedPointsBuff = 10
-        //    )
-        //    : base(name, image, bounds, position, timeout, countdown, hasTimedOut)
-        //{
-        //    this.SpeedPointsBuff = speedPointsBuff;
-        //}
+        private const string DefaultName = "SpeedPotion";
+        private const int DefaultTimeout = 5;
+        private const int DefaultCountdown = 5;
+        private const bool DefaultHasTimedOut = false;
+        private const int DefaultSpeedPointsBuff = 10;
+        public SpeedPotion()
+        {
+            this.Name = DefaultName;
+            this.Timeout = DefaultTimeout;
+            this.Countdown = DefaultCountdown;
+            this.HasTimedOut = DefaultHasTimedOut;
+            this.SpeedPointsBuff = DefaultSpeedPointsBuff;
+        }
 
         public int SpeedPointsBuff { get; set; }
 

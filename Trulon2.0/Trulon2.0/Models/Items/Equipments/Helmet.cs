@@ -8,21 +8,19 @@ namespace Trulon.Models.Items.Equipments
 {
     public class Helmet : Equipment, IEquipable
     {
-        //public Helmet(
-        //    string name = "Helmet",
-        //    Texture2D image = null,
-        //    Rectangle bounds = new Rectangle(),
-        //    Vector2 position = new Vector2(),
-        //    EquipmentSlots slot = EquipmentSlots.Head,
-        //    int attackPointsBuff = 0,
-        //    int defensePointsBuff = 0,
-        //    int speedPointsBuff = 10)
-        //    : base(name, image, bounds, position, slot)
-        //{
-        //    this.AttackPointsBuff = attackPointsBuff;
-        //    this.DefensePointsBuff = defensePointsBuff;
-        //    this.SpeedPointsBuff = speedPointsBuff;
-        //}
+        private const string DefaultName = "Helmet";
+        private const EquipmentSlots DefaultSlot = EquipmentSlots.Head;
+        private const int DefaultAttackPointsBuff = 0;
+        private const int DefaultDefensePointsBuff = 10;
+        private const int DefaultSpeedPointsBuff = 0;
+        public Helmet()
+        {
+            this.Name = DefaultName;
+            this.Slot = DefaultSlot;
+            this.AttackPointsBuff = DefaultAttackPointsBuff;
+            this.DefensePointsBuff = DefaultDefensePointsBuff;
+            this.SpeedPointsBuff = DefaultSpeedPointsBuff;
+        }
 
         public int AttackPointsBuff { get; set; }
         public int DefensePointsBuff { get; set; }
