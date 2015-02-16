@@ -10,19 +10,27 @@
     {
         public static List<Item> VendorInventory;
 
-        public Vendor(string name = "Vendor",
-            Texture2D image = null,
-            Rectangle bounds = new Rectangle(),
-            Vector2 position = new Vector2(),
-            int attackPoints = 5,
-            int defencePoints = 5,
-            int speedPoints = 5,
-            int healthPoints = 60,
-            int level = 10,
-            List<Item> inventory = null,
-            bool isAlive = true)
-            : base(name, image, bounds, position, attackPoints, defencePoints, speedPoints, healthPoints, level, inventory, isAlive)
+        private const string name = "Vendor";
+        private const int attackPoints = 5;
+        private const int defensePoints = 5;
+        private const int speedPoints = 5;
+        private const int healthPoints = 60;
+        private const int level = 10;
+        private const int width;
+        private const int height;
+
+        public Vendor(int x, int y) : base(x, y)
         {
+            this.Name = name;
+            this.AttackPoints = attackPoints;
+            this.DefensePoints = defensePoints;
+            this.SpeedPoints = speedPoints;
+            this.HealthPoints = healthPoints;
+            this.Level = level;
+            this.Width = width;
+            this.Height = height;
+            this.Inventory = VendorInventory;
+
             VendorInventory = new List<Item>()
             {
                 new Helmet(),
@@ -33,8 +41,6 @@
                 new HealthPotion(),
                 new SpeedPotion()
             };
-            this.Inventory = VendorInventory;
-            this.Image = image;
         }
 
         protected override IList<Entity> GetEntitiesInRange(IList<Entity> entities)
@@ -67,5 +73,6 @@
         {
             spriteBatch.Draw(Image, Position, null, Color.White, 0F, Vector2.Zero, 1F, SpriteEffects.None, 0F);
         }
+
     }
 }
