@@ -5,8 +5,8 @@
 
     public abstract class Item : GameObject
     {
-        protected Item(string name, Texture2D image, Rectangle bounds, Vector2 position)
-            : base(name, image, bounds, position)
+        protected Item(int x, int y)
+            : base(x, y)
         {
 
         }

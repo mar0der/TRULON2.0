@@ -5,8 +5,8 @@
 
     public abstract class Map : GameObject
     {
-        protected Map(string name, Texture2D image, Rectangle bounds, Vector2 position)
-            : base(name, image, bounds, position)
+        protected Map(int x, int y)
+            : base(x, y)
         {
 
         }

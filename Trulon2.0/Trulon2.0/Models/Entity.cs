@@ -1,16 +1,12 @@
 ﻿namespace Trulon.Models
 {
     using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     public abstract class Entity : GameObject
     {
         protected Entity(
-            string name,
-            Texture2D image,
-            Rectangle bounds,
-            Vector2 position,
+            int x, 
+            int y,
             int attackPoints,
             int defencePoints,
             int speedPoints,
@@ -18,7 +14,7 @@
             int level,
             List<Item> inventory,
             bool isAlive)
-            : base(name, image, bounds, position)
+            : base(x, y)
         {
             this.AttackPoints = attackPoints;
             this.DefensePoints = defencePoints;

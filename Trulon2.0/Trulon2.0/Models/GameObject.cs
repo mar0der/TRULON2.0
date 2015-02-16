@@ -6,12 +6,9 @@
 
     public abstract class GameObject : IDrawable
     {
-        protected GameObject(string name, Texture2D image, Rectangle bounds, Vector2 position)
+        protected GameObject(int x, int y)
         {
-            this.Name = name;
-            this.Image = image;
-            this.Bounds = bounds;
-            this.Position = position;
+            this.Position = new Vector2(x, y);
         }
 
         public string Name { get; set; }
@@ -21,6 +18,10 @@
         public Rectangle Bounds { get; set; }
 
         public Vector2 Position { get; set; }
+
+        public int Width { get; set; }
+
+        public int Height { get; set; }
 
         public abstract void Initialize(Texture2D texture, Vector2 position);
 
