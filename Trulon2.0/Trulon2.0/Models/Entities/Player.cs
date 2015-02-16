@@ -1,4 +1,6 @@
-﻿namespace Trulon.Models.Entities
+﻿using Trulon.Models.Items;
+
+namespace Trulon.Models.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -127,7 +129,7 @@
 
         public void AddExperience(Enemy enemy)
         {
-            this.Experience += enemy.ExperienceReward;
+             this.Experience += enemy.ExperienceReward;
         }
 
         public void AddCoins(Enemy enemy)
@@ -145,9 +147,19 @@
             throw new NotImplementedException("Buy method is not implemented");                
         }
 
-        protected void UseEquipment()
+        public void UseEquipment(Equipment equipment)
         {
-            throw new NotImplementedException("Buy method is not implemented");                
+            if (!this.PlayerEquipment.CurrentEquipment.ContainsKey(equipment.Slot))
+            {
+                this.PlayerEquipment.CurrentEquipment.Add(equipment.Slot, equipment);
+                this.Inventory.Remove(equipment);
+            }
+            else
+            {
+                this.Inventory.Add(this.PlayerEquipment.CurrentEquipment[equipment.Slot]);
+                this.PlayerEquipment.CurrentEquipment.Add(equipment.Slot, equipment);
+                this.Inventory.Remove(equipment);
+            }
         }
 
         protected void DrinkPotion()

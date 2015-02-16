@@ -1,4 +1,6 @@
-﻿namespace Trulon.Models.Entities.Players
+﻿using System.Collections.Generic;
+
+namespace Trulon.Models.Entities.Players
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
@@ -6,7 +8,6 @@
     public class Paladin : Player
     {
         #region Constants
-        private readonly EntityEquipment _defaultEquipment = new EntityEquipment();
         private const string DefaultName = "Paladin";
         private const int DefaultAttackPoints = 7;
         private const int DefaultDefencePoints = 3;
@@ -43,7 +44,8 @@
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
             this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
-            this.PlayerEquipment = _defaultEquipment;
+            this.PlayerEquipment = new EntityEquipment();
+            this.Inventory = new List<Item>();
             this.IsAlive = true;
         }
 

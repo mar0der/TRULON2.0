@@ -1,5 +1,6 @@
 ﻿
 
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -8,7 +9,6 @@ namespace Trulon.Models.Entities.Players
     public class Barbarian : Player
     {
         #region Constants
-        private readonly EntityEquipment DefaultEquipment = new EntityEquipment();
         private const string DefaultName = "Barbarian";
         private const int DefaultAttackPoints = 7;
         private const int DefaultDefencePoints = 3;
@@ -45,7 +45,8 @@ namespace Trulon.Models.Entities.Players
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
             this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
-            this.PlayerEquipment = DefaultEquipment;
+            this.PlayerEquipment = new EntityEquipment();
+            this.Inventory = new List<Item>();
             this.IsAlive = true;
         }
 

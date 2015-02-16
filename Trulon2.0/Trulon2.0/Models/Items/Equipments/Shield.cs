@@ -21,11 +21,6 @@ namespace Trulon.Models.Items.Equipments
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
         }
-
-        public int AttackPointsBuff { get; set; }
-        public int DefensePointsBuff { get; set; }
-        public int SpeedPointsBuff { get; set; }
-
         public override void Initialize(Texture2D texture, Vector2 position)
         {
             throw new NotImplementedException();

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Trulon.Enums;
 using Trulon.Interfaces;
+using Trulon.Models.Items;
 
 namespace Trulon.Models
 {
@@ -9,10 +10,10 @@ namespace Trulon.Models
 
         public EntityEquipment()
         {
-            this.CurrentEquipment = new Dictionary<EquipmentSlots, IEquipable>();
+            this.CurrentEquipment = new Dictionary<EquipmentSlots, Equipment>();
         }
 
-        public Dictionary<EquipmentSlots, IEquipable> CurrentEquipment { get; set; }
+        public Dictionary<EquipmentSlots, Equipment> CurrentEquipment { get; set; }
 
     }
 }

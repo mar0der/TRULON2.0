@@ -1,4 +1,7 @@
-﻿namespace Trulon.CoreLogics
+﻿using System.Threading;
+using Trulon.Models.Items;
+
+namespace Trulon.CoreLogics
 {
     #region Using Statements
 
@@ -75,7 +78,7 @@
             this.vendor = new Vendor(100, 100);
             this.enemies = new List<Enemy>()
             {
-                new Goblin(30, 30),
+                new Orc(200, 220),
                 new Orc(200, 200)
             };
             //testing boots
@@ -105,8 +108,11 @@
             //Load the vendor resources
             this.vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.vendor.Position);
 
-            this.enemies[0].Initialize(Content.Load<Texture2D>(Assets.GoblinImages[0]), this.enemies[0].Position);
-            this.enemies[1].Initialize(Content.Load<Texture2D>(Assets.OrcImages[0]), this.enemies[1].Position);
+            foreach (var enemy in enemies)
+            {
+                enemy.Initialize(enemy is Goblin ? Content.Load<Texture2D>(Assets.GoblinImages[0]) : 
+                Content.Load<Texture2D>(Assets.OrcImages[0]), enemy.Position);
+            }
 
         }
 
@@ -161,7 +167,9 @@
                 {
                     this.player.AddCoins(this.enemies[i]);
                     this.player.AddExperience(this.enemies[i]);
-                    this.enemies.RemoveAt(i);
+                    var equipmentDrop = ItemGenerator.GetEquipmentItem();
+                    this.player.Inventory.Add(equipmentDrop);
+                      this.enemies.RemoveAt(i);
                     break;
                 }
             }
@@ -169,6 +177,20 @@
             if (this.enemies.Count == 0)
             {
                 //TODO
+            }
+
+            //Testing inventory
+            if (currentKeyboardState.IsKeyDown(Keys.E))
+            {
+                foreach (var item in this.player.Inventory)
+                {
+                    var equipment = item as Equipment;
+                    if (equipment != null)
+                    {
+                        this.player.UseEquipment(equipment);
+                        break;
+                    }
+                }
             }
 
             base.Update(gameTime);

@@ -1,4 +1,6 @@
-﻿namespace Trulon.CoreLogics
+﻿using Trulon.Models.Items;
+
+namespace Trulon.CoreLogics
 {
     using System;
     using global::Trulon.Models;
@@ -8,7 +10,7 @@
     public static class ItemGenerator
     {
         private static Random rand = new Random();
-        public static Item GetEquipmentItem()
+        public static Equipment GetEquipmentItem()
         {
             switch (rand.Next(0, 3))
             {
