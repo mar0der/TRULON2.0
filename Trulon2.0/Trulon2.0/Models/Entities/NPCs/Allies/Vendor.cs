@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Trulon.Models.Items.Equipments;
-using Trulon.Models.Items.Potions;
-
-namespace Trulon.Models.Entities.NPCs.Allies
+﻿namespace Trulon.Models.Entities.NPCs.Allies
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    using global::Trulon.Models.Items.Equipments;
+
+    using global::Trulon.Models.Items.Potions;
+
     public class Vendor : Ally
     {
         private const string DefaultName = "Vendor";
@@ -28,7 +31,7 @@ namespace Trulon.Models.Entities.NPCs.Allies
             this.Level = DefaultLevel;
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
-            this.Position = new Vector2(x, y);
+            this.Bounds = new BoundingBox(new Vector3(this.Position.X, this.Position.Y, 0), new Vector3(this.Position.X + this.Width, this.Position.Y + this.Height, 0));
             this.Inventory = new List<Item>()
             {
                 new Helmet(),

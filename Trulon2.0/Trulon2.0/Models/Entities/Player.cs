@@ -1,21 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using Trulon.Models.Entities.NPCs;
-
-namespace Trulon.Models.Entities
+﻿namespace Trulon.Models.Entities
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Input;
+
+    using global::Trulon.Models.Entities.NPCs;
+
     public abstract class Player : Entity
     {
         private KeyboardState currentKeyboardState;
+
         public EntityEquipment PlayerEquipment { get; set; }
+
         public int Experience { get; set; }
+
         public int Coins { get; set; }
+
         public int SkillPoints { get; set; }
+
         public int AttackSkill { get; set; }
+
         public int DefenseSkill { get; set; }
+
         public int SpeedSkill { get; set; }
+
         public int HealthSkill { get; set; }
 
         public int AttackPoints
@@ -77,15 +87,17 @@ namespace Trulon.Models.Entities
             //Make sure that player doesn't go out of bounds
             this.Position = new Vector2(MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),
                                             MathHelper.Clamp(this.Position.Y, 0, Config.Config.ScreenHeight - this.Image.Height));
+
+            this.Bounds = new BoundingBox(new Vector3(this.Position.X, this.Position.Y, 0), new Vector3(this.Position.X + this.Width, this.Position.Y + this.Height, 0));
         }
 
-        protected IList<Enemy> GetEnemiesInRange(IList<Enemy> enemies)
+        public IList<Enemy> GetEnemiesInRange(IList<Enemy> enemies)
         {
             var enemiesInRange = new List<Enemy>();
 
             foreach (var enemy in enemies)
             {
-                if(this.Bounds.Intersects(enemy.Bounds)) 
+                if(this.Bounds.Intersects(enemy.Bounds))
                 {
                     enemiesInRange.Add(enemy);
                 }
@@ -93,7 +105,7 @@ namespace Trulon.Models.Entities
             return enemiesInRange;
         }
 
-        protected Ally GetAllyInRange (IList<Entity> entities)
+        public Ally GetAllyInRange (IList<Entity> entities)
         {
             foreach (var entity in entities)
             {
@@ -105,7 +117,7 @@ namespace Trulon.Models.Entities
             return null;
         }
 
-        protected void Attack(IList<Enemy> enemiesInRange)
+        public void Attack(IList<Enemy> enemiesInRange)
         {
             foreach (var enemy in enemiesInRange)
             {
@@ -113,17 +125,17 @@ namespace Trulon.Models.Entities
             }
         }
 
-        protected void AddExperience(Enemy enemy)
+        public void AddExperience(Enemy enemy)
         {
             this.Experience += enemy.ExperienceReward;
         }
 
-        protected void AddCoins(Enemy enemy)
+        public void AddCoins(Enemy enemy)
         {
             this.Coins += enemy.CoinsReward;
         }
 
-        protected void Buy()
+        public void Buy()
         {
             throw new NotImplementedException("Buy method is not implemented");    
         }

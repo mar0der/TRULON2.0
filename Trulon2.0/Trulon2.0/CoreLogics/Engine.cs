@@ -1,15 +1,31 @@
 ﻿namespace Trulon.CoreLogics
 {
     #region Using Statements
+
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Security.Cryptography.X509Certificates;
+
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
+
     using global::Trulon.Config;
+
     using global::Trulon.Enums;
+
     using global::Trulon.Models.Entities;
+
+    using global::Trulon.Models.Entities.NPCs;
+
     using global::Trulon.Models.Entities.NPCs.Allies;
+
+    using global::Trulon.Models.Entities.NPCs.Enemies;
+
     using global::Trulon.Models.Entities.Players;
+
     using global::Trulon.Models.Items.Equipments;
+
     #endregion
 
     #region Engine Summary
@@ -25,12 +41,12 @@
         private Texture2D backgroundTexture;
         private Player player;
         private Vendor vendor;
+        private IList<Enemy> enemies;
 
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
 
         public Engine()
-            : base()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Resources/Images";
@@ -55,8 +71,13 @@
             IsMouseVisible = true;
 
             //player init
-            player = new Barbarian(300, 300);
-            vendor = new Vendor(100, 100);
+            this.player = new Barbarian(0, 200);
+            this.vendor = new Vendor(100, 100);
+            this.enemies = new List<Enemy>()
+            {
+                new Goblin(30, 30),
+                new Orc(200, 200)
+            };
             //testing boots
             //player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
 
@@ -72,19 +93,20 @@
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here.
             //Load map image
             this.backgroundTexture = this.Content.Load<Texture2D>("MapImages/BackgroundImage");
 
             //Load the player resources
-            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
-            player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), playerPosition);
+            this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);
 
             //Load the vendor resources
-            Vector2 vendorPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X + GraphicsDevice.Viewport.TitleSafeArea.Width / 2, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
-            vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), vendorPosition);
+            this.vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.vendor.Position);
+
+            this.enemies[0].Initialize(Content.Load<Texture2D>(Assets.GoblinImages[0]), this.enemies[0].Position);
+            this.enemies[1].Initialize(Content.Load<Texture2D>(Assets.OrcImages[0]), this.enemies[1].Position);
 
         }
 
@@ -118,7 +140,36 @@
             currentKeyboardState = Keyboard.GetState();
 
             //Update player
-            player.Update();
+            this.player.Update();
+            foreach (var enemy in enemies)
+            {
+                enemy.Update();
+            }
+
+            var enemiesInRange = this.player.GetEnemiesInRange(enemies);
+            if (enemiesInRange.Count > 0)
+            {
+                if (currentKeyboardState.IsKeyDown(Keys.Space))
+                {
+                     this.player.Attack(enemiesInRange);
+                }
+            }
+
+            for (var i = 0; i < this.enemies.Count; i++)
+            {
+                if (!this.enemies[i].IsAlive)
+                {
+                    this.player.AddCoins(this.enemies[i]);
+                    this.player.AddExperience(this.enemies[i]);
+                    this.enemies.RemoveAt(i);
+                    break;
+                }
+            }
+
+            if (this.enemies.Count == 0)
+            {
+                //TODO
+            }
 
             base.Update(gameTime);
         }
@@ -135,12 +186,19 @@
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
+            this.spriteBatch.Begin();
             this.spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, backgroundTexture.Width, backgroundTexture.Height), Color.White);
-            player.Draw(spriteBatch);
-            vendor.Draw(spriteBatch);
-            spriteBatch.End();
 
+            this.player.Draw(spriteBatch);
+            this.vendor.Draw(spriteBatch);
+
+
+            foreach (var enemy in enemies)
+            {
+                enemy.Draw(this.spriteBatch);
+            }
+
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

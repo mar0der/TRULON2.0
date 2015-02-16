@@ -28,7 +28,6 @@ namespace Trulon.Models.Entities.Players
 
         public Barbarian(int x, int y)
         {
-            this.Position = new Vector2(x, y);
             this.Name = DefaultName;
             this.BaseAttack = DefaultAttackPoints;
             this.BaseDefense = DefaultDefencePoints;
@@ -42,7 +41,10 @@ namespace Trulon.Models.Entities.Players
             this.DefenseSkill = DefaultDefenseSkill;
             this.SpeedSkill = DefaultSpeedSkill;
             this.HealthSkill = DefaultHealthSkill;
-            this.Bounds = new Rectangle(x, y, DefaultWidth, DefaultHeight);
+            this.Width = DefaultWidth;
+            this.Height = DefaultHeight;
+            this.Position = new Vector2(x, y);
+            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
             this.PlayerEquipment = DefaultEquipment;
             this.IsAlive = true;
         }

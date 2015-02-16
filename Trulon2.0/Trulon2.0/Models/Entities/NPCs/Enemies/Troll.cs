@@ -16,6 +16,7 @@ namespace Trulon.Models.Entities.NPCs.Enemies
         private const int DefaultCoinsReward = 30;
         private const int DefaultWidth = 64;
         private const int DefaultHeight = 64;
+
         public Troll(int x, int y)
         {
             this.Name = DefaultName;
@@ -29,6 +30,8 @@ namespace Trulon.Models.Entities.NPCs.Enemies
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
+            this.IsAlive = true;
+            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
         }
 
         protected override void Move()
@@ -37,11 +40,6 @@ namespace Trulon.Models.Entities.NPCs.Enemies
         }
 
         public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update()
         {
             throw new NotImplementedException();
         }
