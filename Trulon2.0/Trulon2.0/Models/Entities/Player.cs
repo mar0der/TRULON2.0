@@ -1,17 +1,13 @@
-﻿using Trulon.Models.Items;
-using Trulon.Models.Items.Potions;
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Trulon.Models.Entities.NPCs;
 using Trulon.Models.Items;
+using Trulon.Models.Items.Potions;
 
 namespace Trulon.Models.Entities
 {
     using System;
     using System.Collections.Generic;
-
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
-
-    using global::Trulon.Models.Entities.NPCs;
 
     public abstract class Player : Entity
     {
@@ -117,17 +113,35 @@ namespace Trulon.Models.Entities
                 return buffs;
             }
         }
+        protected override void Move()
+        {
+            if (currentKeyboardState.IsKeyDown(Keys.Left))
+            {
+                this.Position = new Vector2(this.Position.X - this.SpeedPoints, this.Position.Y);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Right))
+            {
+                this.Position = new Vector2(this.Position.X + this.SpeedPoints, this.Position.Y);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Up))
+            {
+                this.Position = new Vector2(this.Position.X, this.Position.Y - this.SpeedPoints);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Down))
+            {
+                this.Position = new Vector2(this.Position.X, this.Position.Y + this.SpeedPoints);
+            }
+        }
 
         public override void Update()
         {
+            base.Update();
             currentKeyboardState = Keyboard.GetState();
-            //Keyboard input
-            this.Move(); 
-            //Make sure that player doesn't go out of bounds
-            this.Position = new Vector2(MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),
-                                            MathHelper.Clamp(this.Position.Y, 0, Config.Config.ScreenHeight - this.Image.Height));
-
-            this.Bounds = new Rectangle((int)this.Position.X, (int)this.Position.Y, Width, Height);
+            //Keyboard input is in the move method which is called in the base update metod
+            //Make sure that player doesn't go out of bounds. T
+            this.Position = new Vector2(
+                MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),
+                MathHelper.Clamp(this.Position.Y, 0, Config.Config.ScreenHeight - this.Image.Height));
         }
 
         public IList<Enemy> GetEnemiesInRange(IList<Enemy> enemies)
@@ -215,24 +229,6 @@ namespace Trulon.Models.Entities
             this.PotionBuffs["Speed"] -= potion.SpeedPointsBuff;
         }
 
-        protected override void Move()
-        {
-            if (currentKeyboardState.IsKeyDown(Keys.Left))
-            {
-                this.Position = new Vector2(this.Position.X - this.SpeedPoints, this.Position.Y);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Right))
-            {
-                this.Position = new Vector2(this.Position.X + this.SpeedPoints, this.Position.Y);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Up))
-            {
-                this.Position = new Vector2(this.Position.X, this.Position.Y - this.SpeedPoints);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Down))
-            {
-                this.Position = new Vector2(this.Position.X, this.Position.Y + this.SpeedPoints);
-            }
-        }
+ 
     }
 }

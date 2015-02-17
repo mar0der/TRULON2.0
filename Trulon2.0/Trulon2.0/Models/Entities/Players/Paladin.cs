@@ -43,7 +43,7 @@ namespace Trulon.Models.Entities.Players
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
-            this.Bounds = new Rectangle(x, y, Width, Height);
+            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x - Width, y - Height, 0));
             this.PlayerEquipment = new EntityEquipment();
             this.Inventory = new List<Item>();
             this.IsAlive = true;

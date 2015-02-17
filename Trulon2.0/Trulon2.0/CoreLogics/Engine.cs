@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Trulon.Models.Items;
 
 namespace Trulon.CoreLogics
@@ -8,27 +9,17 @@ namespace Trulon.CoreLogics
     using System.Collections;
     using System.Collections.Generic;
     using System.Security.Cryptography.X509Certificates;
-
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
-
-    using global::Trulon.Config;
-
-    using global::Trulon.Enums;
-
-    using global::Trulon.Models.Entities;
-
-    using global::Trulon.Models.Entities.NPCs;
-
-    using global::Trulon.Models.Entities.NPCs.Allies;
-
-    using global::Trulon.Models.Entities.NPCs.Enemies;
-
-    using global::Trulon.Models.Entities.Players;
-
-    using global::Trulon.Models.Items.Equipments;
-
+    using Config;
+    using Enums;
+    using Models.Entities;
+    using Models.Entities.NPCs;
+    using Models.Entities.NPCs.Allies;
+    using Models.Entities.NPCs.Enemies;
+    using Models.Entities.Players;
+    using Models.Items.Equipments;
     #endregion
 
     #region Engine Summary
@@ -42,6 +33,7 @@ namespace Trulon.CoreLogics
         SpriteBatch spriteBatch;
 
         private Texture2D backgroundTexture;
+        //Loading Entites
         private Player player;
         private Vendor vendor;
         private IList<Enemy> enemies;
@@ -76,9 +68,9 @@ namespace Trulon.CoreLogics
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
 
-            //player init
-            this.player = new Barbarian(0, 200);
-            this.vendor = new Vendor(100, 100);
+            //setting entites on the scene
+            this.player = new Barbarian(100, 100);
+            this.vendor = new Vendor(500, 500);
             this.enemies = new List<Enemy>()
             {
                 new Boss(100, 200),
@@ -89,8 +81,6 @@ namespace Trulon.CoreLogics
             };
 
             this.timeoutItems = new List<Potion>();
-            //testing boots
-            player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
 
             base.Initialize();
         }
@@ -155,6 +145,7 @@ namespace Trulon.CoreLogics
 
             //Update player
             this.player.Update();
+            //update enemies
             foreach (var enemy in enemies)
             {
                 enemy.Update();
@@ -258,7 +249,6 @@ namespace Trulon.CoreLogics
 
             this.player.Draw(spriteBatch);
             this.vendor.Draw(spriteBatch);
-
 
             foreach (var enemy in enemies)
             {

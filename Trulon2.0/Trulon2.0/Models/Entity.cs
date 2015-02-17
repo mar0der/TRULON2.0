@@ -21,10 +21,16 @@
             this.Image = texture;
             this.Position = position;
         }
+        public override void Update()
+        {
+            this.Move(); 
+            //This is needed because the bounding box is a separate object from the image and we have to move it with it.
+            this.Bounds = new BoundingBox(new Vector3(Position.X, Position.Y, 0), new Vector3(Position.X + Width, Position.Y + Height, 0));
+        }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Image, Position, null, Color.White, 0F, Vector2.Zero, 1F, SpriteEffects.None, 0F);
+            spriteBatch.Draw(Image, Position, Color.White);
         }
 
     }
