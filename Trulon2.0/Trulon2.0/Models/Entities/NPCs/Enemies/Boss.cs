@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace Trulon.Models.Entities.NPCs.Enemies
+﻿namespace Trulon.Models.Entities.NPCs.Enemies
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class Boss : Enemy
     {
         private const string DefaultName = "Boss";
         private const int DefaultAttackPoints = 50;
         private const int DefaultDefensePoints = 50;
         private const int DefaultSpeedPoints = 5;
-        private const int DefaultHealthPoints = 200;
+        private const int DefaultHealthPoints = 1000;
         private const int DefaultLevel = 5;
         private const int DefaultExperienceReward = 100;
         private const int DefaultCoinsReward = 100;
         private const int DefaultWidth = 128;
-
         private const int DefaultHeight = 128;
 
         public Boss(int x, int y)
@@ -32,23 +29,8 @@ namespace Trulon.Models.Entities.NPCs.Enemies
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
-            this.IsAlive = true;
             this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
-        }
-
-        protected override void Move()
-        {
-            //arteficial intelligence
-        }
-
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
+            this.IsAlive = true;
         }
     }
 }

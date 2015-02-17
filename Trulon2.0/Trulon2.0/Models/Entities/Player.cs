@@ -1,4 +1,5 @@
-﻿using Trulon.Models.Items;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Trulon.Models.Items;
 
 namespace Trulon.Models.Entities
 {

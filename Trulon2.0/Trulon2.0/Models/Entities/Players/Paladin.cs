@@ -48,21 +48,5 @@ namespace Trulon.Models.Entities.Players
             this.Inventory = new List<Item>();
             this.IsAlive = true;
         }
-
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            this.Image = texture;
-            //Starting position of the player
-            this.Position = position;
-
-            //Set the player to be active
-
-            //Set player health
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(Image, Position, null, Color.White, 0F, Vector2.Zero, 1F, SpriteEffects.None, 0F);
-        }
     }
 }

@@ -46,7 +46,6 @@
     <Compile Include="Models\GameObject.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="Models\Entities\NonPlayerCharacter.cs" />
-    <Compile Include="Models\Entities\NPCs\Allies\Trainer.cs" />
     <Compile Include="Models\Entities\NPCs\Allies\Vendor.cs" />
     <Compile Include="Models\Entities\NPCs\Ally.cs" />
     <Compile Include="Models\Entities\NPCs\Enemies\Boss.cs" />
@@ -266,8 +265,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ClassDiagram3.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace Trulon.Models
+﻿namespace Trulon.Models
 {
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public abstract class Entity : GameObject
     {
         public int BaseAttack { get; set; }
@@ -13,5 +15,16 @@ namespace Trulon.Models
         public bool IsAlive { get; set; }
 
         protected abstract void Move();
+
+        public override void Initialize(Texture2D texture, Vector2 position)
+        {
+            this.Image = texture;
+            this.Position = position;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Image, Position, null, Color.White, 0F, Vector2.Zero, 1F, SpriteEffects.None, 0F);
+        }
     }
 }

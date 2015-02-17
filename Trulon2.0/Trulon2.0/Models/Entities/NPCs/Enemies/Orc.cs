@@ -1,7 +1,5 @@
 ﻿namespace Trulon.Models.Entities.NPCs.Enemies
 {
-    using System;
-
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -30,25 +28,9 @@
             this.CoinsReward = DefaultCoinsReward;
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
-            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
             this.Position = new Vector2(x, y);
+            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
             this.IsAlive = true;
-        }
-        
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            this.Image = texture;
-            this.Position = position;
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(this.Image, this.Position, null, Color.White, 0F, Vector2.Zero, 1F, SpriteEffects.None, 0F);
-        }
-
-        protected override void Move()
-        {
-            //TODO: arteficial intelligence
         }
     }
 }

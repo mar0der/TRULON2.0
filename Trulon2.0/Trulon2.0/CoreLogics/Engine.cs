@@ -78,8 +78,11 @@ namespace Trulon.CoreLogics
             this.vendor = new Vendor(100, 100);
             this.enemies = new List<Enemy>()
             {
-                new Goblin(200, 220),
-                new Orc(200, 200)
+                new Boss(100, 200),
+                new Demon(200, 200),
+                new Goblin(300, 200),
+                new Orc(400, 200),
+                new Troll(500, 200)
             };
             //testing boots
             //player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
