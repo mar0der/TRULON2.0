@@ -78,7 +78,7 @@ namespace Trulon.CoreLogics
             this.vendor = new Vendor(100, 100);
             this.enemies = new List<Enemy>()
             {
-                new Orc(200, 220),
+                new Goblin(200, 220),
                 new Orc(200, 200)
             };
             //testing boots

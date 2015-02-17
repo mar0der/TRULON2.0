@@ -6,7 +6,7 @@ using Trulon.Interfaces;
 
 namespace Trulon.Models.Items.Equipments
 {
-    public class Helmet : Equipment, IEquipable
+    public class Helmet : Equipment
     {
         private const string DefaultName = "Helmet";
         private const EquipmentSlots DefaultSlot = EquipmentSlots.Head;
