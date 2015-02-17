@@ -44,26 +44,9 @@
             };
         }
 
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            this.Image = texture;
-            //Starting position of the vendor
-            this.Position = position;
-
-            //Set the vendor to be active
-
-            //Set vendor health
-        }
-
         public override void Update()
         {
             throw new NotImplementedException();
         }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(Image, Position, null, Color.White, 0F, Vector2.Zero, 1F, SpriteEffects.None, 0F);
-        }
-
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace Trulon.Models.Entities.NPCs.Enemies
+﻿namespace Trulon.Models.Entities.NPCs.Enemies
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class Demon : Enemy
     {
         private const string DefaultName = "Demon";
@@ -30,24 +28,9 @@ namespace Trulon.Models.Entities.NPCs.Enemies
             this.CoinsReward = DefaultCoinsReward;
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
-            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
             this.Position = new Vector2(x, y);
+            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
             this.IsAlive = true;
-        }
-
-        protected override void Move()
-        {
-            //arteficial intelligence
-        }
-
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
         }
     }
 }

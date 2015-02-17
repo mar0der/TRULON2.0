@@ -2,6 +2,9 @@
 {
     public abstract class NonPlayerCharacter : Entity
     {
-
+        protected override void Move()
+        {
+            //TODO: arteficial intelligence
+        }
     }
 }

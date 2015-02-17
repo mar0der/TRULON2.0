@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace Trulon.Models.Entities.NPCs.Enemies
+﻿namespace Trulon.Models.Entities.NPCs.Enemies
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class Troll : Enemy
     {
         private const string DefaultName = "Troll";
@@ -30,23 +29,8 @@ namespace Trulon.Models.Entities.NPCs.Enemies
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
-            this.IsAlive = true;
             this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
-        }
-
-        protected override void Move()
-        {
-            //arteficial intelligence
-        }
-
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
+            this.IsAlive = true;
         }
     }
 }
