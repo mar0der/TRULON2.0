@@ -46,6 +46,8 @@ namespace Trulon.CoreLogics
         private Vendor vendor;
         private IList<Enemy> enemies;
 
+        private IList<Potion> timeoutItems;
+
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
 
@@ -68,6 +70,7 @@ namespace Trulon.CoreLogics
             //Sets screen size
             this.graphics.PreferredBackBufferWidth = Config.ScreenWidth;
             this.graphics.PreferredBackBufferHeight = Config.ScreenHeight;
+            graphics.IsFullScreen = true;
             this.graphics.ApplyChanges();
 
             // TODO: Add your initialization logic here
@@ -84,8 +87,10 @@ namespace Trulon.CoreLogics
                 new Orc(400, 200),
                 new Troll(500, 200)
             };
+
+            this.timeoutItems = new List<Potion>();
             //testing boots
-            //player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
+            player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
 
             base.Initialize();
         }
@@ -172,6 +177,8 @@ namespace Trulon.CoreLogics
                     this.player.AddExperience(this.enemies[i]);
                     var equipmentDrop = ItemGenerator.GetEquipmentItem();
                     this.player.Inventory.Add(equipmentDrop);
+                    var potionDrop = ItemGenerator.GetPotionItem();
+                    this.player.Inventory.Add(potionDrop);
                       this.enemies.RemoveAt(i);
                     break;
                 }
@@ -183,6 +190,7 @@ namespace Trulon.CoreLogics
             }
 
             //Testing inventory
+            //Equipment
             if (currentKeyboardState.IsKeyDown(Keys.E))
             {
                 foreach (var item in this.player.Inventory)
@@ -195,10 +203,44 @@ namespace Trulon.CoreLogics
                     }
                 }
             }
+            //Potions
+            if (currentKeyboardState.IsKeyDown(Keys.R))
+            {
+                foreach (var item in this.player.Inventory)
+                {
+                    var potion = item as Potion;
+                    if (potion != null)
+                    {
+                        this.player.DrinkPotion(potion);
+                        this.timeoutItems.Add(potion);
+                        break;
+                    }
+                }
+            }
+
+            //Check for timeout items
+            CheckForTimedoutItems();
 
             base.Update(gameTime);
         }
 
+        private void CheckForTimedoutItems()
+        {
+            for (int i = 0; i < timeoutItems.Count; i++)
+            {
+                if (timeoutItems[i].Countdown == 0)
+                {
+                    var item = timeoutItems[i];
+                    item.HasTimedOut = true;
+
+                    this.player.RemovePotionBuff(item);
+                    this.player.Inventory.Remove(item);
+                    this.timeoutItems.Remove(item);
+                    break;
+                }
+                timeoutItems[i].Countdown--;
+            }
+        }
 
         #region GameDraw Summary
         /// <summary>
