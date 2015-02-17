@@ -90,7 +90,7 @@ namespace Trulon.CoreLogics
 
             this.timeoutItems = new List<Potion>();
             //testing boots
-            //player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
+            player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.Feet, new Boots());
 
             base.Initialize();
         }

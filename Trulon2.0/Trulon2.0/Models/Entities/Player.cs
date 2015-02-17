@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-﻿using Trulon.Models.Items;
+using Trulon.Models.Items;
 using Trulon.Models.Items.Potions;
-=======
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Trulon.Models.Items;
->>>>>>> f35125d03f5f3e346ec8137583cb078040db7ff2
 
 namespace Trulon.Models.Entities
 {
