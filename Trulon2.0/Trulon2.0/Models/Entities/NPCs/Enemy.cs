@@ -1,10 +1,5 @@
-﻿
-
-namespace Trulon.Models.Entities.NPCs
+﻿namespace Trulon.Models.Entities.NPCs
 {
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-
     public abstract class Enemy : NonPlayerCharacter
     {
         public int ExperienceReward { get; set; }
@@ -16,5 +11,7 @@ namespace Trulon.Models.Entities.NPCs
                 this.IsAlive = false;
             }
         }
+
+
     }
 }

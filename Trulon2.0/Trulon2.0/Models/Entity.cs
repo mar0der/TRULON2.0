@@ -26,5 +26,6 @@
         {
             spriteBatch.Draw(Image, Position, null, Color.White, 0F, Vector2.Zero, 1F, SpriteEffects.None, 0F);
         }
+
     }
 }

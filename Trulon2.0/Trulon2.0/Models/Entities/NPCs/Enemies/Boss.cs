@@ -29,7 +29,7 @@
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
-            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + this.Width, y + this.Height, 0));
+            this.Bounds = new Rectangle(x, y, Width, Height);
             this.IsAlive = true;
         }
     }

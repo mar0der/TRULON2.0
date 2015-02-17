@@ -91,7 +91,7 @@ namespace Trulon.Models.Entities
             this.Position = new Vector2(MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),
                                             MathHelper.Clamp(this.Position.Y, 0, Config.Config.ScreenHeight - this.Image.Height));
 
-            this.Bounds = new BoundingBox(new Vector3(this.Position.X, this.Position.Y, 0), new Vector3(this.Position.X + this.Width, this.Position.Y + this.Height, 0));
+            this.Bounds = new Rectangle((int)this.Position.X, (int)this.Position.Y, Width, Height);
         }
 
         public IList<Enemy> GetEnemiesInRange(IList<Enemy> enemies)
@@ -108,7 +108,7 @@ namespace Trulon.Models.Entities
             return enemiesInRange;
         }
 
-        public Ally GetAllyInRange (IList<Entity> entities)
+        public Ally GetAllyInRange(IList<Entity> entities)
         {
             foreach (var entity in entities)
             {

@@ -103,7 +103,7 @@ namespace Trulon.CoreLogics
 
             // TODO: use this.Content to load your game content here.
             //Load map image
-            this.backgroundTexture = this.Content.Load<Texture2D>("MapImages/BackgroundImage");
+            this.backgroundTexture = this.Content.Load<Texture2D>("MapImages/TrulonHomeMap");
 
             //Load the player resources
             this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);

@@ -31,7 +31,7 @@
             this.Level = DefaultLevel;
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
-            this.Bounds = new BoundingBox(new Vector3(this.Position.X, this.Position.Y, 0), new Vector3(this.Position.X + this.Width, this.Position.Y + this.Height, 0));
+            this.Bounds = new Rectangle(x, y, Width, Height);
             this.Inventory = new List<Item>()
             {
                 new Helmet(),
