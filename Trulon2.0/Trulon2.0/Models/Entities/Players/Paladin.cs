@@ -12,7 +12,7 @@ namespace Trulon.Models.Entities.Players
         private const int DefaultAttackPoints = 7;
         private const int DefaultDefencePoints = 3;
         private const int DefaultSpeedPoints = 5;
-        private const int DefaultHealthPoints = 90;
+        private const int DefaultHealthPoints = 100;
         private const int DefaultLevel = 1;
         private const int DefaultExperience = 0;
         private const int DefaultCoins = 10;

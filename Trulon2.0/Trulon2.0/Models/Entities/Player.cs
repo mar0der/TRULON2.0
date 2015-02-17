@@ -1,4 +1,5 @@
 ﻿using Trulon.Models.Items;
+using Trulon.Models.Items.Potions;
 
 namespace Trulon.Models.Entities
 {
@@ -34,7 +35,7 @@ namespace Trulon.Models.Entities
         {
             get
             {
-                return this.BaseAttack + this.EquipmentBuffs["attack"] + this.AttackSkill;
+                return this.BaseAttack + this.EquipmentBuffs["attack"] + this.AttackSkill + this.PotionBuffs["Attack"];
             }
         }
 
@@ -42,7 +43,7 @@ namespace Trulon.Models.Entities
         {
             get
             {
-                return this.BaseDefense + this.EquipmentBuffs["defense"] + this.DefenseSkill;
+                return this.BaseDefense + this.EquipmentBuffs["defense"] + this.DefenseSkill + this.PotionBuffs["Defense"];
             }
         }
 
@@ -50,7 +51,7 @@ namespace Trulon.Models.Entities
         {
             get
             {
-                return this.BaseSpeed + this.EquipmentBuffs["speed"] + this.SpeedSkill;
+                return this.BaseSpeed + this.EquipmentBuffs["speed"] + this.SpeedSkill + this.PotionBuffs["Speed"];
             }
         }
 
@@ -58,10 +59,10 @@ namespace Trulon.Models.Entities
         {
             get
             {
-                return this.BaseHealth + this.HealthSkill;
+                return this.BaseHealth + this.HealthSkill + this.PotionBuffs["Health"];
             }
         }
-        
+
         private Dictionary<string, int> EquipmentBuffs
         {
             get
@@ -77,6 +78,40 @@ namespace Trulon.Models.Entities
                 buffs.Add("attack", attackBuff);
                 buffs.Add("defense", defenseBuff);
                 buffs.Add("speed", speedBuff);
+                return buffs;
+            }
+        }
+
+        private Dictionary<string, int> PotionBuffs
+        {
+            get
+            {
+                var buffs = new Dictionary<string, int>();
+                int attackBuff = 0, defenseBuff = 0, speedBuff = 0, healthBuff = 0;
+                foreach (var item in this.Inventory)
+                {
+                    var potion = item as Potion;
+                    if (potion is DamagePotion)
+                    {
+                        attackBuff += potion.AttackPointsBuff;
+                    }
+                    else if (potion is DefencePotion)
+                    {
+                        defenseBuff += potion.DefensePointsBuff;
+                    }
+                    else if (potion is SpeedPotion)
+                    {
+                        speedBuff += potion.SpeedPointsBuff;
+                    }
+                    else if (potion is HealthPotion)
+                    {
+                        healthBuff += potion.HealthPointsBuff;
+                    }
+                }
+                buffs.Add("Attack", attackBuff);
+                buffs.Add("Health", healthBuff);
+                buffs.Add("Defense", defenseBuff);
+                buffs.Add("Speed", speedBuff);
                 return buffs;
             }
         }
@@ -147,7 +182,7 @@ namespace Trulon.Models.Entities
             throw new NotImplementedException("Buy method is not implemented");                
         }
 
-        public void UseEquipment(Equipment equipment)
+        protected internal void UseEquipment(Equipment equipment)
         {
             if (!this.PlayerEquipment.CurrentEquipment.ContainsKey(equipment.Slot))
             {
@@ -162,9 +197,20 @@ namespace Trulon.Models.Entities
             }
         }
 
-        protected void DrinkPotion()
+        protected internal void DrinkPotion(Potion potion)
         {
-            throw new NotImplementedException("Buy method is not implemented");                
+            this.PotionBuffs["Health"] += potion.HealthPointsBuff;
+            this.PotionBuffs["Attack"] += potion.AttackPointsBuff;
+            this.PotionBuffs["Defense"] += potion.DefensePointsBuff;
+            this.PotionBuffs["Speed"] += potion.SpeedPointsBuff;
+        }
+
+        public void RemovePotionBuff(Potion potion)
+        {
+            this.PotionBuffs["Health"] -= potion.HealthPointsBuff;
+            this.PotionBuffs["Attack"] -= potion.AttackPointsBuff;
+            this.PotionBuffs["Defense"] -= potion.DefensePointsBuff;
+            this.PotionBuffs["Speed"] -= potion.SpeedPointsBuff;
         }
 
         protected override void Move()

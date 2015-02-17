@@ -11,6 +11,9 @@ namespace Trulon.Models.Items.Potions
         private const int DefaultCountdown = 5;
         private const bool DefaultHasTimedOut = false;
         private const int DefaultAttackPointsBuff = 10;
+        private const int DefaultDefencePointsBuff = 0;
+        private const int DefaultHealthPointsBuff = 0;
+        private const int DefaultSpeedPointsBuff = 0;
         public DamagePotion()
         {
             this.Name = DefaultName;
@@ -18,9 +21,10 @@ namespace Trulon.Models.Items.Potions
             this.Countdown = DefaultCountdown;
             this.HasTimedOut = DefaultHasTimedOut;
             this.AttackPointsBuff = DefaultAttackPointsBuff;
+            this.DefensePointsBuff = DefaultDefencePointsBuff;
+            this.HealthPointsBuff = DefaultHealthPointsBuff;
+            this.SpeedPointsBuff = DefaultSpeedPointsBuff;
         }
-
-        public int AttackPointsBuff { get; set; }
 
         public override void Initialize(Texture2D texture, Vector2 position)
         {
