@@ -1,10 +1,13 @@
-﻿namespace Trulon.Models.Entities
+﻿using Microsoft.Xna.Framework;
+namespace Trulon.Models.Entities
 {
     public abstract class NonPlayerCharacter : Entity
     {
         protected override void Move()
         {
-            //TODO: arteficial intelligence
+            //TODO: arteficial intelligence for all NPCs
         }
+
+
     }
 }

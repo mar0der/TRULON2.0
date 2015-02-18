@@ -10,7 +10,7 @@ namespace Trulon.Models
 
         public Texture2D Image { get; set; }
 
-        public Rectangle Bounds { get; set; }
+        public BoundingBox Bounds { get; set; }
 
         public Vector2 Position { get; set; }
 

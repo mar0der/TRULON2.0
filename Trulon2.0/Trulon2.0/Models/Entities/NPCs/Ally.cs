@@ -4,7 +4,7 @@
     {
         protected override void Move()
         {
-            //stop moving
+            //TODO: if we need to move the Ally NPC we can do it from here
         }
     }
 }

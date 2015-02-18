@@ -11,6 +11,7 @@
         private const int DefaultDefencePoints = 3;
         private const int DefaultSpeedPoints = 5;
         private const int DefaultHealthPoints = 100;
+        private const int DefaultAttakRadius = 200;
         private const int DefaultLevel = 1;
         private const int DefaultExperience = 0;
         private const int DefaultCoins = 10;
@@ -19,8 +20,8 @@
         private const int DefaultDefenseSkill = 0;
         private const int DefaultSpeedSkill = 0;
         private const int DefaultHealthSkill = 0;
-        private const int DefaultWidth = 64;
-        private const int DefaultHeight = 64;
+        private const int DefaultWidth = 128;
+        private const int DefaultHeight = 128;
         #endregion
 
         public Barbarian(int x, int y)
@@ -41,7 +42,8 @@
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
-            this.Bounds = new Rectangle(x, y, Width, Height);
+            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y + Height, 0));
+            this.AttackBounds = new BoundingSphere(new Vector3(x + Width / 2, y + Height * 0.25f, 0f), DefaultAttakRadius);
             this.PlayerEquipment = new EntityEquipment();
             this.Inventory = new List<Item>();
             this.IsAlive = true;
