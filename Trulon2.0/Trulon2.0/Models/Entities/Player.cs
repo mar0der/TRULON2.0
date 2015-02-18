@@ -150,7 +150,7 @@ namespace Trulon.Models.Entities
 
             foreach (var enemy in enemies)
             {
-                if(this.Bounds.Intersects(enemy.Bounds))
+                if(this.AttackBounds.Intersects(enemy.Bounds))
                 {
                     enemiesInRange.Add(enemy);
                 }
@@ -174,7 +174,7 @@ namespace Trulon.Models.Entities
         {
             foreach (var enemy in enemiesInRange)
             {
-                enemy.BaseHealth -= this.AttackPoints;
+                enemy.HealthPoints -= this.AttackPoints;
             }
         }
 

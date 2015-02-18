@@ -6,10 +6,12 @@
 
     public abstract class Entity : GameObject
     {
-        public int BaseAttack { get; set; }
-        public int BaseDefense { get; set; }
-        public int BaseSpeed { get; set; }
-        public int BaseHealth { get; set; }
+        public int BaseAttack { get; protected set; }
+        public int BaseDefense { get; protected set; }
+        public int BaseSpeed { get; protected set; }
+        public int BaseHealth { get; protected set; }
+        public int BaseAttackRadius { get; protected set; }
+        public BoundingSphere AttackBounds { get; set; }
         public int Level { get; set; }
         public List<Item> Inventory { get; set; }
         public bool IsAlive { get; set; }
@@ -26,6 +28,7 @@
             this.Move(); 
             //This is needed because the bounding box is a separate object from the image and we have to move it with it.
             this.Bounds = new BoundingBox(new Vector3(Position.X, Position.Y, 0), new Vector3(Position.X + Width, Position.Y + Height, 0));
+            this.AttackBounds = new BoundingSphere(new Vector3(Position.X + Width / 2, Position.Y + Height * 0.25f, 0f), this.BaseAttackRadius);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

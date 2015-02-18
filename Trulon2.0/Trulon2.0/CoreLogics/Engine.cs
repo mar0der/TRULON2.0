@@ -69,12 +69,12 @@ namespace Trulon.CoreLogics
             IsMouseVisible = true;
 
             //setting entites on the scene
-            this.player = new Barbarian(100, 100);
+            this.player = new Barbarian(0, 0);
             this.vendor = new Vendor(500, 500);
             this.enemies = new List<Enemy>()
             {
                 new Boss(100, 200),
-                new Demon(200, 200),
+                new Demon(150, 0),
                 new Goblin(300, 200),
                 new Orc(400, 200),
                 new Troll(500, 200)

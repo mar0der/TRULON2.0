@@ -10,6 +10,7 @@
         private const int DefaultDefensePoints = 20;
         private const int DefaultSpeedPoints = 8;
         private const int DefaultHealthPoints = 100;
+        private const int DefaultAttakRadius = 100;
         private const int DefaultLevel = 4;
         private const int DefaultExperienceReward = 80;
         private const int DefaultCoinsReward = 60;
@@ -30,6 +31,7 @@
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
             this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y - Height, 0));
+            this.AttackBounds = new BoundingSphere(new Vector3(x + Width / 2, y + Height * 0.25f, 0f), DefaultAttakRadius);
             this.IsAlive = true;
         }
     }
