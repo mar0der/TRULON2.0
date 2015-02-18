@@ -5,7 +5,7 @@
         //Barbarian base constants
         public static readonly string[] BarbarianImages = new string[9]
         {
-            "Barbarian/None.png",
+            "Barbarian/Barbarian-Walking1-256x192.png",
             "Barbarian/North.png",
             "Barbarian/NorthEast.png",
             "Barbarian/East.png",
