@@ -49,5 +49,10 @@
             this.Inventory = new List<Item>();
             this.IsAlive = true;
         }
+
+        protected override void Move()
+        {
+
+        }
     }
 }

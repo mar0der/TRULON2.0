@@ -27,23 +27,22 @@
             this.Image = texture;
             this.Position = position;
         }
+
         public override void Update()
         {
             this.Move(); 
             //This is needed because the bounding box is a separate object from the image and we have to move it with it.
             this.Bounds = new BoundingBox(new Vector3(Position.X, Position.Y, 0), new Vector3(Position.X + Width, Position.Y + Height, 0));
-            //this.AttackBounds = new BoundingSphere(new Vector3(Position.X + Width / 2, Position.Y + Height * 0.25f, 0f), this.BaseAttackRadius);
+            
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 this.UpdateBoundingBoxRight();
                 this.previousDirection = "right";
-                //this.AttackBounds = new BoundingBox(new Vector3(Position.X, Position.Y + Height * 0.25f, 0f), this.BaseAttackRadius);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
                 this.UpdateBoundingBoxLeft();
                 this.previousDirection = "left";
-                //this.AttackBounds = new BoundingBox(new Vector3(Position.X, Position.Y + Height * 0.25f, 0f), this.BaseAttackRadius);
             }
             else
             {

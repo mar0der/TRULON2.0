@@ -6,12 +6,22 @@ namespace Trulon.Models.Entities
 {
     using System;
     using System.Collections.Generic;
+
+    using global::Trulon.Enums;
+    using global::Trulon.Structs;
+
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
 
     public abstract class Player : Entity
     {
         private KeyboardState currentKeyboardState;
+
+        private int velocityUp = 0;
+        private int velocityDown = 0;
+        private int velocityLeft = 0;
+        private int velocityRight = 0;
+
 
         public EntityEquipment PlayerEquipment { get; set; }
 
@@ -127,31 +137,61 @@ namespace Trulon.Models.Entities
                 return buffs;
             }
         }
-        protected override void Move()
+
+        protected void Move(Map map)
         {
+            velocityUp = SpeedPoints;
+            velocityDown = SpeedPoints;
+            velocityLeft = SpeedPoints;
+            velocityRight = SpeedPoints;
+
+            foreach (var obsticle in map.Obsticles)
+            {
+                if (this.Bounds.Intersects(obsticle.ObsticleBox))
+                {
+                    if (obsticle.RestrictedDirection == Direction.Up)
+                    {
+                        velocityUp = 0;
+                    }
+                    if (obsticle.RestrictedDirection == Direction.Down)
+                    {
+                        velocityDown = 0;
+                    }
+                    if (obsticle.RestrictedDirection == Direction.Left)
+                    {
+                        velocityLeft = 0;
+                    }
+                    if (obsticle.RestrictedDirection == Direction.Right)
+                    {
+                        velocityRight = 0;
+                    }
+                }
+            }
+
             if (currentKeyboardState.IsKeyDown(Keys.Left))
             {
-                this.Position = new Vector2(this.Position.X - this.SpeedPoints, this.Position.Y);
+                this.Position = new Vector2(this.Position.X - this.velocityLeft, this.Position.Y);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Right))
             {
-                this.Position = new Vector2(this.Position.X + this.SpeedPoints, this.Position.Y);
+                this.Position = new Vector2(this.Position.X + this.velocityRight, this.Position.Y);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Up))
             {
-                this.Position = new Vector2(this.Position.X, this.Position.Y - this.SpeedPoints);
+                this.Position = new Vector2(this.Position.X, this.Position.Y - this.velocityUp);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Down))
             {
-                this.Position = new Vector2(this.Position.X, this.Position.Y + this.SpeedPoints);
+                this.Position = new Vector2(this.Position.X, this.Position.Y + this.velocityDown);
             }
         }
 
-        public override void Update()
+        public void Update(Map map)
         {
             base.Update();
+            this.Move(map);
             currentKeyboardState = Keyboard.GetState();
-            //Keyboard input is in the move method which is called in the base update metod
+            //Keyboard input is in the move method which is called in the base update method
             //Make sure that player doesn't go out of bounds. T
             this.Position = new Vector2(
                 MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),

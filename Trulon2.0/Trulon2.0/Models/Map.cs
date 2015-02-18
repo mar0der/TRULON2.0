@@ -1,10 +1,9 @@
 ﻿namespace Trulon.Models
 {
+    using global::Trulon.Structs;
+
     public abstract class Map : GameObject
     {
-        protected Map(int x, int y)
-        {
-            //TODO
-        }
+        public virtual Obsticle[] Obsticles { get; set; }
     }
 }

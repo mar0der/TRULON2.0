@@ -4,6 +4,9 @@ using Trulon.Models.Items;
 
 namespace Trulon.CoreLogics
 {
+    using global::Trulon.Models;
+    using global::Trulon.Models.Maps;
+
     #region Using Statements
 
     using System.Collections;
@@ -37,6 +40,8 @@ namespace Trulon.CoreLogics
         private Player player;
         private Vendor vendor;
         private IList<Enemy> enemies;
+        private Map[] maps = new Map[3];
+        private int currentMap = 0;
 
         private IList<Potion> timeoutItems;
 
@@ -82,6 +87,9 @@ namespace Trulon.CoreLogics
             };
 
             this.timeoutItems = new List<Potion>();
+            maps[0] = new Level1();
+            maps[1] = new Level2();
+            maps[2] = new Level3();
 
             base.Initialize();
         }
@@ -145,7 +153,8 @@ namespace Trulon.CoreLogics
             currentKeyboardState = Keyboard.GetState();
 
             //Update player
-            this.player.Update();
+            this.player.Update(maps[currentMap]);
+
             //update enemies
             foreach (var enemy in enemies)
             {
