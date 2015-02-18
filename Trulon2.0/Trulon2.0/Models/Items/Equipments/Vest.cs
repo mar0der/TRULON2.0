@@ -13,6 +13,8 @@ namespace Trulon.Models.Items.Equipments
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefensePointsBuff = 10;
         private const int DefaultSpeedPointsBuff = 0;
+        private const int DefaultAttackRadiusBuff = 0;
+
         public Vest()
         {
             this.Name = DefaultName;

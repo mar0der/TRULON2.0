@@ -13,6 +13,8 @@ namespace Trulon.Models.Items.Equipments
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefensePointsBuff = 0;
         private const int DefaultSpeedPointsBuff = 5;
+        private const int DefaultAttackRadiusBuff = 0;
+
         public Boots()
         {
             this.Name = DefaultName;
@@ -20,6 +22,7 @@ namespace Trulon.Models.Items.Equipments
             this.AttackPointsBuff = DefaultAttackPointsBuff;
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
+            this.AttackRadiusBuff = DefaultAttackRadiusBuff;
         }
 
         public override void Initialize(Texture2D texture, Vector2 position)

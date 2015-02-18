@@ -70,11 +70,12 @@ namespace Trulon.CoreLogics
 
             //setting entites on the scene
             this.player = new Barbarian(0, 0);
+            this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, new Sword());
             this.vendor = new Vendor(500, 500);
             this.enemies = new List<Enemy>()
             {
                 new Boss(100, 200),
-                new Demon(150, 0),
+                new Demon(0, 111),
                 new Goblin(300, 200),
                 new Orc(400, 200),
                 new Troll(500, 200)

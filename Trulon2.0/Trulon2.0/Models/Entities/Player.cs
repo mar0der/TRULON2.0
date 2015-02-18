@@ -61,21 +61,35 @@ namespace Trulon.Models.Entities
             }
         }
 
+        public override int AttackRadius
+        {
+            get
+            {
+                return this.BaseAttackRadius + this.EquipmentBuffs["attackRange"];
+            }
+        }
+
         private Dictionary<string, int> EquipmentBuffs
         {
             get
             {
                 var buffs = new Dictionary<string, int>();
-                int attackBuff = 0, defenseBuff = 0, speedBuff = 0;
+                int attackBuff = 0;
+                int defenseBuff = 0; 
+                int speedBuff = 0;
+                int attackRange = 0;
+
                 foreach (var item in this.PlayerEquipment.CurrentEquipment)
                 {
                     attackBuff += item.Value.AttackPointsBuff;
                     defenseBuff += item.Value.DefensePointsBuff;
                     speedBuff += item.Value.SpeedPointsBuff;
+                    attackRange += item.Value.AttackRadiusBuff;
                 }
                 buffs.Add("attack", attackBuff);
                 buffs.Add("defense", defenseBuff);
                 buffs.Add("speed", speedBuff);
+                buffs.Add("attackRange", attackRange);
                 return buffs;
             }
         }

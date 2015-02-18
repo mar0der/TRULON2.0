@@ -14,5 +14,7 @@ namespace Trulon.Models.Items
         public int DefensePointsBuff { get; set; }
 
         public int AttackPointsBuff { get; set; }
+
+        public int AttackRadiusBuff { get; set; }
     }
 }

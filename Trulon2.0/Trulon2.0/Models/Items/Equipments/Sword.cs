@@ -13,6 +13,8 @@ namespace Trulon.Models.Items.Equipments
         private const int DefaultAttackPointsBuff = 10;
         private const int DefaultDefensePointsBuff = 0;
         private const int DefaultSpeedPointsBuff = 0;
+        private const int DefaultAttackRadiusBuff = 10;
+
         public Sword()
         {
             this.Name = DefaultName;
@@ -20,6 +22,7 @@ namespace Trulon.Models.Items.Equipments
             this.AttackPointsBuff = DefaultAttackPointsBuff;
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
+            this.AttackRadiusBuff = DefaultAttackRadiusBuff;
         }
 
 
