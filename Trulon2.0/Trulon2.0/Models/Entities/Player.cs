@@ -189,14 +189,14 @@ namespace Trulon.Models.Entities
             if (!this.PlayerEquipment.CurrentEquipment.ContainsKey(equipment.Slot))
             {
                 this.PlayerEquipment.CurrentEquipment.Add(equipment.Slot, equipment);
-                this.Inventory.Remove(equipment);
             }
             else
             {
                 this.Inventory.Add(this.PlayerEquipment.CurrentEquipment[equipment.Slot]);
-                this.PlayerEquipment.CurrentEquipment.Add(equipment.Slot, equipment);
-                this.Inventory.Remove(equipment);
+                this.PlayerEquipment.CurrentEquipment[equipment.Slot] = equipment;
             }
+            this.Inventory.Remove(equipment);
+
         }
 
         protected internal void DrinkPotion(Potion potion)
