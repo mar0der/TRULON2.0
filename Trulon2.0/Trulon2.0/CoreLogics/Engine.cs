@@ -35,6 +35,8 @@ namespace Trulon.CoreLogics
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private Texture2D t;
+
         private Texture2D backgroundTexture;
         //Loading Entites
         private Player player;
@@ -120,6 +122,10 @@ namespace Trulon.CoreLogics
                 enemy.Initialize(enemy is Goblin ? Content.Load<Texture2D>(Assets.GoblinImages[0]) : 
                 Content.Load<Texture2D>(Assets.OrcImages[0]), enemy.Position);
             }
+            //create line
+            t = new Texture2D(GraphicsDevice, 1, 1);
+            t.SetData<Color>(
+                new Color[] { Color.White });
 
         }
 
@@ -265,8 +271,35 @@ namespace Trulon.CoreLogics
                 enemy.Draw(this.spriteBatch);
             }
 
+            this.DrawLine(spriteBatch,
+                new Vector2(0, 495),
+                new Vector2(175, 495));
+
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        void DrawLine(SpriteBatch sb, Vector2 start, Vector2 end)
+        {
+            Vector2 edge = end - start;
+            // calculate angle to rotate line
+            float angle = 0;
+                //(float)Math.Atan2(edge.Y, edge.X);
+
+
+            sb.Draw(t,
+                new Rectangle(// rectangle defines shape of line and position of start of line
+                    (int)start.X,
+                    (int)start.Y,
+                    (int)edge.Length(), //sb will strech the texture to fill this rectangle
+                    1), //width of line, change this to make thicker line
+                null,
+                Color.Red, //colour of line
+                angle,     //angle of line (calulated above)
+                new Vector2(0, 0), // point in line about which to rotate
+                SpriteEffects.None,
+                0);
+
         }
     }
 }
