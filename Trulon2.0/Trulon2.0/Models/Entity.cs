@@ -8,7 +8,7 @@
     public abstract class Entity : GameObject
     {
         private string previousDirection = "right";
-
+        
         public int BaseAttack { get; protected set; }
         public int BaseDefense { get; protected set; }
         public int BaseSpeed { get; protected set; }
@@ -19,6 +19,8 @@
         public int Level { get; set; }
         public List<Item> Inventory { get; set; }
         public bool IsAlive { get; set; }
+
+        public string PreviousDirection { get { return this.previousDirection; } }
         
         protected abstract void Move();
 

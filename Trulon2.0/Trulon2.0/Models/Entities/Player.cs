@@ -1,4 +1,7 @@
-﻿using Trulon.Models.Entities.NPCs;
+﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Trulon.Config;
+using Trulon.Models.Entities.NPCs;
 using Trulon.Models.Items;
 using Trulon.Models.Items.Potions;
 
@@ -21,7 +24,7 @@ namespace Trulon.Models.Entities
         private int velocityDown = 0;
         private int velocityLeft = 0;
         private int velocityRight = 0;
-
+        private bool isMoving = false;
 
         public EntityEquipment PlayerEquipment { get; set; }
 
@@ -140,6 +143,8 @@ namespace Trulon.Models.Entities
 
         protected void Move(Map map)
         {
+            currentKeyboardState = Keyboard.GetState();
+
             velocityUp = SpeedPoints;
             velocityDown = SpeedPoints;
             velocityLeft = SpeedPoints;
@@ -190,7 +195,6 @@ namespace Trulon.Models.Entities
         {
             base.Update();
             this.Move(map);
-            currentKeyboardState = Keyboard.GetState();
             //Keyboard input is in the move method which is called in the base update method
             //Make sure that player doesn't go out of bounds. T
             this.Position = new Vector2(
@@ -282,7 +286,5 @@ namespace Trulon.Models.Entities
             this.PotionBuffs["Defense"] -= potion.DefensePointsBuff;
             this.PotionBuffs["Speed"] -= potion.SpeedPointsBuff;
         }
-
- 
     }
 }

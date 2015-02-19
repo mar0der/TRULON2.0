@@ -50,6 +50,14 @@ namespace Trulon.CoreLogics
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
 
+        private int countDown;
+        private int indexFrame;
+        private bool isMoving;
+        private bool isAttacking;
+        private Texture2D[] AnimationsRight;
+        private Texture2D[] AnimationsLeft;
+        private Texture2D[] AnimationsAttack;
+
         public Engine()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -114,6 +122,29 @@ namespace Trulon.CoreLogics
             //Load the player resources
             this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);
 
+            AnimationsRight = new[]
+            {
+                Content.Load<Texture2D>(Assets.BarbarianImages[0]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[1]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[2]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[3])
+            };
+
+            AnimationsLeft = new[]
+            {
+                Content.Load<Texture2D>(Assets.BarbarianImages[4]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[5]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[6]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[7])
+            };
+
+            AnimationsAttack = new[]
+            {
+                Content.Load<Texture2D>(Assets.BarbarianImages[8]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[9]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[10]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[11])
+            };
             //Load the vendor resources
             this.vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.vendor.Position);
 
@@ -227,8 +258,65 @@ namespace Trulon.CoreLogics
 
             //Check for timeout items
             CheckForTimedoutItems();
-
+            
+            //Check for player is moving
+            UpdateInput();
+            if (isMoving || isAttacking)
+            {
+                this.AnimatePlayer();
+            }
+                
             base.Update(gameTime);
+        }
+
+        private void UpdateInput()
+        {
+            KeyboardState newState = Keyboard.GetState();
+
+            // Is the SPACE key down?
+            if (newState.IsKeyDown(Keys.Up) ||
+                newState.IsKeyDown(Keys.Down) ||
+                newState.IsKeyDown(Keys.Right) ||
+                newState.IsKeyDown(Keys.Left))
+            {
+                // If not down last update, key has just been pressed.
+                if (!previousKeyboardState.IsKeyDown(Keys.Up) ||
+                    !previousKeyboardState.IsKeyDown(Keys.Down) ||
+                    !previousKeyboardState.IsKeyDown(Keys.Right) ||
+                    !previousKeyboardState.IsKeyDown(Keys.Left))
+                {
+                    isMoving = true;
+                }
+            }
+            else if (previousKeyboardState.IsKeyDown(Keys.Up) ||
+                     previousKeyboardState.IsKeyDown(Keys.Down) ||
+                     previousKeyboardState.IsKeyDown(Keys.Right) ||
+                     previousKeyboardState.IsKeyDown(Keys.Left))
+            {
+                // Key was down last update, but not down now, so
+                // it has just been released.
+
+                isMoving = false;
+            }
+
+            if (newState.IsKeyDown(Keys.Space))
+            {
+                // If not down last update, key has just been pressed.
+                if (!previousKeyboardState.IsKeyDown(Keys.Space))
+                {
+                    isAttacking = true;
+                }
+            }
+            else if (previousKeyboardState.IsKeyDown(Keys.Space))
+            {
+                // Key was down last update, but not down now, so
+                // it has just been released.
+
+                isAttacking = false;
+            }
+
+            // Update saved state.
+            previousKeyboardState = newState;
         }
 
         private void CheckForTimedoutItems()
@@ -262,8 +350,9 @@ namespace Trulon.CoreLogics
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
             this.spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, backgroundTexture.Width, backgroundTexture.Height), Color.White);
-
+            
             this.player.Draw(spriteBatch);
+
             this.vendor.Draw(spriteBatch);
 
             foreach (var enemy in enemies)
@@ -277,6 +366,34 @@ namespace Trulon.CoreLogics
 
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        private void AnimatePlayer()
+        {
+            if (countDown == 0)
+            {
+                if (indexFrame >= AnimationsRight.Length)
+                {
+                    indexFrame = 0;
+                }
+                //change direction
+                if (isAttacking)
+                {
+                    this.player.Image = this.AnimationsAttack[indexFrame++];
+                }
+                else if (this.player.PreviousDirection == "right")
+                {
+                    this.player.Image = this.AnimationsRight[indexFrame++];
+                }
+                else
+                {
+                    this.player.Image = this.AnimationsLeft[indexFrame++];
+                }
+
+                
+                countDown = 10;
+            }
+            countDown--;
         }
 
         void DrawLine(SpriteBatch sb, Vector2 start, Vector2 end)

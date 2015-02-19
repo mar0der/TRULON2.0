@@ -24,6 +24,11 @@ namespace Trulon.Models
 
         public abstract void Draw(SpriteBatch spriteBatch);
 
+        public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+
+        }
+
         public void Draw(GameTime gameTime)
         {
             throw new NotImplementedException();

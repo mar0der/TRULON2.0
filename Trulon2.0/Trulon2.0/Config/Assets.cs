@@ -3,17 +3,20 @@
     public static class Assets
     {
         //Barbarian base constants
-        public static readonly string[] BarbarianImages = new string[9]
+        public static readonly string[] BarbarianImages = new string[12]
         {
             "Barbarian/Barbarian-Walking1-256x192.png",
-            "Barbarian/North.png",
-            "Barbarian/NorthEast.png",
-            "Barbarian/East.png",
-            "Barbarian/SouthEast.png",
-            "Barbarian/South.png",
-            "Barbarian/SouthWest.png",
-            "Barbarian/West.png",
-            "Barbarian/NorthWest.png"
+            "Barbarian/Barbarian-Walking2.png",
+            "Barbarian/Barbarian-Walking3.png",
+            "Barbarian/Barbarian-Walking4.png",
+            "Barbarian/Barbarian-Walking1Left.png",
+            "Barbarian/Barbarian-Walking2Left.png",
+            "Barbarian/Barbarian-Walking3Left.png",
+            "Barbarian/Barbarian-Walking4Left.png",
+            "Barbarian/Barbarian-Attacking1.png",
+            "Barbarian/Barbarian-Attacking2.png",
+            "Barbarian/Barbarian-Attacking3.png",
+            "Barbarian/Barbarian-Attacking4.png"
         };
 
         //Paladin base constants
