@@ -38,17 +38,16 @@
         };
 
         //Goblin base constants
-        public static readonly string[] GoblinImages = new string[9]
+        public static readonly string[] GoblinImages = new string[8]
         {
-            "Images/Goblin/None.png",
-            "Images/Goblin/North.png",
-            "Images/Goblin/NorthEast.png",
-            "Images/Goblin/East.png",
-            "Images/Goblin/SouthEast.png",
-            "Images/Goblin/South.png",
-            "Images/Goblin/SouthWest.png",
-            "Images/Goblin/West.png",
-            "Images/Goblin/NorthWest.png"
+            "Images/Goblin/goblinMove1.png",
+            "Images/Goblin/goblinMove2.png",
+            "Images/Goblin/goblinMove3.png",
+            "Images/Goblin/goblinMove4.png",
+            "Images/Goblin/goblinAttack1.png",
+            "Images/Goblin/goblinAttack2.png",
+            "Images/Goblin/goblinAttack3.png",
+            "Images/Goblin/goblinAttack4.png"
         };
 
         //Orc base constants
@@ -66,17 +65,16 @@
         };
 
         //Troll base constants
-        public static readonly string[] TrollImages = new string[9]
+        public static readonly string[] TrollImages = new string[8]
         {
-            "Images/Troll/None.png",
-            "Images/Troll/North.png",
-            "Images/Troll/NorthEast.png",
-            "Images/Troll/East.png",
-            "Images/Troll/SouthEast.png",
-            "Images/Troll/South.png",
-            "Images/Troll/SouthWest.png",
-            "Images/Troll/West.png",
-            "Images/Troll/NorthWest.png"
+            "Images/Troll/OgreMove1.png",
+            "Images/Troll/OgreMove2.png",
+            "Images/Troll/OgreMove3.png",
+            "Images/Troll/OgreMove4.png",
+            "Images/Troll/OgreAttack1.png",
+            "Images/Troll/OgreAttack2.png",
+            "Images/Troll/OgreAttack3.png",
+            "Images/Troll/OgreAttack4.png"
         };
 
         //NPCs

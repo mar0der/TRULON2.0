@@ -141,31 +141,28 @@
     <Content Include="Resources\Images\Barbarian\walking-infinite.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goblin\East.png">
+    <Content Include="Resources\Images\Goblin\goblinAttack1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goblin\None.png">
+    <Content Include="Resources\Images\Goblin\goblinAttack2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goblin\North.png">
+    <Content Include="Resources\Images\Goblin\goblinAttack3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goblin\NorthEast.png">
+    <Content Include="Resources\Images\Goblin\goblinAttack4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goblin\NorthWest.png">
+    <Content Include="Resources\Images\Goblin\goblinMove1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goblin\South.png">
+    <Content Include="Resources\Images\Goblin\goblinMove2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goblin\SouthEast.png">
+    <Content Include="Resources\Images\Goblin\goblinMove3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goblin\SouthWest.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Images\Goblin\West.png">
+    <Content Include="Resources\Images\Goblin\goblinMove4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Items\Axe.png">
@@ -258,31 +255,28 @@
     <Content Include="Resources\Images\Paladin\West.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Troll\East.png">
+    <Content Include="Resources\Images\Troll\OgreAttack1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Troll\None.png">
+    <Content Include="Resources\Images\Troll\OgreAttack2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Troll\North.png">
+    <Content Include="Resources\Images\Troll\OgreAttack3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Troll\NorthEast.png">
+    <Content Include="Resources\Images\Troll\OgreAttack4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Troll\NorthWest.png">
+    <Content Include="Resources\Images\Troll\OgreMove1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Troll\South.png">
+    <Content Include="Resources\Images\Troll\OgreMove2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Troll\SouthEast.png">
+    <Content Include="Resources\Images\Troll\OgreMove3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Troll\SouthWest.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Images\Troll\West.png">
+    <Content Include="Resources\Images\Troll\OgreMove4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

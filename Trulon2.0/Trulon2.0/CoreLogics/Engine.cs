@@ -89,10 +89,7 @@ namespace Trulon.CoreLogics
             this.vendor = new Vendor(500, 500);
             this.enemies = new List<Enemy>()
             {
-                new Boss(100, 200),
-                new Demon(0, 111),
                 new Goblin(300, 200),
-                new Orc(400, 200),
                 new Troll(500, 200)
             };
 
@@ -162,7 +159,7 @@ namespace Trulon.CoreLogics
             foreach (var enemy in enemies)
             {
                 enemy.Initialize(enemy is Goblin ? Content.Load<Texture2D>(Assets.GoblinImages[0]) : 
-                Content.Load<Texture2D>(Assets.OrcImages[0]), enemy.Position);
+                Content.Load<Texture2D>(Assets.TrollImages[0]), enemy.Position);
             }
 
         }
@@ -367,11 +364,11 @@ namespace Trulon.CoreLogics
                 enemy.Draw(this.spriteBatch);
             }
 
-            this.spriteBatch.DrawString(this.font, this.player.Level.ToString(), new Vector2(520, 615), Color.Black);
-            this.spriteBatch.DrawString(this.font, this.player.AttackPoints.ToString(), new Vector2(520, 635), Color.Black);
-            this.spriteBatch.DrawString(this.font, this.player.DefensePoints.ToString(), new Vector2(520, 655), Color.Black);
-            this.spriteBatch.DrawString(this.font, this.player.SpeedPoints.ToString(), new Vector2(520, 675), Color.Black);
-            this.spriteBatch.DrawString(this.font, this.player.Experience.ToString(), new Vector2(520, 695), Color.Black);
+            this.spriteBatch.DrawString(this.font, this.player.Level.ToString(), new Vector2(520, 615), Color.SaddleBrown);
+            this.spriteBatch.DrawString(this.font, this.player.AttackPoints.ToString(), new Vector2(520, 635), Color.SaddleBrown);
+            this.spriteBatch.DrawString(this.font, this.player.DefensePoints.ToString(), new Vector2(520, 655), Color.SaddleBrown);
+            this.spriteBatch.DrawString(this.font, this.player.SpeedPoints.ToString(), new Vector2(520, 675), Color.SaddleBrown);
+            this.spriteBatch.DrawString(this.font, this.player.Experience.ToString(), new Vector2(520, 695), Color.SaddleBrown);
             this.spriteBatch.End();
             base.Draw(gameTime);
         }
