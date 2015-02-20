@@ -35,7 +35,7 @@ namespace Trulon.CoreLogics
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private Texture2D t;
+        private SpriteFont font;
 
         private Texture2D backgroundTexture;
         //Loading Entites
@@ -62,7 +62,7 @@ namespace Trulon.CoreLogics
         public Engine()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Resources/Images";
+            Content.RootDirectory = "Resources";
         }
 
         #region Initialize Summary
@@ -78,7 +78,6 @@ namespace Trulon.CoreLogics
             //Sets screen size
             this.graphics.PreferredBackBufferWidth = Config.ScreenWidth;
             this.graphics.PreferredBackBufferHeight = Config.ScreenHeight;
-            graphics.IsFullScreen = true;
             this.graphics.ApplyChanges();
 
             // TODO: Add your initialization logic here
@@ -116,9 +115,12 @@ namespace Trulon.CoreLogics
             // Create a new SpriteBatch, which can be used to draw textures.
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //Load Font
+            this.font = Content.Load<SpriteFont>("font");
+
             // TODO: use this.Content to load your game content here.
             //Load map image
-            this.backgroundTexture = this.Content.Load<Texture2D>("MapImages/TrulonHomeMap");
+            this.backgroundTexture = this.Content.Load<Texture2D>("Images/MapImages/TrulonHomeMap");
 
             //Load the player resources
             this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);
@@ -162,10 +164,6 @@ namespace Trulon.CoreLogics
                 enemy.Initialize(enemy is Goblin ? Content.Load<Texture2D>(Assets.GoblinImages[0]) : 
                 Content.Load<Texture2D>(Assets.OrcImages[0]), enemy.Position);
             }
-            //create line
-            t = new Texture2D(GraphicsDevice, 1, 1);
-            t.SetData<Color>(
-                new Color[] { Color.White });
 
         }
 
@@ -274,7 +272,7 @@ namespace Trulon.CoreLogics
             {
                 this.AnimatePlayer();
             }
-                
+            
             base.Update(gameTime);
         }
 
@@ -369,11 +367,12 @@ namespace Trulon.CoreLogics
                 enemy.Draw(this.spriteBatch);
             }
 
-            this.DrawLine(spriteBatch,
-                new Vector2(0, 495),
-                new Vector2(175, 495));
-
-            spriteBatch.End();
+            this.spriteBatch.DrawString(this.font, this.player.Level.ToString(), new Vector2(520, 615), Color.Black);
+            this.spriteBatch.DrawString(this.font, this.player.AttackPoints.ToString(), new Vector2(520, 635), Color.Black);
+            this.spriteBatch.DrawString(this.font, this.player.DefensePoints.ToString(), new Vector2(520, 655), Color.Black);
+            this.spriteBatch.DrawString(this.font, this.player.SpeedPoints.ToString(), new Vector2(520, 675), Color.Black);
+            this.spriteBatch.DrawString(this.font, this.player.Experience.ToString(), new Vector2(520, 695), Color.Black);
+            this.spriteBatch.End();
             base.Draw(gameTime);
         }
 
@@ -412,27 +411,5 @@ namespace Trulon.CoreLogics
             countDown--;
         }
 
-        void DrawLine(SpriteBatch sb, Vector2 start, Vector2 end)
-        {
-            Vector2 edge = end - start;
-            // calculate angle to rotate line
-            float angle = 0;
-                //(float)Math.Atan2(edge.Y, edge.X);
-
-
-            sb.Draw(t,
-                new Rectangle(// rectangle defines shape of line and position of start of line
-                    (int)start.X,
-                    (int)start.Y,
-                    (int)edge.Length(), //sb will strech the texture to fill this rectangle
-                    1), //width of line, change this to make thicker line
-                null,
-                Color.Red, //colour of line
-                angle,     //angle of line (calulated above)
-                new Vector2(0, 0), // point in line about which to rotate
-                SpriteEffects.None,
-                0);
-
-        }
     }
 }
