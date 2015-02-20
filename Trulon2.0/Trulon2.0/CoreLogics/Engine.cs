@@ -56,7 +56,8 @@ namespace Trulon.CoreLogics
         private bool isAttacking;
         private Texture2D[] AnimationsRight;
         private Texture2D[] AnimationsLeft;
-        private Texture2D[] AnimationsAttack;
+        private Texture2D[] AnimationsRightAttack;
+        private Texture2D[] AnimationsLeftAttack;
 
         public Engine()
         {
@@ -138,12 +139,20 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.BarbarianImages[7])
             };
 
-            AnimationsAttack = new[]
+            AnimationsRightAttack = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[8]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[9]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[10]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[11])
+            };
+
+            AnimationsLeftAttack = new[]
+            {
+                Content.Load<Texture2D>(Assets.BarbarianImages[12]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[13]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[14]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[15])
             };
             //Load the vendor resources
             this.vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.vendor.Position);
@@ -379,7 +388,14 @@ namespace Trulon.CoreLogics
                 //change direction
                 if (isAttacking)
                 {
-                    this.player.Image = this.AnimationsAttack[indexFrame++];
+                    if (this.player.PreviousDirection == "right")
+                    {
+                        this.player.Image = this.AnimationsRightAttack[indexFrame++];
+                    }
+                    else if (this.player.PreviousDirection == "left")
+                    {
+                        this.player.Image = this.AnimationsLeftAttack[indexFrame++];
+                    }
                 }
                 else if (this.player.PreviousDirection == "right")
                 {
@@ -390,9 +406,9 @@ namespace Trulon.CoreLogics
                     this.player.Image = this.AnimationsLeft[indexFrame++];
                 }
 
-                
                 countDown = 10;
             }
+
             countDown--;
         }
 

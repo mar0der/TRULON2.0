@@ -90,16 +90,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
-    <Content Include="Resources\Images\Barbarian\Barbarian-Attacking1.png">
+    <Content Include="Resources\Images\Barbarian\Barbarian-LeftAttacking1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Barbarian\Barbarian-Attacking2.png">
+    <Content Include="Resources\Images\Barbarian\Barbarian-LeftAttacking2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Barbarian\Barbarian-Attacking3.png">
+    <Content Include="Resources\Images\Barbarian\Barbarian-LeftAttacking3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Barbarian\Barbarian-Attacking4.png">
+    <Content Include="Resources\Images\Barbarian\Barbarian-LeftAttacking4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Barbarian\Barbarian-RightAttacking1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Barbarian\Barbarian-RightAttacking2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Barbarian\Barbarian-RightAttacking3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Barbarian\Barbarian-RightAttacking4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Barbarian\Barbarian-Walking1-256x192.png">
