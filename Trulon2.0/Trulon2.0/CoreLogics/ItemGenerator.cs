@@ -10,6 +10,7 @@ namespace Trulon.CoreLogics
     public static class ItemGenerator
     {
         private static Random rand = new Random();
+
         public static Equipment GetEquipmentItem()
         {
             switch (rand.Next(0, 3))

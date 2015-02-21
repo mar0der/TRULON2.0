@@ -9,7 +9,7 @@
         private const int DefaultAttackPoints = 5;
         private const int DefaultDefensePoints = 5;
         private const int DefaultSpeedPoints = 5;
-        private const int DefaultHealthPoints = 60;
+        private const int DefaultHealthPoints = 5;
         private const int DefaultAttackRadius = 100;
         private const int DefaultLevel = 1;
         private const int DefaultExperienceReward = 50;

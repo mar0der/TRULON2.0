@@ -5,6 +5,8 @@ using Trulon.Models.Items;
 
 namespace Trulon.CoreLogics
 {
+    using global::Trulon.GUI;
+    using global::Trulon.GUI.Menu;
     using global::Trulon.Models;
     using global::Trulon.Models.Maps;
 
@@ -36,7 +38,12 @@ namespace Trulon.CoreLogics
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private Screen currentScreen;
         private SpriteFont font;
+
+        private GameGUI gui;
+
+        private static Random rand = new Random();
 
         private Texture2D backgroundTexture;
         //Loading Entites
@@ -97,6 +104,11 @@ namespace Trulon.CoreLogics
             maps[0] = new Level1();
             maps[1] = new Level2();
             maps[2] = new Level3();
+
+            //GUI
+            this.gui = new GameGUI(this);
+            gui.Initialize();
+
 
             base.Initialize();
         }
@@ -161,7 +173,7 @@ namespace Trulon.CoreLogics
 
             foreach (var enemy in enemies)
             {
-                enemy.Initialize(enemy is Goblin ? Content.Load<Texture2D>(Assets.GoblinImages[0]) : 
+                enemy.Initialize(enemy is Goblin ? Content.Load<Texture2D>(Assets.GoblinImages[0]) :
                 Content.Load<Texture2D>(Assets.TrollImages[0]), enemy.Position);
             }
 
@@ -205,27 +217,35 @@ namespace Trulon.CoreLogics
                 enemy.Update();
             }
 
-            //var enemiesInRange = this.player.GetEnemiesInRange(enemies);
-            //if (enemiesInRange.Count > 0)
-            //{
-            //    if (currentKeyboardState.IsKeyDown(Keys.Space))
-            //    {
-                        
-            //         this.player.Attack(enemiesInRange);
-            //    }
-            //}
-
             for (var i = 0; i < this.enemies.Count; i++)
             {
                 if (!this.enemies[i].IsAlive)
                 {
                     this.player.AddCoins(this.enemies[i]);
                     this.player.AddExperience(this.enemies[i]);
-                    var equipmentDrop = ItemGenerator.GetEquipmentItem();
-                    this.player.Inventory.Add(equipmentDrop);
-                    var potionDrop = ItemGenerator.GetPotionItem();
-                    this.player.Inventory.Add(potionDrop);
-                      this.enemies.RemoveAt(i);
+
+                    var equipmentDrop = this.LootEnemy("equipment");
+                    var potionDrop = this.LootEnemy("potion");
+
+                    if (this.player.Inventory.Count < 5 && equipmentDrop != null)
+                    {
+                        this.player.Inventory.Add(equipmentDrop);
+                    }
+                    else
+                    {
+                        //TODO show "Inventory full" message.
+                    }
+
+                    if (this.player.Inventory.Count < 5 && potionDrop != null)
+                    {
+                        this.player.Inventory.Add(potionDrop);
+                    }
+                    else
+                    {
+                        //TODO show "Inventory full" message.
+                    }
+
+                    this.enemies.RemoveAt(i);
                     break;
                 }
             }
@@ -266,13 +286,14 @@ namespace Trulon.CoreLogics
 
             //Check for timeout items
             CheckForTimedoutItems();
-            
+
             //Check for player is moving
             var enemiesInRange = this.player.GetEnemiesInRange(enemies);
             if (enemiesInRange.Count > 0)
             {
                 if (currentKeyboardState.IsKeyDown(Keys.Space) && isAttacking == false)
                 {
+                    indexFrame = 0;
                     this.player.Attack(enemiesInRange);
                 }
             }
@@ -289,7 +310,9 @@ namespace Trulon.CoreLogics
             {
                 throw new Exception("New wolrd;");
             }
-            
+
+            this.gui.Update();
+
             base.Update(gameTime);
         }
 
@@ -363,7 +386,7 @@ namespace Trulon.CoreLogics
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
             this.spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, backgroundTexture.Width, backgroundTexture.Height), Color.White);
-            
+
             this.player.Draw(spriteBatch);
 
             this.vendor.Draw(spriteBatch);
@@ -379,6 +402,8 @@ namespace Trulon.CoreLogics
             this.spriteBatch.DrawString(this.font, this.player.SpeedPoints.ToString(), new Vector2(520, 675), Color.SaddleBrown);
             this.spriteBatch.DrawString(this.font, this.player.Experience.ToString(), new Vector2(520, 695), Color.SaddleBrown);
             this.spriteBatch.End();
+
+            this.gui.Draw(spriteBatch);
             base.Draw(gameTime);
         }
 
@@ -397,7 +422,7 @@ namespace Trulon.CoreLogics
                             isAttacking = false;
                             indexFrame = 0;
                         }
-                        
+
                     }
                     else if (this.player.PreviousDirection == "left")
                     {
@@ -439,6 +464,23 @@ namespace Trulon.CoreLogics
             }
 
             countDown--;
+        }
+
+        private Item LootEnemy(string type)
+        {
+            int chance = rand.Next(0, 2);
+            if (chance == 0)
+            {
+                if (type == "potion")
+                {
+                    return ItemGenerator.GetPotionItem();
+                }
+                else
+                {
+                    return ItemGenerator.GetEquipmentItem();
+                }
+            }
+            return null;
         }
 
     }

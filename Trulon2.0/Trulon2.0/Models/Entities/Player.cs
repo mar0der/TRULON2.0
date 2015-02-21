@@ -17,7 +17,7 @@
         private int velocityDown = 0;
         private int velocityLeft = 0;
         private int velocityRight = 0;
-        private bool isMoving = false;
+        //private bool isMoving = false;
 
         public EntityEquipment PlayerEquipment { get; set; }
 

@@ -63,7 +63,9 @@
     <Compile Include="CoreLogics\Engine.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
-    <Compile Include="GUI\GUI.cs" />
+    <Compile Include="GUI\GameGUI.cs" />
+    <Compile Include="GUI\Menu\Screen.cs" />
+    <Compile Include="GUI\Menu\TitleScreen.cs" />
     <Compile Include="Interfaces\IEquipable.cs" />
     <Compile Include="Models\GameObject.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
