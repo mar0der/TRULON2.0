@@ -4,10 +4,10 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
-    using global::Trulon.Enums;
-    using global::Trulon.Models.Entities.NPCs;
-    using global::Trulon.Models.Items;
-    using global::Trulon.Models.Items.Potions;
+    using Enums;
+    using NPCs;
+    using Items;
+    using Items.Potions;
 
     public abstract class Player : Entity
     {

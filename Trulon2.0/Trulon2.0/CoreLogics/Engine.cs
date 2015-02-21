@@ -205,14 +205,15 @@ namespace Trulon.CoreLogics
                 enemy.Update();
             }
 
-            var enemiesInRange = this.player.GetEnemiesInRange(enemies);
-            if (enemiesInRange.Count > 0)
-            {
-                if (currentKeyboardState.IsKeyDown(Keys.Space))
-                {
-                     this.player.Attack(enemiesInRange);
-                }
-            }
+            //var enemiesInRange = this.player.GetEnemiesInRange(enemies);
+            //if (enemiesInRange.Count > 0)
+            //{
+            //    if (currentKeyboardState.IsKeyDown(Keys.Space))
+            //    {
+                        
+            //         this.player.Attack(enemiesInRange);
+            //    }
+            //}
 
             for (var i = 0; i < this.enemies.Count; i++)
             {
@@ -267,8 +268,18 @@ namespace Trulon.CoreLogics
             CheckForTimedoutItems();
             
             //Check for player is moving
+            var enemiesInRange = this.player.GetEnemiesInRange(enemies);
+            if (enemiesInRange.Count > 0)
+            {
+                if (currentKeyboardState.IsKeyDown(Keys.Space) && isAttacking == false)
+                {
+                    this.player.Attack(enemiesInRange);
+                }
+            }
+
             UpdateInput();
-            if (isMoving || isAttacking)
+
+            if (isAttacking || isMoving)
             {
                 this.AnimatePlayer();
             }
