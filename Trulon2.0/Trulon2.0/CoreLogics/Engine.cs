@@ -144,7 +144,8 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.BarbarianImages[8]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[9]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[10]),
-                Content.Load<Texture2D>(Assets.BarbarianImages[11])
+                Content.Load<Texture2D>(Assets.BarbarianImages[11]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[0])
             };
 
             AnimationsLeftAttack = new[]
@@ -152,7 +153,8 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.BarbarianImages[12]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[13]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[14]),
-                Content.Load<Texture2D>(Assets.BarbarianImages[15])
+                Content.Load<Texture2D>(Assets.BarbarianImages[15]),
+                Content.Load<Texture2D>(Assets.BarbarianImages[4])
             };
             //Load the vendor resources
             this.vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.vendor.Position);
@@ -373,40 +375,56 @@ namespace Trulon.CoreLogics
         {
             if (countDown == 0)
             {
-                if (indexFrame >= AnimationsRight.Length)
-                {
-                    indexFrame = 0;
-                }
                 //change direction
                 if (isAttacking)
                 {
                     if (this.player.PreviousDirection == "right")
                     {
                         this.player.Image = this.AnimationsRightAttack[indexFrame++];
-                        if (indexFrame == 4)
+                        if (indexFrame == this.AnimationsRightAttack.Length)
                         {
                             isAttacking = false;
+                            indexFrame = 0;
                         }
+                        
                     }
                     else if (this.player.PreviousDirection == "left")
                     {
                         this.player.Image = this.AnimationsLeftAttack[indexFrame++];
-                        if (indexFrame == 4)
+                        if (indexFrame == this.AnimationsLeftAttack.Length)
                         {
                             isAttacking = false;
+                            indexFrame = 0;
                         }
                     }
                 }
                 else if (this.player.PreviousDirection == "right")
                 {
-                    this.player.Image = this.AnimationsRight[indexFrame++];
+                    if (indexFrame >= AnimationsRight.Length)
+                    {
+                        indexFrame = 0;
+                    }
+                    else
+                    {
+                        this.player.Image = this.AnimationsRight[indexFrame++];
+                    }
+
                 }
                 else
                 {
-                    this.player.Image = this.AnimationsLeft[indexFrame++];
+                    if (indexFrame >= AnimationsLeft.Length)
+                    {
+                        indexFrame = 0;
+                    }
+                    else
+                    {
+                        this.player.Image = this.AnimationsLeft[indexFrame++];
+                    }
+
                 }
 
                 countDown = 10;
+
             }
 
             countDown--;
