@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Web.UI.WebControls;
 using Trulon.Models.Items;
 
 namespace Trulon.CoreLogics
@@ -79,7 +80,6 @@ namespace Trulon.CoreLogics
             this.graphics.PreferredBackBufferWidth = Config.ScreenWidth;
             this.graphics.PreferredBackBufferHeight = Config.ScreenHeight;
             this.graphics.ApplyChanges();
-
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
 
@@ -109,6 +109,7 @@ namespace Trulon.CoreLogics
         #endregion
         protected override void LoadContent()
         {
+
             // Create a new SpriteBatch, which can be used to draw textures.
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -269,6 +270,12 @@ namespace Trulon.CoreLogics
             {
                 this.AnimatePlayer();
             }
+
+            //Check for going in another world
+            if ((int)this.player.Position.X == 200 && (int)this.player.Position.Y == 300)
+            {
+                throw new Exception("New wolrd;");
+            }
             
             base.Update(gameTime);
         }
@@ -305,18 +312,7 @@ namespace Trulon.CoreLogics
 
             if (newState.IsKeyDown(Keys.Space))
             {
-                // If not down last update, key has just been pressed.
-                if (!previousKeyboardState.IsKeyDown(Keys.Space))
-                {
-                    isAttacking = true;
-                }
-            }
-            else if (previousKeyboardState.IsKeyDown(Keys.Space))
-            {
-                // Key was down last update, but not down now, so
-                // it has just been released.
-
-                isAttacking = false;
+                isAttacking = true;
             }
 
             // Update saved state.
@@ -387,10 +383,18 @@ namespace Trulon.CoreLogics
                     if (this.player.PreviousDirection == "right")
                     {
                         this.player.Image = this.AnimationsRightAttack[indexFrame++];
+                        if (indexFrame == 4)
+                        {
+                            isAttacking = false;
+                        }
                     }
                     else if (this.player.PreviousDirection == "left")
                     {
                         this.player.Image = this.AnimationsLeftAttack[indexFrame++];
+                        if (indexFrame == 4)
+                        {
+                            isAttacking = false;
+                        }
                     }
                 }
                 else if (this.player.PreviousDirection == "right")

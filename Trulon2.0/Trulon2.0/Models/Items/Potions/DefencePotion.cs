@@ -7,8 +7,8 @@ namespace Trulon.Models.Items.Potions
     public class DefencePotion : Potion
     {
         private const string DefaultName = "DefencePotion";
-        private const int DefaultTimeout = 5;
-        private const int DefaultCountdown = 5;
+        private const int DefaultTimeout = 55;
+        private const int DefaultCountdown = 55;
         private const bool DefaultHasTimedOut = false;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefencePointsBuff = 10;

@@ -63,14 +63,14 @@
         {
             this.AttackBounds = new BoundingBox(
                 new Vector3(this.Position.X, this.Position.Y, 0f),
-                new Vector3(this.Position.X + this.AttackRadius, this.Position.Y + this.Height, 0f));
+                new Vector3(this.Position.X + this.Width + this.AttackRadius, this.Position.Y + this.Height, 0f));
         }
 
         private void UpdateBoundingBoxRight()
         {
             this.AttackBounds = new BoundingBox(
                 new Vector3(this.Position.X, this.Position.Y, 0f),
-                new Vector3(this.Position.X + this.AttackRadius, this.Position.Y + this.Height, 0f));
+                new Vector3(this.Position.X + this.Width + this.AttackRadius, this.Position.Y + this.Height, 0f));
         }
 
         public override void Draw(SpriteBatch spriteBatch)

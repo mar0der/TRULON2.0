@@ -22,8 +22,8 @@ namespace Trulon.Models.Entities.Players
         private const int DefaultDefenseSkill = 0;
         private const int DefaultSpeedSkill = 0;
         private const int DefaultHealthSkill = 0;
-        private const int DefaultWidth = 64;
-        private const int DefaultHeight = 64;
+        private const int DefaultWidth = 256;
+        private const int DefaultHeight = 192;
         #endregion
 
         public Paladin(int x, int y)
