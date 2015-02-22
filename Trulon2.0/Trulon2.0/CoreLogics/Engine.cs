@@ -83,7 +83,6 @@ namespace Trulon.CoreLogics
 
             //setting entites on the scene
             this.player = new Barbarian(0, 0);
-            this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, new Sword());
             this.vendor = new Vendor(500, 500);
             this.enemies = new List<Enemy>()
             {
@@ -108,6 +107,9 @@ namespace Trulon.CoreLogics
             allPotions[1] = new DefensePotion();
             allPotions[2] = new HealthPotion();
             allPotions[3] = new SpeedPotion();
+
+            //this is for testing only. remove it when done
+            this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, allEquipments[3] as Equipment);
 
             //GUI
             this.gui = new GameGUI(this);
@@ -271,6 +273,31 @@ namespace Trulon.CoreLogics
             {
                 int itemAtIndex = Array.IndexOf(dumpItemFromInventory, currentKeyboardState.GetPressedKeys()[0]);
                 this.player.DumpItem(itemAtIndex);
+            }
+
+            //Deequip Item 
+            Keys[] DeequipItem = Config.DeequipItem;
+            if (currentKeyboardState.GetPressedKeys().Length > 0 && DeequipItem.Contains(currentKeyboardState.GetPressedKeys()[0]))
+            {
+                var itemAtIndex = Array.IndexOf(DeequipItem, currentKeyboardState.GetPressedKeys()[0]);
+                switch (itemAtIndex)
+                {
+                    case 0:
+                        this.player.DeequipItem(EquipmentSlots.Head);
+                        break;
+                    case 1:
+                        this.player.DeequipItem(EquipmentSlots.LeftHand);
+                        break;
+                    case 2:
+                        this.player.DeequipItem(EquipmentSlots.RightHand);
+                        break;
+                    case 3:
+                        this.player.DeequipItem(EquipmentSlots.Body);
+                        break;
+                    case 4:
+                        this.player.DeequipItem(EquipmentSlots.Feet);
+                        break;
+                }
             }
 
             //Check for player is moving

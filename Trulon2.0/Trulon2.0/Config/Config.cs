@@ -20,5 +20,7 @@
         //controls
         public static readonly Keys[] UseItemKeys = { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5 };
         public static readonly Keys[] DumpItemFromInvontory = { Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T};
+        //Keys sequence "head" , "Left Hand", "Right Hand", "body", "Feet"
+        public static readonly Keys[] DeequipItem = {Keys.Z, Keys.X, Keys.C, Keys.V, Keys.B};
     }
 }

@@ -97,10 +97,14 @@ namespace Trulon.Models.Entities
 
                 foreach (var item in this.PlayerEquipment.CurrentEquipment)
                 {
-                    attackBuff += item.Value.AttackPointsBuff;
-                    defenseBuff += item.Value.DefensePointsBuff;
-                    speedBuff += item.Value.SpeedPointsBuff;
-                    attackRange += item.Value.AttackRadiusBuff;
+                    //because the item can be removed form equipment and the slot will be set to null
+                    if (item.Value != null)
+                    {
+                        attackBuff += item.Value.AttackPointsBuff;
+                        defenseBuff += item.Value.DefensePointsBuff;
+                        speedBuff += item.Value.SpeedPointsBuff;
+                        attackRange += item.Value.AttackRadiusBuff; 
+                    }
                 }
                 buffs.Add("attack", attackBuff);
                 buffs.Add("defense", defenseBuff);
@@ -244,12 +248,30 @@ namespace Trulon.Models.Entities
             }
         }
 
-        public void RemoveEquipment(EquipmentSlots slot)
+        public void DeequipItem(EquipmentSlots slot)
         {
-            if (this.PlayerEquipment.CurrentEquipment[slot] != null)
+            if (!this.IsInventoryFull())
             {
-                this.AddToInventory(this.PlayerEquipment.CurrentEquipment[slot]);
+                if (this.PlayerEquipment.CurrentEquipment.ContainsKey(slot) && this.PlayerEquipment.CurrentEquipment[slot] != null)
+                {
+                    this.AddToInventory(this.PlayerEquipment.CurrentEquipment[slot]);
+                    this.PlayerEquipment.CurrentEquipment[slot] = null;
+                }
             }
+        }
+
+        public bool IsInventoryFull()
+        {
+            bool isFull = true;
+            for (int i = 0; i < this.Inventory.Length; i++)
+            {
+                if (this.Inventory[i] == null)
+                {
+                    isFull = false;
+                    break;
+                }
+            }
+            return isFull;
         }
 
         public void DumpItem(int itemAtIndex)
