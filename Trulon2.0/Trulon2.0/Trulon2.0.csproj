@@ -166,6 +166,21 @@
     <Content Include="Resources\Images\Barbarian\walking-infinite.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Images\EmptyEquipment\EmptyBody.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\EmptyEquipment\EmptyFeet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\EmptyEquipment\EmptyHead.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\EmptyEquipment\EmptyLeftHand.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\EmptyEquipment\EmptyRightHand.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\Goblin\goblinAttack1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

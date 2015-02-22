@@ -55,8 +55,11 @@ namespace Trulon.CoreLogics
         private Texture2D[] AnimationsRightAttack;
         private Texture2D[] AnimationsLeftAttack;
 
-        private Item[] allEquipments = new Item[5];
-        private Item[] allPotions = new Item[4];
+        public readonly Item[] AllEquipments = new Item[5];
+        public readonly Item[] AllPotions = new Item[4];
+        public readonly Dictionary<EquipmentSlots, Texture2D> AllEmptyEquipmentSlots =
+            new Dictionary<EquipmentSlots, Texture2D>();
+
 
         public Engine()
         {
@@ -98,18 +101,18 @@ namespace Trulon.CoreLogics
             
             //items load
 
-            allEquipments[0] = new Boots();
-            allEquipments[1] = new Helmet();
-            allEquipments[2] = new Shield();
-            allEquipments[3] = new Sword();
-            allEquipments[4] = new Vest();
-            allPotions[0] = new DamagePotion();
-            allPotions[1] = new DefensePotion();
-            allPotions[2] = new HealthPotion();
-            allPotions[3] = new SpeedPotion();
+            AllEquipments[0] = new Boots();
+            AllEquipments[1] = new Helmet();
+            AllEquipments[2] = new Shield();
+            AllEquipments[3] = new Sword();
+            AllEquipments[4] = new Vest();
+            AllPotions[0] = new DamagePotion();
+            AllPotions[1] = new DefensePotion();
+            AllPotions[2] = new HealthPotion();
+            AllPotions[3] = new SpeedPotion();
 
             //this is for testing only. remove it when done
-            this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, allEquipments[3] as Equipment);
+            this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, AllEquipments[3] as Equipment);
 
             //GUI
             this.gui = new GameGUI(this);
@@ -182,16 +185,23 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.TrollImages[0]), enemy.Position);
             }
 
-            allEquipments[0].Initialize(Content.Load<Texture2D>(Assets.Boots), new Vector2(-100, -100));
-            allEquipments[1].Initialize(Content.Load<Texture2D>(Assets.Helmet), new Vector2(-100, -100));
-            allEquipments[2].Initialize(Content.Load<Texture2D>(Assets.Shield), new Vector2(-100, -100));
-            allEquipments[3].Initialize(Content.Load<Texture2D>(Assets.Sword), new Vector2(-100, -100));
-            allEquipments[4].Initialize(Content.Load<Texture2D>(Assets.Vest), new Vector2(-100, -100));
-            allPotions[0].Initialize(Content.Load<Texture2D>(Assets.DamagePotion), new Vector2(-100, -100));
-            allPotions[1].Initialize(Content.Load<Texture2D>(Assets.DefensePotion), new Vector2(-100, -100));
-            allPotions[2].Initialize(Content.Load<Texture2D>(Assets.HealthPotion), new Vector2(-100, -100));
-            allPotions[3].Initialize(Content.Load<Texture2D>(Assets.SpeedPotion), new Vector2(-100, -100));
+            //Load all available items
+            AllEquipments[0].Initialize(Content.Load<Texture2D>(Assets.Boots), new Vector2(-100, -100));
+            AllEquipments[1].Initialize(Content.Load<Texture2D>(Assets.Helmet), new Vector2(-100, -100));
+            AllEquipments[2].Initialize(Content.Load<Texture2D>(Assets.Shield), new Vector2(-100, -100));
+            AllEquipments[3].Initialize(Content.Load<Texture2D>(Assets.Sword), new Vector2(-100, -100));
+            AllEquipments[4].Initialize(Content.Load<Texture2D>(Assets.Vest), new Vector2(-100, -100));
+            AllPotions[0].Initialize(Content.Load<Texture2D>(Assets.DamagePotion), new Vector2(-100, -100));
+            AllPotions[1].Initialize(Content.Load<Texture2D>(Assets.DefensePotion), new Vector2(-100, -100));
+            AllPotions[2].Initialize(Content.Load<Texture2D>(Assets.HealthPotion), new Vector2(-100, -100));
+            AllPotions[3].Initialize(Content.Load<Texture2D>(Assets.SpeedPotion), new Vector2(-100, -100));
 
+            //Load all availabe emtpy euqipment slots images
+            AllEmptyEquipmentSlots[EquipmentSlots.Head] = Content.Load<Texture2D>(Assets.EmptyHead);
+            AllEmptyEquipmentSlots[EquipmentSlots.LeftHand] = Content.Load<Texture2D>(Assets.EmptyLeftHand);
+            AllEmptyEquipmentSlots[EquipmentSlots.RightHand] = Content.Load<Texture2D>(Assets.EmptyRightHand);
+            AllEmptyEquipmentSlots[EquipmentSlots.Body] = Content.Load<Texture2D>(Assets.EmptyBody);
+            AllEmptyEquipmentSlots[EquipmentSlots.Feet] = Content.Load<Texture2D>(Assets.EmptyFeet);
         }
 
         #region UnloadContent Summary
@@ -469,11 +479,11 @@ namespace Trulon.CoreLogics
             {
                 if (type == "potion")
                 {
-                    return ItemGenerator.GetPotionItem(allPotions);
+                    return ItemGenerator.GetPotionItem(AllPotions);
                 }
                 else
                 {
-                    return ItemGenerator.GetEquipmentItem(allEquipments);
+                    return ItemGenerator.GetEquipmentItem(AllEquipments);
                 }
             }
             return null;

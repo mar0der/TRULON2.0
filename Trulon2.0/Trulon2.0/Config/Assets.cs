@@ -117,5 +117,12 @@
         public static readonly string DefensePotion = "Images/Items/DefensePotion.png";
         //SpeedPotion
         public static readonly string SpeedPotion = "Images/Items/SpeedPotion.png";
+
+        //Equipment empty slots
+        public static readonly string EmptyHead = "Images/EmptyEquipment/EmptyHead.png";
+        public static readonly string EmptyLeftHand = "Images/EmptyEquipment/EmptyLeftHand.png";
+        public static readonly string EmptyRightHand = "Images/EmptyEquipment/EmptyRightHand.png";
+        public static readonly string EmptyBody = "Images/EmptyEquipment/EmptyBody.png";
+        public static readonly string EmptyFeet = "Images/EmptyEquipment/EmptyFeet.png";
     }
 }
