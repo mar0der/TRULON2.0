@@ -25,20 +25,5 @@ namespace Trulon.Models.Items.Potions
             this.HealthPointsBuff = DefaultHealthPointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
         }
-
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

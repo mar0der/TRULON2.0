@@ -18,11 +18,21 @@ namespace Trulon.Models
 
         public int Height { get; set; }
 
-        public abstract void Initialize(Texture2D texture, Vector2 position);
+        public virtual void Initialize(Texture2D texture, Vector2 position)
+        {
+            this.Image = texture;
+            this.Position = position;
+        }
 
-        public abstract void Update();
+        public virtual void Update()
+        {
+            
+        }
 
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            
+        }
 
         public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {

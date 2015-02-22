@@ -24,21 +24,5 @@ namespace Trulon.Models.Items.Equipments
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
             this.AttackRadiusBuff = DefaultAttackRadiusBuff;
         }
-
-
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

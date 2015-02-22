@@ -38,7 +38,7 @@
                 new Vest(),
                 new Boots(),
                 new DamagePotion(),
-                new DefencePotion(),
+                new DefensePotion(),
                 new HealthPotion(),
                 new SpeedPotion()
             };

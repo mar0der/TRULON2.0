@@ -1,4 +1,7 @@
-﻿namespace Trulon.GUI
+﻿using System.Web.UI.WebControls;
+using Trulon.Config;
+
+namespace Trulon.GUI
 {
     using System;
     using System.Collections.Generic;
@@ -8,9 +11,17 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class GameGUI
+    public class GameGUI : Game
     {
         private Engine engine;
+        private Vector2[] inventoryPositions = new Vector2[]
+        {
+         new Vector2(724, 630),
+         new Vector2(807, 630),
+         new Vector2(890, 630),
+         new Vector2(970, 630),
+         new Vector2(1040, 630)
+        };
 
         public GameGUI(Engine engine)
         {
@@ -24,9 +35,11 @@
             this.engine = engine;
         }
 
+
+
         public void Initialize()
         {
-            //throw new NotImplementedException();
+            //this.vendor = new Vendor(500, 500);
         }
 
         public void Update()
@@ -36,7 +49,13 @@
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(Image, Position, Color.White);
+            for (int i = 0; i < this.engine.player.Inventory.Count; i++)
+            {
+                if (this.engine.player.Inventory[i].Image != null)
+                {
+                    spriteBatch.Draw(this.engine.player.Inventory[i].Image, this.inventoryPositions[i], Color.White);
+                }
+            }
         }
         
     }

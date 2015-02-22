@@ -11,18 +11,24 @@ namespace Trulon.CoreLogics
     {
         private static Random rand = new Random();
 
-        public static Equipment GetEquipmentItem()
+        public static Item GetEquipmentItem(Item[] equipments)
         {
-            switch (rand.Next(0, 3))
+            switch (rand.Next(0, equipments.Length))
             {
                 case 0:
-                    return new Boots();
+                    return equipments[0];
                     break;
                 case 1:
-                    return new Helmet();
+                    return equipments[1];
                     break;
                 case 2:
-                    return new Vest();
+                    return equipments[2];
+                    break;
+                case 3:
+                    return equipments[3];
+                    break;
+                case 4: 
+                    return equipments[4];
                     break;
                 default:
                     throw new Exception("Something went wrong in Item Generator");
@@ -30,21 +36,21 @@ namespace Trulon.CoreLogics
             }
         }
 
-        public static Item GetPotionItem()
+        public static Item GetPotionItem(Item[] potions)
         {
-            switch (rand.Next(0, 3))
+            switch (rand.Next(0, potions.Length))
             {
                 case 0:
-                    return new DamagePotion();
+                    return potions[0];
                     break;
                 case 1:
-                    return new DefencePotion();
+                    return potions[1];
                     break;
                 case 2:
-                    return new HealthPotion();
+                    return potions[2];
                     break;
                 case 3:
-                    return new SpeedPotion();
+                    return potions[3];
                     break;
                 default:
                     throw new Exception("Something went wrong in Item Generator");

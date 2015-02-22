@@ -24,11 +24,7 @@
         
         protected abstract void Move();
 
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            this.Image = texture;
-            this.Position = position;
-        }
+
 
         public override void Update()
         {

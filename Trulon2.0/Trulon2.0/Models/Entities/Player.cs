@@ -113,7 +113,7 @@
                     {
                         attackBuff += potion.AttackPointsBuff;
                     }
-                    else if (potion is DefencePotion)
+                    else if (potion is DefensePotion)
                     {
                         defenseBuff += potion.DefensePointsBuff;
                     }

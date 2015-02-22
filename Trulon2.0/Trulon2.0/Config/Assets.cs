@@ -109,8 +109,12 @@
         public static readonly string Sword = "Images/Items/Sword.png";
         //Timeoutable Items
         //DamagePotion
-        public static readonly string DamagePotion = "Images/Items/DamagePotion.png";
+        public static readonly string DamagePotion = "Images/Items/DefensePotion.png";
         //HealthPotion
-        private static readonly string HealthPotion = "Images/Items/HealthPotion";
+        public static readonly string HealthPotion = "Images/Items/HealthPotion.png";
+
+        public static readonly string DefensePotion = "Images/Items/DefensePotion.png";
+
+        public static readonly string SpeedPotion = "Images/Items/SpeedPotion.png";
     }
 }

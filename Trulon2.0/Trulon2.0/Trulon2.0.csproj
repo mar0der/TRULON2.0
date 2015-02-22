@@ -63,6 +63,7 @@
     <Compile Include="CoreLogics\Engine.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
+    <Compile Include="Enums\ItemTypes.cs" />
     <Compile Include="GUI\GameGUI.cs" />
     <Compile Include="GUI\Menu\Screen.cs" />
     <Compile Include="GUI\Menu\TitleScreen.cs" />
@@ -92,7 +93,7 @@
     <Compile Include="Models\Items\Equipments\Vest.cs" />
     <Compile Include="Models\Items\Potion.cs" />
     <Compile Include="Models\Items\Potions\DamagePotion.cs" />
-    <Compile Include="Models\Items\Potions\DefencePotion.cs" />
+    <Compile Include="Models\Items\Potions\DefensePotion.cs" />
     <Compile Include="Models\Items\Potions\HealthPotion.cs" />
     <Compile Include="Models\Items\Potions\SpeedPotion.cs" />
     <Compile Include="Models\Map.cs" />
@@ -189,13 +190,13 @@
     <Content Include="Resources\Images\Goblin\goblinMove4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Items\Axe.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\Images\Items\Boots.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Items\DamagePotion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\DefensePotion.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Items\HealthPotion.png">
@@ -208,6 +209,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Items\Shield.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Items\SpeedPotion.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Items\Sword.png">

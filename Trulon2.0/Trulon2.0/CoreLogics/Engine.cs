@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Web.UI.WebControls;
 using Trulon.Models.Items;
+using Trulon.Models.Items.Potions;
 
 namespace Trulon.CoreLogics
 {
@@ -36,18 +37,17 @@ namespace Trulon.CoreLogics
     public class Engine : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private SpriteBatch spriteBatch;
 
         private Screen currentScreen;
         private SpriteFont font;
-
         private GameGUI gui;
 
         private static Random rand = new Random();
 
         private Texture2D backgroundTexture;
         //Loading Entites
-        private Player player;
+        public Player player;
         private Vendor vendor;
         private IList<Enemy> enemies;
         private Map[] maps = new Map[3];
@@ -66,6 +66,9 @@ namespace Trulon.CoreLogics
         private Texture2D[] AnimationsLeft;
         private Texture2D[] AnimationsRightAttack;
         private Texture2D[] AnimationsLeftAttack;
+
+        private Item[] allEquipments = new Item[5];
+        private Item[] allPotions = new Item[4];
 
         public Engine()
         {
@@ -97,13 +100,27 @@ namespace Trulon.CoreLogics
             this.enemies = new List<Enemy>()
             {
                 new Goblin(300, 200),
-                new Troll(500, 200)
+                new Troll(500, 200),
+                new Demon(564, 200),
+                new Boss(364, 400)
             };
 
             this.timeoutItems = new List<Potion>();
             maps[0] = new Level1();
             maps[1] = new Level2();
             maps[2] = new Level3();
+            
+            //items load
+
+            allEquipments[0] = new Boots();
+            allEquipments[1] = new Helmet();
+            allEquipments[2] = new Shield();
+            allEquipments[3] = new Sword();
+            allEquipments[4] = new Vest();
+            allPotions[0] = new DamagePotion();
+            allPotions[1] = new DefensePotion();
+            allPotions[2] = new HealthPotion();
+            allPotions[3] = new SpeedPotion();
 
             //GUI
             this.gui = new GameGUI(this);
@@ -128,7 +145,6 @@ namespace Trulon.CoreLogics
             //Load Font
             this.font = Content.Load<SpriteFont>("font");
 
-            // TODO: use this.Content to load your game content here.
             //Load map image
             this.backgroundTexture = this.Content.Load<Texture2D>("Images/MapImages/TrulonHomeMap");
 
@@ -142,7 +158,7 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.BarbarianImages[2]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[3])
             };
-
+            
             AnimationsLeft = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[4]),
@@ -176,6 +192,16 @@ namespace Trulon.CoreLogics
                 enemy.Initialize(enemy is Goblin ? Content.Load<Texture2D>(Assets.GoblinImages[0]) :
                 Content.Load<Texture2D>(Assets.TrollImages[0]), enemy.Position);
             }
+
+            allEquipments[0].Initialize(Content.Load<Texture2D>(Assets.Boots), new Vector2(-100, -100));
+            allEquipments[1].Initialize(Content.Load<Texture2D>(Assets.Helmet), new Vector2(-100, -100));
+            allEquipments[2].Initialize(Content.Load<Texture2D>(Assets.Shield), new Vector2(-100, -100));
+            allEquipments[3].Initialize(Content.Load<Texture2D>(Assets.Sword), new Vector2(-100, -100));
+            allEquipments[4].Initialize(Content.Load<Texture2D>(Assets.Vest), new Vector2(-100, -100));
+            allPotions[0].Initialize(Content.Load<Texture2D>(Assets.DamagePotion), new Vector2(-100, -100));
+            allPotions[1].Initialize(Content.Load<Texture2D>(Assets.DefensePotion), new Vector2(-100, -100));
+            allPotions[2].Initialize(Content.Load<Texture2D>(Assets.HealthPotion), new Vector2(-100, -100));
+            allPotions[3].Initialize(Content.Load<Texture2D>(Assets.SpeedPotion), new Vector2(-100, -100));
 
         }
 
@@ -385,6 +411,7 @@ namespace Trulon.CoreLogics
 
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
+
             this.spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, backgroundTexture.Width, backgroundTexture.Height), Color.White);
 
             this.player.Draw(spriteBatch);
@@ -401,9 +428,9 @@ namespace Trulon.CoreLogics
             this.spriteBatch.DrawString(this.font, this.player.DefensePoints.ToString(), new Vector2(520, 655), Color.SaddleBrown);
             this.spriteBatch.DrawString(this.font, this.player.SpeedPoints.ToString(), new Vector2(520, 675), Color.SaddleBrown);
             this.spriteBatch.DrawString(this.font, this.player.Experience.ToString(), new Vector2(520, 695), Color.SaddleBrown);
-            this.spriteBatch.End();
-
             this.gui.Draw(spriteBatch);
+
+            this.spriteBatch.End();
             base.Draw(gameTime);
         }
 
@@ -468,16 +495,16 @@ namespace Trulon.CoreLogics
 
         private Item LootEnemy(string type)
         {
-            int chance = rand.Next(0, 2);
+            int chance = rand.Next(0, 1);
             if (chance == 0)
             {
                 if (type == "potion")
                 {
-                    return ItemGenerator.GetPotionItem();
+                    return ItemGenerator.GetPotionItem(allPotions);
                 }
                 else
                 {
-                    return ItemGenerator.GetEquipmentItem();
+                    return ItemGenerator.GetEquipmentItem(allEquipments);
                 }
             }
             return null;

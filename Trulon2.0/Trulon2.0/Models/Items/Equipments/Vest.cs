@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Web.UI.WebControls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Trulon.Config;
 using Trulon.Enums;
 using Trulon.Interfaces;
 
@@ -22,22 +24,7 @@ namespace Trulon.Models.Items.Equipments
             this.AttackPointsBuff = DefaultAttackPointsBuff;
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
-        }
-
-
-        public override void Initialize(Texture2D texture, Vector2 position)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
+            //this.Initialize();
         }
     }
 }
