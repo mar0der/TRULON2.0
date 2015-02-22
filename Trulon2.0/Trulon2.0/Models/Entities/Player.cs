@@ -281,6 +281,5 @@
                 this.Position = new Vector2(this.Position.X, this.Position.Y + this.velocityDown);
             }
         }
-
     }
 }
