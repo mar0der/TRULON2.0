@@ -18,6 +18,7 @@
         public const int TotalItemsCount = 8;
 
         //controls
-        public static readonly Keys[] UseItemKeys = new Keys[] { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5 };
+        public static readonly Keys[] UseItemKeys = { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5 };
+        public static readonly Keys[] DumpItemFromInvontory = { Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T};
     }
 }

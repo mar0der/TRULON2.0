@@ -252,6 +252,14 @@ namespace Trulon.Models.Entities
             }
         }
 
+        public void DumpItem(int itemAtIndex)
+        {
+            if (itemAtIndex < this.Inventory.Length)
+            {
+                this.Inventory[itemAtIndex] = null;
+            }
+        }
+
         protected void AddSkillPoints()
         {
             throw new NotImplementedException("Buy method is not implemented");

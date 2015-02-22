@@ -247,7 +247,7 @@ namespace Trulon.CoreLogics
                 //TODO
             }
 
-            //Potions
+            //Use Potions or Equipment from inventory
             Keys[] useItemKeys = Config.UseItemKeys;
             
             if (currentKeyboardState.GetPressedKeys().Length > 0 && useItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]))
@@ -262,6 +262,15 @@ namespace Trulon.CoreLogics
                 {
                     this.player.UseEquipment(itemAtIndex);
                 }
+            }
+
+            //Dump item from inventory
+            Keys[] dumpItemFromInventory = Config.DumpItemFromInvontory;
+
+            if (currentKeyboardState.GetPressedKeys().Length > 0 && dumpItemFromInventory.Contains(currentKeyboardState.GetPressedKeys()[0]))
+            {
+                int itemAtIndex = Array.IndexOf(dumpItemFromInventory, currentKeyboardState.GetPressedKeys()[0]);
+                this.player.DumpItem(itemAtIndex);
             }
 
             //Check for player is moving
