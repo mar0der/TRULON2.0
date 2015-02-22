@@ -38,6 +38,8 @@ namespace Trulon.GUI
         private Texture2D BodyImage;
         private Texture2D FeetImage;
 
+        
+
         public GameGUI(Engine engine)
         {
             Dictionary<EquipmentSlots, Rectangle> playersEquipment = new Dictionary<EquipmentSlots, Rectangle>();
@@ -77,7 +79,19 @@ namespace Trulon.GUI
             {
                 DrawEquipmentSlot(spriteBatch, slot); 
             }
+
+            //Labels
+            spriteBatch.DrawString(this.engine.font, this.engine.player.Level.ToString(), new Vector2(520, 615), Color.SaddleBrown);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.AttackPoints.ToString(), new Vector2(520, 635), Color.SaddleBrown);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.DefensePoints.ToString(), new Vector2(520, 655), Color.SaddleBrown);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.SpeedPoints.ToString(), new Vector2(520, 675), Color.SaddleBrown);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.Experience.ToString(), new Vector2(520, 695), Color.SaddleBrown);
             
+            //Inventory full message
+            if (engine.player.inventoryIsFull)
+            {
+                spriteBatch.DrawString(this.engine.font, "The inventory is full. Use or drop something!", new Vector2(700, 566), Color.Red);
+            }
         }
 
         private void DrawEquipmentSlot(SpriteBatch spriteBatch, EquipmentSlots slot)
