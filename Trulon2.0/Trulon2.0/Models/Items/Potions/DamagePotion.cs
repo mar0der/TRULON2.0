@@ -1,8 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace Trulon.Models.Items.Potions
+﻿namespace Trulon.Models.Items.Potions
 {
     public class DamagePotion : Potion
     {
@@ -14,6 +10,7 @@ namespace Trulon.Models.Items.Potions
         private const int DefaultDefencePointsBuff = 0;
         private const int DefaultHealthPointsBuff = 0;
         private const int DefaultSpeedPointsBuff = 0;
+
         public DamagePotion()
         {
             this.Name = DefaultName;

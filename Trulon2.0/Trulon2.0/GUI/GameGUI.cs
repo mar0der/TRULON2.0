@@ -1,15 +1,10 @@
-﻿using System.Web.UI.WebControls;
-using Trulon.Config;
-
-namespace Trulon.GUI
+﻿namespace Trulon.GUI
 {
-    using System;
     using System.Collections.Generic;
-
-    using global::Trulon.CoreLogics;
-    using global::Trulon.Enums;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using global::Trulon.CoreLogics;
+    using global::Trulon.Enums;
 
     public class GameGUI : Game
     {
@@ -35,8 +30,6 @@ namespace Trulon.GUI
             this.engine = engine;
         }
 
-
-
         public void Initialize()
         {
             //this.vendor = new Vendor(500, 500);
@@ -57,6 +50,5 @@ namespace Trulon.GUI
                 }
             }
         }
-        
     }
 }

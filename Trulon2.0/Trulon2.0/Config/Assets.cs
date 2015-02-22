@@ -93,13 +93,13 @@
         //Items
         //Boots
         public static readonly string Boots = "Images/Items/Boots.png";
-
         //Helmet
         public static readonly string Helmet = "Images/Items/Helmet.png";
         //Pants
         public static readonly string Pants = "Images/Items/Pants.png";
         //Vest
         public static readonly string Vest = "Images/Items/Vest.png";
+
         //Hand items
         //Axe
         public static readonly string Axe = "Images/Items/Axe.png";
@@ -107,14 +107,15 @@
         public static readonly string Shield = "Images/Items/Shield.png";
         //Sword
         public static readonly string Sword = "Images/Items/Sword.png";
+
         //Timeoutable Items
         //DamagePotion
         public static readonly string DamagePotion = "Images/Items/DefensePotion.png";
         //HealthPotion
         public static readonly string HealthPotion = "Images/Items/HealthPotion.png";
-
+        //DefensePotion
         public static readonly string DefensePotion = "Images/Items/DefensePotion.png";
-
+        //SpeedPotion
         public static readonly string SpeedPotion = "Images/Items/SpeedPotion.png";
     }
 }

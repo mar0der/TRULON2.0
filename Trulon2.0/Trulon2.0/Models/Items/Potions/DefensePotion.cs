@@ -1,8 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace Trulon.Models.Items.Potions
+﻿namespace Trulon.Models.Items.Potions
 {
     public class DefensePotion : Potion
     {

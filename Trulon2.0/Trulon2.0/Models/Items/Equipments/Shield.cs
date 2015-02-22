@@ -1,11 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Trulon.Enums;
-using Trulon.Interfaces;
-
-namespace Trulon.Models.Items.Equipments
+﻿namespace Trulon.Models.Items.Equipments
 {
+    using global::Trulon.Enums;
+
     public class Shield : Equipment
     {
         private const string DefaultName = "Shield";

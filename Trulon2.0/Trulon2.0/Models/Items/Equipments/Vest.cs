@@ -1,13 +1,7 @@
-﻿using System;
-using System.Web.UI.WebControls;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Trulon.Config;
-using Trulon.Enums;
-using Trulon.Interfaces;
-
-namespace Trulon.Models.Items.Equipments
+﻿namespace Trulon.Models.Items.Equipments
 {
+    using global::Trulon.Enums;
+
     public class Vest : Equipment
     {
         private const string DefaultName = "Vest";
@@ -24,7 +18,6 @@ namespace Trulon.Models.Items.Equipments
             this.AttackPointsBuff = DefaultAttackPointsBuff;
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
-            //this.Initialize();
         }
     }
 }

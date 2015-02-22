@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-namespace Trulon.Models.Entities
+﻿namespace Trulon.Models.Entities
 {
     public abstract class NonPlayerCharacter : Entity
     {
@@ -7,7 +6,5 @@ namespace Trulon.Models.Entities
         {
             //TODO: arteficial intelligence for all NPCs
         }
-
-
     }
 }

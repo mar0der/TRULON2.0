@@ -4,20 +4,19 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
-    using Enums;
-    using NPCs;
-    using Items;
-    using Items.Potions;
+    using global::Trulon.Enums;
+    using global::Trulon.Models.Entities.NPCs;
+    using global::Trulon.Models.Items;
+    using global::Trulon.Models.Items.Potions;
 
     public abstract class Player : Entity
     {
         private KeyboardState currentKeyboardState;
 
-        private int velocityUp = 0;
-        private int velocityDown = 0;
-        private int velocityLeft = 0;
-        private int velocityRight = 0;
-        //private bool isMoving = false;
+        private int velocityUp;
+        private int velocityDown;
+        private int velocityLeft;
+        private int velocityRight;
 
         public EntityEquipment PlayerEquipment { get; set; }
 
@@ -75,7 +74,7 @@
             }
         }
 
-        private Dictionary<string, int> EquipmentBuffs
+        public Dictionary<string, int> EquipmentBuffs
         {
             get
             {
@@ -100,12 +99,15 @@
             }
         }
 
-        private Dictionary<string, int> PotionBuffs
+        public Dictionary<string, int> PotionBuffs
         {
             get
             {
                 var buffs = new Dictionary<string, int>();
-                int attackBuff = 0, defenseBuff = 0, speedBuff = 0, healthBuff = 0;
+                int attackBuff = 0;
+                int defenseBuff = 0;
+                int speedBuff = 0;
+                int healthBuff = 0;
                 foreach (var item in this.Inventory)
                 {
                     var potion = item as Potion;
@@ -131,56 +133,6 @@
                 buffs.Add("Defense", defenseBuff);
                 buffs.Add("Speed", speedBuff);
                 return buffs;
-            }
-        }
-
-        protected void Move(Map map)
-        {
-            currentKeyboardState = Keyboard.GetState();
-
-            velocityUp = SpeedPoints;
-            velocityDown = SpeedPoints;
-            velocityLeft = SpeedPoints;
-            velocityRight = SpeedPoints;
-
-            foreach (var obsticle in map.Obsticles)
-            {
-                if (this.Bounds.Intersects(obsticle.ObsticleBox))
-                {
-                    if (obsticle.RestrictedDirection == Direction.Up)
-                    {
-                        velocityUp = 0;
-                    }
-                    if (obsticle.RestrictedDirection == Direction.Down)
-                    {
-                        velocityDown = 0;
-                    }
-                    if (obsticle.RestrictedDirection == Direction.Left)
-                    {
-                        velocityLeft = 0;
-                    }
-                    if (obsticle.RestrictedDirection == Direction.Right)
-                    {
-                        velocityRight = 0;
-                    }
-                }
-            }
-
-            if (currentKeyboardState.IsKeyDown(Keys.Left))
-            {
-                this.Position = new Vector2(this.Position.X - this.velocityLeft, this.Position.Y);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Right))
-            {
-                this.Position = new Vector2(this.Position.X + this.velocityRight, this.Position.Y);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Up))
-            {
-                this.Position = new Vector2(this.Position.X, this.Position.Y - this.velocityUp);
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.Down))
-            {
-                this.Position = new Vector2(this.Position.X, this.Position.Y + this.velocityDown);
             }
         }
 
@@ -244,9 +196,20 @@
             throw new NotImplementedException("Buy method is not implemented");    
         }
 
-        protected void AddSkillPoints()
+        public void RemovePotionBuff(Potion potion)
         {
-            throw new NotImplementedException("Buy method is not implemented");                
+            this.PotionBuffs["Health"] -= potion.HealthPointsBuff;
+            this.PotionBuffs["Attack"] -= potion.AttackPointsBuff;
+            this.PotionBuffs["Defense"] -= potion.DefensePointsBuff;
+            this.PotionBuffs["Speed"] -= potion.SpeedPointsBuff;
+        }
+
+        protected internal void DrinkPotion(Potion potion)
+        {
+            this.PotionBuffs["Health"] += potion.HealthPointsBuff;
+            this.PotionBuffs["Attack"] += potion.AttackPointsBuff;
+            this.PotionBuffs["Defense"] += potion.DefensePointsBuff;
+            this.PotionBuffs["Speed"] += potion.SpeedPointsBuff;
         }
 
         protected internal void UseEquipment(Equipment equipment)
@@ -264,20 +227,60 @@
 
         }
 
-        protected internal void DrinkPotion(Potion potion)
+        protected void AddSkillPoints()
         {
-            this.PotionBuffs["Health"] += potion.HealthPointsBuff;
-            this.PotionBuffs["Attack"] += potion.AttackPointsBuff;
-            this.PotionBuffs["Defense"] += potion.DefensePointsBuff;
-            this.PotionBuffs["Speed"] += potion.SpeedPointsBuff;
+            throw new NotImplementedException("Buy method is not implemented");
         }
 
-        public void RemovePotionBuff(Potion potion)
+        protected void Move(Map map)
         {
-            this.PotionBuffs["Health"] -= potion.HealthPointsBuff;
-            this.PotionBuffs["Attack"] -= potion.AttackPointsBuff;
-            this.PotionBuffs["Defense"] -= potion.DefensePointsBuff;
-            this.PotionBuffs["Speed"] -= potion.SpeedPointsBuff;
+            currentKeyboardState = Keyboard.GetState();
+
+            velocityUp = SpeedPoints;
+            velocityDown = SpeedPoints;
+            velocityLeft = SpeedPoints;
+            velocityRight = SpeedPoints;
+
+            foreach (var obsticle in map.Obsticles)
+            {
+                if (this.Bounds.Intersects(obsticle.ObsticleBox))
+                {
+                    if (obsticle.RestrictedDirection == Direction.Up)
+                    {
+                        velocityUp = 0;
+                    }
+                    if (obsticle.RestrictedDirection == Direction.Down)
+                    {
+                        velocityDown = 0;
+                    }
+                    if (obsticle.RestrictedDirection == Direction.Left)
+                    {
+                        velocityLeft = 0;
+                    }
+                    if (obsticle.RestrictedDirection == Direction.Right)
+                    {
+                        velocityRight = 0;
+                    }
+                }
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.Left))
+            {
+                this.Position = new Vector2(this.Position.X - this.velocityLeft, this.Position.Y);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Right))
+            {
+                this.Position = new Vector2(this.Position.X + this.velocityRight, this.Position.Y);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Up))
+            {
+                this.Position = new Vector2(this.Position.X, this.Position.Y - this.velocityUp);
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Down))
+            {
+                this.Position = new Vector2(this.Position.X, this.Position.Y + this.velocityDown);
+            }
         }
+
     }
 }

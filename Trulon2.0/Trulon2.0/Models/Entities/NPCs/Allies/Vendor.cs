@@ -2,16 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
-
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-
     using global::Trulon.Models.Items.Equipments;
-
     using global::Trulon.Models.Items.Potions;
 
     public class Vendor : Ally
     {
+        #region Constants
         private const string DefaultName = "Vendor";
         private const int DefaultAttackPoints = 0;
         private const int DefaultDefensePoints = 0;
@@ -20,6 +17,7 @@
         private const int DefaultLevel = 10;
         private const int DefaultWidth = 64;
         private const int DefaultHeight = 64;
+        #endregion
 
         public Vendor(int x, int y)
         {

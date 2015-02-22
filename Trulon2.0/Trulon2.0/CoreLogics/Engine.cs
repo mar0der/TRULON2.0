@@ -1,32 +1,25 @@
-﻿using System;
-using System.Threading;
-using System.Web.UI.WebControls;
-using Trulon.Models.Items;
-using Trulon.Models.Items.Potions;
-
-namespace Trulon.CoreLogics
+﻿namespace Trulon.CoreLogics
 {
-    using global::Trulon.GUI;
-    using global::Trulon.GUI.Menu;
-    using global::Trulon.Models;
-    using global::Trulon.Models.Maps;
-
     #region Using Statements
-
-    using System.Collections;
+    using System;
     using System.Collections.Generic;
-    using System.Security.Cryptography.X509Certificates;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
-    using Config;
-    using Enums;
-    using Models.Entities;
-    using Models.Entities.NPCs;
-    using Models.Entities.NPCs.Allies;
-    using Models.Entities.NPCs.Enemies;
-    using Models.Entities.Players;
-    using Models.Items.Equipments;
+    using global::Trulon.Config;
+    using global::Trulon.Enums;
+    using global::Trulon.GUI;
+    using global::Trulon.GUI.Menu;
+    using global::Trulon.Models;
+    using global::Trulon.Models.Entities;
+    using global::Trulon.Models.Entities.NPCs;
+    using global::Trulon.Models.Entities.NPCs.Allies;
+    using global::Trulon.Models.Entities.NPCs.Enemies;
+    using global::Trulon.Models.Entities.Players;
+    using global::Trulon.Models.Items;
+    using global::Trulon.Models.Items.Equipments;
+    using global::Trulon.Models.Items.Potions;
+    using global::Trulon.Models.Maps;
     #endregion
 
     #region Engine Summary
@@ -126,7 +119,6 @@ namespace Trulon.CoreLogics
             this.gui = new GameGUI(this);
             gui.Initialize();
 
-
             base.Initialize();
         }
 
@@ -184,6 +176,7 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.BarbarianImages[15]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[4])
             };
+
             //Load the vendor resources
             this.vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.vendor.Position);
 

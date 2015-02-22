@@ -1,10 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Trulon.Enums;
-using Trulon.Interfaces;
-
-namespace Trulon.Models.Items
+﻿namespace Trulon.Models.Items
 {
+    using global::Trulon.Enums;
+    using global::Trulon.Interfaces;
+
     public abstract class Equipment : Item, IEquipable
     {
         public EquipmentSlots Slot { get; set; }

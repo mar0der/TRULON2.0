@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Trulon.Models.Maps
+﻿namespace Trulon.Models.Maps
 {
-    using global::Trulon.Enums;
-    using global::Trulon.Structs;
-
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using global::Trulon.Enums;
+    using global::Trulon.Structs;
 
     public class Level1 : Map
     {

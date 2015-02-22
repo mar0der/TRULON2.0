@@ -13,14 +13,10 @@
                 this.BaseHealth = value;
             }
         }
+
         public int ExperienceReward { get; set; }
 
         public int CoinsReward { get; set; }
-
-        protected override void Move()
-        {
-            //TODO: AI for eneimies
-        }
 
         public override void Update()
         {
@@ -32,6 +28,9 @@
             }
         }
 
-
+        protected override void Move()
+        {
+            //TODO: AI for eneimies
+        }
     }
 }

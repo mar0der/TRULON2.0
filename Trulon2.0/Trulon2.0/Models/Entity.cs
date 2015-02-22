@@ -8,7 +8,7 @@
     public abstract class Entity : GameObject
     {
         private string previousDirection = "right";
-        
+
         public int BaseAttack { get; protected set; }
         public int BaseDefense { get; protected set; }
         public int BaseSpeed { get; protected set; }
@@ -21,17 +21,17 @@
         public bool IsAlive { get; set; }
 
         public string PreviousDirection { get { return this.previousDirection; } }
-        
+
         protected abstract void Move();
 
 
 
         public override void Update()
         {
-            this.Move(); 
+            this.Move();
             //This is needed because the bounding box is a separate object from the image and we have to move it with it.
             this.Bounds = new BoundingBox(new Vector3(Position.X, Position.Y, 0), new Vector3(Position.X + Width, Position.Y + Height, 0));
-            
+
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 this.UpdateBoundingBoxRight();

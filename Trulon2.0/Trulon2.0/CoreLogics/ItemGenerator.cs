@@ -1,11 +1,7 @@
-﻿using Trulon.Models.Items;
-
-namespace Trulon.CoreLogics
+﻿namespace Trulon.CoreLogics
 {
     using System;
     using global::Trulon.Models;
-    using global::Trulon.Models.Items.Equipments;
-    using global::Trulon.Models.Items.Potions;
 
     public static class ItemGenerator
     {
