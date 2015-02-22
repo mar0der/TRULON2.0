@@ -4,6 +4,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
+    using Config;
 
     public abstract class Entity : GameObject
     {
@@ -17,7 +18,7 @@
         public virtual int AttackRadius { get; set; }
         public BoundingBox AttackBounds { get; set; }
         public int Level { get; set; }
-        public List<Item> Inventory { get; set; }
+        public Item[] Inventory { get; set; }
         public bool IsAlive { get; set; }
 
         public string PreviousDirection { get { return this.previousDirection; } }

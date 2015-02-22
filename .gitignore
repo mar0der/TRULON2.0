@@ -214,3 +214,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/Trulon2.0/Trulon2.0/Resources/Images/Items/DefensePotion.png
+/Trulon2.0/Trulon2.0/Resources/Images/Items/SpeedPotion.png
+/Trulon2.0/Trulon2.0/GUI/GUIElement.cs

@@ -10,6 +10,11 @@
         public EntityEquipment()
         {
             this.CurrentEquipment = new Dictionary<EquipmentSlots, Equipment>();
+            //this.CurrentEquipment.Add(EquipmentSlots.Head, null);
+            //this.CurrentEquipment.Add(EquipmentSlots.Body, null);
+            //this.CurrentEquipment.Add(EquipmentSlots.LeftHand, null);
+            //this.CurrentEquipment.Add(EquipmentSlots.RightHand, null);
+            //this.CurrentEquipment.Add(EquipmentSlots.Feet, null);
         }
 
         public Dictionary<EquipmentSlots, Equipment> CurrentEquipment { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace Trulon.GUI
+﻿using System.Linq;
+
+namespace Trulon.GUI
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
@@ -13,9 +15,9 @@
         {
          new Vector2(724, 630),
          new Vector2(807, 630),
-         new Vector2(890, 630),
-         new Vector2(970, 630),
-         new Vector2(1040, 630)
+         new Vector2(888, 630),
+         new Vector2(964, 630),
+         new Vector2(1037, 630)
         };
 
         public GameGUI(Engine engine)
@@ -42,9 +44,9 @@
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < this.engine.player.Inventory.Count; i++)
+            for (int i = 0; i < this.engine.player.Inventory.Length; i++)
             {
-                if (this.engine.player.Inventory[i].Image != null)
+                if (this.engine.player.Inventory[i] != null)
                 {
                     spriteBatch.Draw(this.engine.player.Inventory[i].Image, this.inventoryPositions[i], Color.White);
                 }

@@ -1,4 +1,6 @@
-﻿namespace Trulon.CoreLogics
+﻿using System.Linq;
+
+namespace Trulon.CoreLogics
 {
     #region Using Statements
     using System;
@@ -22,11 +24,6 @@
     using global::Trulon.Models.Maps;
     #endregion
 
-    #region Engine Summary
-    /// <summary>
-    /// This is the main type for your game
-    /// </summary>
-    #endregion
     public class Engine : Game
     {
         GraphicsDeviceManager graphics;
@@ -45,8 +42,6 @@
         private IList<Enemy> enemies;
         private Map[] maps = new Map[3];
         private int currentMap = 0;
-
-        private IList<Potion> timeoutItems;
 
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
@@ -98,7 +93,6 @@
                 new Boss(364, 400)
             };
 
-            this.timeoutItems = new List<Potion>();
             maps[0] = new Level1();
             maps[1] = new Level2();
             maps[2] = new Level3();
@@ -221,7 +215,6 @@
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
             //Save previous state of the keyboard to determine single key presses
             previousKeyboardState = currentKeyboardState;
             //Read the current state of the keyboard and store it
@@ -242,28 +235,8 @@
                 {
                     this.player.AddCoins(this.enemies[i]);
                     this.player.AddExperience(this.enemies[i]);
-
-                    var equipmentDrop = this.LootEnemy("equipment");
-                    var potionDrop = this.LootEnemy("potion");
-
-                    if (this.player.Inventory.Count < 5 && equipmentDrop != null)
-                    {
-                        this.player.Inventory.Add(equipmentDrop);
-                    }
-                    else
-                    {
-                        //TODO show "Inventory full" message.
-                    }
-
-                    if (this.player.Inventory.Count < 5 && potionDrop != null)
-                    {
-                        this.player.Inventory.Add(potionDrop);
-                    }
-                    else
-                    {
-                        //TODO show "Inventory full" message.
-                    }
-
+                    this.player.AddToInventory(this.LootEnemy("equipment"));
+                    this.player.AddToInventory(this.LootEnemy("potion"));
                     this.enemies.RemoveAt(i);
                     break;
                 }
@@ -274,37 +247,22 @@
                 //TODO
             }
 
-            //Testing inventory
-            //Equipment
-            if (currentKeyboardState.IsKeyDown(Keys.E))
-            {
-                foreach (var item in this.player.Inventory)
-                {
-                    var equipment = item as Equipment;
-                    if (equipment != null)
-                    {
-                        this.player.UseEquipment(equipment);
-                        break;
-                    }
-                }
-            }
             //Potions
-            if (currentKeyboardState.IsKeyDown(Keys.R))
+            Keys[] useItemKeys = Config.UseItemKeys;
+            
+            if (currentKeyboardState.GetPressedKeys().Length > 0 && useItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]))
             {
-                foreach (var item in this.player.Inventory)
+                int itemAtIndex = Array.IndexOf(useItemKeys, currentKeyboardState.GetPressedKeys()[0]);
+
+                if (this.player.Inventory.ElementAt(itemAtIndex) is Potion)
                 {
-                    var potion = item as Potion;
-                    if (potion != null)
-                    {
-                        this.player.DrinkPotion(potion);
-                        this.timeoutItems.Add(potion);
-                        break;
-                    }
+                    this.player.DrinkPotion(itemAtIndex);
+                }
+                else if (this.player.Inventory.ElementAt(itemAtIndex) is Equipment)
+                {
+                    this.player.UseEquipment(itemAtIndex);
                 }
             }
-
-            //Check for timeout items
-            CheckForTimedoutItems();
 
             //Check for player is moving
             var enemiesInRange = this.player.GetEnemiesInRange(enemies);
@@ -372,24 +330,6 @@
 
             // Update saved state.
             previousKeyboardState = newState;
-        }
-
-        private void CheckForTimedoutItems()
-        {
-            for (int i = 0; i < timeoutItems.Count; i++)
-            {
-                if (timeoutItems[i].Countdown == 0)
-                {
-                    var item = timeoutItems[i];
-                    item.HasTimedOut = true;
-
-                    this.player.RemovePotionBuff(item);
-                    this.player.Inventory.Remove(item);
-                    this.timeoutItems.Remove(item);
-                    break;
-                }
-                timeoutItems[i].Countdown--;
-            }
         }
 
         #region GameDraw Summary

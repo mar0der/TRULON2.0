@@ -5,6 +5,7 @@
     using Microsoft.Xna.Framework;
     using global::Trulon.Models.Items.Equipments;
     using global::Trulon.Models.Items.Potions;
+    using Config;
 
     public class Vendor : Ally
     {
@@ -30,8 +31,8 @@
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y + Height, 0));
-            this.Inventory = new List<Item>()
-            {
+            this.Inventory = new Item[Config.TotalItemsCount] {
+                new Sword(), 
                 new Helmet(),
                 new Vest(),
                 new Boots(),

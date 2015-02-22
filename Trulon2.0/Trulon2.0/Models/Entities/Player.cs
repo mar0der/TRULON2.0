@@ -1,4 +1,6 @@
-﻿namespace Trulon.Models.Entities
+﻿using System.Linq;
+
+namespace Trulon.Models.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -12,13 +14,22 @@
     public abstract class Player : Entity
     {
         private KeyboardState currentKeyboardState;
-
         private int velocityUp;
         private int velocityDown;
         private int velocityLeft;
         private int velocityRight;
+        private IList<Potion> activePotions = new List<Potion>();
 
         public EntityEquipment PlayerEquipment { get; set; }
+
+        public IList<Potion> ActivePotions
+        {
+            get
+            {
+                return this.activePotions;
+
+            }
+        }
 
         public int Experience { get; set; }
 
@@ -80,7 +91,7 @@
             {
                 var buffs = new Dictionary<string, int>();
                 int attackBuff = 0;
-                int defenseBuff = 0; 
+                int defenseBuff = 0;
                 int speedBuff = 0;
                 int attackRange = 0;
 
@@ -108,9 +119,9 @@
                 int defenseBuff = 0;
                 int speedBuff = 0;
                 int healthBuff = 0;
-                foreach (var item in this.Inventory)
+
+                foreach (var potion in this.ActivePotions)
                 {
-                    var potion = item as Potion;
                     if (potion is DamagePotion)
                     {
                         attackBuff += potion.AttackPointsBuff;
@@ -128,6 +139,7 @@
                         healthBuff += potion.HealthPointsBuff;
                     }
                 }
+
                 buffs.Add("Attack", attackBuff);
                 buffs.Add("Health", healthBuff);
                 buffs.Add("Defense", defenseBuff);
@@ -145,6 +157,17 @@
             this.Position = new Vector2(
                 MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),
                 MathHelper.Clamp(this.Position.Y, 0, Config.Config.ScreenHeight - this.Image.Height));
+
+            //check for timeouted potions
+            for (int i = 0; i < activePotions.Count; i++)
+            {
+                if (activePotions[i].Countdown == 0)
+                {
+                    this.activePotions.Remove(activePotions[i]);
+                    break;
+                }
+                activePotions[i].Countdown--;
+            }
         }
 
         public IList<Enemy> GetEnemiesInRange(IList<Enemy> enemies)
@@ -153,7 +176,7 @@
 
             foreach (var enemy in enemies)
             {
-                if(this.AttackBounds.Intersects(enemy.Bounds))
+                if (this.AttackBounds.Intersects(enemy.Bounds))
                 {
                     enemiesInRange.Add(enemy);
                 }
@@ -165,7 +188,7 @@
         {
             foreach (var entity in entities)
             {
-                if (this.Bounds.Intersects(entity.Bounds) && entity is Ally) 
+                if (this.Bounds.Intersects(entity.Bounds) && entity is Ally)
                 {
                     return (Ally)entity;
                 }
@@ -183,7 +206,7 @@
 
         public void AddExperience(Enemy enemy)
         {
-             this.Experience += enemy.ExperienceReward;
+            this.Experience += enemy.ExperienceReward;
         }
 
         public void AddCoins(Enemy enemy)
@@ -193,38 +216,40 @@
 
         public void Buy()
         {
-            throw new NotImplementedException("Buy method is not implemented");    
+            throw new NotImplementedException("Buy method is not implemented");
         }
 
-        public void RemovePotionBuff(Potion potion)
+        protected internal void DrinkPotion(int itemAtIndex)
         {
-            this.PotionBuffs["Health"] -= potion.HealthPointsBuff;
-            this.PotionBuffs["Attack"] -= potion.AttackPointsBuff;
-            this.PotionBuffs["Defense"] -= potion.DefensePointsBuff;
-            this.PotionBuffs["Speed"] -= potion.SpeedPointsBuff;
-        }
-
-        protected internal void DrinkPotion(Potion potion)
-        {
-            this.PotionBuffs["Health"] += potion.HealthPointsBuff;
-            this.PotionBuffs["Attack"] += potion.AttackPointsBuff;
-            this.PotionBuffs["Defense"] += potion.DefensePointsBuff;
-            this.PotionBuffs["Speed"] += potion.SpeedPointsBuff;
-        }
-
-        protected internal void UseEquipment(Equipment equipment)
-        {
-            if (!this.PlayerEquipment.CurrentEquipment.ContainsKey(equipment.Slot))
+            if (this.Inventory.ElementAt(itemAtIndex) is Potion)
             {
-                this.PlayerEquipment.CurrentEquipment.Add(equipment.Slot, equipment);
+                this.ActivePotions.Add(this.Inventory.ElementAt(itemAtIndex) as Potion);
+                this.Inventory[itemAtIndex] = null;
             }
-            else
-            {
-                this.Inventory.Add(this.PlayerEquipment.CurrentEquipment[equipment.Slot]);
-                this.PlayerEquipment.CurrentEquipment[equipment.Slot] = equipment;
-            }
-            this.Inventory.Remove(equipment);
+        }
 
+        public void UseEquipment(int itemAtIndex)
+        {
+            if (itemAtIndex < this.Inventory.Length && this.Inventory[itemAtIndex] is Equipment)
+            {
+                var equipment = this.Inventory[itemAtIndex] as Equipment;
+                //It is a bit hard to read. It means. If the key does not exists or if it is exists and the value is null
+                if (!this.PlayerEquipment.CurrentEquipment.ContainsKey(equipment.Slot) ||
+                    (this.PlayerEquipment.CurrentEquipment.ContainsKey(equipment.Slot) 
+                    && this.PlayerEquipment.CurrentEquipment[equipment.Slot] == null))
+                {
+                    this.PlayerEquipment.CurrentEquipment[equipment.Slot] = equipment;
+                    this.Inventory[itemAtIndex] = null;
+                }
+            }
+        }
+
+        public void RemoveEquipment(EquipmentSlots slot)
+        {
+            if (this.PlayerEquipment.CurrentEquipment[slot] != null)
+            {
+                this.AddToInventory(this.PlayerEquipment.CurrentEquipment[slot]);
+            }
         }
 
         protected void AddSkillPoints()
@@ -279,6 +304,24 @@
             if (currentKeyboardState.IsKeyDown(Keys.Down))
             {
                 this.Position = new Vector2(this.Position.X, this.Position.Y + this.velocityDown);
+            }
+        }
+
+        public void AddToInventory(Item item)
+        {
+            bool isAdded = false;
+            for (int i = 0; i < this.Inventory.Length; i++)
+            {
+                if (this.Inventory.ElementAt(i) == null)
+                {
+                    isAdded = true;
+                    this.Inventory[i] = item;
+                    break;
+                }
+            }
+            if (!isAdded)
+            {
+                //TODO "Inventory full" message.
             }
         }
     }

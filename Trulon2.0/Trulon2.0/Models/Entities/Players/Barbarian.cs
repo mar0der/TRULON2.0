@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
-
+    using Config;
     public class Barbarian : Player
     {
         #region Constants
@@ -45,7 +45,7 @@
             this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y + Height, 0));
             this.BaseAttackRadius = DefaultAttackRadius;
             this.PlayerEquipment = new EntityEquipment();
-            this.Inventory = new List<Item>();
+            this.Inventory = new Item[Config.InventorySize];
             this.IsAlive = true;
         }
 
