@@ -34,8 +34,6 @@
         private Texture2D BodyImage;
         private Texture2D FeetImage;
 
-        
-
         public GameGUI(Engine engine)
         {
             Dictionary<EquipmentSlots, Rectangle> playersEquipment = new Dictionary<EquipmentSlots, Rectangle>();
@@ -77,11 +75,12 @@
             }
 
             //Labels
-            spriteBatch.DrawString(this.engine.font, this.engine.player.Level.ToString(), new Vector2(520, 615), Color.SaddleBrown);
-            spriteBatch.DrawString(this.engine.font, this.engine.player.AttackPoints.ToString(), new Vector2(520, 635), Color.SaddleBrown);
-            spriteBatch.DrawString(this.engine.font, this.engine.player.DefensePoints.ToString(), new Vector2(520, 655), Color.SaddleBrown);
-            spriteBatch.DrawString(this.engine.font, this.engine.player.SpeedPoints.ToString(), new Vector2(520, 675), Color.SaddleBrown);
-            spriteBatch.DrawString(this.engine.font, this.engine.player.Experience.ToString(), new Vector2(520, 695), Color.SaddleBrown);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.Level.ToString(), new Vector2(380, 617), Color.Black);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.AttackPoints.ToString(), new Vector2(380, 637), Color.Black);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.DefensePoints.ToString(), new Vector2(380, 657), Color.Black);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.SpeedPoints.ToString(), new Vector2(380, 677), Color.Black);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.Experience.ToString(), new Vector2(380, 697), Color.Black);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.Coins.ToString(), new Vector2(550, 697), Color.Black);
             
             //Inventory full message
             if (engine.player.inventoryIsFull)
