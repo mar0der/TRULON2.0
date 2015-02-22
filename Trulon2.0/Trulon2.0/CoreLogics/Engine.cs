@@ -30,7 +30,7 @@ namespace Trulon.CoreLogics
         private SpriteBatch spriteBatch;
 
         private Screen currentScreen;
-        private SpriteFont font;
+        public  SpriteFont font;
         private GameGUI gui;
 
         private static Random rand = new Random();
@@ -401,12 +401,7 @@ namespace Trulon.CoreLogics
             {
                 enemy.Draw(this.spriteBatch);
             }
-
-            this.spriteBatch.DrawString(this.font, this.player.Level.ToString(), new Vector2(520, 615), Color.SaddleBrown);
-            this.spriteBatch.DrawString(this.font, this.player.AttackPoints.ToString(), new Vector2(520, 635), Color.SaddleBrown);
-            this.spriteBatch.DrawString(this.font, this.player.DefensePoints.ToString(), new Vector2(520, 655), Color.SaddleBrown);
-            this.spriteBatch.DrawString(this.font, this.player.SpeedPoints.ToString(), new Vector2(520, 675), Color.SaddleBrown);
-            this.spriteBatch.DrawString(this.font, this.player.Experience.ToString(), new Vector2(520, 695), Color.SaddleBrown);
+            
             this.gui.Draw(spriteBatch);
 
             this.spriteBatch.End();

@@ -6,10 +6,11 @@ namespace Trulon.Models.Entities
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
-    using global::Trulon.Enums;
-    using global::Trulon.Models.Entities.NPCs;
-    using global::Trulon.Models.Items;
-    using global::Trulon.Models.Items.Potions;
+    using Enums;
+    using NPCs;
+    using Items;
+    using Items.Potions;
+    using Config;
 
     public abstract class Player : Entity
     {
@@ -19,6 +20,7 @@ namespace Trulon.Models.Entities
         private int velocityLeft;
         private int velocityRight;
         private IList<Potion> activePotions = new List<Potion>();
+        private int inventoryIsFullTimeout;
 
         public EntityEquipment PlayerEquipment { get; set; }
 
@@ -152,6 +154,18 @@ namespace Trulon.Models.Entities
             }
         }
 
+        public bool  inventoryIsFull {
+            get
+            {
+                if (inventoryIsFullTimeout > 0)
+                {
+                    inventoryIsFullTimeout--;
+                    return true;
+                }
+                return false;
+            }
+        }
+
         public void Update(Map map)
         {
             base.Update();
@@ -159,8 +173,8 @@ namespace Trulon.Models.Entities
             //Keyboard input is in the move method which is called in the base update method
             //Make sure that player doesn't go out of bounds. T
             this.Position = new Vector2(
-                MathHelper.Clamp(this.Position.X, 0, Config.Config.ScreenWidth - this.Image.Width),
-                MathHelper.Clamp(this.Position.Y, 0, Config.Config.ScreenHeight - this.Image.Height));
+                MathHelper.Clamp(this.Position.X, 0, Config.ScreenWidth - this.Image.Width),
+                MathHelper.Clamp(this.Position.Y, 0, Config.ScreenHeight - this.Image.Height));
 
             //check for timeouted potions
             for (int i = 0; i < activePotions.Count; i++)
@@ -258,6 +272,10 @@ namespace Trulon.Models.Entities
                     this.PlayerEquipment.CurrentEquipment[slot] = null;
                 }
             }
+            else
+            {
+                this.inventoryIsFullTimeout = Config.CnventoryIsFullMessageTimeout;
+            }
         }
 
         public bool IsInventoryFull()
@@ -351,7 +369,7 @@ namespace Trulon.Models.Entities
             }
             if (!isAdded)
             {
-                //TODO "Inventory full" message.
+                this.inventoryIsFullTimeout = Config.CnventoryIsFullMessageTimeout;
             }
         }
     }
