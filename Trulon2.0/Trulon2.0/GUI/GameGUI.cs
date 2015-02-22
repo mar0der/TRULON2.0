@@ -1,14 +1,10 @@
-﻿using Trulon.Models;
-using Trulon.Models.Items;
-
-namespace Trulon.GUI
+﻿namespace Trulon.GUI
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using CoreLogics;
     using Enums;
-    using System.Linq;
 
     public class GameGUI : Game
     {
@@ -32,7 +28,7 @@ namespace Trulon.GUI
                 {EquipmentSlots.Feet, new Vector2(281, 5)}
             };
 
-        private Texture2D headImage;
+        private Texture2D HeadImage;
         private Texture2D LeftImage;
         private Texture2D RightImage;
         private Texture2D BodyImage;
@@ -87,13 +83,13 @@ namespace Trulon.GUI
             //Head
             if (equipment.ContainsKey(slot) && equipment[slot] != null)
             {
-                this.headImage = equipment[slot].Image;
+                this.HeadImage = equipment[slot].Image;
             }
             else
             {
-                this.headImage = emptyImages[slot];
+                this.HeadImage = emptyImages[slot];
             }
-            spriteBatch.Draw(this.headImage, this.equipmentSotsPositions[slot], Color.White);
+            spriteBatch.Draw(this.HeadImage, this.equipmentSotsPositions[slot], Color.White);
         }
     }
 }
