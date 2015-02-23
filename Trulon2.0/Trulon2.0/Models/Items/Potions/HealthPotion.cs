@@ -3,13 +3,14 @@
     public class HealthPotion : Potion
     {
         private const string DefaultName = "HealthPotion";
-        private const int DefaultTimeout = 55;
-        private const int DefaultCountdown = 55;
+        private const int DefaultTimeout = 600;
+        private const int DefaultCountdown = 600;
         private const bool DefaultHasTimedOut = false;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefencePointsBuff = 0;
         private const int DefaultHealthPointsBuff = 10;
         private const int DefaultSpeedPointsBuff = 0;
+        private const int DefaultAttackRangeBuff = 0;
 
         public HealthPotion()
         {
@@ -21,6 +22,7 @@
             this.DefensePointsBuff = DefaultDefencePointsBuff;
             this.HealthPointsBuff = DefaultHealthPointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
+            this.AttackRadiusBuff = DefaultAttackRangeBuff;
         }
     }
 }

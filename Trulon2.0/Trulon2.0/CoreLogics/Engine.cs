@@ -41,7 +41,7 @@ namespace Trulon.CoreLogics
         public Player player;
         public Vendor vendor;
         private IList<Enemy> enemies;
-        private Map[] maps = new Map[3];
+        private Map[] maps = new Map[5];
         private int currentMap = 0;
 
         private KeyboardState currentKeyboardState;
@@ -57,7 +57,7 @@ namespace Trulon.CoreLogics
         private Texture2D[] AnimationsLeftAttack;
 
         public readonly Item[] AllEquipments = new Item[5];
-        public readonly Item[] AllPotions = new Item[4];
+        public readonly Item[] AllPotions = new Item[5];
         public readonly Dictionary<EquipmentSlots, Texture2D> AllEmptyEquipmentSlots =
             new Dictionary<EquipmentSlots, Texture2D>();
 
@@ -111,6 +111,7 @@ namespace Trulon.CoreLogics
             AllPotions[1] = new DefensePotion();
             AllPotions[2] = new HealthPotion();
             AllPotions[3] = new SpeedPotion();
+            AllPotions[4] = new AttackRangePotion();
 
             //this is for testing only. remove it when done
             this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, AllEquipments[3] as Equipment);
@@ -196,6 +197,7 @@ namespace Trulon.CoreLogics
             AllPotions[1].Initialize(Content.Load<Texture2D>(Assets.DefensePotion), new Vector2(-100, -100));
             AllPotions[2].Initialize(Content.Load<Texture2D>(Assets.HealthPotion), new Vector2(-100, -100));
             AllPotions[3].Initialize(Content.Load<Texture2D>(Assets.SpeedPotion), new Vector2(-100, -100));
+            AllPotions[4].Initialize(Content.Load<Texture2D>(Assets.AttackRangePotion), new Vector2(-100, -100));
 
             //Add every thing into the vendors inventory;
             AllEquipments.CopyTo(this.vendor.Inventory, 0);
@@ -322,7 +324,7 @@ namespace Trulon.CoreLogics
             }
             else
             {
-                if (this.player.GetAllyInRange(new List<Entity>() {this.vendor}) == null)
+                if (this.player.GetAllyInRange(new List<Entity>() { this.vendor }) == null)
                 {
                     this.ShopOpened = false;
                 }
@@ -503,6 +505,7 @@ namespace Trulon.CoreLogics
             if (chance == 0)
             {
                 if (type == "potion")
+
                 {
                     return ItemGenerator.GetPotionItem(AllPotions);
                 }
