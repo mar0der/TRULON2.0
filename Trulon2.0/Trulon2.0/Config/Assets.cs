@@ -110,7 +110,7 @@
 
         //Timeoutable Items
         //DamagePotion
-        public static readonly string DamagePotion = "Images/Items/DefensePotion.png";
+        public static readonly string DamagePotion = "Images/Items/DamagePotion.png";
         //HealthPotion
         public static readonly string HealthPotion = "Images/Items/HealthPotion.png";
         //DefensePotion
