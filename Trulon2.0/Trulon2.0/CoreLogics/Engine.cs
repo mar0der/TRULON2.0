@@ -86,14 +86,15 @@ namespace Trulon.CoreLogics
             IsMouseVisible = true;
 
             //setting entites on the scene
-            this.player = new Barbarian(0, 0);
+            this.player = new Barbarian(232, 96);
             this.vendor = new Vendor(650, 300);
             this.enemies = new List<Enemy>()
             {
-                new Goblin(300, 200),
-                new Robo(350, 200),
-                new Ogre(864, 350),
-                new Boss(364, 350)
+                new Goblin(200, 50),
+                new Goblin(232, 146),
+                new Robo(500, 200),
+                new Ogre(500, 350),
+                new Boss(500, 350)
             };
 
             maps[0] = new Level1();
@@ -250,7 +251,7 @@ namespace Trulon.CoreLogics
             currentKeyboardState = Keyboard.GetState();
 
             //Update player
-            this.player.Update(maps[currentMap]);
+            this.player.Update(maps[currentMap], enemies);
 
             //update enemies
             foreach (var enemy in enemies)
@@ -435,8 +436,6 @@ namespace Trulon.CoreLogics
 
             this.spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, backgroundTexture.Width, backgroundTexture.Height), Color.White);
 
-            this.player.Draw(spriteBatch);
-
             this.vendor.Draw(spriteBatch);
 
             foreach (var enemy in enemies)
@@ -445,6 +444,8 @@ namespace Trulon.CoreLogics
             }
 
             this.gui.Draw(spriteBatch);
+
+            this.player.Draw(spriteBatch);
 
             this.spriteBatch.End();
             base.Draw(gameTime);

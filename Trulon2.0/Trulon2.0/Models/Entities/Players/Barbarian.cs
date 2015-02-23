@@ -20,8 +20,8 @@
         private const int DefaultDefenseSkill = 0;
         private const int DefaultSpeedSkill = 0;
         private const int DefaultHealthSkill = 0;
-        private const int DefaultWidth = 64;
-        private const int DefaultHeight = 64;
+        private const int DefaultWidth = 32;
+        private const int DefaultHeight = 96;
         #endregion
 
         public Barbarian(int x, int y)

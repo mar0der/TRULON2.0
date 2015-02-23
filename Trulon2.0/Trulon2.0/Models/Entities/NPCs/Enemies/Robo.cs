@@ -14,8 +14,8 @@
         private const int DefaultLevel = 2;
         private const int DefaultExperienceReward = 60;
         private const int DefaultCoinsReward = 40;
-        private const int DefaultWidth = 64;
-        private const int DefaultHeight = 64;
+        private const int DefaultWidth = 128;
+        private const int DefaultHeight = 128;
         #endregion
 
         public Robo(int x, int y)

@@ -43,7 +43,7 @@
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
-            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x - Width, y - Height, 0));
+            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y + Height, 0));
             this.BaseAttackRadius = DefaultAttackRadius;
             this.PlayerEquipment = new EntityEquipment();
             this.Inventory = new Item[Config.InventorySize];

@@ -14,8 +14,8 @@
         private const int DefaultLevel = 1;
         private const int DefaultExperienceReward = 50;
         private const int DefaultCoinsReward = 30;
-        private const int DefaultWidth = 64;
-        private const int DefaultHeight = 64;
+        private const int DefaultWidth = 32;
+        private const int DefaultHeight = 96;
         #endregion
 
         public Goblin(int x, int y)
