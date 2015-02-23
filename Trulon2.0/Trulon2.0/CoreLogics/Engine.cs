@@ -306,7 +306,11 @@ namespace Trulon.CoreLogics
                 && this.ShopOpened)
             {
                 int itemAtIndex = Array.IndexOf(buyItemKeys, currentKeyboardState.GetPressedKeys()[0]);
-                this.player.AddToInventory(this.vendor.Inventory[itemAtIndex]);
+                if (this.player.Coins > this.vendor.Inventory[itemAtIndex].Price)
+                {
+                    this.player.AddToInventory(this.vendor.Inventory[itemAtIndex]);
+                    this.player.Coins -= this.vendor.Inventory[itemAtIndex].Price;
+                }
             }
 
 
