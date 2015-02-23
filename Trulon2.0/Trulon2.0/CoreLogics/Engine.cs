@@ -282,7 +282,7 @@ namespace Trulon.CoreLogics
             }
 
             //Dump item from inventory
-            Keys[] dumpItemFromInventory = Config.DumpItemFromInvontory;
+            Keys[] dumpItemFromInventory = Config.DumpItemFromInvontoryKeys;
 
             if (currentKeyboardState.GetPressedKeys().Length > 0 && dumpItemFromInventory.Contains(currentKeyboardState.GetPressedKeys()[0]))
             {
@@ -291,7 +291,7 @@ namespace Trulon.CoreLogics
             }
 
             //Deequip Item 
-            Keys[] DeequipItem = Config.DeequipItem;
+            Keys[] DeequipItem = Config.DeequipItemKeys;
             if (currentKeyboardState.GetPressedKeys().Length > 0 && DeequipItem.Contains(currentKeyboardState.GetPressedKeys()[0]))
             {
                 var itemAtIndex = Array.IndexOf(DeequipItem, currentKeyboardState.GetPressedKeys()[0]);
@@ -327,6 +327,18 @@ namespace Trulon.CoreLogics
                     this.ShopOpened = false;
                 }
             }
+
+            //Buy shits from the shop
+            Keys[] buyItemKeys = Config.BuyItemKeys;
+            if (currentKeyboardState.GetPressedKeys().Length > 0 
+                && previousKeyboardState.GetPressedKeys().Length == 0
+                && buyItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]) 
+                && this.ShopOpened)
+            {
+                int itemAtIndex = Array.IndexOf(buyItemKeys, currentKeyboardState.GetPressedKeys()[0]);
+                this.player.AddToInventory(this.vendor.Inventory[itemAtIndex]);
+            }
+
 
             //Check for player is moving
             var enemiesInRange = this.player.GetEnemiesInRange(enemies);
