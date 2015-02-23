@@ -23,11 +23,11 @@ namespace Trulon.GUI
         private Dictionary<EquipmentSlots, Vector2> equipmentSotsPositions =
             new Dictionary<EquipmentSlots, Vector2>()
             {
-                {EquipmentSlots.Head, new Vector2(5, 5)},
-                {EquipmentSlots.LeftHand, new Vector2(74, 5)},
-                {EquipmentSlots.RightHand, new Vector2(143, 5)},
-                {EquipmentSlots.Body, new Vector2(212, 5)},
-                {EquipmentSlots.Feet, new Vector2(281, 5)}
+                {EquipmentSlots.Head, new Vector2(65, 523)},
+                {EquipmentSlots.LeftHand, new Vector2(128, 587)},
+                {EquipmentSlots.RightHand, new Vector2(3, 587)},
+                {EquipmentSlots.Body, new Vector2(67, 587)},
+                {EquipmentSlots.Feet, new Vector2(67, 651)}
             };
 
         private Vector2[] vendorShopPositions;
@@ -50,14 +50,12 @@ namespace Trulon.GUI
                 new Vector2(this.ShopOrigin.X+69, this.ShopOrigin.Y),
                 new Vector2(ShopOrigin.X+138, ShopOrigin.Y),
                 new Vector2(ShopOrigin.X+207, ShopOrigin.Y),
+                new Vector2(ShopOrigin.X+276, ShopOrigin.Y),
                 new Vector2(ShopOrigin.X, ShopOrigin.Y+69),
                 new Vector2(ShopOrigin.X+69, ShopOrigin.Y+69),
                 new Vector2(ShopOrigin.X+138, ShopOrigin.Y+69),
-                new Vector2(ShopOrigin.X+207, ShopOrigin.Y+69),
-                new Vector2(ShopOrigin.X+276, ShopOrigin.Y+69)
+                new Vector2(ShopOrigin.X+207, ShopOrigin.Y+69)
             };
-
-            
         }
 
         public Vector2 ShopOrigin{get; set;}
