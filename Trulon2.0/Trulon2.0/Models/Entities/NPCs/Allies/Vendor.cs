@@ -30,17 +30,10 @@
             this.Level = DefaultLevel;
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
-            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y + Height, 0));
-            this.Inventory = new Item[Config.TotalItemsCount] {
-                new Sword(), 
-                new Helmet(),
-                new Vest(),
-                new Boots(),
-                new DamagePotion(),
-                new DefensePotion(),
-                new HealthPotion(),
-                new SpeedPotion()
-            };
+            this.Position = new Vector2(x, y);
+            //some magic numbers to make it easier to get the vendor
+            this.Bounds = new BoundingBox(new Vector3(x-200, y-200, 0), new Vector3(x + Width+100, y , 0));
+            this.Inventory = new Item[Config.TotalItemsCount] ;
         }
 
         public override void Update()

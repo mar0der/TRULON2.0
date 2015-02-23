@@ -1,14 +1,16 @@
-﻿namespace Trulon.GUI
+﻿using Trulon.Models;
+namespace Trulon.GUI
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using CoreLogics;
     using Enums;
+    using Config;
 
     public class GameGUI : Game
     {
-        private Engine engine;
+        private readonly Engine engine;
         private readonly Vector2[] InventoryPositions = new Vector2[]
         {
          new Vector2(724, 630),
@@ -28,25 +30,39 @@
                 {EquipmentSlots.Feet, new Vector2(281, 5)}
             };
 
-        private Texture2D HeadImage;
-        private Texture2D LeftImage;
-        private Texture2D RightImage;
-        private Texture2D BodyImage;
-        private Texture2D FeetImage;
+        private Vector2[] vendorShopPositions;
+
+        private Texture2D headImage;
+        private Texture2D leftImage;
+        private Texture2D rightImage;
+        private Texture2D bodyImage;
+        private Texture2D feetImage;
 
         
 
         public GameGUI(Engine engine)
         {
-            Dictionary<EquipmentSlots, Rectangle> playersEquipment = new Dictionary<EquipmentSlots, Rectangle>();
-                playersEquipment.Add(EquipmentSlots.Head, new Rectangle(5, 5, 30, 30));
-                playersEquipment.Add(EquipmentSlots.LeftHand, new Rectangle(5, 40, 30, 30));
-                playersEquipment.Add(EquipmentSlots.RightHand, new Rectangle(5, 75, 30, 30));
-                playersEquipment.Add(EquipmentSlots.Body, new Rectangle(5, 110, 30, 30));
-                playersEquipment.Add(EquipmentSlots.Feet, new Rectangle(5, 145, 30, 30));
-
             this.engine = engine;
+            //this 138 is not a magic number this is the height of 2 rows of items plus 2 spacings of 5 px. this will be changed to logic.
+            this.ShopOrigin = new Vector2(this.engine.vendor.Position.X, this.engine.vendor.Position.Y - 138);
+            //these are not magic number. The logic is each position has offset of 69px (64+5) from the rest
+            vendorShopPositions = new Vector2[Config.TotalItemsCount]
+            {
+                new Vector2(this.ShopOrigin.X, this.ShopOrigin.Y),
+                new Vector2(this.ShopOrigin.X+69, this.ShopOrigin.Y),
+                new Vector2(ShopOrigin.X+138, ShopOrigin.Y),
+                new Vector2(ShopOrigin.X+207, ShopOrigin.Y),
+                new Vector2(ShopOrigin.X, ShopOrigin.Y+69),
+                new Vector2(ShopOrigin.X+69, ShopOrigin.Y+69),
+                new Vector2(ShopOrigin.X+138, ShopOrigin.Y+69),
+                new Vector2(ShopOrigin.X+207, ShopOrigin.Y+69),
+                new Vector2(ShopOrigin.X+276, ShopOrigin.Y+69)
+            };
+
+            
         }
+
+        public Vector2 ShopOrigin{get; set;}
 
         public void Initialize()
         {
@@ -55,7 +71,7 @@
 
         public void Update()
         {
-
+             
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -74,6 +90,17 @@
             foreach (var slot in slots)
             {
                 DrawEquipmentSlot(spriteBatch, slot); 
+            }
+
+            //Display vendors shop
+
+            if (this.engine.ShopOpened)
+            {
+                
+                for (int i = 0; i < this.engine.vendor.Inventory.Length; i++)
+                {
+                    spriteBatch.Draw(this.engine.vendor.Inventory[i].Image, this.vendorShopPositions[i], Color.White);
+                }
             }
 
             //Labels
@@ -97,13 +124,13 @@
             //Head
             if (equipment.ContainsKey(slot) && equipment[slot] != null)
             {
-                this.HeadImage = equipment[slot].Image;
+                this.headImage = equipment[slot].Image;
             }
             else
             {
-                this.HeadImage = emptyImages[slot];
+                this.headImage = emptyImages[slot];
             }
-            spriteBatch.Draw(this.HeadImage, this.equipmentSotsPositions[slot], Color.White);
+            spriteBatch.Draw(this.headImage, this.equipmentSotsPositions[slot], Color.White);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace Trulon.CoreLogics
 {
@@ -30,7 +31,7 @@ namespace Trulon.CoreLogics
         private SpriteBatch spriteBatch;
 
         private Screen currentScreen;
-        public  SpriteFont font;
+        public SpriteFont font;
         private GameGUI gui;
 
         private static Random rand = new Random();
@@ -38,7 +39,7 @@ namespace Trulon.CoreLogics
         private Texture2D backgroundTexture;
         //Loading Entites
         public Player player;
-        private Vendor vendor;
+        public Vendor vendor;
         private IList<Enemy> enemies;
         private Map[] maps = new Map[3];
         private int currentMap = 0;
@@ -86,19 +87,19 @@ namespace Trulon.CoreLogics
 
             //setting entites on the scene
             this.player = new Barbarian(0, 0);
-            this.vendor = new Vendor(500, 500);
+            this.vendor = new Vendor(650, 300);
             this.enemies = new List<Enemy>()
             {
                 new Goblin(300, 200),
-                new Troll(500, 200),
-                new Demon(564, 200),
-                new Boss(364, 400)
+                new Troll(700, 300),
+                new Demon(864, 350),
+                new Boss(364, 350)
             };
 
             maps[0] = new Level1();
             maps[1] = new Level2();
             maps[2] = new Level3();
-            
+
             //items load
 
             AllEquipments[0] = new Boots();
@@ -149,7 +150,7 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.BarbarianImages[2]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[3])
             };
-            
+
             AnimationsLeft = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[4]),
@@ -195,6 +196,10 @@ namespace Trulon.CoreLogics
             AllPotions[1].Initialize(Content.Load<Texture2D>(Assets.DefensePotion), new Vector2(-100, -100));
             AllPotions[2].Initialize(Content.Load<Texture2D>(Assets.HealthPotion), new Vector2(-100, -100));
             AllPotions[3].Initialize(Content.Load<Texture2D>(Assets.SpeedPotion), new Vector2(-100, -100));
+
+            //Add every thing into the vendors inventory;
+            AllEquipments.CopyTo(this.vendor.Inventory, 0);
+            AllPotions.CopyTo(this.vendor.Inventory, AllEquipments.Length);
 
             //Load all availabe emtpy euqipment slots images
             AllEmptyEquipmentSlots[EquipmentSlots.Head] = Content.Load<Texture2D>(Assets.EmptyHead);
@@ -261,7 +266,7 @@ namespace Trulon.CoreLogics
 
             //Use Potions or Equipment from inventory
             Keys[] useItemKeys = Config.UseItemKeys;
-            
+
             if (currentKeyboardState.GetPressedKeys().Length > 0 && useItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]))
             {
                 int itemAtIndex = Array.IndexOf(useItemKeys, currentKeyboardState.GetPressedKeys()[0]);
@@ -307,6 +312,19 @@ namespace Trulon.CoreLogics
                     case 4:
                         this.player.DeequipItem(EquipmentSlots.Feet);
                         break;
+                }
+            }
+
+            //Open the shop
+            if (currentKeyboardState.IsKeyDown(Keys.Tab) && this.player.GetAllyInRange(new List<Entity>() { this.vendor }) != null)
+            {
+                this.ShopOpened = true;
+            }
+            else
+            {
+                if (this.player.GetAllyInRange(new List<Entity>() {this.vendor}) == null)
+                {
+                    this.ShopOpened = false;
                 }
             }
 
@@ -401,7 +419,7 @@ namespace Trulon.CoreLogics
             {
                 enemy.Draw(this.spriteBatch);
             }
-            
+
             this.gui.Draw(spriteBatch);
 
             this.spriteBatch.End();
@@ -484,5 +502,7 @@ namespace Trulon.CoreLogics
             return null;
         }
 
+
+        public bool ShopOpened { get; set; }
     }
 }

@@ -15,7 +15,7 @@
         public const int InventorySize = 5;
         public const int InitialCoins = 100;
 
-        public const int TotalItemsCount = 8;
+        public const int TotalItemsCount = 9;
 
         //controls
         public static readonly Keys[] UseItemKeys = { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5 };
