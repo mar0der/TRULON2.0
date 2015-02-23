@@ -75,7 +75,7 @@ namespace Trulon.Models.Entities
         {
             get
             {
-                return this.BaseHealth + this.HealthSkill + this.PotionBuffs["Health"];
+                return this.BaseHealth + this.HealthSkill + this.PotionBuffs["Health"] + this.EquipmentBuffs["health"];
             }
         }
 
@@ -83,7 +83,7 @@ namespace Trulon.Models.Entities
         {
             get
             {
-                return this.BaseAttackRadius + this.EquipmentBuffs["attackRange"];
+                return this.BaseAttackRadius + this.EquipmentBuffs["attackRange"] + this.PotionBuffs["AttackRange"];
             }
         }
 
@@ -96,6 +96,7 @@ namespace Trulon.Models.Entities
                 int defenseBuff = 0;
                 int speedBuff = 0;
                 int attackRange = 0;
+                int healthBuff = 0;
 
                 foreach (var item in this.PlayerEquipment.CurrentEquipment)
                 {
@@ -105,13 +106,15 @@ namespace Trulon.Models.Entities
                         attackBuff += item.Value.AttackPointsBuff;
                         defenseBuff += item.Value.DefensePointsBuff;
                         speedBuff += item.Value.SpeedPointsBuff;
-                        attackRange += item.Value.AttackRadiusBuff; 
+                        attackRange += item.Value.AttackRadiusBuff;
+                        healthBuff += item.Value.HealthPointsBuff;
                     }
                 }
                 buffs.Add("attack", attackBuff);
                 buffs.Add("defense", defenseBuff);
                 buffs.Add("speed", speedBuff);
                 buffs.Add("attackRange", attackRange);
+                buffs.Add("health", healthBuff);
                 return buffs;
             }
         }
@@ -125,6 +128,7 @@ namespace Trulon.Models.Entities
                 int defenseBuff = 0;
                 int speedBuff = 0;
                 int healthBuff = 0;
+                int attackRangeBuff = 0;
 
                 foreach (var potion in this.ActivePotions)
                 {
@@ -144,24 +148,31 @@ namespace Trulon.Models.Entities
                     {
                         healthBuff += potion.HealthPointsBuff;
                     }
+                    else if (potion is AttackRangePotion)
+                    {
+                        attackRangeBuff += potion.AttackRadiusBuff;
+                    }
                 }
 
                 buffs.Add("Attack", attackBuff);
                 buffs.Add("Health", healthBuff);
                 buffs.Add("Defense", defenseBuff);
                 buffs.Add("Speed", speedBuff);
+                buffs.Add("AttackRange", attackRangeBuff);
                 return buffs;
             }
         }
 
-        public bool  inventoryIsFull {
+        public bool InventoryIsFull
+        {
             get
             {
-                if (inventoryIsFullTimeout > 0)
+                if (this.inventoryIsFullTimeout > 0)
                 {
-                    inventoryIsFullTimeout--;
+                    this.inventoryIsFullTimeout--;
                     return true;
                 }
+
                 return false;
             }
         }
@@ -175,27 +186,24 @@ namespace Trulon.Models.Entities
                 {
                     return 1;
                 }
-                else if (exp >= 300 && exp < 600)
+                if (exp >= 300 && exp < 600)
                 {
                     return 2;
-                } 
-                else if (exp >= 600 && exp < 900)
+                }
+                if (exp >= 600 && exp < 900)
                 {
                     return 3;
                 }
-                else if (exp >= 900 && exp < 1200)
+                if (exp >= 900 && exp < 1200)
                 {
                     return 4;
                 }
-                else if (exp >= 1200 && exp < 1500)
+                if (exp >= 1200 && exp < 1500)
                 {
                     return 5;
                 }
-                else
-                {
-                    return 6;
-                }
 
+                return 6;
             }
         }
 
@@ -286,7 +294,7 @@ namespace Trulon.Models.Entities
                 var equipment = this.Inventory[itemAtIndex] as Equipment;
                 //It is a bit hard to read. It means. If the key does not exists or if it is exists and the value is null
                 if (!this.PlayerEquipment.CurrentEquipment.ContainsKey(equipment.Slot) ||
-                    (this.PlayerEquipment.CurrentEquipment.ContainsKey(equipment.Slot) 
+                    (this.PlayerEquipment.CurrentEquipment.ContainsKey(equipment.Slot)
                     && this.PlayerEquipment.CurrentEquipment[equipment.Slot] == null))
                 {
                     this.PlayerEquipment.CurrentEquipment[equipment.Slot] = equipment;
