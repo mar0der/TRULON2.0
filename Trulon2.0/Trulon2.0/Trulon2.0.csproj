@@ -61,6 +61,7 @@
     <Compile Include="Config\Config.cs" />
     <Compile Include="CoreLogics\ItemGenerator.cs" />
     <Compile Include="CoreLogics\Engine.cs" />
+    <Compile Include="CoreLogics\MapManager.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
     <Compile Include="Enums\ItemTypes.cs" />

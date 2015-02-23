@@ -207,10 +207,10 @@ namespace Trulon.Models.Entities
             }
         }
 
-        public void Update(Map map)
+        public void Update(Map map, IList<Enemy> enemies)
         {
             base.Update();
-            this.Move(map);
+            this.Move(map, enemies);
             //Keyboard input is in the move method which is called in the base update method
             //Make sure that player doesn't go out of bounds. T
             this.Position = new Vector2(
@@ -346,7 +346,7 @@ namespace Trulon.Models.Entities
             throw new NotImplementedException("Buy method is not implemented");
         }
 
-        protected void Move(Map map)
+        protected void Move(Map map, IList<Enemy> enemies)
         {
             currentKeyboardState = Keyboard.GetState();
 
@@ -374,6 +374,21 @@ namespace Trulon.Models.Entities
                     if (obsticle.RestrictedDirection == Direction.Right)
                     {
                         velocityRight = 0;
+                    }
+                }
+            }
+
+            foreach (var enemy in enemies)
+            {
+                if (this.Bounds.Intersects(enemy.Bounds))
+                {
+                    if (this.PreviousDirection == "right")
+                    {
+                        velocityRight = 0;
+                    }
+                    if (this.PreviousDirection == "left")
+                    {
+                        velocityLeft = 0;
                     }
                 }
             }

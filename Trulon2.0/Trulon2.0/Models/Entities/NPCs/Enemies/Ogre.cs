@@ -14,8 +14,8 @@
         private const int DefaultLevel = 4;
         private const int DefaultExperienceReward = 80;
         private const int DefaultCoinsReward = 60;
-        private const int DefaultWidth = 64;
-        private const int DefaultHeight = 64;
+        private const int DefaultWidth = 96;
+        private const int DefaultHeight = 128;
         #endregion
 
         public Ogre(int x, int y)
@@ -31,7 +31,7 @@
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
-            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y - Height, 0));
+            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y + Height, 0));
             this.BaseAttackRadius = DefaultAttackRadius;
             this.IsAlive = true;
         }
