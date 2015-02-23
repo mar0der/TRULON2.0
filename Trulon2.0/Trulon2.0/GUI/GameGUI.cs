@@ -54,7 +54,7 @@
                 new Vector2(ShopOrigin.X+69, ShopOrigin.Y+69),
                 new Vector2(ShopOrigin.X+138, ShopOrigin.Y+69),
                 new Vector2(ShopOrigin.X+207, ShopOrigin.Y+69),
-                new Vector2(ShopOrigin.X+271, ShopOrigin.Y+69),
+                new Vector2(ShopOrigin.X+276, ShopOrigin.Y+69),
             };
         }
 
@@ -108,7 +108,7 @@
             spriteBatch.DrawString(this.engine.font, this.engine.player.Coins.ToString(), new Vector2(550, 697), Color.Black);
 
             //Inventory full message
-            if (engine.player.inventoryIsFull)
+            if (engine.player.InventoryIsFull)
             {
                 spriteBatch.DrawString(this.engine.font, "The inventory is full. Use or drop something!", new Vector2(700, 566), Color.Red);
             }
