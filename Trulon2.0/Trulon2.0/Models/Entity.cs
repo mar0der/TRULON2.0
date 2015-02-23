@@ -17,7 +17,7 @@
         public int BaseAttackRadius { get; protected set; }
         public virtual int AttackRadius { get; set; }
         public BoundingBox AttackBounds { get; set; }
-        public int Level { get; set; }
+        public virtual int Level { get; set; }
         public Item[] Inventory { get; set; }
         public bool IsAlive { get; set; }
 

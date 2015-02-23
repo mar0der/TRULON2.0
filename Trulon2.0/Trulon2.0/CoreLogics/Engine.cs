@@ -91,7 +91,13 @@ namespace Trulon.CoreLogics
             this.enemies = new List<Enemy>()
             {
                 new Goblin(300, 200),
+                new Troll(500, 300),
+                new Troll(560, 300),
+                new Troll(600, 300),
                 new Troll(700, 300),
+                new Troll(750, 300),
+                new Troll(770, 300),
+                new Troll(790, 300),
                 new Demon(864, 350),
                 new Boss(364, 350)
             };
