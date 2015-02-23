@@ -303,7 +303,7 @@ namespace Trulon.Models.Entities
             }
         }
 
-        public void DeequipItem(EquipmentSlots slot)
+        public void UnequipItem(EquipmentSlots slot)
         {
             if (!this.IsInventoryFull())
             {
@@ -315,7 +315,7 @@ namespace Trulon.Models.Entities
             }
             else
             {
-                this.inventoryIsFullTimeout = Config.CnventoryIsFullMessageTimeout;
+                this.inventoryIsFullTimeout = Config.InventoryIsFullMessageTimeout;
             }
         }
 
@@ -410,7 +410,59 @@ namespace Trulon.Models.Entities
             }
             if (!isAdded)
             {
-                this.inventoryIsFullTimeout = Config.CnventoryIsFullMessageTimeout;
+                this.inventoryIsFullTimeout = Config.InventoryIsFullMessageTimeout;
+            }
+        }
+
+        public void UseOrEquipFromInventory(Keys[] useItemKeys)
+        {
+            if (currentKeyboardState.GetPressedKeys().Length > 0 && useItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]))
+            {
+                int itemAtIndex = Array.IndexOf(useItemKeys, currentKeyboardState.GetPressedKeys()[0]);
+
+                if (this.Inventory.ElementAt(itemAtIndex) is Potion)
+                {
+                    this.DrinkPotion(itemAtIndex);
+                }
+                else if (this.Inventory.ElementAt(itemAtIndex) is Equipment)
+                {
+                    this.UseEquipment(itemAtIndex);
+                }
+            }
+        }
+
+        public void DropItemFromInventory(Keys[] dropItemKeys)
+        {
+            if (currentKeyboardState.GetPressedKeys().Length > 0 && dropItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]))
+            {
+                int itemAtIndex = Array.IndexOf(dropItemKeys, currentKeyboardState.GetPressedKeys()[0]);
+                this.DumpItem(itemAtIndex);
+            }
+        }
+
+        public void UnequipItem(Keys[] unequipItemKeys)
+        {
+            if (currentKeyboardState.GetPressedKeys().Length > 0 && unequipItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]))
+            {
+                var itemAtIndex = Array.IndexOf(unequipItemKeys, currentKeyboardState.GetPressedKeys()[0]);
+                switch (itemAtIndex)
+                {
+                    case 0:
+                        this.UnequipItem(EquipmentSlots.Head);
+                        break;
+                    case 1:
+                        this.UnequipItem(EquipmentSlots.LeftHand);
+                        break;
+                    case 2:
+                        this.UnequipItem(EquipmentSlots.RightHand);
+                        break;
+                    case 3:
+                        this.UnequipItem(EquipmentSlots.Body);
+                        break;
+                    case 4:
+                        this.UnequipItem(EquipmentSlots.Feet);
+                        break;
+                }
             }
         }
     }

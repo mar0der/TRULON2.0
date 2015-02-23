@@ -19,13 +19,13 @@
 
         //controls
         public static readonly Keys[] UseItemKeys = { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5 };
-        public static readonly Keys[] DumpItemFromInvontoryKeys = { Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T};
+        public static readonly Keys[] DropItemFromInventoryKeys = { Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T};
         //Keys sequence "head" , "Left Hand", "Right Hand", "body", "Feet"
-        public static readonly Keys[] DeequipItemKeys = {Keys.Z, Keys.X, Keys.C, Keys.V, Keys.B};
+        public static readonly Keys[] UnequipItemKeys = {Keys.Z, Keys.X, Keys.C, Keys.V, Keys.B};
         //Keys for buying stuff
         public static readonly Keys[] BuyItemKeys = { Keys.A, Keys.S, Keys.D, Keys.F, Keys.G, Keys.H, Keys.J, Keys.K, Keys.L, Keys.M };
         //GUI settings
-        public const int CnventoryIsFullMessageTimeout = 300;
+        public const int InventoryIsFullMessageTimeout = 300;
 
     }
 }

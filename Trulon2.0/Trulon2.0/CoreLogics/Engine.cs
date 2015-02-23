@@ -277,55 +277,13 @@ namespace Trulon.CoreLogics
             }
 
             //Use Potions or Equipment from inventory
-            Keys[] useItemKeys = Config.UseItemKeys;
+            this.player.UseOrEquipFromInventory(Config.UseItemKeys);
 
-            if (currentKeyboardState.GetPressedKeys().Length > 0 && useItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]))
-            {
-                int itemAtIndex = Array.IndexOf(useItemKeys, currentKeyboardState.GetPressedKeys()[0]);
+            //Drop item from inventory
+            this.player.DropItemFromInventory(Config.DropItemFromInventoryKeys);
 
-                if (this.player.Inventory.ElementAt(itemAtIndex) is Potion)
-                {
-                    this.player.DrinkPotion(itemAtIndex);
-                }
-                else if (this.player.Inventory.ElementAt(itemAtIndex) is Equipment)
-                {
-                    this.player.UseEquipment(itemAtIndex);
-                }
-            }
-
-            //Dump item from inventory
-            Keys[] dumpItemFromInventory = Config.DumpItemFromInvontoryKeys;
-
-            if (currentKeyboardState.GetPressedKeys().Length > 0 && dumpItemFromInventory.Contains(currentKeyboardState.GetPressedKeys()[0]))
-            {
-                int itemAtIndex = Array.IndexOf(dumpItemFromInventory, currentKeyboardState.GetPressedKeys()[0]);
-                this.player.DumpItem(itemAtIndex);
-            }
-
-            //Deequip Item 
-            Keys[] DeequipItem = Config.DeequipItemKeys;
-            if (currentKeyboardState.GetPressedKeys().Length > 0 && DeequipItem.Contains(currentKeyboardState.GetPressedKeys()[0]))
-            {
-                var itemAtIndex = Array.IndexOf(DeequipItem, currentKeyboardState.GetPressedKeys()[0]);
-                switch (itemAtIndex)
-                {
-                    case 0:
-                        this.player.DeequipItem(EquipmentSlots.Head);
-                        break;
-                    case 1:
-                        this.player.DeequipItem(EquipmentSlots.LeftHand);
-                        break;
-                    case 2:
-                        this.player.DeequipItem(EquipmentSlots.RightHand);
-                        break;
-                    case 3:
-                        this.player.DeequipItem(EquipmentSlots.Body);
-                        break;
-                    case 4:
-                        this.player.DeequipItem(EquipmentSlots.Feet);
-                        break;
-                }
-            }
+            //Unequip Item 
+            this.player.UnequipItem(Config.UnequipItemKeys);
 
             //Open the shop
             if (currentKeyboardState.IsKeyDown(Keys.Tab) && this.player.GetAllyInRange(new List<Entity>() { this.vendor }) != null)
