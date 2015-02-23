@@ -18,6 +18,7 @@
             this.AttackPointsBuff = DefaultAttackPointsBuff;
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
+            this.AttackRadiusBuff = DefaultAttackRadiusBuff;
         }
     }
 }

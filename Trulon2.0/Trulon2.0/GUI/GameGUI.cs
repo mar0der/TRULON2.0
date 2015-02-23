@@ -1,5 +1,4 @@
-﻿using Trulon.Models;
-namespace Trulon.GUI
+﻿namespace Trulon.GUI
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
@@ -54,11 +53,12 @@ namespace Trulon.GUI
                 new Vector2(ShopOrigin.X, ShopOrigin.Y+69),
                 new Vector2(ShopOrigin.X+69, ShopOrigin.Y+69),
                 new Vector2(ShopOrigin.X+138, ShopOrigin.Y+69),
-                new Vector2(ShopOrigin.X+207, ShopOrigin.Y+69)
+                new Vector2(ShopOrigin.X+207, ShopOrigin.Y+69),
+                new Vector2(ShopOrigin.X+271, ShopOrigin.Y+69),
             };
         }
 
-        public Vector2 ShopOrigin{get; set;}
+        public Vector2 ShopOrigin { get; set; }
 
         public void Initialize()
         {
@@ -67,7 +67,7 @@ namespace Trulon.GUI
 
         public void Update()
         {
-             
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -85,14 +85,14 @@ namespace Trulon.GUI
             var slots = (EquipmentSlots[])EquipmentSlots.GetValues(typeof(EquipmentSlots));
             foreach (var slot in slots)
             {
-                DrawEquipmentSlot(spriteBatch, slot); 
+                DrawEquipmentSlot(spriteBatch, slot);
             }
 
             //Display vendors shop
 
             if (this.engine.ShopOpened)
             {
-                
+
                 for (int i = 0; i < this.engine.vendor.Inventory.Length; i++)
                 {
                     spriteBatch.Draw(this.engine.vendor.Inventory[i].Image, this.vendorShopPositions[i], Color.White);
@@ -106,7 +106,7 @@ namespace Trulon.GUI
             spriteBatch.DrawString(this.engine.font, this.engine.player.SpeedPoints.ToString(), new Vector2(380, 677), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Experience.ToString(), new Vector2(380, 697), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Coins.ToString(), new Vector2(550, 697), Color.Black);
-            
+
             //Inventory full message
             if (engine.player.inventoryIsFull)
             {

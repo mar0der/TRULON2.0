@@ -1,10 +1,9 @@
 ﻿namespace Trulon.Interfaces
 {
+    using global::Trulon.Enums;
+
     public interface IEquipable
     {
-        int SpeedPointsBuff { get; set; }
-        int DefensePointsBuff { get; set; }
-        int AttackPointsBuff { get; set; }
-
+        EquipmentSlots Slot { get; set; }
     }
 }

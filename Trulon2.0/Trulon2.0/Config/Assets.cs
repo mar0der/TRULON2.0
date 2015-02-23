@@ -140,6 +140,9 @@
         public static readonly string DefensePotion = "Images/Items/DefensePotion.png";
         //SpeedPotion
         public static readonly string SpeedPotion = "Images/Items/SpeedPotion.png";
+        //AttackRadiusPotion
+        public static readonly string AttackRangePotion = "Images/Items/AttackRangePotion.png";
+
 
         //Equipment empty slots
         public static readonly string EmptyHead = "Images/EmptyEquipment/EmptyHead.png";
