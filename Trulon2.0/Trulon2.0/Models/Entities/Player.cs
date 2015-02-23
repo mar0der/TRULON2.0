@@ -166,6 +166,39 @@ namespace Trulon.Models.Entities
             }
         }
 
+        public override int Level
+        {
+            get
+            {
+                int exp = this.Experience;
+                if (exp >= 0 && exp < 300)
+                {
+                    return 1;
+                }
+                else if (exp >= 300 && exp < 600)
+                {
+                    return 2;
+                } 
+                else if (exp >= 600 && exp < 900)
+                {
+                    return 3;
+                }
+                else if (exp >= 900 && exp < 1200)
+                {
+                    return 4;
+                }
+                else if (exp >= 1200 && exp < 1500)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+
+            }
+        }
+
         public void Update(Map map)
         {
             base.Update();
