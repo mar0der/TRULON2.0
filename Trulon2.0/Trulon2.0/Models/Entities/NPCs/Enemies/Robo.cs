@@ -2,23 +2,23 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class Troll : Enemy
+    public class Robo : Enemy
     {
         #region Constants
-        private const string DefaultName = "Troll";
-        private const int DefaultAttackPoints = 5;
-        private const int DefaultDefensePoints = 5;
-        private const int DefaultSpeedPoints = 5;
-        private const int DefaultHealthPoints = 5;
+        private const string DefaultName = "Robo";
+        private const int DefaultAttackPoints = 10;
+        private const int DefaultDefensePoints = 10;
+        private const int DefaultSpeedPoints = 10;
+        private const int DefaultHealthPoints = 75;
         private const int DefaultAttackRadius = 100;
-        private const int DefaultLevel = 1;
-        private const int DefaultExperienceReward = 50;
-        private const int DefaultCoinsReward = 30;
+        private const int DefaultLevel = 2;
+        private const int DefaultExperienceReward = 60;
+        private const int DefaultCoinsReward = 40;
         private const int DefaultWidth = 64;
         private const int DefaultHeight = 64;
         #endregion
 
-        public Troll(int x, int y)
+        public Robo(int x, int y)
         {
             this.Name = DefaultName;
             this.BaseAttack = DefaultAttackPoints;
@@ -31,7 +31,7 @@
             this.Width = DefaultWidth;
             this.Height = DefaultHeight;
             this.Position = new Vector2(x, y);
-            this.Bounds = new BoundingBox(new Vector3(x,y,0), new Vector3(x + Width, y + Height, 0));
+            this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y + Height, 0));
             this.BaseAttackRadius = DefaultAttackRadius;
             this.IsAlive = true;
         }

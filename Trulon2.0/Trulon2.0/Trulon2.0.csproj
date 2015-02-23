@@ -76,10 +76,9 @@
     <Compile Include="Models\Entities\NPCs\Allies\Vendor.cs" />
     <Compile Include="Models\Entities\NPCs\Ally.cs" />
     <Compile Include="Models\Entities\NPCs\Enemies\Boss.cs" />
-    <Compile Include="Models\Entities\NPCs\Enemies\Demon.cs" />
+    <Compile Include="Models\Entities\NPCs\Enemies\Ogre.cs" />
     <Compile Include="Models\Entities\NPCs\Enemies\Goblin.cs" />
-    <Compile Include="Models\Entities\NPCs\Enemies\Orc.cs" />
-    <Compile Include="Models\Entities\NPCs\Enemies\Troll.cs" />
+    <Compile Include="Models\Entities\NPCs\Enemies\Robo.cs" />
     <Compile Include="Models\Entities\NPCs\Enemy.cs" />
     <Compile Include="Models\Entities\Player.cs" />
     <Compile Include="Models\Entities\Players\Barbarian.cs" />

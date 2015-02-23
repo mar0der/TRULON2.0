@@ -91,14 +91,8 @@ namespace Trulon.CoreLogics
             this.enemies = new List<Enemy>()
             {
                 new Goblin(300, 200),
-                new Troll(500, 300),
-                new Troll(560, 300),
-                new Troll(600, 300),
-                new Troll(700, 300),
-                new Troll(750, 300),
-                new Troll(770, 300),
-                new Troll(790, 300),
-                new Demon(864, 350),
+                new Robo(350, 200),
+                new Ogre(864, 350),
                 new Boss(364, 350)
             };
 
@@ -189,8 +183,18 @@ namespace Trulon.CoreLogics
 
             foreach (var enemy in enemies)
             {
-                enemy.Initialize(enemy is Goblin ? Content.Load<Texture2D>(Assets.GoblinImages[0]) :
-                Content.Load<Texture2D>(Assets.TrollImages[0]), enemy.Position);
+                if (enemy is Goblin)
+                {
+                    enemy.Initialize(Content.Load<Texture2D>(Assets.GoblinImages[0]), enemy.Position);
+                }
+                else if (enemy is Ogre)
+                {
+                    enemy.Initialize(Content.Load<Texture2D>(Assets.OgreImages[0]), enemy.Position);
+                }
+                else
+                {
+                    enemy.Initialize(Content.Load<Texture2D>(Assets.RoboImages[0]), enemy.Position);
+                }
             }
 
             //Load all available items

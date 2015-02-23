@@ -105,11 +105,11 @@
       <FileName>Models\Entities\NPCs\Enemies\Goblin.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Trulon.Models.Entities.NPCs.Enemies.Orc" Collapsed="true">
+  <Class Name="Trulon.Models.Entities.NPCs.Enemies.Robo" Collapsed="true">
     <Position X="20.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAEAAAAAECAAAAAAACAAAAAAEAAAAAAAIAGAAAIAAE=</HashCode>
-      <FileName>Models\Entities\NPCs\Enemies\Orc.cs</FileName>
+      <FileName>Models\Entities\NPCs\Enemies\Robo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Trulon.Models.Entities.NPCs.Enemies.Troll" Collapsed="true">

@@ -58,7 +58,7 @@
             "Images/Goblin/goblinAttack4Right.png"
         };
 
-        //Orc base constants
+        //Robo base constants
         public static readonly string[] OgreImages = new string[16]
         {
             "Images/Ogre/OgreMove1.png",
@@ -80,7 +80,7 @@
         };
 
         //Troll base constants
-        public static readonly string[] TrollImages = new string[16]
+        public static readonly string[] RoboImages = new string[16]
         {
             "Images/Robo/RoboMove1.png",
             "Images/Robo/RoboMove2.png",

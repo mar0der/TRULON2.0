@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class Demon : Enemy
+    public class Ogre : Enemy
     {
         #region Constants
         private const string DefaultName = "Demon";
@@ -18,7 +18,7 @@
         private const int DefaultHeight = 64;
         #endregion
 
-        public Demon(int x, int y)
+        public Ogre(int x, int y)
         {
             this.Name = DefaultName;
             this.BaseAttack = DefaultAttackPoints;
