@@ -56,6 +56,8 @@ namespace Trulon.CoreLogics
         private Texture2D[] AnimationsRightAttack;
         private Texture2D[] AnimationsLeftAttack;
 
+        public Texture2D healthBar;
+
         public readonly Item[] AllEquipments = new Item[5];
         public readonly Item[] AllPotions = new Item[5];
         public readonly Dictionary<EquipmentSlots, Texture2D> AllEmptyEquipmentSlots =
@@ -164,6 +166,10 @@ namespace Trulon.CoreLogics
                 data2[i] = Color.Red;
             }
             boundsTest2.SetData(data2);
+
+
+            //Load healthbar image
+            healthBar = Content.Load<Texture2D>(Assets.HealthBar);
 
             //Load Font
             this.font = Content.Load<SpriteFont>("font");

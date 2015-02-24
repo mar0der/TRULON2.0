@@ -150,5 +150,8 @@
         public static readonly string EmptyRightHand = "Images/EmptyEquipment/EmptyRightHand.png";
         public static readonly string EmptyBody = "Images/EmptyEquipment/EmptyBody.png";
         public static readonly string EmptyFeet = "Images/EmptyEquipment/EmptyFeet.png";
+
+        //HealthBar
+        public static readonly string HealthBar = "Images/HealthBar.png";
     }
 }

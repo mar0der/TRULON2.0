@@ -236,7 +236,10 @@ namespace Trulon.Models.Entities
             {
                 if (activePotions[i].Countdown == 0)
                 {
-                    this.activePotions.Remove(activePotions[i]);
+                    if (!(activePotions[i] is HealthPotion))
+                    {
+                        this.activePotions.Remove(activePotions[i]);
+                    }
                     break;
                 }
                 activePotions[i].Countdown--;

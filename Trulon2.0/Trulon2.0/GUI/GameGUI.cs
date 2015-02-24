@@ -109,7 +109,12 @@
             spriteBatch.DrawString(this.engine.font, this.engine.player.HealthPoints.ToString(), new Vector2(550, 650), Color.Black);
 
             //Healthbar
-
+            //healthBar = Content.Load<Texture2D>(Assets.HealthBar);
+            for (int i = 0; i < this.engine.player.HealthPoints; i++)
+            {
+                spriteBatch.Draw(this.engine.healthBar, new Rectangle(i+10, 483, this.engine.healthBar.Width, this.engine.healthBar.Height), Color.White);
+            }
+            
 
             //Inventory full message
             if (engine.player.InventoryIsFull)

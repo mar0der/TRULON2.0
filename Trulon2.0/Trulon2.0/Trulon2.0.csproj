@@ -232,6 +232,9 @@
     <Content Include="Resources\Images\Goblin\goblinMove4Right.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Images\HealthBar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\Items\AttackRangePotion.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
