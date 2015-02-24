@@ -282,6 +282,12 @@ namespace Trulon.CoreLogics
             //Update player
             this.player.Update();
 
+            //Check if player isAlive
+            if (!this.player.IsAlive)
+            {
+                
+            }
+
             foreach (var obsticle in this.maps[currentMap].Obsticles)
             {
                 if (this.player.Intersects(obsticle.ObsticleBox))
@@ -304,21 +310,6 @@ namespace Trulon.CoreLogics
                     }
                 }
             }
-
-            //foreach (var enemy in enemies)
-            //{
-            //    if (this.player.Bounds.Intersects(enemy.Bounds))
-            //    {
-            //        if (this.player.PreviousDirection == "right")
-            //        {
-            //            this.player.VelocityRight = 0;
-            //        }
-            //        if (this.player.PreviousDirection == "left")
-            //        {
-            //            this.player.VelocityLeft = 0;
-            //        }
-            //    }
-            //}
 
             //update enemies
             foreach (var enemy in enemies)
@@ -384,12 +375,20 @@ namespace Trulon.CoreLogics
 
             //Check for player is moving
             var enemiesInRange = this.player.GetEnemiesInRange(enemies);
+            int chanceToBeAttacked = rand.Next(0, 20);
             if (enemiesInRange.Count > 0)
             {
                 if (currentKeyboardState.IsKeyDown(Keys.Space) && isAttacking == false)
                 {
                     indexFrame = 0;
                     this.player.Attack(enemiesInRange);
+                }
+                foreach (var enemy in enemiesInRange)
+                {
+                    if (chanceToBeAttacked == 1)
+                    {
+                        enemy.Attack(this.player);
+                    }
                 }
             }
 

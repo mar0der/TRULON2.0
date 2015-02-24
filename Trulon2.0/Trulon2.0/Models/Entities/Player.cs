@@ -24,7 +24,6 @@ namespace Trulon.Models.Entities
 
         public EntityEquipment PlayerEquipment { get; set; }
 
-
         public IList<Potion> ActivePotions
         {
             get
@@ -78,6 +77,7 @@ namespace Trulon.Models.Entities
             {
                 return this.BaseHealth + this.HealthSkill + this.PotionBuffs["Health"] + this.EquipmentBuffs["health"];
             }
+            set { this.BaseHealth = value; }
         }
 
         public override int AttackRadius
@@ -502,6 +502,5 @@ namespace Trulon.Models.Entities
                 new Vector3(this.Position.X + 2 * this.Width, this.Position.Y + 64, 0f),
                 new Vector3(this.Position.X + 2 * this.Width + this.AttackRadius, this.Position.Y + this.AttackRadius + 64, 0f));
         }
-        
     }
 }
