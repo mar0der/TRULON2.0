@@ -30,7 +30,7 @@
             this.BaseAttack = DefaultAttackPoints;
             this.BaseDefense = DefaultDefencePoints;
             this.BaseSpeed = DefaultSpeedPoints;
-            this.BaseHealth = DefaultHealthPoints;
+            this.HealthPoints = DefaultHealthPoints;
             this.Level = DefaultLevel;
             this.Experience = DefaultExperience;
             this.Coins = DefaultCoins;
@@ -50,6 +50,7 @@
             this.PlayerEquipment = new EntityEquipment();
             this.Inventory = new Item[Config.InventorySize];
             this.IsAlive = true;
+            this.CurrentMaxHealth = DefaultHealthPoints;
         }
     }
 }

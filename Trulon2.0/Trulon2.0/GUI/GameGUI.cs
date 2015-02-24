@@ -1,4 +1,6 @@
-﻿namespace Trulon.GUI
+﻿using Trulon.Models.Items.Potions;
+
+namespace Trulon.GUI
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
@@ -36,6 +38,10 @@
         private Texture2D rightImage;
         private Texture2D bodyImage;
         private Texture2D feetImage;
+        private float barMaxWidth = 175f;
+        private float barCurrentWidth;
+        private Color barColor = Color.White;
+        private float healthAlertLevel = 0.25f;
 
         public GameGUI(Engine engine)
         {
@@ -92,7 +98,6 @@
 
             if (this.engine.ShopOpened)
             {
-
                 for (int i = 0; i < this.engine.vendor.Inventory.Length; i++)
                 {
                     spriteBatch.Draw(this.engine.vendor.Inventory[i].Image, this.vendorShopPositions[i], Color.White);
@@ -106,15 +111,21 @@
             spriteBatch.DrawString(this.engine.font, this.engine.player.SpeedPoints.ToString(), new Vector2(380, 677), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Experience.ToString(), new Vector2(380, 697), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Coins.ToString(), new Vector2(550, 697), Color.Black);
-            spriteBatch.DrawString(this.engine.font, this.engine.player.HealthPoints.ToString(), new Vector2(550, 650), Color.Black);
+            spriteBatch.DrawString(this.engine.font, string.Format("{0}/{1}", this.engine.player.HealthPoints, this.engine.player.CurrentMaxHealth), new Vector2(535, 650), Color.Black);
 
             //Healthbar
-            //healthBar = Content.Load<Texture2D>(Assets.HealthBar);
-            for (int i = 0; i < this.engine.player.HealthPoints; i++)
+            this.barCurrentWidth = (this.barMaxWidth / this.engine.player.CurrentMaxHealth)*
+                                   this.engine.player.HealthPoints;
+            if (this.barCurrentWidth < this.healthAlertLevel * this.engine.player.CurrentMaxHealth)
             {
-                spriteBatch.Draw(this.engine.healthBar, new Rectangle(i+10, 483, this.engine.healthBar.Width, this.engine.healthBar.Height), Color.White);
+                this.barColor = Color.Red;
             }
-            
+            else
+            {
+                this.barColor = Color.White;
+            }
+
+            spriteBatch.Draw(this.engine.healthBar, new Rectangle(10, 483, (int)barCurrentWidth, this.engine.healthBar.Height), this.barColor);
 
             //Inventory full message
             if (engine.player.InventoryIsFull)

@@ -47,6 +47,8 @@ namespace Trulon.Models.Entities
 
         public int HealthSkill { get; set; }
 
+
+
         public int AttackPoints
         {
             get
@@ -71,14 +73,9 @@ namespace Trulon.Models.Entities
             }
         }
 
-        public int HealthPoints
-        {
-            get
-            {
-                return this.BaseHealth + this.HealthSkill + this.PotionBuffs["Health"] + this.EquipmentBuffs["health"];
-            }
-            set { this.BaseHealth = value; }
-        }
+        public int HealthPoints { get; set; }
+
+        public virtual int CurrentMaxHealth { get; set; }
 
         public override int AttackRadius
         {
@@ -232,14 +229,11 @@ namespace Trulon.Models.Entities
                 MathHelper.Clamp(this.Position.Y, -80, Config.ScreenHeight - this.Image.Height + 80));
 
             //check for timeouted potions
-            for (int i = 0; i < activePotions.Count; i++) 
+            for (int i = 0; i < activePotions.Count; i++)
             {
                 if (activePotions[i].Countdown == 0)
                 {
-                    if (!(activePotions[i] is HealthPotion))
-                    {
-                        this.activePotions.Remove(activePotions[i]);
-                    }
+                    this.activePotions.Remove(activePotions[i]);
                     break;
                 }
                 activePotions[i].Countdown--;
@@ -321,10 +315,21 @@ namespace Trulon.Models.Entities
 
         protected internal void DrinkPotion(int itemAtIndex)
         {
-            if (this.Inventory.ElementAt(itemAtIndex) is Potion)
+            var item = this.Inventory.ElementAt((itemAtIndex));
+            if (item is HealthPotion)
+            {
+                this.CurrentMaxHealth += item.HealthPointsBuff;
+                this.HealthPoints += item.HealthPointsBuff;
+                this.Inventory[itemAtIndex] = null;
+            }
+            else if (this.Inventory.ElementAt(itemAtIndex) is Potion)
             {
                 this.ActivePotions.Add(this.Inventory.ElementAt(itemAtIndex) as Potion);
                 this.Inventory[itemAtIndex] = null;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("The item does not excists in inventory");
             }
         }
 
