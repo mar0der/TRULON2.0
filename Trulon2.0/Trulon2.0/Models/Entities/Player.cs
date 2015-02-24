@@ -228,8 +228,8 @@ namespace Trulon.Models.Entities
             //Keyboard input is in the move method which is called in the base update method
             //Make sure that player doesn't go out of bounds. T
             this.Position = new Vector2(
-                MathHelper.Clamp(this.Position.X, 0, Config.ScreenWidth - this.Image.Width),
-                MathHelper.Clamp(this.Position.Y, 0, Config.ScreenHeight - this.Image.Height));
+                MathHelper.Clamp(this.Position.X, -64, Config.ScreenWidth - this.Image.Width + 64),
+                MathHelper.Clamp(this.Position.Y, -80, Config.ScreenHeight - this.Image.Height + 80));
 
             //check for timeouted potions
             for (int i = 0; i < activePotions.Count; i++) 
