@@ -61,6 +61,10 @@ namespace Trulon.CoreLogics
         public readonly Dictionary<EquipmentSlots, Texture2D> AllEmptyEquipmentSlots =
             new Dictionary<EquipmentSlots, Texture2D>();
 
+        //testing bounding box
+        private Texture2D boundsTest;
+        private Texture2D boundsTest2;
+
 
         public Engine()
         {
@@ -135,6 +139,31 @@ namespace Trulon.CoreLogics
 
             // Create a new SpriteBatch, which can be used to draw textures.
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //testing bounding box
+            int boundWidth = (int) (this.player.Bounds.Max.X - this.player.Bounds.Min.X);
+            int boundHeight = (int) (this.player.Bounds.Max.Y - this.player.Bounds.Min.Y);
+            boundsTest = new Texture2D(graphics.GraphicsDevice, boundWidth, boundHeight);
+            Color[] data = new Color[boundWidth * boundHeight];
+
+
+            for (int i = 0; i < data.Length; ++i)
+            {
+                data[i] = Color.Chocolate;
+            }
+            boundsTest.SetData(data);
+            
+            int boundWidth2 = (int) (this.player.AttackBounds.Max.X - this.player.AttackBounds.Min.X);
+            int boundHeight2 = (int)(this.player.AttackBounds.Max.Y - this.player.AttackBounds.Min.Y);
+            boundsTest2 = new Texture2D(graphics.GraphicsDevice, boundWidth2, boundHeight2);
+            Color[] data2 = new Color[boundWidth2 * boundHeight2];
+
+
+            for (int i = 0; i < data2.Length; ++i)
+            {
+                data2[i] = Color.Red;
+            }
+            boundsTest2.SetData(data2);
 
             //Load Font
             this.font = Content.Load<SpriteFont>("font");
@@ -251,7 +280,45 @@ namespace Trulon.CoreLogics
             currentKeyboardState = Keyboard.GetState();
 
             //Update player
-            this.player.Update(maps[currentMap], enemies);
+            this.player.Update();
+
+            foreach (var obsticle in this.maps[currentMap].Obsticles)
+            {
+                if (this.player.Intersects(obsticle.ObsticleBox))
+                {
+                    if (obsticle.RestrictedDirection == Direction.Up)
+                    {
+                        this.player.VelocityUp = 0;
+                    }
+                    if (obsticle.RestrictedDirection == Direction.Down)
+                    {
+                        this.player.VelocityDown = 0;
+                    }
+                    if (obsticle.RestrictedDirection == Direction.Left)
+                    {
+                        this.player.VelocityLeft = 0;
+                    }
+                    if (obsticle.RestrictedDirection == Direction.Right)
+                    {
+                        this.player.VelocityRight = 0;
+                    }
+                }
+            }
+
+            //foreach (var enemy in enemies)
+            //{
+            //    if (this.player.Bounds.Intersects(enemy.Bounds))
+            //    {
+            //        if (this.player.PreviousDirection == "right")
+            //        {
+            //            this.player.VelocityRight = 0;
+            //        }
+            //        if (this.player.PreviousDirection == "left")
+            //        {
+            //            this.player.VelocityLeft = 0;
+            //        }
+            //    }
+            //}
 
             //update enemies
             foreach (var enemy in enemies)
@@ -408,6 +475,14 @@ namespace Trulon.CoreLogics
             this.gui.Draw(spriteBatch);
 
             this.player.Draw(spriteBatch);
+
+            Vector2 minBounds = new Vector2(this.player.Bounds.Min.X + 54, this.player.Bounds.Min.Y + 24);
+            spriteBatch.Draw(boundsTest, minBounds, Color.White);
+            
+            Vector2 minBounds2 = new Vector2(this.player.AttackBounds.Min.X, this.player.AttackBounds.Min.Y);
+            spriteBatch.Draw(boundsTest2, minBounds2, Color.White);
+
+            //this.spriteBatch.Draw(boundsTest, this.player.Position, new Rectangle((int)this.player.Bounds.Min.X, (int)this.player.Bounds.Min.Y, (int)this.player.Bounds.Max.Length(), (int)this.player.Bounds.Max.Length()), Color.Red);
 
             this.spriteBatch.End();
             base.Draw(gameTime);

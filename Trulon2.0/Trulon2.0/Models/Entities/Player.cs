@@ -15,14 +15,15 @@ namespace Trulon.Models.Entities
     public abstract class Player : Entity
     {
         private KeyboardState currentKeyboardState;
-        private int velocityUp;
-        private int velocityDown;
-        private int velocityLeft;
-        private int velocityRight;
+        public int VelocityUp { get; set; }
+        public int VelocityDown { get; set; }
+        public int VelocityLeft { get; set; }
+        public int VelocityRight { get; set; }
         private IList<Potion> activePotions = new List<Potion>();
         private int inventoryIsFullTimeout;
 
         public EntityEquipment PlayerEquipment { get; set; }
+
 
         public IList<Potion> ActivePotions
         {
@@ -83,6 +84,14 @@ namespace Trulon.Models.Entities
         {
             get
             {
+                if (this.EquipmentBuffs == null)
+                {
+                    if (this.PotionBuffs == null)
+                    {
+                        return this.BaseAttack;
+                    }
+                    return this.BaseAttack + this.PotionBuffs["AttackRange"];
+                }
                 return this.BaseAttackRadius + this.EquipmentBuffs["attackRange"] + this.PotionBuffs["AttackRange"];
             }
         }
@@ -97,25 +106,28 @@ namespace Trulon.Models.Entities
                 int speedBuff = 0;
                 int attackRange = 0;
                 int healthBuff = 0;
-
-                foreach (var item in this.PlayerEquipment.CurrentEquipment)
+                if (this.PlayerEquipment != null)
                 {
-                    //because the item can be removed form equipment and the slot will be set to null
-                    if (item.Value != null)
+                    foreach (var item in this.PlayerEquipment.CurrentEquipment)
                     {
-                        attackBuff += item.Value.AttackPointsBuff;
-                        defenseBuff += item.Value.DefensePointsBuff;
-                        speedBuff += item.Value.SpeedPointsBuff;
-                        attackRange += item.Value.AttackRadiusBuff;
-                        healthBuff += item.Value.HealthPointsBuff;
+                        //because the item can be removed form equipment and the slot will be set to null
+                        if (item.Value != null)
+                        {
+                            attackBuff += item.Value.AttackPointsBuff;
+                            defenseBuff += item.Value.DefensePointsBuff;
+                            speedBuff += item.Value.SpeedPointsBuff;
+                            attackRange += item.Value.AttackRadiusBuff;
+                            healthBuff += item.Value.HealthPointsBuff;
+                        }
                     }
+                    buffs.Add("attack", attackBuff);
+                    buffs.Add("defense", defenseBuff);
+                    buffs.Add("speed", speedBuff);
+                    buffs.Add("attackRange", attackRange);
+                    buffs.Add("health", healthBuff);
+                    return buffs;
                 }
-                buffs.Add("attack", attackBuff);
-                buffs.Add("defense", defenseBuff);
-                buffs.Add("speed", speedBuff);
-                buffs.Add("attackRange", attackRange);
-                buffs.Add("health", healthBuff);
-                return buffs;
+                return null;
             }
         }
 
@@ -207,10 +219,12 @@ namespace Trulon.Models.Entities
             }
         }
 
-        public void Update(Map map, IList<Enemy> enemies)
+        public override void Update()
         {
-            base.Update();
-            this.Move(map, enemies);
+            //Update bounds of player
+            this.Bounds = new BoundingBox(new Vector3(this.Position.X, this.Position.Y + 64, 0), new Vector3(this.Position.X + this.Width, Position.Y + this.Height + 64, 0));
+
+            this.Move();
             //Keyboard input is in the move method which is called in the base update method
             //Make sure that player doesn't go out of bounds. T
             this.Position = new Vector2(
@@ -218,7 +232,7 @@ namespace Trulon.Models.Entities
                 MathHelper.Clamp(this.Position.Y, 0, Config.ScreenHeight - this.Image.Height));
 
             //check for timeouted potions
-            for (int i = 0; i < activePotions.Count; i++)
+            for (int i = 0; i < activePotions.Count; i++) 
             {
                 if (activePotions[i].Countdown == 0)
                 {
@@ -227,6 +241,30 @@ namespace Trulon.Models.Entities
                 }
                 activePotions[i].Countdown--;
             }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                this.UpdateBoundsRight();
+                this.previousDirection = "right";
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                this.UpdateBoundsLeft();
+                this.previousDirection = "left";
+            }
+            else
+            {
+                if (previousDirection == "right")
+                {
+                    this.UpdateBoundsRight();
+                }
+                else
+                {
+                    this.UpdateBoundsLeft();
+                }
+            }
+
+            //base.Update();
         }
 
         public IList<Enemy> GetEnemiesInRange(IList<Enemy> enemies)
@@ -346,69 +384,37 @@ namespace Trulon.Models.Entities
             throw new NotImplementedException("Buy method is not implemented");
         }
 
-        protected void Move(Map map, IList<Enemy> enemies)
+        public bool Intersects(BoundingBox box)
+        {
+            return this.Bounds.Intersects(box);
+        }
+
+        protected override void Move()
         {
             currentKeyboardState = Keyboard.GetState();
 
-            velocityUp = SpeedPoints;
-            velocityDown = SpeedPoints;
-            velocityLeft = SpeedPoints;
-            velocityRight = SpeedPoints;
-
-            foreach (var obsticle in map.Obsticles)
-            {
-                if (this.Bounds.Intersects(obsticle.ObsticleBox))
-                {
-                    if (obsticle.RestrictedDirection == Direction.Up)
-                    {
-                        velocityUp = 0;
-                    }
-                    if (obsticle.RestrictedDirection == Direction.Down)
-                    {
-                        velocityDown = 0;
-                    }
-                    if (obsticle.RestrictedDirection == Direction.Left)
-                    {
-                        velocityLeft = 0;
-                    }
-                    if (obsticle.RestrictedDirection == Direction.Right)
-                    {
-                        velocityRight = 0;
-                    }
-                }
-            }
-
-            foreach (var enemy in enemies)
-            {
-                if (this.Bounds.Intersects(enemy.Bounds))
-                {
-                    if (this.PreviousDirection == "right")
-                    {
-                        velocityRight = 0;
-                    }
-                    if (this.PreviousDirection == "left")
-                    {
-                        velocityLeft = 0;
-                    }
-                }
-            }
 
             if (currentKeyboardState.IsKeyDown(Keys.Left))
             {
-                this.Position = new Vector2(this.Position.X - this.velocityLeft, this.Position.Y);
+                this.Position = new Vector2(this.Position.X - this.VelocityLeft, this.Position.Y);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Right))
             {
-                this.Position = new Vector2(this.Position.X + this.velocityRight, this.Position.Y);
+                this.Position = new Vector2(this.Position.X + this.VelocityRight, this.Position.Y);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Up))
             {
-                this.Position = new Vector2(this.Position.X, this.Position.Y - this.velocityUp);
+                this.Position = new Vector2(this.Position.X, this.Position.Y - this.VelocityUp);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Down))
             {
-                this.Position = new Vector2(this.Position.X, this.Position.Y + this.velocityDown);
+                this.Position = new Vector2(this.Position.X, this.Position.Y + this.VelocityDown);
             }
+
+            this.VelocityUp = SpeedPoints;
+            this.VelocityLeft = SpeedPoints;
+            this.VelocityDown = SpeedPoints;
+            this.VelocityRight = SpeedPoints;
         }
 
         public void AddToInventory(Item item)
@@ -480,5 +486,22 @@ namespace Trulon.Models.Entities
                 }
             }
         }
+
+        protected void UpdateBoundsLeft()
+        {
+            this.Bounds = new BoundingBox(new Vector3(this.Position.X + this.Width, this.Position.Y + 64, 0), new Vector3(this.Position.X + 2 * this.Width, Position.Y + this.Height + 64, 0));
+            this.AttackBounds = new BoundingBox(
+                new Vector3(this.Position.X + this.Width - 10, this.Position.Y + 64, 0f),
+                new Vector3(this.Position.X + this.Width + this.AttackRadius - 10, this.Position.Y + this.AttackRadius + 64, 0f));
+        }
+
+        protected void UpdateBoundsRight()
+        {
+            this.Bounds = new BoundingBox(new Vector3(this.Position.X, this.Position.Y + 64, 0), new Vector3(this.Position.X + this.Width, Position.Y + this.Height + 64, 0));
+            this.AttackBounds = new BoundingBox(
+                new Vector3(this.Position.X + 2 * this.Width, this.Position.Y + 64, 0f),
+                new Vector3(this.Position.X + 2 * this.Width + this.AttackRadius, this.Position.Y + this.AttackRadius + 64, 0f));
+        }
+        
     }
 }

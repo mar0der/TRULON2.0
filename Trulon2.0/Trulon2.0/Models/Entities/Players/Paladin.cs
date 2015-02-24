@@ -49,10 +49,5 @@
             this.Inventory = new Item[Config.InventorySize];
             this.IsAlive = true;
         }
-
-        protected override void Move()
-        {
-
-        }
     }
 }

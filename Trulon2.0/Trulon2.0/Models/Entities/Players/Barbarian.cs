@@ -11,7 +11,7 @@
         private const int DefaultDefencePoints = 3;
         private const int DefaultSpeedPoints = 5;
         private const int DefaultHealthPoints = 100;
-        private const int DefaultAttackRadius = 80;
+        private const int DefaultAttackRadius = 60;
         private const int DefaultLevel = 1;
         private const int DefaultExperience = 0;
         private const int DefaultCoins = 10;
@@ -20,7 +20,7 @@
         private const int DefaultDefenseSkill = 0;
         private const int DefaultSpeedSkill = 0;
         private const int DefaultHealthSkill = 0;
-        private const int DefaultWidth = 32;
+        private const int DefaultWidth = 64;
         private const int DefaultHeight = 96;
         #endregion
 
@@ -44,14 +44,12 @@
             this.Position = new Vector2(x, y);
             this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y + Height, 0));
             this.BaseAttackRadius = DefaultAttackRadius;
+            this.AttackBounds = new BoundingBox(
+                new Vector3(this.Position.X + 2 * this.Width, this.Position.Y + 64, 0f),
+                new Vector3(this.Position.X + 2 * this.Width + this.BaseAttackRadius, this.Position.Y + this.BaseAttackRadius + 64, 0f));
             this.PlayerEquipment = new EntityEquipment();
             this.Inventory = new Item[Config.InventorySize];
             this.IsAlive = true;
-        }
-
-        protected override void Move()
-        {
-
         }
     }
 }

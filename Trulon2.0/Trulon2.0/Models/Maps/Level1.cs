@@ -10,15 +10,15 @@
     {
         public Level1()
         {
-            this.Obsticles = new Obsticle[]
+            this.Obsticles = new []
                                        {
                                        //    new Obsticle(0, 346, 360, 20, Direction.Up),
                                        //    new Obsticle(310, 390, 20, 15, Direction.Left),
                                        //    new Obsticle(350, 311, 200, 20, Direction.Up),
                                            //HUD
-                                           new Obsticle(0, 330, 130, 0, Direction.Down),
-                                           new Obsticle(115, 375, 40, 90, Direction.Left),
-                                           new Obsticle(115, 450, 1100, 0, Direction.Down), 
+                                           new Obsticle(0, 450, 130, 100, Direction.Down),
+                                           new Obsticle(115, 450, 30, 120, Direction.Left),
+                                           new Obsticle(115, 560, 1100, 50, Direction.Down), 
                                        };
         }
 
