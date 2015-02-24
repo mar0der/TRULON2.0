@@ -11,6 +11,7 @@
         private const int DefaultHealthPointsBuff = 10;
         private const int DefaultSpeedPointsBuff = 0;
         private const int DefaultAttackRangeBuff = 0;
+        private const int DefaultPrice = 20;
 
         public HealthPotion()
         {
@@ -23,6 +24,7 @@
             this.HealthPointsBuff = DefaultHealthPointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
             this.AttackRadiusBuff = DefaultAttackRangeBuff;
+            this.Price = DefaultPrice;
         }
     }
 }

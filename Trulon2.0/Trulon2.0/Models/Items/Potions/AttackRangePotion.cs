@@ -16,6 +16,7 @@ namespace Trulon.Models.Items.Potions
         private const int DefaultHealthPointsBuff = 0;
         private const int DefaultSpeedPointsBuff = 0;
         private const int DefaultAttackRangeBuff = 10;
+        private const int DefaultPrice = 20;
 
         public AttackRangePotion()
         {
@@ -28,6 +29,7 @@ namespace Trulon.Models.Items.Potions
             this.HealthPointsBuff = DefaultHealthPointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
             this.AttackRadiusBuff = DefaultAttackRangeBuff;
+            this.Price = DefaultPrice;
         }
     }
 }

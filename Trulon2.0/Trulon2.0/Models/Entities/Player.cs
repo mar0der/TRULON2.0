@@ -21,6 +21,7 @@ namespace Trulon.Models.Entities
         public int VelocityRight { get; set; }
         private IList<Potion> activePotions = new List<Potion>();
         private int inventoryIsFullTimeout;
+        private int healthPoints;
 
         public EntityEquipment PlayerEquipment { get; set; }
 
@@ -45,7 +46,12 @@ namespace Trulon.Models.Entities
 
         public int SpeedSkill { get; set; }
 
-        public int HealthSkill { get; set; }
+        public int HealthSkill
+        {
+            get { return this.Height; }
+            //TODO validation for negative health
+            set { this.healthPoints = value; }
+        }
 
 
 
@@ -73,7 +79,11 @@ namespace Trulon.Models.Entities
             }
         }
 
-        public int HealthPoints { get; set; }
+        public int HealthPoints
+        {
+            get; 
+            set;
+        }
 
         public virtual int CurrentMaxHealth { get; set; }
 
@@ -306,11 +316,6 @@ namespace Trulon.Models.Entities
         public void AddCoins(Enemy enemy)
         {
             this.Coins += enemy.CoinsReward;
-        }
-
-        public void Buy()
-        {
-            throw new NotImplementedException("Buy method is not implemented");
         }
 
         protected internal void DrinkPotion(int itemAtIndex)

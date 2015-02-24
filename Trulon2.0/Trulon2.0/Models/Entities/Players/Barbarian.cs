@@ -14,7 +14,7 @@
         private const int DefaultAttackRadius = 60;
         private const int DefaultLevel = 1;
         private const int DefaultExperience = 0;
-        private const int DefaultCoins = 10;
+        private const int DefaultCoins = 100;
         private const int DefaultSkillPoints = 0;
         private const int DefaultAttackSkill = 0;
         private const int DefaultDefenseSkill = 0;

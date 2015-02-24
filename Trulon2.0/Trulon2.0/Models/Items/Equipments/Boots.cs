@@ -10,7 +10,7 @@
         private const int DefaultDefensePointsBuff = 0;
         private const int DefaultSpeedPointsBuff = 5;
         private const int DefaultAttackRadiusBuff = 0;
-        private const int DefaultPrice = 50;
+        private const int DefaultPrice = 20;
 
         public Boots()
         {

@@ -1,28 +1,26 @@
-﻿using System.Linq;
-using System.Web.UI.WebControls;
+﻿using Trulon.Config;
+using Trulon.Enums;
+using Trulon.GUI;
+using Trulon.GUI.Menu;
+using Trulon.Models;
+using Trulon.Models.Entities;
+using Trulon.Models.Entities.NPCs;
+using Trulon.Models.Entities.NPCs.Allies;
+using Trulon.Models.Entities.NPCs.Enemies;
+using Trulon.Models.Entities.Players;
+using Trulon.Models.Items.Equipments;
+using Trulon.Models.Items.Potions;
+using Trulon.Models.Maps;
 
 namespace Trulon.CoreLogics
 {
     #region Using Statements
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
-    using global::Trulon.Config;
-    using global::Trulon.Enums;
-    using global::Trulon.GUI;
-    using global::Trulon.GUI.Menu;
-    using global::Trulon.Models;
-    using global::Trulon.Models.Entities;
-    using global::Trulon.Models.Entities.NPCs;
-    using global::Trulon.Models.Entities.NPCs.Allies;
-    using global::Trulon.Models.Entities.NPCs.Enemies;
-    using global::Trulon.Models.Entities.Players;
-    using global::Trulon.Models.Items;
-    using global::Trulon.Models.Items.Equipments;
-    using global::Trulon.Models.Items.Potions;
-    using global::Trulon.Models.Maps;
     #endregion
 
     public class Engine : Game
@@ -85,8 +83,8 @@ namespace Trulon.CoreLogics
         protected override void Initialize()
         {
             //Sets screen size
-            this.graphics.PreferredBackBufferWidth = Config.ScreenWidth;
-            this.graphics.PreferredBackBufferHeight = Config.ScreenHeight;
+            this.graphics.PreferredBackBufferWidth = Config.Config.ScreenWidth;
+            this.graphics.PreferredBackBufferHeight = Config.Config.ScreenHeight;
             this.graphics.ApplyChanges();
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
@@ -121,7 +119,7 @@ namespace Trulon.CoreLogics
             AllPotions[4] = new AttackRangePotion();
 
             //this is for testing only. remove it when done
-            this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, AllEquipments[3] as Equipment);
+            //this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, AllEquipments[3] as Equipment);
 
             //GUI
             this.gui = new GameGUI(this);
@@ -342,13 +340,13 @@ namespace Trulon.CoreLogics
             }
 
             //Use Potions or Equipment from inventory
-            this.player.UseOrEquipFromInventory(Config.UseItemKeys);
+            this.player.UseOrEquipFromInventory(Config.Config.UseItemKeys);
 
             //Drop item from inventory
-            this.player.DropItemFromInventory(Config.DropItemFromInventoryKeys);
+            this.player.DropItemFromInventory(Config.Config.DropItemFromInventoryKeys);
 
             //Unequip Item 
-            this.player.UnequipItem(Config.UnequipItemKeys);
+            this.player.UnequipItem(Config.Config.UnequipItemKeys);
 
             //Open the shop
             if (currentKeyboardState.IsKeyDown(Keys.Tab) && this.player.GetAllyInRange(new List<Entity>() { this.vendor }) != null)
@@ -364,14 +362,14 @@ namespace Trulon.CoreLogics
             }
 
             //Buy shits from the shop
-            Keys[] buyItemKeys = Config.BuyItemKeys;
+            Keys[] buyItemKeys = Config.Config.BuyItemKeys;
             if (currentKeyboardState.GetPressedKeys().Length > 0 
                 && previousKeyboardState.GetPressedKeys().Length == 0
                 && buyItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]) 
                 && this.ShopOpened)
             {
                 int itemAtIndex = Array.IndexOf(buyItemKeys, currentKeyboardState.GetPressedKeys()[0]);
-                if (this.player.Coins > this.vendor.Inventory[itemAtIndex].Price)
+                if (this.player.Coins >= this.vendor.Inventory[itemAtIndex].Price)
                 {
                     this.player.AddToInventory(this.vendor.Inventory[itemAtIndex]);
                     this.player.Coins -= this.vendor.Inventory[itemAtIndex].Price;

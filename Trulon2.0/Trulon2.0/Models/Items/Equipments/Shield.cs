@@ -10,6 +10,7 @@
         private const int DefaultDefensePointsBuff = 10;
         private const int DefaultSpeedPointsBuff = 0;
         private const int DefaultAttackRadiusBuff = 0;
+        private const int DefaultPrice = 20;
 
         public Shield()
         {
@@ -19,6 +20,7 @@
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
             this.AttackRadiusBuff = DefaultAttackRadiusBuff;
+            this.Price = DefaultPrice;
         }
     }
 }
