@@ -6,11 +6,11 @@
     {
         #region Constants
         private const string DefaultName = "Demon";
-        private const int DefaultAttackPoints = 20;
+        private const int DefaultAttackPoints = 6;
         private const int DefaultDefensePoints = 20;
         private const int DefaultSpeedPoints = 3;
         private const int DefaultHealthPoints = 100;
-        private const int DefaultAttackRadius = 100;
+        private const int DefaultAttackRadius = 50;
         private const int DefaultLevel = 4;
         private const int DefaultExperienceReward = 80;
         private const int DefaultCoinsReward = 60;

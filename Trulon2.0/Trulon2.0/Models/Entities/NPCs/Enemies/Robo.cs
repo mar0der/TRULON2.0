@@ -6,11 +6,11 @@
     {
         #region Constants
         private const string DefaultName = "Robo";
-        private const int DefaultAttackPoints = 10;
+        private const int DefaultAttackPoints = 4;
         private const int DefaultDefensePoints = 10;
         private const int DefaultSpeedPoints = 10;
         private const int DefaultHealthPoints = 75;
-        private const int DefaultAttackRadius = 100;
+        private const int DefaultAttackRadius = 45;
         private const int DefaultLevel = 2;
         private const int DefaultExperienceReward = 60;
         private const int DefaultCoinsReward = 40;

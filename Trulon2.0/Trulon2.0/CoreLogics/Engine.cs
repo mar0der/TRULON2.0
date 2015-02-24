@@ -96,11 +96,11 @@ namespace Trulon.CoreLogics
             this.vendor = new Vendor(650, 300);
             this.enemies = new List<Enemy>()
             {
-                new Goblin(200, 50),
-                new Goblin(232, 146),
-                new Robo(500, 200),
-                new Ogre(500, 350),
-                new Boss(500, 350)
+                new Goblin(400, 400),
+                new Goblin(500, 400),
+                new Robo(600, 350),
+                new Ogre(800, 350),
+                new Boss(1000, 350)
             };
 
             maps[0] = new Level1();
@@ -381,7 +381,7 @@ namespace Trulon.CoreLogics
 
             //Check for player is moving
             var enemiesInRange = this.player.GetEnemiesInRange(enemies);
-            int chanceToBeAttacked = rand.Next(0, 20);
+            int chanceToBeAttacked = 0;
             if (enemiesInRange.Count > 0)
             {
                 if (currentKeyboardState.IsKeyDown(Keys.Space) && isAttacking == false)
@@ -391,6 +391,22 @@ namespace Trulon.CoreLogics
                 }
                 foreach (var enemy in enemiesInRange)
                 {
+                    if (enemy is Goblin)
+                    {
+                         chanceToBeAttacked = rand.Next(0, 20);
+                    }
+                    if (enemy is Ogre)
+                    {
+                        chanceToBeAttacked = rand.Next(0, 40);
+                    }
+                    if (enemy is Robo)
+                    {
+                        chanceToBeAttacked = rand.Next(0, 30);
+                    }
+                    if (enemy is Boss)
+                    {
+                        chanceToBeAttacked = rand.Next(0, 45);
+                    }
                     if (chanceToBeAttacked == 1)
                     {
                         enemy.Attack(this.player);
