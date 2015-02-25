@@ -30,7 +30,6 @@ namespace Trulon.Models.Entities
             get
             {
                 return this.activePotions;
-
             }
         }
 
@@ -278,7 +277,7 @@ namespace Trulon.Models.Entities
 
             foreach (var enemy in enemies)
             {
-                if (this.AttackBounds.Intersects(enemy.Bounds))
+                if (this.Bounds.Intersects(enemy.Bounds))
                 {
                     enemiesInRange.Add(enemy);
                 }
