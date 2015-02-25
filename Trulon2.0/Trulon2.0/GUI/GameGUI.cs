@@ -111,6 +111,18 @@ namespace Trulon.GUI
             spriteBatch.DrawString(this.engine.font, this.engine.player.SpeedPoints.ToString(), new Vector2(380, 677), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Experience.ToString(), new Vector2(380, 697), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Coins.ToString(), new Vector2(550, 697), Color.Black);
+
+            spriteBatch.DrawString(this.engine.font, "Use: 1", new Vector2(730, 613), Color.LightBlue);
+            spriteBatch.DrawString(this.engine.font, "Use: 2", new Vector2(813, 613), Color.LightBlue);
+            spriteBatch.DrawString(this.engine.font, "Use: 3", new Vector2(894, 613), Color.LightBlue);
+            spriteBatch.DrawString(this.engine.font, "Use: 4", new Vector2(970, 613), Color.LightBlue);
+            spriteBatch.DrawString(this.engine.font, "Use: 5", new Vector2(1042, 613), Color.LightBlue);
+
+            spriteBatch.DrawString(this.engine.font, "Drop:Q", new Vector2(726, 697), Color.LightBlue);
+            spriteBatch.DrawString(this.engine.font, "Drop:W", new Vector2(809, 697), Color.LightBlue);
+            spriteBatch.DrawString(this.engine.font, "Drop:E", new Vector2(891, 697), Color.LightBlue);
+            spriteBatch.DrawString(this.engine.font, "Drop:R", new Vector2(967, 697), Color.LightBlue);
+            spriteBatch.DrawString(this.engine.font, "Drop:T", new Vector2(1039, 697), Color.LightBlue);
             
 
             //Healthbar

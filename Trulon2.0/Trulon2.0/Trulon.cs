@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace Trulon
+﻿namespace Trulon
 {
     using System;
     using global::Trulon.CoreLogics;
@@ -16,14 +14,14 @@ namespace Trulon
         [STAThread]
         static void Main()
         {
-            //using (var game = new Engine())
-            //{
-            //    game.Run();
-            //}
-            using (var gameOverScreen = new GameOverScreen())
+            using (var game = new Engine())
             {
-                gameOverScreen.Run();
+                game.Run();
             }
+            //using (var gameOverScreen = new GameOverScreen())
+            //{
+            //    gameOverScreen.Run();
+            //}
         }
     }
 }
