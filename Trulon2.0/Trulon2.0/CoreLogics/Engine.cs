@@ -33,7 +33,7 @@ namespace Trulon.CoreLogics
 
         private static Random rand = new Random();
 
-        private Texture2D backgroundTexture;
+        private Texture2D[] backgroundTexture = new Texture2D[4];
         //Loading Entites
         public Player player;
         public Vendor vendor;
@@ -172,7 +172,7 @@ namespace Trulon.CoreLogics
             this.font = Content.Load<SpriteFont>("font");
 
             //Load map image
-            this.backgroundTexture = this.Content.Load<Texture2D>("Images/MapImages/Boss");
+            this.backgroundTexture[0] = this.Content.Load<Texture2D>("Images/MapImages/Boss");
 
             //Load the player resources
             this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);
@@ -468,7 +468,7 @@ namespace Trulon.CoreLogics
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
 
-            this.spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, backgroundTexture.Width, backgroundTexture.Height), Color.White);
+            this.spriteBatch.Draw(backgroundTexture[0], new Rectangle(0, 0, backgroundTexture[0].Width, backgroundTexture[0].Height), Color.White);
 
             this.vendor.Draw(spriteBatch);
 
