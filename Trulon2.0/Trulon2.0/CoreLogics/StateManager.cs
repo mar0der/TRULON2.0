@@ -117,44 +117,44 @@ namespace Trulon.CoreLogics
                 // check to see if the player is making a menu selection.  Since
                 // we're only interested in a single touch-point, we can use the
                 // simpler mouse input method.
-            //    MouseState ms = Mouse.GetState();
-            //    if (ms.LeftButton == ButtonState.Pressed)
-            //    {
-            //        // the player is pressing the screen
-            //        foreach (MenuButton b in m_buttons)
-            //        {
-            //            b.isPressed = b.HasPoint(ms.X, ms.Y);
-            //        }
-            //    }
-            //    else if (ms.LeftButton == ButtonState.Released)
-            //    {
-            //        // the player has released the touchpoint
-            //        for (int i = 0; i < m_buttons.Count; i++)
-            //        {
-            //            MenuButton b = m_buttons[i];
-            //            if (b.HasPoint(ms.X, ms.Y) && b.isPressed)
-            //            {
-            //                b.isPressed = false;
+                MouseState ms = Mouse.GetState();
+                if (ms.LeftButton == ButtonState.Pressed)
+                {
+                    // the player is pressing the screen
+                    foreach (MenuButton b in m_buttons)
+                    {
+                        b.isPressed = b.HasPoint(ms.X, ms.Y);
+                    }
+                }
+                else if (ms.LeftButton == ButtonState.Released)
+                {
+                    // the player has released the touchpoint
+                    for (int i = 0; i < m_buttons.Count; i++)
+                    {
+                        MenuButton b = m_buttons[i];
+                        if (b.HasPoint(ms.X, ms.Y) && b.isPressed)
+                        {
+                            b.isPressed = false;
 
-            //                switch (i)
-            //                {
-            //                    case 0:
-            //                        break;
+                            switch (i)
+                            {
+                                case 0:
+                                    break;
 
-            //                    case 1:
-            //                        break;
+                                case 1:
+                                    break;
 
-            //                    default:
-            //                        break;
-            //                }
-            //            }
-            //        }
-            //    }
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                }
 
-            //    foreach (MenuButton b in m_buttons)
-            //    {
-            //        b.Update(gameTime.ElapsedGameTime.Milliseconds);
-            //    }
+                foreach (MenuButton b in m_buttons)
+                {
+                    b.Update(gameTime.ElapsedGameTime.Milliseconds);
+                }
             }
 
             if (this.gameState == State.play)
