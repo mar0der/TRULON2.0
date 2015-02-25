@@ -20,9 +20,9 @@ namespace Trulon
             //{
             //    game.Run();
             //}
-            using (var gameOverScreen = new GameOverScreen())
+            using (var stateManager = new StateManager())
             {
-                gameOverScreen.Run();
+                stateManager.Run();
             }
         }
     }
