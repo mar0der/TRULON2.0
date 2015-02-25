@@ -14,14 +14,6 @@
         [STAThread]
         static void Main()
         {
-            using (var game = new Engine())
-            {
-                game.Run();
-            }
-            //using (var gameOverScreen = new GameOverScreen())
-            //{
-            //    gameOverScreen.Run();
-            //}
             using (var stateManager = new StateManager())
             {
                 stateManager.Run();

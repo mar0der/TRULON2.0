@@ -33,8 +33,7 @@ namespace Trulon.CoreLogics
         private State gameState = State.start;
         List<MenuButton> m_buttons = new List<MenuButton>();
         bool isActivatedNewGame = false;
-        private KeyboardState currentKeyboardState;
-        private KeyboardState previousKeyboardState;
+        private MouseState ms;
 
         public StateManager()
         {
@@ -117,7 +116,7 @@ namespace Trulon.CoreLogics
                 // check to see if the player is making a menu selection.  Since
                 // we're only interested in a single touch-point, we can use the
                 // simpler mouse input method.
-                MouseState ms = Mouse.GetState();
+                ms = Mouse.GetState();
                 if (ms.LeftButton == ButtonState.Pressed)
                 {
                     // the player is pressing the screen
@@ -139,9 +138,11 @@ namespace Trulon.CoreLogics
                             switch (i)
                             {
                                 case 0:
+                                    this.gameState = State.play;
                                     break;
 
                                 case 1:
+                                    this.gameState = State.end;
                                     break;
 
                                 default:
