@@ -22,6 +22,10 @@
             //{
             //    gameOverScreen.Run();
             //}
+            using (var stateManager = new StateManager())
+            {
+                stateManager.Run();
+            }
         }
     }
 }

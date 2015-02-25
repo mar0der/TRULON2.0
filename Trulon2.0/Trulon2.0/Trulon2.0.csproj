@@ -64,9 +64,11 @@
     <Compile Include="CoreLogics\Engine.cs" />
     <Compile Include="CoreLogics\MapManager.cs" />
     <Compile Include="CoreLogics\MenuButton.cs" />
+    <Compile Include="CoreLogics\StateManager.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
     <Compile Include="Enums\ItemTypes.cs" />
+    <Compile Include="Enums\State.cs" />
     <Compile Include="GUI\GameGUI.cs" />
     <Compile Include="Interfaces\IEquipable.cs" />
     <Compile Include="Interfaces\IItem.cs" />

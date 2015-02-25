@@ -25,8 +25,8 @@ namespace Trulon.CoreLogics
     public class Engine : Game
     {
         private string gameState = "startGame";
-        GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
+        protected GraphicsDeviceManager graphics;
+        protected SpriteBatch spriteBatch;
 
         public SpriteFont font;
         private GameGUI gui;
@@ -41,8 +41,8 @@ namespace Trulon.CoreLogics
         private Map[] maps = new Map[5];
         private int currentMap = 0;
 
-        private KeyboardState currentKeyboardState;
-        private KeyboardState previousKeyboardState;
+        protected KeyboardState currentKeyboardState;
+        protected KeyboardState previousKeyboardState;
 
         private int countDown;
         private int indexFrame;
@@ -275,23 +275,8 @@ namespace Trulon.CoreLogics
         #endregion
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            //Save previous state of the keyboard to determine single key presses
-            previousKeyboardState = currentKeyboardState;
-            //Read the current state of the keyboard and store it
-            currentKeyboardState = Keyboard.GetState();
-
             //Update player
             this.player.Update();
-
-            //Check if player isAlive
-            if (!this.player.IsAlive)
-            {
-                UnloadContent();
-                
-            }
 
             foreach (var obsticle in this.maps[currentMap].Obsticles)
             {
