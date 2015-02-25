@@ -1,7 +1,6 @@
 ﻿using Trulon.Config;
 using Trulon.Enums;
 using Trulon.GUI;
-using Trulon.GUI.Menu;
 using Trulon.Models;
 using Trulon.Models.Entities;
 using Trulon.Models.Entities.NPCs;
@@ -28,7 +27,6 @@ namespace Trulon.CoreLogics
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private Screen currentScreen;
         public SpriteFont font;
         private GameGUI gui;
 
@@ -153,7 +151,7 @@ namespace Trulon.CoreLogics
             }
             boundsTest.SetData(data);
             
-            int boundWidth2 = (int) (this.player.AttackBounds.Max.X - this.player.AttackBounds.Min.X);
+            int boundWidth2 = (int)(this.player.AttackBounds.Max.X - this.player.AttackBounds.Min.X);
             int boundHeight2 = (int)(this.player.AttackBounds.Max.Y - this.player.AttackBounds.Min.Y);
             boundsTest2 = new Texture2D(graphics.GraphicsDevice, boundWidth2, boundHeight2);
             Color[] data2 = new Color[boundWidth2 * boundHeight2];

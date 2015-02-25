@@ -111,21 +111,16 @@ namespace Trulon.GUI
             spriteBatch.DrawString(this.engine.font, this.engine.player.SpeedPoints.ToString(), new Vector2(380, 677), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Experience.ToString(), new Vector2(380, 697), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Coins.ToString(), new Vector2(550, 697), Color.Black);
-            spriteBatch.DrawString(this.engine.font, string.Format("{0}/{1}", this.engine.player.HealthPoints, this.engine.player.CurrentMaxHealth), new Vector2(535, 650), Color.Black);
+            
 
             //Healthbar
             this.barCurrentWidth = (this.barMaxWidth / this.engine.player.CurrentMaxHealth)*
                                    this.engine.player.HealthPoints;
-            if (this.barCurrentWidth < this.healthAlertLevel * this.engine.player.CurrentMaxHealth)
-            {
-                this.barColor = Color.Red;
-            }
-            else
-            {
-                this.barColor = Color.White;
-            }
+            this.barColor = this.barCurrentWidth < this.healthAlertLevel * this.engine.player.CurrentMaxHealth ? Color.Red : Color.White;
 
             spriteBatch.Draw(this.engine.healthBar, new Rectangle(10, 483, (int)barCurrentWidth, this.engine.healthBar.Height), this.barColor);
+
+            spriteBatch.DrawString(this.engine.font, string.Format("{0}/{1}", this.engine.player.HealthPoints, this.engine.player.CurrentMaxHealth), new Vector2(65, 480), Color.White);
 
             //Inventory full message
             if (engine.player.InventoryIsFull)

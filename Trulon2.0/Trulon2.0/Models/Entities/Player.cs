@@ -53,8 +53,6 @@ namespace Trulon.Models.Entities
             set { this.healthPoints = value; }
         }
 
-
-
         public int AttackPoints
         {
             get
