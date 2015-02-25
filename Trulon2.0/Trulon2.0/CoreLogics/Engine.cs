@@ -172,7 +172,7 @@ namespace Trulon.CoreLogics
             this.font = Content.Load<SpriteFont>("font");
 
             //Load map image
-            this.backgroundTexture = this.Content.Load<Texture2D>("Images/MapImages/TrulonHomeMap");
+            this.backgroundTexture = this.Content.Load<Texture2D>("Images/MapImages/Boss");
 
             //Load the player resources
             this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);

@@ -30,7 +30,6 @@ namespace Trulon.Models.Entities
             get
             {
                 return this.activePotions;
-
             }
         }
 
@@ -278,7 +277,7 @@ namespace Trulon.Models.Entities
 
             foreach (var enemy in enemies)
             {
-                if (this.AttackBounds.Intersects(enemy.Bounds))
+                if (this.Bounds.Intersects(enemy.Bounds))
                 {
                     enemiesInRange.Add(enemy);
                 }
@@ -332,7 +331,7 @@ namespace Trulon.Models.Entities
             }
             else
             {
-                throw new ArgumentOutOfRangeException("The item does not excists in inventory");
+                throw new ArgumentOutOfRangeException("The item does not exists in inventory");
             }
         }
 
@@ -356,7 +355,8 @@ namespace Trulon.Models.Entities
         {
             if (!this.IsInventoryFull())
             {
-                if (this.PlayerEquipment.CurrentEquipment.ContainsKey(slot) && this.PlayerEquipment.CurrentEquipment[slot] != null)
+                if (this.PlayerEquipment.CurrentEquipment.ContainsKey(slot) 
+                    && this.PlayerEquipment.CurrentEquipment[slot] != null)
                 {
                     this.AddToInventory(this.PlayerEquipment.CurrentEquipment[slot]);
                     this.PlayerEquipment.CurrentEquipment[slot] = null;

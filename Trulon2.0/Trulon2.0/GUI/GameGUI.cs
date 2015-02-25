@@ -110,6 +110,7 @@ namespace Trulon.GUI
             spriteBatch.DrawString(this.engine.font, this.engine.player.DefensePoints.ToString(), new Vector2(380, 657), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.SpeedPoints.ToString(), new Vector2(380, 677), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Experience.ToString(), new Vector2(380, 697), Color.Black);
+            spriteBatch.DrawString(this.engine.font, this.engine.player.AttackRadius.ToString(), new Vector2(550, 617), Color.Black);
             spriteBatch.DrawString(this.engine.font, this.engine.player.Coins.ToString(), new Vector2(550, 697), Color.Black);
 
             spriteBatch.DrawString(this.engine.font, "Use: 1", new Vector2(730, 613), Color.LightBlue);
