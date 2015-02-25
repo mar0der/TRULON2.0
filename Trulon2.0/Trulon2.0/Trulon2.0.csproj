@@ -59,9 +59,11 @@
   <ItemGroup>
     <Compile Include="Config\Assets.cs" />
     <Compile Include="Config\Config.cs" />
+    <Compile Include="CoreLogics\GameOverScreen.cs" />
     <Compile Include="CoreLogics\ItemGenerator.cs" />
     <Compile Include="CoreLogics\Engine.cs" />
     <Compile Include="CoreLogics\MapManager.cs" />
+    <Compile Include="CoreLogics\MenuButton.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\EquipmentSlots.cs" />
     <Compile Include="Enums\ItemTypes.cs" />
@@ -165,6 +167,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Barbarian\walking-infinite.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Buttons\KeyboardBtn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Buttons\MessageBoxBtn.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\EmptyEquipment\EmptyBody.png">
@@ -422,6 +430,9 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="Resources\font.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Images\Buttons\SpriteFont1.spritefont">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

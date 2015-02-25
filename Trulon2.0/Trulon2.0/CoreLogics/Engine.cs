@@ -24,6 +24,7 @@ namespace Trulon.CoreLogics
 
     public class Engine : Game
     {
+        private string gameState = "startGame";
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
@@ -63,7 +64,7 @@ namespace Trulon.CoreLogics
         private Texture2D boundsTest;
         private Texture2D boundsTest2;
 
-
+        public bool ShopOpened { get; set; }
         public Engine()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -261,7 +262,8 @@ namespace Trulon.CoreLogics
         #endregion
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            Content.Unload();
+            this.Exit();
         }
 
         #region GameUpdate
@@ -287,6 +289,7 @@ namespace Trulon.CoreLogics
             //Check if player isAlive
             if (!this.player.IsAlive)
             {
+                UnloadContent();
                 
             }
 
@@ -476,7 +479,7 @@ namespace Trulon.CoreLogics
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
 
@@ -581,8 +584,5 @@ namespace Trulon.CoreLogics
             }
             return null;
         }
-
-
-        public bool ShopOpened { get; set; }
     }
 }
