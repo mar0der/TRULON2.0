@@ -7,6 +7,7 @@
     /// </summary>
     public static class Config
     {
+        public const int NumberOfLevels = 5;
         //Screen size
         public const int ScreenWidth = 1280;
         public const int ScreenHeight = 720;

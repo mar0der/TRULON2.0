@@ -513,5 +513,10 @@ namespace Trulon.Models.Entities
                 new Vector3(this.Position.X + 2 * this.Width, this.Position.Y + 64, 0f),
                 new Vector3(this.Position.X + 2 * this.Width + this.AttackRadius, this.Position.Y + this.AttackRadius + 64, 0f));
         }
+
+        public void ReSpawn(Vector2 position)
+        {
+            this.Position =  new Vector2(position.X,position.Y);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Trulon.Config;
+﻿using System.Runtime.Remoting.Messaging;
+using Trulon.Config;
 using Trulon.Enums;
 using Trulon.GUI;
 using Trulon.Models;
@@ -9,7 +10,6 @@ using Trulon.Models.Entities.NPCs.Enemies;
 using Trulon.Models.Entities.Players;
 using Trulon.Models.Items.Equipments;
 using Trulon.Models.Items.Potions;
-using Trulon.Models.Maps;
 
 namespace Trulon.CoreLogics
 {
@@ -33,12 +33,12 @@ namespace Trulon.CoreLogics
 
         private static Random rand = new Random();
 
-        private Texture2D[] backgroundTexture = new Texture2D[4];
+        private Texture2D[] backgroundTextures = new Texture2D[Config.Config.NumberOfLevels];
         //Loading Entites
         public Player player;
         public Vendor vendor;
         private IList<Enemy> enemies;
-        private Map[] maps = new Map[5];
+        private Map[] maps = new Map[Config.Config.NumberOfLevels];
         private int currentMap = 0;
 
         protected KeyboardState currentKeyboardState;
@@ -85,11 +85,15 @@ namespace Trulon.CoreLogics
             this.graphics.PreferredBackBufferWidth = Config.Config.ScreenWidth;
             this.graphics.PreferredBackBufferHeight = Config.Config.ScreenHeight;
             this.graphics.ApplyChanges();
-            // TODO: Add your initialization logic here
             IsMouseVisible = true;
 
+            for (int i = 0; i < Config.Config.NumberOfLevels; i++)
+            {
+                maps[i] = new Map(i, backgroundTextures[i]);
+            }
+
             //setting entites on the scene
-            this.player = new Barbarian(232, 96);
+            this.player = new Barbarian((int)maps[currentMap].PlayerEntryPloint.X, (int)maps[currentMap].PlayerEntryPloint.Y);
             this.vendor = new Vendor(650, 300);
             this.enemies = new List<Enemy>()
             {
@@ -97,15 +101,12 @@ namespace Trulon.CoreLogics
                 new Goblin(500, 400),
                 new Robo(600, 350),
                 new Ogre(800, 350),
-                new Boss(1000, 350)
+                new Boss(500, 350)
             };
 
-            maps[0] = new Level1();
-            maps[1] = new Level2();
-            maps[2] = new Level3();
+
 
             //items load
-
             AllEquipments[0] = new Boots();
             AllEquipments[1] = new Helmet();
             AllEquipments[2] = new Shield();
@@ -172,7 +173,12 @@ namespace Trulon.CoreLogics
             this.font = Content.Load<SpriteFont>("font");
 
             //Load map image
-            this.backgroundTexture[0] = this.Content.Load<Texture2D>("Images/MapImages/Boss");
+            for (int i = 0; i < Config.Config.NumberOfLevels; i++)
+            {
+                this.backgroundTextures[i] = this.Content.Load<Texture2D>(Assets.Maps[i]);
+                this.maps[i].Image = this.backgroundTextures[i];
+            }
+            
 
             //Load the player resources
             this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);
@@ -278,27 +284,44 @@ namespace Trulon.CoreLogics
             //Update player
             this.player.Update();
 
-            foreach (var obsticle in this.maps[currentMap].Obsticles)
+            //because we`d like to use this logic only for the obsticles with numbers between 2 and n-1.
+            //1 and n are reserver for entry and exit points of the level
+            for (var i = 2; i < this.maps[currentMap].Obsticles.Length; i++)
             {
-                if (this.player.Intersects(obsticle.ObsticleBox))
+                if (this.player.Intersects(this.maps[currentMap].Obsticles[i].ObsticleBox))
                 {
-                    if (obsticle.RestrictedDirection == Direction.Up)
+                    if (this.maps[currentMap].Obsticles[i].RestrictedDirection == Direction.Up)
                     {
                         this.player.VelocityUp = 0;
                     }
-                    if (obsticle.RestrictedDirection == Direction.Down)
+                    if (this.maps[currentMap].Obsticles[i].RestrictedDirection == Direction.Down)
                     {
                         this.player.VelocityDown = 0;
                     }
-                    if (obsticle.RestrictedDirection == Direction.Left)
+                    if (this.maps[currentMap].Obsticles[i].RestrictedDirection == Direction.Left)
                     {
                         this.player.VelocityLeft = 0;
                     }
-                    if (obsticle.RestrictedDirection == Direction.Right)
+                    if (this.maps[currentMap].Obsticles[i].RestrictedDirection == Direction.Right)
                     {
                         this.player.VelocityRight = 0;
                     }
                 }
+            }
+            //Level Change
+            //If the player can change the level if he colides with one of the entry/exit points
+            //for entry point we use the first obsticle
+            if (this.player.AttackBounds.Intersects(this.maps[currentMap].Obsticles[0].ObsticleBox) && currentMap > 0)
+            {
+                currentMap--;
+                this.player.ReSpawn(this.maps[currentMap].PlayerExitPloint);
+            }
+            //for exit point we use the last obsticle
+            if (this.player.AttackBounds.Intersects(this.maps[currentMap].Obsticles[1].ObsticleBox) 
+                && currentMap < 4)
+            {
+                currentMap++;
+                this.player.ReSpawn(this.maps[currentMap].PlayerEntryPloint);
             }
 
             //update enemies
@@ -406,10 +429,11 @@ namespace Trulon.CoreLogics
             }
 
             //Check for going in another world
-            if ((int)this.player.Position.X == 200 && (int)this.player.Position.Y == 300)
-            {
-                throw new Exception("New wolrd;");
-            }
+            //do we need this?
+            //if ((int)this.player.Position.X == 200 && (int)this.player.Position.Y == 300)
+            //{
+            //    throw new Exception("New wolrd;");
+            //}
 
             this.gui.Update();
 
@@ -468,9 +492,11 @@ namespace Trulon.CoreLogics
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
 
-            this.spriteBatch.Draw(backgroundTexture[0], new Rectangle(0, 0, backgroundTexture[0].Width, backgroundTexture[0].Height), Color.White);
+            this.spriteBatch.Draw(this.maps[currentMap].Image, new Rectangle(0, 0, backgroundTextures[0].Width, backgroundTextures[0].Height), Color.White);
+
 
             this.vendor.Draw(spriteBatch);
+ 
 
             foreach (var enemy in enemies)
             {
@@ -486,8 +512,6 @@ namespace Trulon.CoreLogics
             
             Vector2 minBounds2 = new Vector2(this.player.AttackBounds.Min.X, this.player.AttackBounds.Min.Y);
             spriteBatch.Draw(boundsTest2, minBounds2, Color.White);
-
-            //this.spriteBatch.Draw(boundsTest, this.player.Position, new Rectangle((int)this.player.Bounds.Min.X, (int)this.player.Bounds.Min.Y, (int)this.player.Bounds.Max.Length(), (int)this.player.Bounds.Max.Length()), Color.Red);
 
             this.spriteBatch.End();
             base.Draw(gameTime);

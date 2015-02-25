@@ -1,9 +1,20 @@
-﻿namespace Trulon.Config
+﻿using System.Web.Configuration;
+
+namespace Trulon.Config
 {
     public static class Assets
     {
+        //Maps
+        public static readonly string[] Maps = new string[Config.NumberOfLevels]
+        {
+            "Images/MapImages/TrulonHomeMap.jpg",
+            "Images/MapImages/Goblin.jpg",
+            "Images/MapImages/Robo.jpg",
+            "Images/MapImages/Ogre.jpg",
+            "Images/MapImages/Boss.jpg"
+        };
         //Barbarian base constants
-        public static readonly string[] BarbarianImages = new string[16]
+        public static readonly string[] BarbarianImages = new string[]
         {
             "Images/Barbarian/Barbarian-Walking1-256x192.png",
             "Images/Barbarian/Barbarian-Walking2.png",

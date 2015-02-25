@@ -16,7 +16,6 @@ using Trulon.Models.Entities.NPCs.Enemies;
 using Trulon.Models.Entities.Players;
 using Trulon.Models.Items.Equipments;
 using Trulon.Models.Items.Potions;
-using Trulon.Models.Maps;
 
 namespace Trulon.CoreLogics
 {
@@ -37,10 +36,10 @@ namespace Trulon.CoreLogics
 
         public StateManager()
         {
-            
+            this.CurrentMap = 1;
         }
 
-
+        public int CurrentMap { get; set; }
         protected override void Initialize()
         {
             this.graphics.PreferredBackBufferWidth = 280;

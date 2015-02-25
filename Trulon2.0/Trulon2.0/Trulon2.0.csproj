@@ -102,9 +102,6 @@
     <Compile Include="Models\Items\Potions\HealthPotion.cs" />
     <Compile Include="Models\Items\Potions\SpeedPotion.cs" />
     <Compile Include="Models\Map.cs" />
-    <Compile Include="Models\Maps\Level1.cs" />
-    <Compile Include="Models\Maps\Level2.cs" />
-    <Compile Include="Models\Maps\Level3.cs" />
     <Compile Include="Structs\Obsticle.cs" />
     <Compile Include="Trulon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -429,8 +426,6 @@
     <Folder Include="Resources\Sounds\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="Resources\font.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
