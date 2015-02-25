@@ -277,7 +277,7 @@ namespace Trulon.Models.Entities
 
             foreach (var enemy in enemies)
             {
-                if (this.Bounds.Intersects(enemy.Bounds))
+                if (this.AttackBounds.Intersects(enemy.Bounds))
                 {
                     enemiesInRange.Add(enemy);
                 }
@@ -289,7 +289,7 @@ namespace Trulon.Models.Entities
         {
             foreach (var entity in entities)
             {
-                if (this.Bounds.Intersects(entity.Bounds) && entity is Ally)
+                if (this.AttackBounds.Intersects(entity.Bounds) && entity is Ally)
                 {
                     return (Ally)entity;
                 }
