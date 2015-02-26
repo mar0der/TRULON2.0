@@ -15,10 +15,15 @@
     {
         private KeyboardState currentKeyboardState;
         public int VelocityUp { get; set; }
+
         public int VelocityDown { get; set; }
+
         public int VelocityLeft { get; set; }
+
         public int VelocityRight { get; set; }
+
         private IList<Potion> activePotions = new List<Potion>();
+
         private int inventoryIsFullTimeout;
         private int healthPoints;
 
@@ -84,7 +89,6 @@
 
         public virtual int CurrentMaxHealth { get; set; }
 
-
         public Dictionary<string, int> EquipmentBuffs
         {
             get
@@ -107,12 +111,14 @@
                             healthBuff += item.Value.HealthPointsBuff;
                         }
                     }
+
                     buffs.Add("attack", attackBuff);
                     buffs.Add("defense", defenseBuff);
                     buffs.Add("speed", speedBuff);
                     buffs.Add("health", healthBuff);
                     return buffs;
                 }
+
                 return null;
             }
         }
@@ -178,18 +184,22 @@
                 {
                     return 1;
                 }
+
                 if (exp >= 300 && exp < 600)
                 {
                     return 2;
                 }
+
                 if (exp >= 600 && exp < 900)
                 {
                     return 3;
                 }
+
                 if (exp >= 900 && exp < 1200)
                 {
                     return 4;
                 }
+
                 if (exp >= 1200 && exp < 1500)
                 {
                     return 5;
@@ -212,7 +222,7 @@
                 MathHelper.Clamp(this.Position.Y, -80, Config.ScreenHeight - this.Image.Height + 80));
 
             //check for timeouted potions
-            for (int i = 0; i < activePotions.Count; i++)
+            for (int i = 0; i < this.activePotions.Count; i++)
             {
                 if (activePotions[i].Countdown == 0)
                 {
@@ -220,7 +230,8 @@
                     this.activePotions.Remove(activePotions[i]);
                     break;
                 }
-                activePotions[i].Countdown--;
+
+                this.activePotions[i].Countdown--;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
@@ -244,8 +255,6 @@
                     this.UpdateBoundsLeft();
                 }
             }
-
-            //base.Update();
         }
 
         public IList<Enemy> GetEnemiesInRange(IList<Enemy> enemies)
@@ -259,6 +268,7 @@
                     enemiesInRange.Add(enemy);
                 }
             }
+
             return enemiesInRange;
         }
 
@@ -271,6 +281,7 @@
                     return (Ally)entity;
                 }
             }
+
             return null;
         }
 
@@ -306,6 +317,7 @@
                 {
                     this.HealthPoints = newHealthPoints;
                 }
+
                 this.Inventory[itemAtIndex] = null;
             }
             else if (this.Inventory.ElementAt(itemAtIndex) is Potion &&
@@ -385,19 +397,21 @@
         {
             currentKeyboardState = Keyboard.GetState();
 
-
             if (currentKeyboardState.IsKeyDown(Keys.Left))
             {
                 this.Position = new Vector2(this.Position.X - this.VelocityLeft, this.Position.Y);
             }
+
             if (currentKeyboardState.IsKeyDown(Keys.Right))
             {
                 this.Position = new Vector2(this.Position.X + this.VelocityRight, this.Position.Y);
             }
+
             if (currentKeyboardState.IsKeyDown(Keys.Up))
             {
                 this.Position = new Vector2(this.Position.X, this.Position.Y - this.VelocityUp);
             }
+
             if (currentKeyboardState.IsKeyDown(Keys.Down))
             {
                 this.Position = new Vector2(this.Position.X, this.Position.Y + this.VelocityDown);
@@ -421,6 +435,7 @@
                     break;
                 }
             }
+
             if (!isAdded)
             {
                 this.inventoryIsFullTimeout = Config.InventoryIsFullMessageTimeout;
