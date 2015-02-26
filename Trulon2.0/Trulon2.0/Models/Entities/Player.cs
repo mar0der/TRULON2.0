@@ -44,12 +44,7 @@
 
         public int SpeedSkill { get; set; }
 
-        public int HealthSkill
-        {
-            get { return this.Height; }
-            //TODO validation for negative health
-            set { this.healthPoints = value; }
-        }
+        public int HealthSkill { get; set; }
 
         public int AttackPoints
         {
@@ -77,8 +72,14 @@
 
         public int HealthPoints
         {
-            get;
-            set;
+            get { return this.healthPoints; }
+            set {
+                if (value <= 0)
+                {
+                    this.IsAlive = false;
+                }
+                this.healthPoints = value;
+            }
         }
 
         public virtual int CurrentMaxHealth { get; set; }
@@ -295,14 +296,14 @@
             var item = this.Inventory.ElementAt((itemAtIndex));
             if (item is HealthPotion && this.HealthPoints < this.CurrentMaxHealth)
             {
-                var newHealtPoints = this.HealthPoints + item.HealthPointsBuff;
-                if (newHealtPoints > this.CurrentMaxHealth)
+                var newHealthPoints = this.HealthPoints + item.HealthPointsBuff;
+                if (newHealthPoints > this.CurrentMaxHealth)
                 {
                     this.HealthPoints = this.CurrentMaxHealth;
                 }
                 else
                 {
-                    this.HealthPoints = newHealtPoints;
+                    this.HealthPoints = newHealthPoints;
                 }
                 this.Inventory[itemAtIndex] = null;
             }

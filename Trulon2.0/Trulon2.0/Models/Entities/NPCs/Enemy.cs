@@ -35,10 +35,6 @@
 
         public void Attack(Player player)
         {
-            if (player.HealthPoints <= 0)
-            {
-                player.IsAlive = false;
-            }
             if (player.IsAlive)
             {
                 player.HealthPoints -= this.BaseAttack;

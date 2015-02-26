@@ -89,6 +89,8 @@
             this.graphics.ApplyChanges();
             this.IsMouseVisible = true;
 
+            this.currentMap = 0;
+
             for (int i = 0; i < Config.NumberOfLevels; i++)
             {
                 this.maps[i] = new Map(i, this.backgroundTextures[i]);
@@ -380,6 +382,8 @@
             {
                 this.YouWon = true;
             }
+
+
 
             //Use Potions or Equipment from inventory
             this.player.UseOrEquipFromInventory(Config.UseItemKeys);
