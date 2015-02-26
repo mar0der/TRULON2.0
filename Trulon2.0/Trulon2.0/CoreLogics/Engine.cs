@@ -248,9 +248,13 @@
                     {
                         enemy.Initialize(Content.Load<Texture2D>(Assets.OgreImages[4]), enemy.Position);
                     }
-                    else
+                    else if (enemy is Robo)
                     {
                         enemy.Initialize(Content.Load<Texture2D>(Assets.RoboImages[4]), enemy.Position);
+                    }
+                    else
+                    {
+                        enemy.Initialize(Content.Load<Texture2D>(Assets.BossImages[4]), enemy.Position);
                     }
                 }
             }
