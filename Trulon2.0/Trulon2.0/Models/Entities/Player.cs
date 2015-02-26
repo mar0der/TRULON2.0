@@ -294,20 +294,24 @@ namespace Trulon.Models.Entities
         protected internal void DrinkPotion(int itemAtIndex)
         {
             var item = this.Inventory.ElementAt((itemAtIndex));
-            if (item is HealthPotion)
+            if (item is HealthPotion && this.HealthPoints < this.CurrentMaxHealth)
             {
-                this.CurrentMaxHealth += item.HealthPointsBuff;
-                this.HealthPoints += item.HealthPointsBuff;
+                var newHealtPoints = this.HealthPoints + item.HealthPointsBuff;
+                if (newHealtPoints > this.CurrentMaxHealth)
+                {
+                    this.HealthPoints = this.CurrentMaxHealth;
+                }
+                else
+                {
+                    this.HealthPoints = newHealtPoints;
+                }
                 this.Inventory[itemAtIndex] = null;
             }
-            else if (this.Inventory.ElementAt(itemAtIndex) is Potion)
+            else if (this.Inventory.ElementAt(itemAtIndex) is Potion &&
+                !(this.Inventory.ElementAt(itemAtIndex) is HealthPotion))
             {
                 this.ActivePotions.Add(this.Inventory.ElementAt(itemAtIndex) as Potion);
                 this.Inventory[itemAtIndex] = null;
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException("The item does not exists in inventory");
             }
         }
 
