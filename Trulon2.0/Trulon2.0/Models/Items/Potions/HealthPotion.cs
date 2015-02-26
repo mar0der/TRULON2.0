@@ -8,9 +8,8 @@
         private const bool DefaultHasTimedOut = false;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefencePointsBuff = 0;
-        private const int DefaultHealthPointsBuff = 10;
+        private const int DefaultHealthPointsBuff = 50;
         private const int DefaultSpeedPointsBuff = 0;
-        private const int DefaultAttackRangeBuff = 0;
         private const int DefaultPrice = 20;
 
         public HealthPotion()
@@ -23,7 +22,6 @@
             this.DefensePointsBuff = DefaultDefencePointsBuff;
             this.HealthPointsBuff = DefaultHealthPointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
-            this.AttackRadiusBuff = DefaultAttackRangeBuff;
             this.Price = DefaultPrice;
         }
     }

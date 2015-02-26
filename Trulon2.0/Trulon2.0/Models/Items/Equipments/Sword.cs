@@ -6,11 +6,10 @@
     {
         private const string DefaultName = "Sword";
         private const EquipmentSlots DefaultSlot = EquipmentSlots.RightHand;
-        private const int DefaultAttackPointsBuff = 10;
+        private const int DefaultAttackPointsBuff = 20;
         private const int DefaultDefensePointsBuff = 0;
         private const int DefaultSpeedPointsBuff = 0;
-        private const int DefaultAttackRadiusBuff = 10;
-        private const int DefaultPrice = 20;
+        private const int DefaultPrice = 30;
 
         public Sword()
         {
@@ -19,7 +18,6 @@
             this.AttackPointsBuff = DefaultAttackPointsBuff;
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
-            this.AttackRadiusBuff = DefaultAttackRadiusBuff;
             this.Price = DefaultPrice;
         }
     }

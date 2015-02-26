@@ -12,9 +12,7 @@
         public virtual int AttackPointsBuff { get; set; }
 
         public virtual int HealthPointsBuff { get; set; }
-
-        public virtual int AttackRadiusBuff { get; set; }
-
+        
         public virtual int Price { get; set; }
     }
 }

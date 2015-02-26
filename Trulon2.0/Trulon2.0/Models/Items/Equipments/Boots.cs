@@ -8,8 +8,7 @@
         private const EquipmentSlots DefaultSlot = EquipmentSlots.Feet;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefensePointsBuff = 0;
-        private const int DefaultSpeedPointsBuff = 5;
-        private const int DefaultAttackRadiusBuff = 0;
+        private const int DefaultSpeedPointsBuff = 10;
         private const int DefaultPrice = 20;
 
         public Boots()
@@ -19,7 +18,6 @@
             this.AttackPointsBuff = DefaultAttackPointsBuff;
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
-            this.AttackRadiusBuff = DefaultAttackRadiusBuff;
             this.Price = DefaultPrice;
         }
     }

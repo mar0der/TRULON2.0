@@ -9,9 +9,7 @@
         int AttackPointsBuff { get; set; }
 
         int HealthPointsBuff { get; set; }
-
-        int AttackRadiusBuff { get; set; }
-
+        
         int Price { get; set; }
     }
 }

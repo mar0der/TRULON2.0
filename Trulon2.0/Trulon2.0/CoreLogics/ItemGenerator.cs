@@ -38,8 +38,6 @@
                     return potions[2];
                 case 3:
                     return potions[3];
-                case 4:
-                    return potions[3];
                 default:
                     throw new Exception("Something went wrong in Item Generator");
             }

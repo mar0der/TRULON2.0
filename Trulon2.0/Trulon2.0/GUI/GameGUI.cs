@@ -59,8 +59,7 @@ namespace Trulon.GUI
                 new Vector2(ShopOrigin.X, ShopOrigin.Y+69),
                 new Vector2(ShopOrigin.X+69, ShopOrigin.Y+69),
                 new Vector2(ShopOrigin.X+138, ShopOrigin.Y+69),
-                new Vector2(ShopOrigin.X+207, ShopOrigin.Y+69),
-                new Vector2(ShopOrigin.X+276, ShopOrigin.Y+69),
+                new Vector2(ShopOrigin.X+207, ShopOrigin.Y+69)
             };
         }
 
@@ -100,7 +99,7 @@ namespace Trulon.GUI
             {
                 for (int i = 0; i < this.engine.vendor.Inventory.Length; i++)
                 {
-                    spriteBatch.Draw(this.engine.vendor.Inventory[i].Image, this.vendorShopPositions[i], Color.White);
+                        spriteBatch.Draw(this.engine.vendor.Inventory[i].Image, this.vendorShopPositions[i], Color.White);
                 }
             }
 

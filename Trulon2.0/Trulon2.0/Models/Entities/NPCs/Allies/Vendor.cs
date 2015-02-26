@@ -1,11 +1,8 @@
 ﻿namespace Trulon.Models.Entities.NPCs.Allies
 {
     using System;
-    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
-    using global::Trulon.Models.Items.Equipments;
-    using global::Trulon.Models.Items.Potions;
-    using Config;
+    using global::Trulon.Config;
 
     public class Vendor : Ally
     {

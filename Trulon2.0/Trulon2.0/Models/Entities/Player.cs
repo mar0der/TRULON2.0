@@ -84,21 +84,6 @@ namespace Trulon.Models.Entities
 
         public virtual int CurrentMaxHealth { get; set; }
 
-        public override int AttackRadius
-        {
-            get
-            {
-                if (this.EquipmentBuffs == null)
-                {
-                    if (this.PotionBuffs == null)
-                    {
-                        return this.BaseAttack;
-                    }
-                    return this.BaseAttack + this.PotionBuffs["AttackRange"];
-                }
-                return this.BaseAttackRadius + this.EquipmentBuffs["attackRange"] + this.PotionBuffs["AttackRange"];
-            }
-        }
 
         public Dictionary<string, int> EquipmentBuffs
         {
@@ -108,7 +93,6 @@ namespace Trulon.Models.Entities
                 int attackBuff = 0;
                 int defenseBuff = 0;
                 int speedBuff = 0;
-                int attackRange = 0;
                 int healthBuff = 0;
                 if (this.PlayerEquipment != null)
                 {
@@ -120,14 +104,12 @@ namespace Trulon.Models.Entities
                             attackBuff += item.Value.AttackPointsBuff;
                             defenseBuff += item.Value.DefensePointsBuff;
                             speedBuff += item.Value.SpeedPointsBuff;
-                            attackRange += item.Value.AttackRadiusBuff;
                             healthBuff += item.Value.HealthPointsBuff;
                         }
                     }
                     buffs.Add("attack", attackBuff);
                     buffs.Add("defense", defenseBuff);
                     buffs.Add("speed", speedBuff);
-                    buffs.Add("attackRange", attackRange);
                     buffs.Add("health", healthBuff);
                     return buffs;
                 }
@@ -144,7 +126,6 @@ namespace Trulon.Models.Entities
                 int defenseBuff = 0;
                 int speedBuff = 0;
                 int healthBuff = 0;
-                int attackRangeBuff = 0;
 
                 foreach (var potion in this.ActivePotions)
                 {
@@ -164,17 +145,12 @@ namespace Trulon.Models.Entities
                     {
                         healthBuff += potion.HealthPointsBuff;
                     }
-                    else if (potion is AttackRangePotion)
-                    {
-                        attackRangeBuff += potion.AttackRadiusBuff;
-                    }
                 }
 
                 buffs.Add("Attack", attackBuff);
                 buffs.Add("Health", healthBuff);
                 buffs.Add("Defense", defenseBuff);
                 buffs.Add("Speed", speedBuff);
-                buffs.Add("AttackRange", attackRangeBuff);
                 return buffs;
             }
         }
@@ -355,8 +331,8 @@ namespace Trulon.Models.Entities
         {
             if (!this.IsInventoryFull())
             {
-                if (this.PlayerEquipment.CurrentEquipment.ContainsKey(slot) 
-                    && this.PlayerEquipment.CurrentEquipment[slot] != null)
+                if (this.PlayerEquipment.CurrentEquipment.ContainsKey(slot) && 
+                    this.PlayerEquipment.CurrentEquipment[slot] != null)
                 {
                     this.AddToInventory(this.PlayerEquipment.CurrentEquipment[slot]);
                     this.PlayerEquipment.CurrentEquipment[slot] = null;

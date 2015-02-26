@@ -7,10 +7,9 @@
         private const string DefaultName = "Vest";
         private const EquipmentSlots DefaultSlot = EquipmentSlots.Body;
         private const int DefaultAttackPointsBuff = 0;
-        private const int DefaultDefensePointsBuff = 10;
+        private const int DefaultDefensePointsBuff = 20;
         private const int DefaultSpeedPointsBuff = 0;
-        private const int DefaultAttackRadiusBuff = 0;
-        private const int DefaultPrice = 20;
+        private const int DefaultPrice = 30;
 
         public Vest()
         {
@@ -19,7 +18,6 @@
             this.AttackPointsBuff = DefaultAttackPointsBuff;
             this.DefensePointsBuff = DefaultDefensePointsBuff;
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
-            this.AttackRadiusBuff = DefaultAttackRadiusBuff;
             this.Price = DefaultPrice;
         }
     }

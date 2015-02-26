@@ -7,17 +7,11 @@
     public abstract class GameObject : IDrawable
     {
         public string Name { get; set; }
-
         public Texture2D Image { get; set; }
-
         public BoundingBox Bounds { get; set; }
-
         public Vector2 Position { get; set; }
-
         public int Width { get; set; }
-
         public int Height { get; set; }
-
         public virtual void Initialize(Texture2D texture, Vector2 position)
         {
             this.Image = texture;

@@ -9,10 +9,10 @@
         private const int DefaultAttackPoints = 2;
         private const int DefaultDefensePoints = 5;
         private const int DefaultSpeedPoints = 5;
-        private const int DefaultHealthPoints = 5;
+        private const int DefaultHealthPoints = 20;
         private const int DefaultAttackRadius = 40;
         private const int DefaultLevel = 1;
-        private const int DefaultExperienceReward = 50;
+        private const int DefaultExperienceReward = 75;
         private const int DefaultCoinsReward = 30;
         private const int DefaultWidth = 32;
         private const int DefaultHeight = 96;

@@ -6,14 +6,14 @@
     {
         #region Constants
         private const string DefaultName = "Boss";
-        private const int DefaultAttackPoints = 15;
+        private const int DefaultAttackPoints = 20;
         private const int DefaultDefensePoints = 50;
         private const int DefaultSpeedPoints = 5;
         private const int DefaultHealthPoints = 1000;
         private const int DefaultAttackRadius = 30;
         private const int DefaultLevel = 5;
-        private const int DefaultExperienceReward = 100;
-        private const int DefaultCoinsReward = 100;
+        private const int DefaultExperienceReward = 200;
+        private const int DefaultCoinsReward = 500;
         private const int DefaultWidth = 128;
         private const int DefaultHeight = 128;
         #endregion

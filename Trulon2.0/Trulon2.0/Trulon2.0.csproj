@@ -96,7 +96,6 @@
     <Compile Include="Models\Items\Equipments\Sword.cs" />
     <Compile Include="Models\Items\Equipments\Vest.cs" />
     <Compile Include="Models\Items\Potion.cs" />
-    <Compile Include="Models\Items\Potions\AttackRangePotion.cs" />
     <Compile Include="Models\Items\Potions\DamagePotion.cs" />
     <Compile Include="Models\Items\Potions\DefensePotion.cs" />
     <Compile Include="Models\Items\Potions\HealthPotion.cs" />
@@ -238,9 +237,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\HealthBar.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Images\Items\AttackRangePotion.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Items\Boots.png">

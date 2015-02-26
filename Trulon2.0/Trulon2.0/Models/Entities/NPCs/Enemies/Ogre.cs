@@ -5,14 +5,14 @@
     public class Ogre : Enemy
     {
         #region Constants
-        private const string DefaultName = "Demon";
-        private const int DefaultAttackPoints = 6;
-        private const int DefaultDefensePoints = 20;
+        private const string DefaultName = "Ogre";
+        private const int DefaultAttackPoints = 9;
+        private const int DefaultDefensePoints = 10;
         private const int DefaultSpeedPoints = 3;
-        private const int DefaultHealthPoints = 100;
-        private const int DefaultAttackRadius = 50;
+        private const int DefaultHealthPoints = 90;
+        private const int DefaultAttackRadius = 40;
         private const int DefaultLevel = 4;
-        private const int DefaultExperienceReward = 80;
+        private const int DefaultExperienceReward = 90;
         private const int DefaultCoinsReward = 60;
         private const int DefaultWidth = 96;
         private const int DefaultHeight = 128;

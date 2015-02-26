@@ -1,17 +1,4 @@
-﻿using System.Runtime.Remoting.Messaging;
-using Trulon.Config;
-using Trulon.Enums;
-using Trulon.GUI;
-using Trulon.Models;
-using Trulon.Models.Entities;
-using Trulon.Models.Entities.NPCs;
-using Trulon.Models.Entities.NPCs.Allies;
-using Trulon.Models.Entities.NPCs.Enemies;
-using Trulon.Models.Entities.Players;
-using Trulon.Models.Items.Equipments;
-using Trulon.Models.Items.Potions;
-
-namespace Trulon.CoreLogics
+﻿namespace Trulon.CoreLogics
 {
     #region Using Statements
     using System;
@@ -20,6 +7,17 @@ namespace Trulon.CoreLogics
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
+    using global::Trulon.Config;
+    using global::Trulon.Enums;
+    using global::Trulon.GUI;
+    using global::Trulon.Models;
+    using global::Trulon.Models.Entities;
+    using global::Trulon.Models.Entities.NPCs;
+    using global::Trulon.Models.Entities.NPCs.Allies;
+    using global::Trulon.Models.Entities.NPCs.Enemies;
+    using global::Trulon.Models.Entities.Players;
+    using global::Trulon.Models.Items.Equipments;
+    using global::Trulon.Models.Items.Potions;
     #endregion
 
     public class Engine : Game
@@ -33,12 +31,12 @@ namespace Trulon.CoreLogics
 
         private static Random rand = new Random();
 
-        private Texture2D[] backgroundTextures = new Texture2D[Config.Config.NumberOfLevels];
+        private Texture2D[] backgroundTextures = new Texture2D[Config.NumberOfLevels];
         //Loading Entites
         public Player player;
         public Vendor vendor;
         private IList<Enemy> enemies;
-        private Map[] maps = new Map[Config.Config.NumberOfLevels];
+        private Map[] maps = new Map[Config.NumberOfLevels];
         private int currentMap = 0;
 
         protected KeyboardState currentKeyboardState;
@@ -56,7 +54,7 @@ namespace Trulon.CoreLogics
         public Texture2D healthBar;
 
         public readonly Item[] AllEquipments = new Item[5];
-        public readonly Item[] AllPotions = new Item[5];
+        public readonly Item[] AllPotions = new Item[4];
         public readonly Dictionary<EquipmentSlots, Texture2D> AllEmptyEquipmentSlots =
             new Dictionary<EquipmentSlots, Texture2D>();
 
@@ -82,12 +80,12 @@ namespace Trulon.CoreLogics
         protected override void Initialize()
         {
             //Sets screen size
-            this.graphics.PreferredBackBufferWidth = Config.Config.ScreenWidth;
-            this.graphics.PreferredBackBufferHeight = Config.Config.ScreenHeight;
+            this.graphics.PreferredBackBufferWidth = Config.ScreenWidth;
+            this.graphics.PreferredBackBufferHeight = Config.ScreenHeight;
             this.graphics.ApplyChanges();
             this.IsMouseVisible = true;
 
-            for (int i = 0; i < Config.Config.NumberOfLevels; i++)
+            for (int i = 0; i < Config.NumberOfLevels; i++)
             {
                 this.maps[i] = new Map(i, this.backgroundTextures[i]);
             }
@@ -116,7 +114,6 @@ namespace Trulon.CoreLogics
             this.AllPotions[1] = new DefensePotion();
             this.AllPotions[2] = new HealthPotion();
             this.AllPotions[3] = new SpeedPotion();
-            this.AllPotions[4] = new AttackRangePotion();
 
             //this is for testing only. remove it when done
             //this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, AllEquipments[3] as Equipment);
@@ -173,7 +170,7 @@ namespace Trulon.CoreLogics
             this.font = Content.Load<SpriteFont>("font");
 
             //Load map image
-            for (int i = 0; i < Config.Config.NumberOfLevels; i++)
+            for (int i = 0; i < Config.NumberOfLevels; i++)
             {
                 this.backgroundTextures[i] = this.Content.Load<Texture2D>(Assets.Maps[i]);
                 this.maps[i].Image = this.backgroundTextures[i];
@@ -246,11 +243,10 @@ namespace Trulon.CoreLogics
             this.AllPotions[1].Initialize(Content.Load<Texture2D>(Assets.DefensePotion), new Vector2(-100, -100));
             this.AllPotions[2].Initialize(Content.Load<Texture2D>(Assets.HealthPotion), new Vector2(-100, -100));
             this.AllPotions[3].Initialize(Content.Load<Texture2D>(Assets.SpeedPotion), new Vector2(-100, -100));
-            this.AllPotions[4].Initialize(Content.Load<Texture2D>(Assets.AttackRangePotion), new Vector2(-100, -100));
 
             //Add every thing into the vendors inventory;
             this.AllEquipments.CopyTo(this.vendor.Inventory, 0);
-            this.AllPotions.CopyTo(this.vendor.Inventory, AllEquipments.Length);
+            this.AllPotions.CopyTo(this.vendor.Inventory, this.AllEquipments.Length);
 
             //Load all availabe emtpy euqipment slots images
             this.AllEmptyEquipmentSlots[EquipmentSlots.Head] = Content.Load<Texture2D>(Assets.EmptyHead);
@@ -318,7 +314,7 @@ namespace Trulon.CoreLogics
             }
             //for exit point we use the last obsticle
             if (this.player.AttackBounds.Intersects(this.maps[this.currentMap].Obsticles[1].ObsticleBox) 
-                && currentMap < 4)
+                && this.currentMap < 4)
             {
                 this.currentMap++;
                 this.player.ReSpawn(this.maps[this.currentMap].PlayerEntryPloint);
@@ -349,13 +345,13 @@ namespace Trulon.CoreLogics
             }
 
             //Use Potions or Equipment from inventory
-            this.player.UseOrEquipFromInventory(Config.Config.UseItemKeys);
+            this.player.UseOrEquipFromInventory(Config.UseItemKeys);
 
             //Drop item from inventory
-            this.player.DropItemFromInventory(Config.Config.DropItemFromInventoryKeys);
+            this.player.DropItemFromInventory(Config.DropItemFromInventoryKeys);
 
             //Unequip Item 
-            this.player.UnequipItem(Config.Config.UnequipItemKeys);
+            this.player.UnequipItem(Config.UnequipItemKeys);
 
             //Open the shop
             if (this.currentKeyboardState.IsKeyDown(Keys.Tab) && this.player.GetAllyInRange(new List<Entity>() { this.vendor }) != null)
@@ -371,7 +367,7 @@ namespace Trulon.CoreLogics
             }
 
             //Buy shits from the shop
-            Keys[] buyItemKeys = Config.Config.BuyItemKeys;
+            Keys[] buyItemKeys = Config.BuyItemKeys;
             if (this.currentKeyboardState.GetPressedKeys().Length > 0
                 && this.previousKeyboardState.GetPressedKeys().Length == 0
                 && buyItemKeys.Contains(this.currentKeyboardState.GetPressedKeys()[0]) 
