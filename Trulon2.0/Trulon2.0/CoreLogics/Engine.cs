@@ -67,7 +67,7 @@ namespace Trulon.CoreLogics
         public bool ShopOpened { get; set; }
         public Engine()
         {
-            graphics = new GraphicsDeviceManager(this);
+            this.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Resources";
         }
 
@@ -85,15 +85,15 @@ namespace Trulon.CoreLogics
             this.graphics.PreferredBackBufferWidth = Config.Config.ScreenWidth;
             this.graphics.PreferredBackBufferHeight = Config.Config.ScreenHeight;
             this.graphics.ApplyChanges();
-            IsMouseVisible = true;
+            this.IsMouseVisible = true;
 
             for (int i = 0; i < Config.Config.NumberOfLevels; i++)
             {
-                maps[i] = new Map(i, backgroundTextures[i]);
+                this.maps[i] = new Map(i, this.backgroundTextures[i]);
             }
 
             //setting entites on the scene
-            this.player = new Barbarian((int)maps[currentMap].PlayerEntryPloint.X, (int)maps[currentMap].PlayerEntryPloint.Y);
+            this.player = new Barbarian((int)this.maps[this.currentMap].PlayerEntryPloint.X, (int)this.maps[this.currentMap].PlayerEntryPloint.Y);
             this.vendor = new Vendor(650, 300);
             this.enemies = new List<Enemy>()
             {
@@ -107,23 +107,23 @@ namespace Trulon.CoreLogics
 
 
             //items load
-            AllEquipments[0] = new Boots();
-            AllEquipments[1] = new Helmet();
-            AllEquipments[2] = new Shield();
-            AllEquipments[3] = new Sword();
-            AllEquipments[4] = new Vest();
-            AllPotions[0] = new DamagePotion();
-            AllPotions[1] = new DefensePotion();
-            AllPotions[2] = new HealthPotion();
-            AllPotions[3] = new SpeedPotion();
-            AllPotions[4] = new AttackRangePotion();
+            this.AllEquipments[0] = new Boots();
+            this.AllEquipments[1] = new Helmet();
+            this.AllEquipments[2] = new Shield();
+            this.AllEquipments[3] = new Sword();
+            this.AllEquipments[4] = new Vest();
+            this.AllPotions[0] = new DamagePotion();
+            this.AllPotions[1] = new DefensePotion();
+            this.AllPotions[2] = new HealthPotion();
+            this.AllPotions[3] = new SpeedPotion();
+            this.AllPotions[4] = new AttackRangePotion();
 
             //this is for testing only. remove it when done
             //this.player.PlayerEquipment.CurrentEquipment.Add(EquipmentSlots.RightHand, AllEquipments[3] as Equipment);
 
             //GUI
             this.gui = new GameGUI(this);
-            gui.Initialize();
+            this.gui.Initialize();
 
             base.Initialize();
         }
@@ -143,7 +143,7 @@ namespace Trulon.CoreLogics
             //testing bounding box
             int boundWidth = (int) (this.player.Bounds.Max.X - this.player.Bounds.Min.X);
             int boundHeight = (int) (this.player.Bounds.Max.Y - this.player.Bounds.Min.Y);
-            boundsTest = new Texture2D(graphics.GraphicsDevice, boundWidth, boundHeight);
+            boundsTest = new Texture2D(this.graphics.GraphicsDevice, boundWidth, boundHeight);
             Color[] data = new Color[boundWidth * boundHeight];
 
 
@@ -167,7 +167,7 @@ namespace Trulon.CoreLogics
 
 
             //Load healthbar image
-            healthBar = Content.Load<Texture2D>(Assets.HealthBar);
+            this.healthBar = Content.Load<Texture2D>(Assets.HealthBar);
 
             //Load Font
             this.font = Content.Load<SpriteFont>("font");
@@ -183,7 +183,7 @@ namespace Trulon.CoreLogics
             //Load the player resources
             this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);
 
-            AnimationsRight = new[]
+            this.AnimationsRight = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[0]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[1]),
@@ -191,7 +191,7 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.BarbarianImages[3])
             };
 
-            AnimationsLeft = new[]
+            this.AnimationsLeft = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[4]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[5]),
@@ -199,7 +199,7 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.BarbarianImages[7])
             };
 
-            AnimationsRightAttack = new[]
+            this.AnimationsRightAttack = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[8]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[9]),
@@ -208,7 +208,7 @@ namespace Trulon.CoreLogics
                 Content.Load<Texture2D>(Assets.BarbarianImages[0])
             };
 
-            AnimationsLeftAttack = new[]
+            this.AnimationsLeftAttack = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[12]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[13]),
@@ -220,7 +220,7 @@ namespace Trulon.CoreLogics
             //Load the vendor resources
             this.vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.vendor.Position);
 
-            foreach (var enemy in enemies)
+            foreach (var enemy in this.enemies)
             {
                 if (enemy is Goblin)
                 {
@@ -237,27 +237,27 @@ namespace Trulon.CoreLogics
             }
 
             //Load all available items
-            AllEquipments[0].Initialize(Content.Load<Texture2D>(Assets.Boots), new Vector2(-100, -100));
-            AllEquipments[1].Initialize(Content.Load<Texture2D>(Assets.Helmet), new Vector2(-100, -100));
-            AllEquipments[2].Initialize(Content.Load<Texture2D>(Assets.Shield), new Vector2(-100, -100));
-            AllEquipments[3].Initialize(Content.Load<Texture2D>(Assets.Sword), new Vector2(-100, -100));
-            AllEquipments[4].Initialize(Content.Load<Texture2D>(Assets.Vest), new Vector2(-100, -100));
-            AllPotions[0].Initialize(Content.Load<Texture2D>(Assets.DamagePotion), new Vector2(-100, -100));
-            AllPotions[1].Initialize(Content.Load<Texture2D>(Assets.DefensePotion), new Vector2(-100, -100));
-            AllPotions[2].Initialize(Content.Load<Texture2D>(Assets.HealthPotion), new Vector2(-100, -100));
-            AllPotions[3].Initialize(Content.Load<Texture2D>(Assets.SpeedPotion), new Vector2(-100, -100));
-            AllPotions[4].Initialize(Content.Load<Texture2D>(Assets.AttackRangePotion), new Vector2(-100, -100));
+            this.AllEquipments[0].Initialize(Content.Load<Texture2D>(Assets.Boots), new Vector2(-100, -100));
+            this.AllEquipments[1].Initialize(Content.Load<Texture2D>(Assets.Helmet), new Vector2(-100, -100));
+            this.AllEquipments[2].Initialize(Content.Load<Texture2D>(Assets.Shield), new Vector2(-100, -100));
+            this.AllEquipments[3].Initialize(Content.Load<Texture2D>(Assets.Sword), new Vector2(-100, -100));
+            this.AllEquipments[4].Initialize(Content.Load<Texture2D>(Assets.Vest), new Vector2(-100, -100));
+            this.AllPotions[0].Initialize(Content.Load<Texture2D>(Assets.DamagePotion), new Vector2(-100, -100));
+            this.AllPotions[1].Initialize(Content.Load<Texture2D>(Assets.DefensePotion), new Vector2(-100, -100));
+            this.AllPotions[2].Initialize(Content.Load<Texture2D>(Assets.HealthPotion), new Vector2(-100, -100));
+            this.AllPotions[3].Initialize(Content.Load<Texture2D>(Assets.SpeedPotion), new Vector2(-100, -100));
+            this.AllPotions[4].Initialize(Content.Load<Texture2D>(Assets.AttackRangePotion), new Vector2(-100, -100));
 
             //Add every thing into the vendors inventory;
-            AllEquipments.CopyTo(this.vendor.Inventory, 0);
-            AllPotions.CopyTo(this.vendor.Inventory, AllEquipments.Length);
+            this.AllEquipments.CopyTo(this.vendor.Inventory, 0);
+            this.AllPotions.CopyTo(this.vendor.Inventory, AllEquipments.Length);
 
             //Load all availabe emtpy euqipment slots images
-            AllEmptyEquipmentSlots[EquipmentSlots.Head] = Content.Load<Texture2D>(Assets.EmptyHead);
-            AllEmptyEquipmentSlots[EquipmentSlots.LeftHand] = Content.Load<Texture2D>(Assets.EmptyLeftHand);
-            AllEmptyEquipmentSlots[EquipmentSlots.RightHand] = Content.Load<Texture2D>(Assets.EmptyRightHand);
-            AllEmptyEquipmentSlots[EquipmentSlots.Body] = Content.Load<Texture2D>(Assets.EmptyBody);
-            AllEmptyEquipmentSlots[EquipmentSlots.Feet] = Content.Load<Texture2D>(Assets.EmptyFeet);
+            this.AllEmptyEquipmentSlots[EquipmentSlots.Head] = Content.Load<Texture2D>(Assets.EmptyHead);
+            this.AllEmptyEquipmentSlots[EquipmentSlots.LeftHand] = Content.Load<Texture2D>(Assets.EmptyLeftHand);
+            this.AllEmptyEquipmentSlots[EquipmentSlots.RightHand] = Content.Load<Texture2D>(Assets.EmptyRightHand);
+            this.AllEmptyEquipmentSlots[EquipmentSlots.Body] = Content.Load<Texture2D>(Assets.EmptyBody);
+            this.AllEmptyEquipmentSlots[EquipmentSlots.Feet] = Content.Load<Texture2D>(Assets.EmptyFeet);
         }
 
         #region UnloadContent Summary
@@ -288,21 +288,21 @@ namespace Trulon.CoreLogics
             //1 and n are reserver for entry and exit points of the level
             for (var i = 2; i < this.maps[currentMap].Obsticles.Length; i++)
             {
-                if (this.player.Intersects(this.maps[currentMap].Obsticles[i].ObsticleBox))
+                if (this.player.Intersects(this.maps[this.currentMap].Obsticles[i].ObsticleBox))
                 {
-                    if (this.maps[currentMap].Obsticles[i].RestrictedDirection == Direction.Up)
+                    if (this.maps[this.currentMap].Obsticles[i].RestrictedDirection == Direction.Up)
                     {
                         this.player.VelocityUp = 0;
                     }
-                    if (this.maps[currentMap].Obsticles[i].RestrictedDirection == Direction.Down)
+                    if (this.maps[this.currentMap].Obsticles[i].RestrictedDirection == Direction.Down)
                     {
                         this.player.VelocityDown = 0;
                     }
-                    if (this.maps[currentMap].Obsticles[i].RestrictedDirection == Direction.Left)
+                    if (this.maps[this.currentMap].Obsticles[i].RestrictedDirection == Direction.Left)
                     {
                         this.player.VelocityLeft = 0;
                     }
-                    if (this.maps[currentMap].Obsticles[i].RestrictedDirection == Direction.Right)
+                    if (this.maps[this.currentMap].Obsticles[i].RestrictedDirection == Direction.Right)
                     {
                         this.player.VelocityRight = 0;
                     }
@@ -311,21 +311,21 @@ namespace Trulon.CoreLogics
             //Level Change
             //If the player can change the level if he colides with one of the entry/exit points
             //for entry point we use the first obsticle
-            if (this.player.AttackBounds.Intersects(this.maps[currentMap].Obsticles[0].ObsticleBox) && currentMap > 0)
+            if (this.player.AttackBounds.Intersects(this.maps[this.currentMap].Obsticles[0].ObsticleBox) && this.currentMap > 0)
             {
-                currentMap--;
-                this.player.ReSpawn(this.maps[currentMap].PlayerExitPloint);
+                this.currentMap--;
+                this.player.ReSpawn(this.maps[this.currentMap].PlayerExitPloint);
             }
             //for exit point we use the last obsticle
-            if (this.player.AttackBounds.Intersects(this.maps[currentMap].Obsticles[1].ObsticleBox) 
+            if (this.player.AttackBounds.Intersects(this.maps[this.currentMap].Obsticles[1].ObsticleBox) 
                 && currentMap < 4)
             {
-                currentMap++;
-                this.player.ReSpawn(this.maps[currentMap].PlayerEntryPloint);
+                this.currentMap++;
+                this.player.ReSpawn(this.maps[this.currentMap].PlayerEntryPloint);
             }
 
             //update enemies
-            foreach (var enemy in enemies)
+            foreach (var enemy in this.enemies)
             {
                 enemy.Update();
             }
@@ -358,7 +358,7 @@ namespace Trulon.CoreLogics
             this.player.UnequipItem(Config.Config.UnequipItemKeys);
 
             //Open the shop
-            if (currentKeyboardState.IsKeyDown(Keys.Tab) && this.player.GetAllyInRange(new List<Entity>() { this.vendor }) != null)
+            if (this.currentKeyboardState.IsKeyDown(Keys.Tab) && this.player.GetAllyInRange(new List<Entity>() { this.vendor }) != null)
             {
                 this.ShopOpened = true;
             }
@@ -372,12 +372,12 @@ namespace Trulon.CoreLogics
 
             //Buy shits from the shop
             Keys[] buyItemKeys = Config.Config.BuyItemKeys;
-            if (currentKeyboardState.GetPressedKeys().Length > 0 
-                && previousKeyboardState.GetPressedKeys().Length == 0
-                && buyItemKeys.Contains(currentKeyboardState.GetPressedKeys()[0]) 
+            if (this.currentKeyboardState.GetPressedKeys().Length > 0
+                && this.previousKeyboardState.GetPressedKeys().Length == 0
+                && buyItemKeys.Contains(this.currentKeyboardState.GetPressedKeys()[0]) 
                 && this.ShopOpened)
             {
-                int itemAtIndex = Array.IndexOf(buyItemKeys, currentKeyboardState.GetPressedKeys()[0]);
+                int itemAtIndex = Array.IndexOf(buyItemKeys, this.currentKeyboardState.GetPressedKeys()[0]);
                 if (this.player.Coins >= this.vendor.Inventory[itemAtIndex].Price)
                 {
                     this.player.AddToInventory(this.vendor.Inventory[itemAtIndex]);
@@ -387,13 +387,13 @@ namespace Trulon.CoreLogics
 
 
             //Check for player is moving
-            var enemiesInRange = this.player.GetEnemiesInRange(enemies);
+            var enemiesInRange = this.player.GetEnemiesInRange(this.enemies);
             int chanceToBeAttacked = 0;
             if (enemiesInRange.Count > 0)
             {
-                if (currentKeyboardState.IsKeyDown(Keys.Space) && isAttacking == false)
+                if (this.currentKeyboardState.IsKeyDown(Keys.Space) && this.isAttacking == false)
                 {
-                    indexFrame = 0;
+                    this.indexFrame = 0;
                     this.player.Attack(enemiesInRange);
                 }
                 foreach (var enemy in enemiesInRange)
@@ -421,9 +421,9 @@ namespace Trulon.CoreLogics
                 }
             }
 
-            UpdateInput();
+            this.UpdateInput();
 
-            if (isAttacking || isMoving)
+            if (this.isAttacking || this.isMoving)
             {
                 this.AnimatePlayer();
             }
@@ -451,32 +451,32 @@ namespace Trulon.CoreLogics
                 newState.IsKeyDown(Keys.Left))
             {
                 // If not down last update, key has just been pressed.
-                if (!previousKeyboardState.IsKeyDown(Keys.Up) ||
-                    !previousKeyboardState.IsKeyDown(Keys.Down) ||
-                    !previousKeyboardState.IsKeyDown(Keys.Right) ||
-                    !previousKeyboardState.IsKeyDown(Keys.Left))
+                if (!this.previousKeyboardState.IsKeyDown(Keys.Up) ||
+                    !this.previousKeyboardState.IsKeyDown(Keys.Down) ||
+                    !this.previousKeyboardState.IsKeyDown(Keys.Right) ||
+                    !this.previousKeyboardState.IsKeyDown(Keys.Left))
                 {
-                    isMoving = true;
+                    this.isMoving = true;
                 }
             }
-            else if (previousKeyboardState.IsKeyDown(Keys.Up) ||
-                     previousKeyboardState.IsKeyDown(Keys.Down) ||
-                     previousKeyboardState.IsKeyDown(Keys.Right) ||
-                     previousKeyboardState.IsKeyDown(Keys.Left))
+            else if (this.previousKeyboardState.IsKeyDown(Keys.Up) ||
+                     this.previousKeyboardState.IsKeyDown(Keys.Down) ||
+                     this.previousKeyboardState.IsKeyDown(Keys.Right) ||
+                     this.previousKeyboardState.IsKeyDown(Keys.Left))
             {
                 // Key was down last update, but not down now, so
                 // it has just been released.
 
-                isMoving = false;
+                this.isMoving = false;
             }
 
             if (newState.IsKeyDown(Keys.Space))
             {
-                isAttacking = true;
+                this.isAttacking = true;
             }
 
             // Update saved state.
-            previousKeyboardState = newState;
+            this.previousKeyboardState = newState;
         }
 
         #region GameDraw Summary
@@ -492,20 +492,20 @@ namespace Trulon.CoreLogics
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
 
-            this.spriteBatch.Draw(this.maps[currentMap].Image, new Rectangle(0, 0, backgroundTextures[0].Width, backgroundTextures[0].Height), Color.White);
+            this.spriteBatch.Draw(this.maps[this.currentMap].Image, new Rectangle(0, 0, this.backgroundTextures[0].Width, this.backgroundTextures[0].Height), Color.White);
 
 
-            this.vendor.Draw(spriteBatch);
- 
+            this.vendor.Draw(this.spriteBatch);
 
-            foreach (var enemy in enemies)
+
+            foreach (var enemy in this.enemies)
             {
                 enemy.Draw(this.spriteBatch);
             }
 
-            this.gui.Draw(spriteBatch);
+            this.gui.Draw(this.spriteBatch);
 
-            this.player.Draw(spriteBatch);
+            this.player.Draw(this.spriteBatch);
 
             Vector2 minBounds = new Vector2(this.player.Bounds.Min.X + 54, this.player.Bounds.Min.Y + 24);
             spriteBatch.Draw(boundsTest, minBounds, Color.White);
@@ -519,61 +519,61 @@ namespace Trulon.CoreLogics
 
         private void AnimatePlayer()
         {
-            if (countDown == 0)
+            if (this.countDown == 0)
             {
                 //change direction
-                if (isAttacking)
+                if (this.isAttacking)
                 {
                     if (this.player.PreviousDirection == "right")
                     {
-                        this.player.Image = this.AnimationsRightAttack[indexFrame++];
-                        if (indexFrame == this.AnimationsRightAttack.Length)
+                        this.player.Image = this.AnimationsRightAttack[this.indexFrame++];
+                        if (this.indexFrame == this.AnimationsRightAttack.Length)
                         {
-                            isAttacking = false;
-                            indexFrame = 0;
+                            this.isAttacking = false;
+                            this.indexFrame = 0;
                         }
 
                     }
                     else if (this.player.PreviousDirection == "left")
                     {
-                        this.player.Image = this.AnimationsLeftAttack[indexFrame++];
-                        if (indexFrame == this.AnimationsLeftAttack.Length)
+                        this.player.Image = this.AnimationsLeftAttack[this.indexFrame++];
+                        if (this.indexFrame == this.AnimationsLeftAttack.Length)
                         {
-                            isAttacking = false;
-                            indexFrame = 0;
+                            this.isAttacking = false;
+                            this.indexFrame = 0;
                         }
                     }
                 }
                 else if (this.player.PreviousDirection == "right")
                 {
-                    if (indexFrame >= AnimationsRight.Length)
+                    if (this.indexFrame >= this.AnimationsRight.Length)
                     {
-                        indexFrame = 0;
+                        this.indexFrame = 0;
                     }
                     else
                     {
-                        this.player.Image = this.AnimationsRight[indexFrame++];
+                        this.player.Image = this.AnimationsRight[this.indexFrame++];
                     }
 
                 }
                 else
                 {
-                    if (indexFrame >= AnimationsLeft.Length)
+                    if (this.indexFrame >= this.AnimationsLeft.Length)
                     {
-                        indexFrame = 0;
+                        this.indexFrame = 0;
                     }
                     else
                     {
-                        this.player.Image = this.AnimationsLeft[indexFrame++];
+                        this.player.Image = this.AnimationsLeft[this.indexFrame++];
                     }
 
                 }
 
-                countDown = 10;
+                this.countDown = 10;
 
             }
 
-            countDown--;
+            this.countDown--;
         }
 
         private Item LootEnemy(string type)
@@ -582,14 +582,10 @@ namespace Trulon.CoreLogics
             if (chance == 0)
             {
                 if (type == "potion")
-
                 {
-                    return ItemGenerator.GetPotionItem(AllPotions);
+                    return ItemGenerator.GetPotionItem(this.AllPotions);
                 }
-                else
-                {
-                    return ItemGenerator.GetEquipmentItem(AllEquipments);
-                }
+                return ItemGenerator.GetEquipmentItem(this.AllEquipments);
             }
             return null;
         }
