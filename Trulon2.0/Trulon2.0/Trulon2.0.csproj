@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="Config\Assets.cs" />
     <Compile Include="Config\Config.cs" />
-    <Compile Include="CoreLogics\MenuScreen.cs" />
     <Compile Include="CoreLogics\ItemGenerator.cs" />
     <Compile Include="CoreLogics\Engine.cs" />
     <Compile Include="CoreLogics\MapManager.cs" />

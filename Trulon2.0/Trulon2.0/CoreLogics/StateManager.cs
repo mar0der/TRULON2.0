@@ -70,6 +70,14 @@ namespace Trulon.CoreLogics
             //Read the current state of the keyboard and store it
             currentKeyboardState = Keyboard.GetState();
             
+            if (this.gameState == State.start)
+            {
+                // Allows the game to exit
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                {
+                    this.Exit();
+                }
+            }
 
             if (currentKeyboardState.IsKeyDown(Keys.Enter))
             {
@@ -84,30 +92,6 @@ namespace Trulon.CoreLogics
                 this.gameState = State.controls;
             }
 
-            if (this.gameState == State.start)
-            {
-
-                // Allows the game to exit
-                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                {
-                    this.Exit();
-                }
-
-                if (isActivatedNewGame)
-                {
-                    this.Exit();
-                    //new game
-                    isActivatedNewGame = false;
-                }
-
-                // if any Guide UIs are visible, return here.
-                if (Guide.IsVisible)
-                {
-                    base.Update(gameTime);
-                    return;
-                }
-            }
-
             if (currentKeyboardState.IsKeyDown(Keys.Back) && 
                 (gameState == State.controls ||
                 gameState == State.credits))
@@ -120,6 +104,7 @@ namespace Trulon.CoreLogics
                 if (!this.player.IsAlive)
                 {
                     gameState = State.start;
+                    base.Initialize();
                 }
                 base.Update(gameTime);
             }
@@ -150,7 +135,7 @@ namespace Trulon.CoreLogics
             }
             if (this.gameState == State.play)
             {
-                base.Draw(gameTime); 
+                base.Draw(gameTime);
             }
             
         }
