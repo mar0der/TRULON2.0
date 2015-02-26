@@ -371,9 +371,10 @@
                     }
                 }
             }
-            if (this.enemies[this.currentMap].Count == 0)
+            //You won. wen you kill the boss
+            if (this.enemies[Config.NumberOfLevels-1].Count == 0)
             {
-                //TODO
+                this.YouWon = true;
             }
 
             //Use Potions or Equipment from inventory

@@ -276,9 +276,6 @@
     <Content Include="Resources\Images\MapImages\Ogre.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\MapImages\Ogre2.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\Images\MapImages\Robo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
