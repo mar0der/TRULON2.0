@@ -109,6 +109,26 @@
             "Images/Robo/RoboAttack4Left.png"
         };
 
+        public static readonly string[] BossImages = new string[16]
+        {
+            "Images/Boss/OgreMove1.png",
+            "Images/Boss/OgreMove2.png",
+            "Images/Boss/OgreMove3.png",
+            "Images/Boss/OgreMove4.png",
+            "Images/Boss/OgreMove1Left.png",
+            "Images/Boss/OgreMove2Left.png",
+            "Images/Boss/OgreMove3Left.png",
+            "Images/Boss/OgreMove4Left.png",
+            "Images/Boss/OgreAttack1.png",
+            "Images/Boss/OgreAttack2.png",
+            "Images/Boss/OgreAttack3.png",
+            "Images/Boss/OgreAttack4.png",
+            "Images/Boss/OgreAttack1Left.png",
+            "Images/Boss/OgreAttack2Left.png",
+            "Images/Boss/OgreAttack3Left.png",
+            "Images/Boss/OgreAttack4Left.png"
+        };
+
         //NPCs
         //Vendor
         public static readonly string[] Vendor = new string[1]
