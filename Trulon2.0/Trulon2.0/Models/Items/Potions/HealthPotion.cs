@@ -8,7 +8,7 @@
         private const bool DefaultHasTimedOut = false;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefencePointsBuff = 0;
-        private const int DefaultHealthPointsBuff = 50;
+        private const int DefaultHealthPointsBuff = 30;
         private const int DefaultSpeedPointsBuff = 0;
         private const int DefaultPrice = 20;
 

@@ -9,7 +9,7 @@
         private const int DefaultAttackPointsBuff = 20;
         private const int DefaultDefensePointsBuff = 0;
         private const int DefaultSpeedPointsBuff = 0;
-        private const int DefaultPrice = 30;
+        private const int DefaultPrice = 60;
 
         public Sword()
         {
