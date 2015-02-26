@@ -103,9 +103,7 @@ namespace Trulon.CoreLogics
                 new Ogre(800, 350),
                 new Boss(500, 350)
             };
-
-
-
+            
             //items load
             this.AllEquipments[0] = new Boots();
             this.AllEquipments[1] = new Helmet();
@@ -179,7 +177,6 @@ namespace Trulon.CoreLogics
                 this.maps[i].Image = this.backgroundTextures[i];
             }
             
-
             //Load the player resources
             this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);
 
@@ -308,6 +305,7 @@ namespace Trulon.CoreLogics
                     }
                 }
             }
+
             //Level Change
             //If the player can change the level if he colides with one of the entry/exit points
             //for entry point we use the first obsticle
@@ -322,6 +320,13 @@ namespace Trulon.CoreLogics
             {
                 this.currentMap++;
                 this.player.ReSpawn(this.maps[this.currentMap].PlayerEntryPloint);
+            }
+
+            //Recall
+            if (this.currentKeyboardState.IsKeyDown(Keys.M) && this.currentMap > 0)
+            {
+                this.currentMap = 0;
+                this.player.ReSpawn(this.maps[0].PlayerEntryPloint);
             }
 
             //update enemies
@@ -384,8 +389,7 @@ namespace Trulon.CoreLogics
                     this.player.Coins -= this.vendor.Inventory[itemAtIndex].Price;
                 }
             }
-
-
+            
             //Check for player is moving
             var enemiesInRange = this.player.GetEnemiesInRange(this.enemies);
             int chanceToBeAttacked = 0;
@@ -427,13 +431,6 @@ namespace Trulon.CoreLogics
             {
                 this.AnimatePlayer();
             }
-
-            //Check for going in another world
-            //do we need this?
-            //if ((int)this.player.Position.X == 200 && (int)this.player.Position.Y == 300)
-            //{
-            //    throw new Exception("New wolrd;");
-            //}
 
             this.gui.Update();
 
