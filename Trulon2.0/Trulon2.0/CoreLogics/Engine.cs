@@ -242,15 +242,15 @@
                 {
                     if (enemy is Goblin)
                     {
-                        enemy.Initialize(Content.Load<Texture2D>(Assets.GoblinImages[0]), enemy.Position);
+                        enemy.Initialize(Content.Load<Texture2D>(Assets.GoblinImages[4]), enemy.Position);
                     }
                     else if (enemy is Ogre)
                     {
-                        enemy.Initialize(Content.Load<Texture2D>(Assets.OgreImages[0]), enemy.Position);
+                        enemy.Initialize(Content.Load<Texture2D>(Assets.OgreImages[4]), enemy.Position);
                     }
                     else
                     {
-                        enemy.Initialize(Content.Load<Texture2D>(Assets.RoboImages[0]), enemy.Position);
+                        enemy.Initialize(Content.Load<Texture2D>(Assets.RoboImages[4]), enemy.Position);
                     }
                 }
             }
