@@ -6,6 +6,6 @@
         credits,
         controls,
         play,
-        end
+        win
     }
 }

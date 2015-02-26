@@ -11,6 +11,7 @@
         private Texture2D backgroundMenu;
         private Texture2D backgroundCredits;
         private Texture2D backgroundControls;
+        private Texture2D backgroundVictory;
         bool isActivatedNewGame = false;
 
         public StateManager()
@@ -34,6 +35,7 @@
             backgroundMenu = Content.Load<Texture2D>("Images/Screens/StartScreen");
             backgroundCredits = Content.Load<Texture2D>("Images/Screens/CreditsScreen");
             backgroundControls = Content.Load<Texture2D>("Images/Screens/ControlsScreen");
+            backgroundVictory = Content.Load<Texture2D>("Images/Screens/VictoryScreen");
             base.LoadContent();
         }
 
@@ -54,19 +56,18 @@
                 {
                     this.Exit();
                 }
-            }
-
-            if (currentKeyboardState.IsKeyDown(Keys.Enter))
-            {
-                this.gameState = State.play;
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.C))
-            {
-                this.gameState = State.credits;
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.V))
-            {
-                this.gameState = State.controls;
+                if (currentKeyboardState.IsKeyDown(Keys.Enter))
+                {
+                    this.gameState = State.play;
+                }
+                if (currentKeyboardState.IsKeyDown(Keys.C))
+                {
+                    this.gameState = State.credits;
+                }
+                if (currentKeyboardState.IsKeyDown(Keys.V))
+                {
+                    this.gameState = State.controls;
+                }
             }
 
             if (currentKeyboardState.IsKeyDown(Keys.Back) && 
@@ -80,10 +81,21 @@
             {
                 if (!this.player.IsAlive)
                 {
-                    gameState = State.start;
+                    this.gameState = State.start;
                     base.Initialize();
                 }
+                if (this.YouWon)
+                {
+                    this.YouWon = false;
+                    this.gameState = State.win;
+                }
                 base.Update(gameTime);
+            }
+
+            if (this.gameState == State.win && currentKeyboardState.IsKeyDown(Keys.Enter))
+            {
+                this.gameState = State.start;
+                base.Initialize();
             }
         }
 
@@ -109,6 +121,13 @@
                 spriteBatch.Begin();
                 this.spriteBatch.Draw(backgroundControls, new Rectangle(0, 0, backgroundControls.Width, backgroundControls.Height), Color.White);
                 spriteBatch.End();
+            }
+            if (gameState == State.win)
+            {
+                GraphicsDevice.Clear(Color.Black);
+                spriteBatch.Begin();
+                this.spriteBatch.Draw(backgroundVictory, new Rectangle(0, 0, backgroundVictory.Width, backgroundVictory.Height), Color.White);
+                spriteBatch.End(); 
             }
             if (this.gameState == State.play)
             {
