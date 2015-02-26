@@ -1,5 +1,6 @@
 ﻿namespace Trulon.Config
 {
+    using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
 
     /// <summary>
@@ -17,7 +18,8 @@
         public const int InitialCoins = 100;
 
         public const int TotalItemsCount = 9;
-
+        //Vendor constatns
+        public static readonly Vector2 VendorPosition = new Vector2(650, 300);
         //controls
         public static readonly Keys[] UseItemKeys = { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5 };
         public static readonly Keys[] DropItemFromInventoryKeys = { Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T };

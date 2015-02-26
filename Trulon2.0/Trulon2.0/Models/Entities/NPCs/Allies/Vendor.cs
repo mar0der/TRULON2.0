@@ -32,9 +32,6 @@
             this.Inventory = new Item[Config.TotalItemsCount];
         }
 
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
+        public override BoundingBox Bounds { get; set; }
     }
 }

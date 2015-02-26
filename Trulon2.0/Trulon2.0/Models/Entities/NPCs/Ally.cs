@@ -4,6 +4,7 @@
     {
         protected override void Move()
         {
+            base.Move();
             //TODO: if we need to move the Ally NPC we can do it from here
         }
     }

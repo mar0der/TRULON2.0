@@ -98,7 +98,7 @@
 
             //setting entites on the scene
             this.player = new Barbarian((int)this.maps[this.currentMap].PlayerEntryPloint.X, (int)this.maps[this.currentMap].PlayerEntryPloint.Y);
-            this.vendor = new Vendor(650, 300);
+            this.vendor = new Vendor((int)Config.VendorPosition.X, (int)Config.VendorPosition.Y);
             //home
             this.enemies[0] = new List<Enemy>();
             //Goblin
@@ -305,8 +305,9 @@
         #endregion
         protected override void Update(GameTime gameTime)
         {
-            //Update player
             this.player.Update();
+            
+            this.vendor.Update();
 
             //because we`d like to use this logic only for the obsticles with numbers between 2 and n-1.
             //1 and n are reserver for entry and exit points of the level
@@ -383,6 +384,15 @@
                 this.YouWon = true;
             }
 
+            //move the vendor
+            if (this.currentMap > 0)
+            {
+                this.vendor.Position = new Vector2(-100,-100);
+            }
+            else
+            {
+                this.vendor.Position = new Vector2(Config.VendorPosition.X, Config.VendorPosition.Y);
+            }
 
 
             //Use Potions or Equipment from inventory

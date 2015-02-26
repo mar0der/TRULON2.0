@@ -4,7 +4,6 @@
     {
         protected override void Move()
         {
-            //TODO: arteficial intelligence for all NPCs
         }
     }
 }

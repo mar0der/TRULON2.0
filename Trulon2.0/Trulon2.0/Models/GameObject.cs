@@ -8,7 +8,7 @@
     {
         public string Name { get; set; }
         public Texture2D Image { get; set; }
-        public BoundingBox Bounds { get; set; }
+        public virtual BoundingBox Bounds { get; set; }
         public Vector2 Position { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
