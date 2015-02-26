@@ -30,9 +30,10 @@ namespace Trulon.CoreLogics
     public class StateManager : Engine
     {
         private State gameState = State.start;
-        List<MenuButton> m_buttons = new List<MenuButton>();
+        private Texture2D backgroundMenu;
+        private Texture2D backgroundCredits;
+        private Texture2D backgroundControls;
         bool isActivatedNewGame = false;
-        private MouseState ms;
 
         public StateManager()
         {
@@ -42,10 +43,7 @@ namespace Trulon.CoreLogics
         public int CurrentMap { get; set; }
         protected override void Initialize()
         {
-            this.graphics.PreferredBackBufferWidth = 280;
-            this.graphics.PreferredBackBufferHeight = 480;
-            this.graphics.ApplyChanges();
-            IsMouseVisible = true;
+            IsMouseVisible = false;
             
             base.Initialize();
         }
@@ -55,21 +53,10 @@ namespace Trulon.CoreLogics
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            Content.RootDirectory = "Resources/Images/Buttons";
-            MenuButton mb = new MenuButton(Content.Load<Texture2D>("KeyboardBtn"));
-            Point p = new Point
-            {
-                X = (int)((GraphicsDevice.Viewport.Width - mb.img.Width) * 0.5f),
-                Y = (int)((GraphicsDevice.Viewport.Height - (mb.img.Height * 3.0f)) * 0.5f)
-            };
-            mb.SetLocation(p);
-            m_buttons.Add(mb);
-
-            mb = new MenuButton(Content.Load<Texture2D>("MessageBoxBtn"));
-            p.Y += (int)(mb.img.Height * 1.5f);
-            mb.SetLocation(p);
-            m_buttons.Add(mb);
             Content.RootDirectory = "Resources";
+            backgroundMenu = Content.Load<Texture2D>("Images/Screens/StartScreen");
+            backgroundCredits = Content.Load<Texture2D>("Images/Screens/CreditsScreen");
+            backgroundControls = Content.Load<Texture2D>("Images/Screens/ControlsScreen");
             base.LoadContent();
         }
 
@@ -84,9 +71,17 @@ namespace Trulon.CoreLogics
             currentKeyboardState = Keyboard.GetState();
             
 
-            if (currentKeyboardState.IsKeyDown(Keys.D9))
+            if (currentKeyboardState.IsKeyDown(Keys.Enter))
             {
                 this.gameState = State.play;
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.C))
+            {
+                this.gameState = State.credits;
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.V))
+            {
+                this.gameState = State.controls;
             }
 
             if (this.gameState == State.start)
@@ -111,50 +106,13 @@ namespace Trulon.CoreLogics
                     base.Update(gameTime);
                     return;
                 }
+            }
 
-                // check to see if the player is making a menu selection.  Since
-                // we're only interested in a single touch-point, we can use the
-                // simpler mouse input method.
-                ms = Mouse.GetState();
-                if (ms.LeftButton == ButtonState.Pressed)
-                {
-                    // the player is pressing the screen
-                    foreach (MenuButton b in m_buttons)
-                    {
-                        b.isPressed = b.HasPoint(ms.X, ms.Y);
-                    }
-                }
-                else if (ms.LeftButton == ButtonState.Released)
-                {
-                    // the player has released the touchpoint
-                    for (int i = 0; i < m_buttons.Count; i++)
-                    {
-                        MenuButton b = m_buttons[i];
-                        if (b.HasPoint(ms.X, ms.Y) && b.isPressed)
-                        {
-                            b.isPressed = false;
-
-                            switch (i)
-                            {
-                                case 0:
-                                    this.gameState = State.play;
-                                    break;
-
-                                case 1:
-                                    this.gameState = State.end;
-                                    break;
-
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-                }
-
-                foreach (MenuButton b in m_buttons)
-                {
-                    b.Update(gameTime.ElapsedGameTime.Milliseconds);
-                }
+            if (currentKeyboardState.IsKeyDown(Keys.Back) && 
+                (gameState == State.controls ||
+                gameState == State.credits))
+            {
+                this.gameState = State.start;
             }
 
             if (this.gameState == State.play)
@@ -173,11 +131,21 @@ namespace Trulon.CoreLogics
             {
                 GraphicsDevice.Clear(Color.Black);
                 spriteBatch.Begin();
-                // draw buttons
-                foreach (MenuButton b in m_buttons)
-                {
-                    b.Draw(spriteBatch);
-                }
+                this.spriteBatch.Draw(backgroundMenu, new Rectangle(0, 0, backgroundMenu.Width, backgroundMenu.Height), Color.White);
+                spriteBatch.End();
+            }
+            if (this.gameState == State.credits)
+            {
+                GraphicsDevice.Clear(Color.Black);
+                spriteBatch.Begin();
+                this.spriteBatch.Draw(backgroundCredits, new Rectangle(0, 0, backgroundCredits.Width, backgroundCredits.Height), Color.White);
+                spriteBatch.End();
+            }
+            if (this.gameState == State.controls)
+            {
+                GraphicsDevice.Clear(Color.Black);
+                spriteBatch.Begin();
+                this.spriteBatch.Draw(backgroundControls, new Rectangle(0, 0, backgroundControls.Width, backgroundControls.Height), Color.White);
                 spriteBatch.End();
             }
             if (this.gameState == State.play)

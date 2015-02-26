@@ -3,6 +3,8 @@
     enum State
     {
         start,
+        credits,
+        controls,
         play,
         end
     }

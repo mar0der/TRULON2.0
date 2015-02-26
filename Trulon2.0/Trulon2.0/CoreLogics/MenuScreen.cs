@@ -11,20 +11,18 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Trulon.CoreLogics
 {
-    public class GameOverScreen : Game
+    public class MenuScreen : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-        List<MenuButton> m_buttons = new List<MenuButton>();
-        byte gameState;
+        private Texture2D background;
 
         bool isActivatedNewGame = false;
 
-        public GameOverScreen()
+        public MenuScreen()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Resources/Images/Buttons";
+            Content.RootDirectory = "Resources/Images/Screens";
         }
 
         /// <summary>
@@ -35,11 +33,8 @@ namespace Trulon.CoreLogics
         /// </summary>
         protected override void Initialize()
         {
-            this.graphics.PreferredBackBufferWidth = 280;
-            this.graphics.PreferredBackBufferHeight = 480;
-            this.graphics.ApplyChanges();
             // TODO: Add your initialization logic here
-            IsMouseVisible = true;
+            IsMouseVisible = false;
             TargetElapsedTime = TimeSpan.FromTicks(333333);
 
             base.Initialize();
@@ -54,19 +49,8 @@ namespace Trulon.CoreLogics
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            MenuButton mb = new MenuButton(Content.Load<Texture2D>("KeyboardBtn"));
-            Point p = new Point
-            {
-                X = (int) ((GraphicsDevice.Viewport.Width - mb.img.Width)*0.5f),
-                Y = (int) ((GraphicsDevice.Viewport.Height - (mb.img.Height*3.0f))*0.5f)
-            };
-            mb.SetLocation(p);
-            m_buttons.Add(mb);
+            background = Content.Load<Texture2D>("StartScreen");
 
-            mb = new MenuButton(Content.Load<Texture2D>("MessageBoxBtn"));
-            p.Y += (int)(mb.img.Height * 1.5f);
-            mb.SetLocation(p);
-            m_buttons.Add(mb);
 
         }
 
@@ -102,47 +86,7 @@ namespace Trulon.CoreLogics
                 return;
             }
 
-            // check to see if the player is making a menu selection.  Since
-            // we're only interested in a single touch-point, we can use the
-            // simpler mouse input method.
-            MouseState ms = Mouse.GetState();
-            if (ms.LeftButton == ButtonState.Pressed)
-            {
-                // the player is pressing the screen
-                foreach (MenuButton b in m_buttons)
-                {
-                    b.isPressed = b.HasPoint(ms.X, ms.Y);
-                }
-            }
-            else if (ms.LeftButton == ButtonState.Released)
-            {
-                // the player has released the touchpoint
-                for (int i = 0; i < m_buttons.Count; i++)
-                {
-                    MenuButton b = m_buttons[i];
-                    if(b.HasPoint(ms.X, ms.Y) && b.isPressed)
-                    {
-                        b.isPressed = false;
 
-                        switch (i)
-                        {
-                            case 0:
-                                break;
-
-                            case 1:
-                                break;
-
-                            default:
-                                break;
-                        }
-                    }
-                }
-            }
-
-            foreach (MenuButton b in m_buttons)
-            {
-                b.Update(gameTime.ElapsedGameTime.Milliseconds);
-            }
 
             base.Update(gameTime);
         }
@@ -155,11 +99,9 @@ namespace Trulon.CoreLogics
         {
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
-            // draw buttons
-            foreach (MenuButton b in m_buttons)
-            {
-                b.Draw(spriteBatch);
-            }
+
+            this.spriteBatch.Draw(background, new Rectangle(0, 0, background.Width, background.Height), Color.White);
+
             spriteBatch.End();
 
             base.Draw(gameTime);

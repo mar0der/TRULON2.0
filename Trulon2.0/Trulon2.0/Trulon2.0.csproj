@@ -59,7 +59,7 @@
   <ItemGroup>
     <Compile Include="Config\Assets.cs" />
     <Compile Include="Config\Config.cs" />
-    <Compile Include="CoreLogics\GameOverScreen.cs" />
+    <Compile Include="CoreLogics\MenuScreen.cs" />
     <Compile Include="CoreLogics\ItemGenerator.cs" />
     <Compile Include="CoreLogics\Engine.cs" />
     <Compile Include="CoreLogics\MapManager.cs" />
@@ -418,6 +418,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Robo\RoboMove4Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Screens\ControlsScreen.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Screens\CreditsScreen.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Screens\StartScreen.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
