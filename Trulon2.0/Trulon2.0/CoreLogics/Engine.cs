@@ -35,7 +35,7 @@
         //Loading Entites
         public Player player;
         public Vendor vendor;
-        private IList<Enemy> enemies;
+        private List<Enemy>[] enemies = new List<Enemy>[Config.NumberOfLevels];
         private Map[] maps = new Map[Config.NumberOfLevels];
         private int currentMap = 0;
 
@@ -63,10 +63,14 @@
         private Texture2D boundsTest2;
 
         public bool ShopOpened { get; set; }
+
+        public bool YouWon { get; set; }
+
         public Engine()
         {
             this.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Resources";
+            this.YouWon = false;
         }
 
         #region Initialize Summary
@@ -93,15 +97,33 @@
             //setting entites on the scene
             this.player = new Barbarian((int)this.maps[this.currentMap].PlayerEntryPloint.X, (int)this.maps[this.currentMap].PlayerEntryPloint.Y);
             this.vendor = new Vendor(650, 300);
-            this.enemies = new List<Enemy>()
-            {
-                new Goblin(400, 400),
-                new Goblin(500, 400),
-                new Robo(600, 350),
-                new Ogre(800, 350),
-                new Boss(500, 350)
-            };
-            
+            //home
+            this.enemies[0] = new List<Enemy>();
+            //Goblin
+            this.enemies[1] = new List<Enemy>();
+            this.enemies[1].Add(new Goblin(400, 400));
+            this.enemies[1].Add(new Goblin(500, 400));
+            this.enemies[1].Add(new Goblin(600, 400));
+            this.enemies[1].Add(new Goblin(700, 400));
+            this.enemies[1].Add(new Goblin(800, 400));
+            //Robo
+            this.enemies[2] = new List<Enemy>();
+            this.enemies[2].Add(new Robo(400, 400));
+            this.enemies[2].Add(new Robo(500, 400));
+            this.enemies[2].Add(new Robo(600, 400));
+            this.enemies[2].Add(new Robo(700, 400));
+            this.enemies[2].Add(new Robo(800, 400));
+            //Ogre
+            this.enemies[3] = new List<Enemy>();
+            this.enemies[3].Add(new Ogre(400, 400));
+            this.enemies[3].Add(new Ogre(500, 400));
+            this.enemies[3].Add(new Ogre(600, 400));
+            this.enemies[3].Add(new Ogre(700, 400));
+            this.enemies[3].Add(new Ogre(800, 400));
+            //Boss
+            this.enemies[4] = new List<Enemy>();
+            this.enemies[4].Add(new Boss(400, 400));
+
             //items load
             this.AllEquipments[0] = new Boots();
             this.AllEquipments[1] = new Helmet();
@@ -136,8 +158,8 @@
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //testing bounding box
-            int boundWidth = (int) (this.player.Bounds.Max.X - this.player.Bounds.Min.X);
-            int boundHeight = (int) (this.player.Bounds.Max.Y - this.player.Bounds.Min.Y);
+            int boundWidth = (int)(this.player.Bounds.Max.X - this.player.Bounds.Min.X);
+            int boundHeight = (int)(this.player.Bounds.Max.Y - this.player.Bounds.Min.Y);
             boundsTest = new Texture2D(this.graphics.GraphicsDevice, boundWidth, boundHeight);
             Color[] data = new Color[boundWidth * boundHeight];
 
@@ -147,7 +169,7 @@
                 data[i] = Color.Chocolate;
             }
             boundsTest.SetData(data);
-            
+
             int boundWidth2 = (int)(this.player.AttackBounds.Max.X - this.player.AttackBounds.Min.X);
             int boundHeight2 = (int)(this.player.AttackBounds.Max.Y - this.player.AttackBounds.Min.Y);
             boundsTest2 = new Texture2D(graphics.GraphicsDevice, boundWidth2, boundHeight2);
@@ -173,7 +195,7 @@
                 this.backgroundTextures[i] = this.Content.Load<Texture2D>(Assets.Maps[i]);
                 this.maps[i].Image = this.backgroundTextures[i];
             }
-            
+
             //Load the player resources
             this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);
 
@@ -214,19 +236,22 @@
             //Load the vendor resources
             this.vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.vendor.Position);
 
-            foreach (var enemy in this.enemies)
+            foreach (List<Enemy> levelEnemies in enemies)
             {
-                if (enemy is Goblin)
+                foreach (var enemy in levelEnemies)
                 {
-                    enemy.Initialize(Content.Load<Texture2D>(Assets.GoblinImages[0]), enemy.Position);
-                }
-                else if (enemy is Ogre)
-                {
-                    enemy.Initialize(Content.Load<Texture2D>(Assets.OgreImages[0]), enemy.Position);
-                }
-                else
-                {
-                    enemy.Initialize(Content.Load<Texture2D>(Assets.RoboImages[0]), enemy.Position);
+                    if (enemy is Goblin)
+                    {
+                        enemy.Initialize(Content.Load<Texture2D>(Assets.GoblinImages[0]), enemy.Position);
+                    }
+                    else if (enemy is Ogre)
+                    {
+                        enemy.Initialize(Content.Load<Texture2D>(Assets.OgreImages[0]), enemy.Position);
+                    }
+                    else
+                    {
+                        enemy.Initialize(Content.Load<Texture2D>(Assets.RoboImages[0]), enemy.Position);
+                    }
                 }
             }
 
@@ -311,7 +336,7 @@
                 this.player.ReSpawn(this.maps[this.currentMap].PlayerExitPloint);
             }
             //for exit point we use the last obsticle
-            if (this.player.AttackBounds.Intersects(this.maps[this.currentMap].Obsticles[1].ObsticleBox) 
+            if (this.player.AttackBounds.Intersects(this.maps[this.currentMap].Obsticles[1].ObsticleBox)
                 && this.currentMap < 4)
             {
                 this.currentMap++;
@@ -326,25 +351,27 @@
             }
 
             //update enemies
-            foreach (var enemy in this.enemies)
+            if (enemies[currentMap].Count > 0)
             {
-                enemy.Update();
-            }
-
-            for (var i = 0; i < this.enemies.Count; i++)
-            {
-                if (!this.enemies[i].IsAlive)
+                foreach (var enemy in this.enemies[currentMap])
                 {
-                    this.player.AddCoins(this.enemies[i]);
-                    this.player.AddExperience(this.enemies[i]);
-                    this.player.AddToInventory(this.LootEnemy("equipment"));
-                    this.player.AddToInventory(this.LootEnemy("potion"));
-                    this.enemies.RemoveAt(i);
-                    break;
+                    enemy.Update();
+                }
+
+                for (var i = 0; i < this.enemies[this.currentMap].Count; i++)
+                {
+                    if (!this.enemies[this.currentMap][i].IsAlive)
+                    {
+                        this.player.AddCoins(this.enemies[currentMap][i]);
+                        this.player.AddExperience(this.enemies[this.currentMap][i]);
+                        this.player.AddToInventory(this.LootEnemy("equipment"));
+                        this.player.AddToInventory(this.LootEnemy("potion"));
+                        this.enemies[this.currentMap].RemoveAt(i);
+                        break;
+                    }
                 }
             }
-
-            if (this.enemies.Count == 0)
+            if (this.enemies[this.currentMap].Count == 0)
             {
                 //TODO
             }
@@ -375,7 +402,7 @@
             Keys[] buyItemKeys = Config.BuyItemKeys;
             if (this.currentKeyboardState.GetPressedKeys().Length > 0
                 && this.previousKeyboardState.GetPressedKeys().Length == 0
-                && buyItemKeys.Contains(this.currentKeyboardState.GetPressedKeys()[0]) 
+                && buyItemKeys.Contains(this.currentKeyboardState.GetPressedKeys()[0])
                 && this.ShopOpened)
             {
                 int itemAtIndex = Array.IndexOf(buyItemKeys, this.currentKeyboardState.GetPressedKeys()[0]);
@@ -385,9 +412,9 @@
                     this.player.Coins -= this.vendor.Inventory[itemAtIndex].Price;
                 }
             }
-            
+
             //Check for player is moving
-            var enemiesInRange = this.player.GetEnemiesInRange(this.enemies);
+            var enemiesInRange = this.player.GetEnemiesInRange(this.enemies[this.currentMap]);
             int chanceToBeAttacked = 0;
             if (enemiesInRange.Count > 0)
             {
@@ -400,7 +427,7 @@
                 {
                     if (enemy is Goblin)
                     {
-                         chanceToBeAttacked = rand.Next(0, 20);
+                        chanceToBeAttacked = rand.Next(0, 20);
                     }
                     if (enemy is Ogre)
                     {
@@ -481,7 +508,7 @@
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
+
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
 
@@ -491,7 +518,7 @@
             this.vendor.Draw(this.spriteBatch);
 
 
-            foreach (var enemy in this.enemies)
+            foreach (var enemy in this.enemies[this.currentMap])
             {
                 enemy.Draw(this.spriteBatch);
             }
@@ -502,7 +529,7 @@
 
             Vector2 minBounds = new Vector2(this.player.Bounds.Min.X + 54, this.player.Bounds.Min.Y + 24);
             spriteBatch.Draw(boundsTest, minBounds, Color.White);
-            
+
             Vector2 minBounds2 = new Vector2(this.player.AttackBounds.Min.X, this.player.AttackBounds.Min.Y);
             spriteBatch.Draw(boundsTest2, minBounds2, Color.White);
 
