@@ -483,7 +483,7 @@ namespace Trulon.Models.Entities
             this.Bounds = new BoundingBox(new Vector3(this.Position.X + this.Width, this.Position.Y + 64, 0), new Vector3(this.Position.X + 2 * this.Width, Position.Y + this.Height + 64, 0));
             this.AttackBounds = new BoundingBox(
                 new Vector3(this.Position.X + this.Width - 10, this.Position.Y + 64, 0f),
-                new Vector3(this.Position.X + this.Width + this.AttackRadius - 10, this.Position.Y + this.AttackRadius + 64, 0f));
+                new Vector3(this.Position.X + this.Width + this.BaseAttackRadius - 10, this.Position.Y + this.BaseAttackRadius + 64, 0f));
         }
 
         protected void UpdateBoundsRight()
@@ -491,7 +491,7 @@ namespace Trulon.Models.Entities
             this.Bounds = new BoundingBox(new Vector3(this.Position.X, this.Position.Y + 64, 0), new Vector3(this.Position.X + this.Width, Position.Y + this.Height + 64, 0));
             this.AttackBounds = new BoundingBox(
                 new Vector3(this.Position.X + 2 * this.Width, this.Position.Y + 64, 0f),
-                new Vector3(this.Position.X + 2 * this.Width + this.AttackRadius, this.Position.Y + this.AttackRadius + 64, 0f));
+                new Vector3(this.Position.X + 2 * this.Width + this.BaseAttackRadius, this.Position.Y + this.BaseAttackRadius + 64, 0f));
         }
 
         public void ReSpawn(Vector2 position)
