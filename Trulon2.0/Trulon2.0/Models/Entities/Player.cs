@@ -216,6 +216,7 @@
             {
                 if (activePotions[i].Countdown == 0)
                 {
+                    this.activePotions[i].ResetCountdown();
                     this.activePotions.Remove(activePotions[i]);
                     break;
                 }

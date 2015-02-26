@@ -13,5 +13,10 @@
         public virtual int HealthPointsBuff { get; set; }
         
         public virtual int Price { get; set; }
+
+        public virtual void ResetCountdown()
+        {
+            
+        }
     }
 }
