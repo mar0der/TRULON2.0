@@ -9,7 +9,7 @@
         private const string DefaultName = "Barbarian";
         private const int DefaultAttackPoints = 7;
         private const int DefaultDefencePoints = 3;
-        private const int DefaultSpeedPoints = 2;
+        private const int DefaultSpeedPoints = 4;
         private const int DefaultHealthPoints = 100;
         private const int DefaultAttackRadius = 60;
         private const int DefaultLevel = 1;
