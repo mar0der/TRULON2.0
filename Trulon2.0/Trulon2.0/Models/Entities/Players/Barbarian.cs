@@ -1,8 +1,8 @@
 ﻿namespace Trulon.Models.Entities.Players
 {
-    using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
     using Config;
+    using Microsoft.Xna.Framework;
+    
     public class Barbarian : Player
     {
         #region Constants
@@ -23,7 +23,6 @@
         private const int DefaultWidth = 64;
         private const int DefaultHeight = 96;
         #endregion
-
         public Barbarian(int x, int y)
         {
             this.Name = DefaultName;

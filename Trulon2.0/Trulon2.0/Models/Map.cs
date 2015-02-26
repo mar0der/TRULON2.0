@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Trulon.Enums;
+﻿using Trulon.Enums;
 
 namespace Trulon.Models
 {
     using Structs;
+    using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     public class Map : GameObject
@@ -76,7 +76,6 @@ namespace Trulon.Models
         {
             this.Image = image;
             this.LevelNumber = levelNumber;
-
         }
 
         public Vector2 PlayerEntryPloint

@@ -6,7 +6,6 @@
 
     public class EntityEquipment
     {
-
         public EntityEquipment()
         {
             this.CurrentEquipment = new Dictionary<EquipmentSlots, Equipment>();

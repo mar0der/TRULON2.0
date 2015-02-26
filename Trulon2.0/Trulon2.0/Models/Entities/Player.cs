@@ -1,16 +1,15 @@
-﻿using System.Linq;
-
-namespace Trulon.Models.Entities
+﻿namespace Trulon.Models.Entities
 {
-    using System;
-    using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Input;
+    using Config;
     using Enums;
-    using NPCs;
     using Items;
     using Items.Potions;
-    using Config;
+    using NPCs;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Input;
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
 
     public abstract class Player : Entity
     {
@@ -78,7 +77,7 @@ namespace Trulon.Models.Entities
 
         public int HealthPoints
         {
-            get; 
+            get;
             set;
         }
 
@@ -335,7 +334,7 @@ namespace Trulon.Models.Entities
         {
             if (!this.IsInventoryFull())
             {
-                if (this.PlayerEquipment.CurrentEquipment.ContainsKey(slot) && 
+                if (this.PlayerEquipment.CurrentEquipment.ContainsKey(slot) &&
                     this.PlayerEquipment.CurrentEquipment[slot] != null)
                 {
                     this.AddToInventory(this.PlayerEquipment.CurrentEquipment[slot]);
@@ -496,7 +495,7 @@ namespace Trulon.Models.Entities
 
         public void ReSpawn(Vector2 position)
         {
-            this.Position =  new Vector2(position.X,position.Y);
+            this.Position = new Vector2(position.X, position.Y);
         }
     }
 }
