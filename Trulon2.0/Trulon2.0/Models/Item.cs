@@ -4,7 +4,6 @@
 
     public abstract class Item : GameObject, IItem
     {
-
         public virtual int SpeedPointsBuff { get; set; }
 
         public virtual int DefensePointsBuff { get; set; }

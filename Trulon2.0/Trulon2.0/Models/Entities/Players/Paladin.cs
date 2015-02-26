@@ -1,8 +1,7 @@
 ﻿namespace Trulon.Models.Entities.Players
 {
-    using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
     using Config;
+    using Microsoft.Xna.Framework;
 
     public class Paladin : Player
     {
