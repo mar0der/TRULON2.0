@@ -1,31 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Trulon.Config;
-using Trulon.Enums;
-using Trulon.GUI;
-using Trulon.Models;
-using Trulon.Models.Entities;
-using Trulon.Models.Entities.NPCs;
-using Trulon.Models.Entities.NPCs.Allies;
-using Trulon.Models.Entities.NPCs.Enemies;
-using Trulon.Models.Entities.Players;
-using Trulon.Models.Items.Equipments;
-using Trulon.Models.Items.Potions;
-
-namespace Trulon.CoreLogics
+﻿namespace Trulon.CoreLogics
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using global::Trulon.Enums;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
-    using GuideUIWP7;
 
     public class StateManager : Engine
     {
@@ -47,7 +25,6 @@ namespace Trulon.CoreLogics
             
             base.Initialize();
         }
-
  
         protected override void LoadContent()
         {

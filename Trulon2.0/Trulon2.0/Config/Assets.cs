@@ -1,6 +1,4 @@
-﻿using System.Web.Configuration;
-
-namespace Trulon.Config
+﻿namespace Trulon.Config
 {
     public static class Assets
     {
@@ -118,12 +116,6 @@ namespace Trulon.Config
             "Images/NPCs/Vendor.png"
         };
 
-        //Trainer
-        public static readonly string[] Trainer = new string[1]
-        {
-            "Images/NPCs/Trainer.png"
-        };
-
         //Items
         //Boots
         public static readonly string Boots = "Images/Items/Boots.png";
@@ -135,8 +127,6 @@ namespace Trulon.Config
         public static readonly string Vest = "Images/Items/Vest.png";
 
         //Hand items
-        //Axe
-        public static readonly string Axe = "Images/Items/Axe.png";
         //Shield
         public static readonly string Shield = "Images/Items/Shield.png";
         //Sword
@@ -151,8 +141,6 @@ namespace Trulon.Config
         public static readonly string DefensePotion = "Images/Items/DefensePotion.png";
         //SpeedPotion
         public static readonly string SpeedPotion = "Images/Items/SpeedPotion.png";
-        //AttackRadiusPotion
-        public static readonly string AttackRangePotion = "Images/Items/AttackRangePotion.png";
 
 
         //Equipment empty slots
