@@ -9,7 +9,7 @@
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefencePointsBuff = 0;
         private const int DefaultHealthPointsBuff = 0;
-        private const int DefaultSpeedPointsBuff = 6;
+        private const int DefaultSpeedPointsBuff = 4;
         private const int DefaultPrice = 20;
 
         public SpeedPotion()
