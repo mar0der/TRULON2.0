@@ -356,7 +356,7 @@
         {
             if (this.currentKeyboardState.GetPressedKeys().Length > 0 && useItemKeys.Contains(this.currentKeyboardState.GetPressedKeys()[0]))
             {
-                int itemAtIndex = Array.IndexOf(useItemKeys, currentKeyboardState.GetPressedKeys()[0]);
+                int itemAtIndex = Array.IndexOf(useItemKeys, this.currentKeyboardState.GetPressedKeys()[0]);
 
                 if (this.Inventory.ElementAt(itemAtIndex) is Potion)
                 {

@@ -8,7 +8,7 @@
         private const EquipmentSlots DefaultSlot = EquipmentSlots.Feet;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefensePointsBuff = 0;
-        private const int DefaultSpeedPointsBuff = 10;
+        private const int DefaultSpeedPointsBuff = 6;
         private const int DefaultPrice = 50;
 
         public Boots()

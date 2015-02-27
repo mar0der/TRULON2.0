@@ -2,7 +2,6 @@
 {
     public static class Assets
     {
-
         // Maps
         public static readonly string[] Maps =
         {
@@ -134,7 +133,6 @@
             // Vest
         public static readonly string Vest = "Images/Items/Vest.png";
 
-
         // Hand items
 
             // Shield
@@ -156,7 +154,6 @@
 
             // SpeedPotion
         public static readonly string SpeedPotion = "Images/Items/SpeedPotion.png";
-
 
         // Equipment empty slots
         public static readonly string EmptyHead = "Images/EmptyEquipment/EmptyHead.png";

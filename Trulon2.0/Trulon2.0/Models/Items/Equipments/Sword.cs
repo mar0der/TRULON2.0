@@ -6,7 +6,7 @@
     {
         private const Names DefaultName = Names.Sword;
         private const EquipmentSlots DefaultSlot = EquipmentSlots.RightHand;
-        private const int DefaultAttackPointsBuff = 20;
+        private const int DefaultAttackPointsBuff = 30;
         private const int DefaultDefensePointsBuff = 0;
         private const int DefaultSpeedPointsBuff = 0;
         private const int DefaultPrice = 60;

@@ -9,7 +9,7 @@
 
         Texture2D Image { get; set; }
 
-        Vector2 Position{ get; set; }
+        Vector2 Position { get; set; }
 
         void Initialize(Texture2D texture, Vector2 position);
 

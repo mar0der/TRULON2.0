@@ -85,7 +85,7 @@
 
             if (this.gameState == State.play)
             {
-                if (!this.player.IsAlive)
+                if (!this.Player.IsAlive)
                 {
                     this.gameState = State.start;
                     base.Initialize();

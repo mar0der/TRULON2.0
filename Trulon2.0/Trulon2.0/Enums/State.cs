@@ -1,6 +1,6 @@
 ﻿namespace Trulon.Enums
 {
-    enum State
+    public enum State
     {
         start,
         credits,

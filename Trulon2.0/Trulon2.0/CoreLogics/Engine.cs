@@ -22,41 +22,41 @@
 
     public class Engine : Game
     {
-        protected GraphicsDeviceManager graphics;
-        protected SpriteBatch spriteBatch;
-
-        public SpriteFont font;
-        private GameGUI gui;
-
-        private static Random rand = new Random();
-
-        private Texture2D[] backgroundTextures = new Texture2D[Config.NumberOfLevels];
+        public readonly Item[] AllEquipments = new Item[5];
+        public readonly Item[] AllPotions = new Item[4];
+        public readonly Dictionary<EquipmentSlots, Texture2D> AllEmptyEquipmentSlots = new Dictionary<EquipmentSlots, Texture2D>();
 
         // Loading Entites
-        public Player player;
-        public Vendor vendor;
-        private List<Enemy>[] enemies = new List<Enemy>[Config.NumberOfLevels];
-        private Map[] maps = new Map[Config.NumberOfLevels];
-        private int currentMap = 0;
+        public Player Player;
+        public Vendor Vendor;
+        public SpriteFont Font;
+
+        public Texture2D HealthBar;
+
+        protected GraphicsDeviceManager graphics;
+        protected SpriteBatch spriteBatch;
 
         protected KeyboardState currentKeyboardState;
         protected KeyboardState previousKeyboardState;
 
+        private static readonly Random Rand = new Random();
+
+        private readonly Texture2D[] backgroundTextures = new Texture2D[Config.NumberOfLevels];
+
+        private readonly List<Enemy>[] enemies = new List<Enemy>[Config.NumberOfLevels];
+        private readonly Map[] maps = new Map[Config.NumberOfLevels];
+
+        private GameGUI gui;
+
+        private int currentMap = 0;
         private int countDown;
         private int indexFrame;
         private bool isMoving;
         private bool isAttacking;
-        private Texture2D[] AnimationsRight;
-        private Texture2D[] AnimationsLeft;
-        private Texture2D[] AnimationsRightAttack;
-        private Texture2D[] AnimationsLeftAttack;
-
-        public Texture2D healthBar;
-
-        public readonly Item[] AllEquipments = new Item[5];
-        public readonly Item[] AllPotions = new Item[4];
-        public readonly Dictionary<EquipmentSlots, Texture2D> AllEmptyEquipmentSlots =
-            new Dictionary<EquipmentSlots, Texture2D>();
+        private Texture2D[] animationsRight;
+        private Texture2D[] animationsLeft;
+        private Texture2D[] animationsRightAttack;
+        private Texture2D[] animationsLeftAttack;
 
         public Engine()
         {
@@ -93,8 +93,8 @@
             }
 
             // Setting entities on the scene
-            this.player = new Barbarian((int)this.maps[this.currentMap].PlayerEntryPoint.X, (int)this.maps[this.currentMap].PlayerEntryPoint.Y);
-            this.vendor = new Vendor((int)Config.VendorPosition.X, (int)Config.VendorPosition.Y);
+            this.Player = new Barbarian((int)this.maps[this.currentMap].PlayerEntryPoint.X, (int)this.maps[this.currentMap].PlayerEntryPoint.Y);
+            this.Vendor = new Vendor((int)Config.VendorPosition.X, (int)Config.VendorPosition.Y);
 
             // Home
             this.enemies[0] = new List<Enemy>();
@@ -161,10 +161,10 @@
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Load healthbar image
-            this.healthBar = Content.Load<Texture2D>(Assets.HealthBar);
+            this.HealthBar = Content.Load<Texture2D>(Assets.HealthBar);
 
             // Load Font
-            this.font = Content.Load<SpriteFont>("font");
+            this.Font = Content.Load<SpriteFont>("font");
 
             // Load map image
             for (var i = 0; i < Config.NumberOfLevels; i++)
@@ -174,9 +174,9 @@
             }
 
             // Load the player resources
-            this.player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.player.Position);
+            this.Player.Initialize(Content.Load<Texture2D>(Assets.BarbarianImages[0]), this.Player.Position);
 
-            this.AnimationsRight = new[]
+            this.animationsRight = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[0]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[1]),
@@ -184,7 +184,7 @@
                 Content.Load<Texture2D>(Assets.BarbarianImages[3])
             };
 
-            this.AnimationsLeft = new[]
+            this.animationsLeft = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[4]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[5]),
@@ -192,7 +192,7 @@
                 Content.Load<Texture2D>(Assets.BarbarianImages[7])
             };
 
-            this.AnimationsRightAttack = new[]
+            this.animationsRightAttack = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[8]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[9]),
@@ -201,7 +201,7 @@
                 Content.Load<Texture2D>(Assets.BarbarianImages[0])
             };
 
-            this.AnimationsLeftAttack = new[]
+            this.animationsLeftAttack = new[]
             {
                 Content.Load<Texture2D>(Assets.BarbarianImages[12]),
                 Content.Load<Texture2D>(Assets.BarbarianImages[13]),
@@ -211,7 +211,7 @@
             };
 
             // Load the vendor resources
-            this.vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.vendor.Position);
+            this.Vendor.Initialize(Content.Load<Texture2D>(Assets.Vendor[0]), this.Vendor.Position);
 
             foreach (List<Enemy> levelEnemies in this.enemies)
             {
@@ -248,8 +248,8 @@
             this.AllPotions[3].Initialize(Content.Load<Texture2D>(Assets.SpeedPotion), new Vector2(-100, -100));
 
             // Add everything into the vendors inventory;
-            this.AllEquipments.CopyTo(this.vendor.Inventory, 0);
-            this.AllPotions.CopyTo(this.vendor.Inventory, this.AllEquipments.Length);
+            this.AllEquipments.CopyTo(this.Vendor.Inventory, 0);
+            this.AllPotions.CopyTo(this.Vendor.Inventory, this.AllEquipments.Length);
 
             // Load all availabe emtpy equipment slots images
             this.AllEmptyEquipmentSlots[EquipmentSlots.Head] = Content.Load<Texture2D>(Assets.EmptyHead);
@@ -280,34 +280,34 @@
         #endregion
         protected override void Update(GameTime gameTime)
         {
-            this.player.Update();
+            this.Player.Update();
             
-            this.vendor.Update();
+            this.Vendor.Update();
 
             // Because we`d like to use this logic only for the obsticles with numbers between 2 and n-1.
             // 1 and n are reserver for entry and exit points of the level
             for (var i = 2; i < this.maps[this.currentMap].Obsticles.Length; i++)
             {
-                if (this.player.Intersects(this.maps[this.currentMap].Obsticles[i].ObsticleBox))
+                if (this.Player.Intersects(this.maps[this.currentMap].Obsticles[i].ObsticleBox))
                 {
                     if (this.maps[this.currentMap].Obsticles[i].RestrictedDirection == Direction.Up)
                     {
-                        this.player.VelocityUp = 0;
+                        this.Player.VelocityUp = 0;
                     }
 
                     if (this.maps[this.currentMap].Obsticles[i].RestrictedDirection == Direction.Down)
                     {
-                        this.player.VelocityDown = 0;
+                        this.Player.VelocityDown = 0;
                     }
 
                     if (this.maps[this.currentMap].Obsticles[i].RestrictedDirection == Direction.Left)
                     {
-                        this.player.VelocityLeft = 0;
+                        this.Player.VelocityLeft = 0;
                     }
 
                     if (this.maps[this.currentMap].Obsticles[i].RestrictedDirection == Direction.Right)
                     {
-                        this.player.VelocityRight = 0;
+                        this.Player.VelocityRight = 0;
                     }
                 }
             }
@@ -315,25 +315,25 @@
             // Level Change
             // If the player can change the level if he colides with one of the entry/exit points
             // For entry point we use the first obsticle
-            if (this.player.AttackBounds.Intersects(this.maps[this.currentMap].Obsticles[0].ObsticleBox) && this.currentMap > 0)
+            if (this.Player.AttackBounds.Intersects(this.maps[this.currentMap].Obsticles[0].ObsticleBox) && this.currentMap > 0)
             {
                 this.currentMap--;
-                this.player.ReSpawn(this.maps[this.currentMap].PlayerExitPoint);
+                this.Player.ReSpawn(this.maps[this.currentMap].PlayerExitPoint);
             }
 
             // For exit point we use the last obsticle
-            if (this.player.AttackBounds.Intersects(this.maps[this.currentMap].Obsticles[1].ObsticleBox)
+            if (this.Player.AttackBounds.Intersects(this.maps[this.currentMap].Obsticles[1].ObsticleBox)
                 && this.currentMap < 4)
             {
                 this.currentMap++;
-                this.player.ReSpawn(this.maps[this.currentMap].PlayerEntryPoint);
+                this.Player.ReSpawn(this.maps[this.currentMap].PlayerEntryPoint);
             }
 
             // Recall
             if (this.currentKeyboardState.IsKeyDown(Keys.M) && this.currentMap > 0)
             {
                 this.currentMap = 0;
-                this.player.ReSpawn(this.maps[0].PlayerEntryPoint);
+                this.Player.ReSpawn(this.maps[0].PlayerEntryPoint);
             }
 
             // Update enemies
@@ -348,10 +348,10 @@
                 {
                     if (!this.enemies[this.currentMap][i].IsAlive)
                     {
-                        this.player.AddCoins(this.enemies[this.currentMap][i]);
-                        this.player.AddExperience(this.enemies[this.currentMap][i]);
-                        this.player.AddToInventory(this.LootEnemy(ItemTypes.Equipment));
-                        this.player.AddToInventory(this.LootEnemy(ItemTypes.Potion));
+                        this.Player.AddCoins(this.enemies[this.currentMap][i]);
+                        this.Player.AddExperience(this.enemies[this.currentMap][i]);
+                        this.Player.AddToInventory(this.LootEnemy(ItemTypes.Equipment));
+                        this.Player.AddToInventory(this.LootEnemy(ItemTypes.Potion));
                         this.enemies[this.currentMap].RemoveAt(i);
                         break;
                     }
@@ -367,31 +367,30 @@
             // Move the vendor
             if (this.currentMap > 0)
             {
-                this.vendor.Position = new Vector2(-100, -100);
+                this.Vendor.Position = new Vector2(-100, -100);
             }
             else
             {
-                this.vendor.Position = new Vector2(Config.VendorPosition.X, Config.VendorPosition.Y);
+                this.Vendor.Position = new Vector2(Config.VendorPosition.X, Config.VendorPosition.Y);
             }
 
-
             // Use Potions or Equipment from inventory
-            this.player.UseOrEquipFromInventory(Config.UseItemKeys);
+            this.Player.UseOrEquipFromInventory(Config.UseItemKeys);
 
             // Drop item from inventory
-            this.player.DropItemFromInventory(Config.DropItemFromInventoryKeys);
+            this.Player.DropItemFromInventory(Config.DropItemFromInventoryKeys);
 
             // Unequip Item 
-            this.player.UnequipItem(Config.UnequipItemKeys);
+            this.Player.UnequipItem(Config.UnequipItemKeys);
 
             // Open the shop
-            if (this.currentKeyboardState.IsKeyDown(Keys.Tab) && this.player.GetAllyInRange(new List<Entity>() { this.vendor }) != null)
+            if (this.currentKeyboardState.IsKeyDown(Keys.Tab) && this.Player.GetAllyInRange(new List<Entity>() { this.Vendor }) != null)
             {
                 this.ShopOpened = true;
             }
             else
             {
-                if (this.player.GetAllyInRange(new List<Entity>() { this.vendor }) == null)
+                if (this.Player.GetAllyInRange(new List<Entity>() { this.Vendor }) == null)
                 {
                     this.ShopOpened = false;
                 }
@@ -404,48 +403,49 @@
                 && buyItemKeys.Contains(this.currentKeyboardState.GetPressedKeys()[0]) && this.ShopOpened)
             {
                 int itemAtIndex = Array.IndexOf(buyItemKeys, this.currentKeyboardState.GetPressedKeys()[0]);
-                if (this.player.Coins >= this.vendor.Inventory[itemAtIndex].Price)
+                if (this.Player.Coins >= this.Vendor.Inventory[itemAtIndex].Price)
                 {
-                    this.player.AddToInventory(this.vendor.Inventory[itemAtIndex]);
-                    this.player.Coins -= this.vendor.Inventory[itemAtIndex].Price;
+                    this.Player.AddToInventory(this.Vendor.Inventory[itemAtIndex]);
+                    this.Player.Coins -= this.Vendor.Inventory[itemAtIndex].Price;
                 }
             }
 
             // Check for player is moving
-            var enemiesInRange = this.player.GetEnemiesInRange(this.enemies[this.currentMap]);
+            var enemiesInRange = this.Player.GetEnemiesInRange(this.enemies[this.currentMap]);
             int chanceToBeAttacked = 0;
             if (enemiesInRange.Count > 0)
             {
                 if (this.currentKeyboardState.IsKeyDown(Keys.Space) && this.isAttacking == false)
                 {
                     this.indexFrame = 0;
-                    this.player.Attack(enemiesInRange);
+                    this.Player.Attack(enemiesInRange);
                 }
+
                 foreach (var enemy in enemiesInRange)
                 {
                     if (enemy is Goblin)
                     {
-                        chanceToBeAttacked = rand.Next(0, 20);
+                        chanceToBeAttacked = Rand.Next(0, 20);
                     }
 
                     if (enemy is Ogre)
                     {
-                        chanceToBeAttacked = rand.Next(0, 40);
+                        chanceToBeAttacked = Rand.Next(0, 40);
                     }
 
                     if (enemy is Robo)
                     {
-                        chanceToBeAttacked = rand.Next(0, 30);
+                        chanceToBeAttacked = Rand.Next(0, 30);
                     }
 
                     if (enemy is Boss)
                     {
-                        chanceToBeAttacked = rand.Next(0, 45);
+                        chanceToBeAttacked = Rand.Next(0, 45);
                     }
 
                     if (chanceToBeAttacked == 1)
                     {
-                        enemy.Attack(this.player);
+                        enemy.Attack(this.Player);
                     }
                 }
             }
@@ -474,7 +474,7 @@
             this.spriteBatch.Begin();
 
             this.spriteBatch.Draw(this.maps[this.currentMap].Image, new Rectangle(0, 0, this.backgroundTextures[0].Width, this.backgroundTextures[0].Height), Color.White);
-            this.vendor.Draw(this.spriteBatch);
+            this.Vendor.Draw(this.spriteBatch);
 
             foreach (var enemy in this.enemies[this.currentMap])
             {
@@ -482,7 +482,7 @@
             }
 
             this.gui.Draw(this.spriteBatch);
-            this.player.Draw(this.spriteBatch);
+            this.Player.Draw(this.spriteBatch);
             
             this.spriteBatch.End();
 
@@ -496,11 +496,11 @@
                 // Change direction
                 if (this.isAttacking)
                 {
-                    switch (this.player.PreviousDirection)
+                    switch (this.Player.PreviousDirection)
                     {
                         case Direction.Right:
-                            this.player.Image = this.AnimationsRightAttack[this.indexFrame++];
-                            if (this.indexFrame == this.AnimationsRightAttack.Length)
+                            this.Player.Image = this.animationsRightAttack[this.indexFrame++];
+                            if (this.indexFrame == this.animationsRightAttack.Length)
                             {
                                 this.isAttacking = false;
                                 this.indexFrame = 0;
@@ -508,8 +508,8 @@
 
                             break;
                         case Direction.Left:
-                            this.player.Image = this.AnimationsLeftAttack[this.indexFrame++];
-                            if (this.indexFrame == this.AnimationsLeftAttack.Length)
+                            this.Player.Image = this.animationsLeftAttack[this.indexFrame++];
+                            if (this.indexFrame == this.animationsLeftAttack.Length)
                             {
                                 this.isAttacking = false;
                                 this.indexFrame = 0;
@@ -518,26 +518,26 @@
                             break;
                     }
                 }
-                else if (this.player.PreviousDirection == Direction.Right)
+                else if (this.Player.PreviousDirection == Direction.Right)
                 {
-                    if (this.indexFrame >= this.AnimationsRight.Length)
+                    if (this.indexFrame >= this.animationsRight.Length)
                     {
                         this.indexFrame = 0;
                     }
                     else
                     {
-                        this.player.Image = this.AnimationsRight[this.indexFrame++];
+                        this.Player.Image = this.animationsRight[this.indexFrame++];
                     }
                 }
                 else
                 {
-                    if (this.indexFrame >= this.AnimationsLeft.Length)
+                    if (this.indexFrame >= this.animationsLeft.Length)
                     {
                         this.indexFrame = 0;
                     }
                     else
                     {
-                        this.player.Image = this.AnimationsLeft[this.indexFrame++];
+                        this.Player.Image = this.animationsLeft[this.indexFrame++];
                     }
                 }
 
@@ -586,11 +586,12 @@
 
         private Item LootEnemy(ItemTypes type)
         {
-            int chance = rand.Next(0, 3);
+            int chance = Rand.Next(0, 3);
             if (chance == 0)
             {
                 return type == ItemTypes.Potion ? ItemGenerator.GetPotionItem(this.AllPotions) : ItemGenerator.GetEquipmentItem(this.AllEquipments);
             }
+
             return null;
         }
     }

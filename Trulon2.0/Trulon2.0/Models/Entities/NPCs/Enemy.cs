@@ -39,7 +39,7 @@
 
         protected override void Move()
         {
-            //TODO: AI for eneimies
+            ////TODO: AI for eneimies
         }
     }
 }
