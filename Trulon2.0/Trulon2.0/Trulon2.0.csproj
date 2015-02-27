@@ -477,7 +477,7 @@
     <Folder Include="Resources\Sounds\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="TrulonClassDiagram.cd" />
     <None Include="Resources\font.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

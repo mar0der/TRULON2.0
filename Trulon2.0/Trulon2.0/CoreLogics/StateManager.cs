@@ -1,16 +1,11 @@
 ﻿namespace Trulon.CoreLogics
 {
-    using System;
-    using System.Windows.Forms;
-
-    using global::Trulon.Exceptions;
-
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.GamerServices;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
     using global::Trulon.Enums;
+    using global::Trulon.Exceptions;
 
     using ButtonState = Microsoft.Xna.Framework.Input.ButtonState;
     using Keys = Microsoft.Xna.Framework.Input.Keys;
@@ -39,7 +34,7 @@
             }
             catch (ContentLoadException ce)
             {
-                throw new ResourcesNotFoundException("Resources not found.");
+                throw new ResourcesNotFoundException(ce.Message);
             }
         }
  
