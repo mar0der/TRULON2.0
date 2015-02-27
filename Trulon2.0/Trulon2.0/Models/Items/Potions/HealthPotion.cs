@@ -1,10 +1,10 @@
-﻿using System.Security.AccessControl;
-
-namespace Trulon.Models.Items.Potions
+﻿namespace Trulon.Models.Items.Potions
 {
+    using global::Trulon.Enums;
+
     public class HealthPotion : Potion
     {
-        private const string DefaultName = "HealthPotion";
+        private const Names DefaultName = Names.HealthPotion;
         private const bool DefaultHasTimedOut = false;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefencePointsBuff = 0;
@@ -22,7 +22,5 @@ namespace Trulon.Models.Items.Potions
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
             this.Price = DefaultPrice;
         }
-
-
     }
 }

@@ -1,11 +1,12 @@
 ﻿namespace Trulon.Models.Entities.NPCs.Enemies
 {
     using Microsoft.Xna.Framework;
+    using global::Trulon.Enums;
 
     public class Goblin : Enemy
     {
         #region Constants
-        private const string DefaultName = "Goblin";
+        private const Names DefaultName = Names.Goblin;
         private const int DefaultAttackPoints = 2;
         private const int DefaultDefensePoints = 5;
         private const int DefaultSpeedPoints = 5;

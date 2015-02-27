@@ -1,8 +1,10 @@
 ﻿namespace Trulon.Models.Items.Potions
 {
+    using global::Trulon.Enums;
+
     public class DefensePotion : Potion
     {
-        private const string DefaultName = "DefensePotion";
+        private const Names DefaultName = Names.DefensePotion;
         private const int DefaultCountdown = 600;
         private const bool DefaultHasTimedOut = false;
         private const int DefaultAttackPointsBuff = 0;
@@ -22,6 +24,7 @@
             this.SpeedPointsBuff = DefaultSpeedPointsBuff;
             this.Price = DefaultPrice;
         }
+
         public override void ResetCountdown()
         {
             this.Countdown = DefaultCountdown;

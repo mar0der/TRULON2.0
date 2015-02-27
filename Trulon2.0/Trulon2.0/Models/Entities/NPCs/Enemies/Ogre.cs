@@ -1,11 +1,12 @@
 ﻿namespace Trulon.Models.Entities.NPCs.Enemies
 {
     using Microsoft.Xna.Framework;
+    using global::Trulon.Enums;
 
     public class Ogre : Enemy
     {
         #region Constants
-        private const string DefaultName = "Ogre";
+        private const Names DefaultName = Names.Ogre;
         private const int DefaultAttackPoints = 9;
         private const int DefaultDefensePoints = 10;
         private const int DefaultSpeedPoints = 3;

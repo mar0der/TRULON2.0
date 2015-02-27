@@ -2,8 +2,9 @@
 {
     public static class Assets
     {
-        //Maps
-        public static readonly string[] Maps = new string[Config.NumberOfLevels]
+
+        // Maps
+        public static readonly string[] Maps =
         {
             "Images/MapImages/TrulonHomeMap.jpg",
             "Images/MapImages/Goblin.jpg",
@@ -11,8 +12,9 @@
             "Images/MapImages/Ogre.jpg",
             "Images/MapImages/Boss.jpg"
         };
-        //Barbarian base constants
-        public static readonly string[] BarbarianImages = new string[]
+
+        // Barbarian base constants
+        public static readonly string[] BarbarianImages =
         {
             "Images/Barbarian/Barbarian-Walking1-256x192.png",
             "Images/Barbarian/Barbarian-Walking2.png",
@@ -32,22 +34,8 @@
             "Images/Barbarian/Barbarian-LeftAttacking4.png"
         };
 
-        //Paladin base constants
-        public static readonly string[] PaladinImages = new string[9]
-        {
-            "Images/Paladin/None.png",
-            "Images/Paladin/North.png",
-            "Images/Paladin/NorthEast.png",
-            "Images/Paladin/East.png",
-            "Images/Paladin/SouthEast.png",
-            "Images/Paladin/South.png",
-            "Images/Paladin/SouthWest.png",
-            "Images/Paladin/West.png",
-            "Images/Paladin/NorthWest.png"
-        };
-
-        //Goblin base constants
-        public static readonly string[] GoblinImages = new string[16]
+        // Goblin base constants
+        public static readonly string[] GoblinImages =
         {
             "Images/Goblin/goblinMove1.png",
             "Images/Goblin/goblinMove2.png",
@@ -67,8 +55,8 @@
             "Images/Goblin/goblinAttack4Right.png"
         };
 
-        //Robo base constants
-        public static readonly string[] OgreImages = new string[16]
+        // Ogre base constants
+        public static readonly string[] OgreImages =
         {
             "Images/Ogre/OgreMove1.png",
             "Images/Ogre/OgreMove2.png",
@@ -88,8 +76,8 @@
             "Images/Ogre/OgreAttack4Left.png"
         };
 
-        //Troll base constants
-        public static readonly string[] RoboImages = new string[16]
+        // Robo base constants
+        public static readonly string[] RoboImages =
         {
             "Images/Robo/RoboMove1.png",
             "Images/Robo/RoboMove2.png",
@@ -109,7 +97,7 @@
             "Images/Robo/RoboAttack4Left.png"
         };
 
-        public static readonly string[] BossImages = new string[16]
+        public static readonly string[] BossImages =
         {
             "Images/Boss/OgreMove1.png",
             "Images/Boss/OgreMove2.png",
@@ -129,48 +117,55 @@
             "Images/Boss/OgreAttack4Left.png"
         };
 
-        //NPCs
-        //Vendor
-        public static readonly string[] Vendor = new string[1]
+        // Vendor
+        public static readonly string[] Vendor =
         {
             "Images/NPCs/Vendor.png"
         };
 
-        //Items
-        //Boots
+        // Items
+
+            // Boots
         public static readonly string Boots = "Images/Items/Boots.png";
-        //Helmet
+
+            // Helmet
         public static readonly string Helmet = "Images/Items/Helmet.png";
-        //Pants
-        public static readonly string Pants = "Images/Items/Pants.png";
-        //Vest
+
+            // Vest
         public static readonly string Vest = "Images/Items/Vest.png";
 
-        //Hand items
-        //Shield
+
+        // Hand items
+
+            // Shield
         public static readonly string Shield = "Images/Items/Shield.png";
-        //Sword
+
+            // Sword
         public static readonly string Sword = "Images/Items/Sword.png";
 
-        //Timeoutable Items
-        //DamagePotion
+        // Timeoutable Items
+
+            // DamagePotion
         public static readonly string DamagePotion = "Images/Items/DamagePotion.png";
-        //HealthPotion
+
+            // HealthPotion
         public static readonly string HealthPotion = "Images/Items/HealthPotion.png";
-        //DefensePotion
+
+            // DefensePotion
         public static readonly string DefensePotion = "Images/Items/DefensePotion.png";
-        //SpeedPotion
+
+            // SpeedPotion
         public static readonly string SpeedPotion = "Images/Items/SpeedPotion.png";
 
 
-        //Equipment empty slots
+        // Equipment empty slots
         public static readonly string EmptyHead = "Images/EmptyEquipment/EmptyHead.png";
         public static readonly string EmptyLeftHand = "Images/EmptyEquipment/EmptyLeftHand.png";
         public static readonly string EmptyRightHand = "Images/EmptyEquipment/EmptyRightHand.png";
         public static readonly string EmptyBody = "Images/EmptyEquipment/EmptyBody.png";
         public static readonly string EmptyFeet = "Images/EmptyEquipment/EmptyFeet.png";
 
-        //HealthBar
+        // HealthBar
         public static readonly string HealthBar = "Images/HealthBar.png";
     }
 }

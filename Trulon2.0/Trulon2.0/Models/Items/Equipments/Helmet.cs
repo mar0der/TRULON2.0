@@ -4,7 +4,7 @@
 
     public class Helmet : Equipment
     {
-        private const string DefaultName = "Helmet";
+        private const Names DefaultName = Names.Helmet;
         private const EquipmentSlots DefaultSlot = EquipmentSlots.Head;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefensePointsBuff = 20;

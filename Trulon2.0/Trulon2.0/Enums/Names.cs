@@ -1,6 +1,6 @@
 ﻿namespace Trulon.Enums
 {
-    public enum ItemTypes
+    public enum Names
     {
         Boots,
         Helmet,
@@ -11,7 +11,11 @@
         DefensePotion,
         HealthPotion,
         SpeedPotion,
-        Equipment,
-        Potion
+        Barbarian,
+        Vendor,
+        Robo,
+        Ogre,
+        Boss,
+        Goblin
     }
 }

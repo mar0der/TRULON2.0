@@ -5,11 +5,11 @@
 
     public static class ItemGenerator
     {
-        private static Random rand = new Random();
+        private static readonly Random Rand = new Random();
 
         public static Item GetEquipmentItem(Item[] equipments)
         {
-            switch (rand.Next(0, equipments.Length))
+            switch (Rand.Next(0, equipments.Length))
             {
                 case 0:
                     return equipments[0];
@@ -28,7 +28,7 @@
 
         public static Item GetPotionItem(Item[] potions)
         {
-            switch (rand.Next(0, potions.Length))
+            switch (Rand.Next(0, potions.Length))
             {
                 case 0:
                     return potions[0];

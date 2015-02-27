@@ -4,7 +4,7 @@
 
     public class Shield : Equipment
     {
-        private const string DefaultName = "Shield";
+        private const Names DefaultName = Names.Shield;
         private const EquipmentSlots DefaultSlot = EquipmentSlots.LeftHand;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefensePointsBuff = 20;

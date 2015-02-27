@@ -1,11 +1,12 @@
 ﻿namespace Trulon.Models.Entities.NPCs.Enemies
 {
     using Microsoft.Xna.Framework;
+    using global::Trulon.Enums;
 
     public class Robo : Enemy
     {
         #region Constants
-        private const string DefaultName = "Robo";
+        private const Names DefaultName = Names.Robo;
         private const int DefaultAttackPoints = 7;
         private const int DefaultDefensePoints = 7;
         private const int DefaultSpeedPoints = 5;

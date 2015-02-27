@@ -1,13 +1,13 @@
 ﻿namespace Trulon.Models.Entities.NPCs.Allies
 {
-    using System;
     using Microsoft.Xna.Framework;
     using global::Trulon.Config;
+    using global::Trulon.Enums;
 
     public class Vendor : Ally
     {
         #region Constants
-        private const string DefaultName = "Vendor";
+        private const Names DefaultName = Names.Vendor;
         private const int DefaultAttackPoints = 0;
         private const int DefaultDefensePoints = 0;
         private const int DefaultSpeedPoints = 5;

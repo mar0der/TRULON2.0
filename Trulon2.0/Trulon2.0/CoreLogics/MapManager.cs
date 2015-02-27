@@ -6,18 +6,17 @@
     {
         public event EventHandler MapUp;
 
-        protected void OnMapUp()
-        {
-            if (MapUp != null)
-            {
-                MapUp(this, new EventArgs());
-            }
-        }
-
         public void FireMapUp()
         {
-            OnMapUp();
+            this.OnMapUp();
+        }
+
+        protected void OnMapUp()
+        {
+            if (this.MapUp != null)
+            {
+                this.MapUp(this, new EventArgs());
+            }
         }
     }
-
 }

@@ -4,7 +4,7 @@
 
     public class Boots : Equipment
     {
-        private const string DefaultName = "Boots";
+        private const Names DefaultName = Names.Boots;
         private const EquipmentSlots DefaultSlot = EquipmentSlots.Feet;
         private const int DefaultAttackPointsBuff = 0;
         private const int DefaultDefensePointsBuff = 0;

@@ -8,6 +8,7 @@
             {
                 return this.BaseHealth;
             }
+
             set
             {
                 this.BaseHealth = value;
@@ -28,17 +29,17 @@
             }
         }
 
-        protected override void Move()
-        {
-            //TODO: AI for eneimies
-        }
-
         public void Attack(Player player)
         {
             if (player.IsAlive)
             {
                 player.HealthPoints -= this.BaseAttack;
             }
+        }
+
+        protected override void Move()
+        {
+            //TODO: AI for eneimies
         }
     }
 }

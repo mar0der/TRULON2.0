@@ -1,17 +1,23 @@
 ﻿namespace Trulon.Models
 {
-    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using global::Trulon.Enums;
 
-    public abstract class GameObject : IDrawable
+    public abstract class GameObject
     {
-        public string Name { get; set; }
+        public Names Name { get; set; }
+
         public Texture2D Image { get; set; }
+
         public virtual BoundingBox Bounds { get; set; }
+
         public Vector2 Position { get; set; }
+
         public int Width { get; set; }
+
         public int Height { get; set; }
+
         public virtual void Initialize(Texture2D texture, Vector2 position)
         {
             this.Image = texture;
@@ -32,21 +38,6 @@
 
         public void Draw(GameTime gameTime)
         {
-            throw new NotImplementedException();
         }
-
-        public int DrawOrder
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool Visible
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public event EventHandler<EventArgs> DrawOrderChanged;
-
-        public event EventHandler<EventArgs> VisibleChanged;
     }
 }
