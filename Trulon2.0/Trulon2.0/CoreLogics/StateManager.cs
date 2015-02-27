@@ -1,9 +1,19 @@
 ﻿namespace Trulon.CoreLogics
 {
+    using System;
+    using System.Windows.Forms;
+
+    using global::Trulon.Exceptions;
+
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.GamerServices;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
     using global::Trulon.Enums;
+
+    using ButtonState = Microsoft.Xna.Framework.Input.ButtonState;
+    using Keys = Microsoft.Xna.Framework.Input.Keys;
 
     public class StateManager : Engine
     {
@@ -23,7 +33,14 @@
         protected override void Initialize()
         {
             this.IsMouseVisible = false;
-            base.Initialize();
+            try
+            {
+                base.Initialize();
+            }
+            catch (ContentLoadException ce)
+            {
+                throw new ResourcesNotFoundException("Resources not found.");
+            }
         }
  
         protected override void LoadContent()

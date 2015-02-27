@@ -68,6 +68,7 @@
     <Compile Include="Enums\ItemTypes.cs" />
     <Compile Include="Enums\Names.cs" />
     <Compile Include="Enums\State.cs" />
+    <Compile Include="Exceptions\ResourcesNotFoundException.cs" />
     <Compile Include="GUI\GameGUI.cs" />
     <Compile Include="Interfaces\IEquipable.cs" />
     <Compile Include="Interfaces\IItem.cs" />
@@ -109,6 +110,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -472,7 +474,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Exceptions\" />
     <Folder Include="Resources\Sounds\" />
   </ItemGroup>
   <ItemGroup>

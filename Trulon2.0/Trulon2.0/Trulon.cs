@@ -1,7 +1,10 @@
 ﻿namespace Trulon
 {
     using System;
+    using System.Windows.Forms;
+
     using global::Trulon.CoreLogics;
+    using global::Trulon.Exceptions;
 
     /// <summary>
     /// The main class.
@@ -14,9 +17,20 @@
         [STAThread]
         public static void Main()
         {
-            using (var stateManager = new StateManager())
+            try
             {
-                stateManager.Run();
+                using (var stateManager = new StateManager())
+                {
+                    stateManager.Run();
+                }
+            }
+            catch (ResourcesNotFoundException re)
+            {
+                MessageBox.Show(re.Message);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
     }
