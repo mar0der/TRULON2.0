@@ -35,8 +35,8 @@
             this.Bounds = new BoundingBox(new Vector3(x, y, 0), new Vector3(x + Width, y + Height, 0));
             this.BaseAttackRadius = DefaultAttackRadius;
             this.AttackBounds = new BoundingBox(
-                new Vector3(this.Position.X + 2 * this.Width, this.Position.Y + 64, 0F),
-                new Vector3(this.Position.X + 2 * this.Width + this.BaseAttackRadius, this.Position.Y + this.BaseAttackRadius + 64, 0F));
+                new Vector3(this.Position.X + (2 * this.Width), this.Position.Y + 64, 0F),
+                new Vector3(this.Position.X + (2 * this.Width) + this.BaseAttackRadius, this.Position.Y + this.BaseAttackRadius + 64, 0F));
             this.PlayerEquipment = new EntityEquipment();
             this.Inventory = new Item[Config.InventorySize];
             this.IsAlive = true;

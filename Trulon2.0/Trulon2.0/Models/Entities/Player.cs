@@ -233,16 +233,16 @@
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 this.UpdateBoundsRight();
-                this.previousDirection = Direction.Right;
+                this.PreviousDirection = Direction.Right;
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
                 this.UpdateBoundsLeft();
-                this.previousDirection = Direction.Left;
+                this.PreviousDirection = Direction.Left;
             }
             else
             {
-                if (this.previousDirection == Direction.Right)
+                if (this.PreviousDirection == Direction.Right)
                 {
                     this.UpdateBoundsRight();
                 }
@@ -469,8 +469,8 @@
         {
             this.Bounds = new BoundingBox(new Vector3(this.Position.X, this.Position.Y + 64, 0), new Vector3(this.Position.X + this.Width, Position.Y + (this.Height + 64), 0));
             this.AttackBounds = new BoundingBox(
-                new Vector3(this.Position.X + 2 * this.Width, this.Position.Y + 64, 0F),
-                new Vector3(this.Position.X + 2 * this.Width + this.BaseAttackRadius, this.Position.Y + this.BaseAttackRadius + 64, 0F));
+                new Vector3(this.Position.X + (2 * this.Width), this.Position.Y + 64, 0F),
+                new Vector3(this.Position.X + (2 * this.Width) + this.BaseAttackRadius, this.Position.Y + this.BaseAttackRadius + 64, 0F));
         }
     }
 }

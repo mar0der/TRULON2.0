@@ -25,29 +25,15 @@
         public readonly Item[] AllEquipments = new Item[5];
         public readonly Item[] AllPotions = new Item[4];
         public readonly Dictionary<EquipmentSlots, Texture2D> AllEmptyEquipmentSlots = new Dictionary<EquipmentSlots, Texture2D>();
-
-        // Loading Entites
-        public Player Player;
-        public Vendor Vendor;
-        public SpriteFont Font;
-
-        public Texture2D HealthBar;
-
-        protected GraphicsDeviceManager graphics;
-        protected SpriteBatch spriteBatch;
-
-        protected KeyboardState currentKeyboardState;
-        protected KeyboardState previousKeyboardState;
-
+        
         private static readonly Random Rand = new Random();
-
         private readonly Texture2D[] backgroundTextures = new Texture2D[Config.NumberOfLevels];
 
         private readonly List<Enemy>[] enemies = new List<Enemy>[Config.NumberOfLevels];
         private readonly Map[] maps = new Map[Config.NumberOfLevels];
 
+        private GraphicsDeviceManager graphics;
         private GameGUI gui;
-
         private int currentMap = 0;
         private int countDown;
         private int indexFrame;
@@ -65,9 +51,23 @@
             this.YouWon = false;
         }
 
+        public Player Player { get; set; }
+
+        public Vendor Vendor { get; set; }
+        
+        public SpriteFont Font { get; set; }
+
+        public Texture2D HealthBar { get; set; }
+
         public bool ShopOpened { get; set; }
 
         public bool YouWon { get; set; }
+
+        protected SpriteBatch SpriteBatch { get; set; }
+
+        protected KeyboardState CurrentKeyboardState { get; set; }
+
+        protected KeyboardState PreviousKeyboardState { get; set; }
 
         #region Initialize Summary
         /// <summary>
@@ -158,7 +158,7 @@
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            this.spriteBatch = new SpriteBatch(GraphicsDevice);
+            this.SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Load healthbar image
             this.HealthBar = Content.Load<Texture2D>(Assets.HealthBar);
@@ -330,7 +330,7 @@
             }
 
             // Recall
-            if (this.currentKeyboardState.IsKeyDown(Keys.M) && this.currentMap > 0)
+            if (this.CurrentKeyboardState.IsKeyDown(Keys.M) && this.currentMap > 0)
             {
                 this.currentMap = 0;
                 this.Player.ReSpawn(this.maps[0].PlayerEntryPoint);
@@ -384,7 +384,7 @@
             this.Player.UnequipItem(Config.UnequipItemKeys);
 
             // Open the shop
-            if (this.currentKeyboardState.IsKeyDown(Keys.Tab) && this.Player.GetAllyInRange(new List<Entity>() { this.Vendor }) != null)
+            if (this.CurrentKeyboardState.IsKeyDown(Keys.Tab) && this.Player.GetAllyInRange(new List<Entity>() { this.Vendor }) != null)
             {
                 this.ShopOpened = true;
             }
@@ -398,11 +398,11 @@
 
             // Buy items from the shop
             Keys[] buyItemKeys = Config.BuyItemKeys;
-            if (this.currentKeyboardState.GetPressedKeys().Length > 0
-                && this.previousKeyboardState.GetPressedKeys().Length == 0
-                && buyItemKeys.Contains(this.currentKeyboardState.GetPressedKeys()[0]) && this.ShopOpened)
+            if (this.CurrentKeyboardState.GetPressedKeys().Length > 0
+                && this.PreviousKeyboardState.GetPressedKeys().Length == 0
+                && buyItemKeys.Contains(this.CurrentKeyboardState.GetPressedKeys()[0]) && this.ShopOpened)
             {
-                int itemAtIndex = Array.IndexOf(buyItemKeys, this.currentKeyboardState.GetPressedKeys()[0]);
+                int itemAtIndex = Array.IndexOf(buyItemKeys, this.CurrentKeyboardState.GetPressedKeys()[0]);
                 if (this.Player.Coins >= this.Vendor.Inventory[itemAtIndex].Price)
                 {
                     this.Player.AddToInventory(this.Vendor.Inventory[itemAtIndex]);
@@ -415,7 +415,7 @@
             int chanceToBeAttacked = 0;
             if (enemiesInRange.Count > 0)
             {
-                if (this.currentKeyboardState.IsKeyDown(Keys.Space) && this.isAttacking == false)
+                if (this.CurrentKeyboardState.IsKeyDown(Keys.Space) && this.isAttacking == false)
                 {
                     this.indexFrame = 0;
                     this.Player.Attack(enemiesInRange);
@@ -471,20 +471,20 @@
         {
             GraphicsDevice.Clear(Color.Black);
 
-            this.spriteBatch.Begin();
+            this.SpriteBatch.Begin();
 
-            this.spriteBatch.Draw(this.maps[this.currentMap].Image, new Rectangle(0, 0, this.backgroundTextures[0].Width, this.backgroundTextures[0].Height), Color.White);
-            this.Vendor.Draw(this.spriteBatch);
+            this.SpriteBatch.Draw(this.maps[this.currentMap].Image, new Rectangle(0, 0, this.backgroundTextures[0].Width, this.backgroundTextures[0].Height), Color.White);
+            this.Vendor.Draw(this.SpriteBatch);
 
             foreach (var enemy in this.enemies[this.currentMap])
             {
-                enemy.Draw(this.spriteBatch);
+                enemy.Draw(this.SpriteBatch);
             }
 
-            this.gui.Draw(this.spriteBatch);
-            this.Player.Draw(this.spriteBatch);
+            this.gui.Draw(this.SpriteBatch);
+            this.Player.Draw(this.SpriteBatch);
             
-            this.spriteBatch.End();
+            this.SpriteBatch.End();
 
             base.Draw(gameTime);
         }
@@ -558,18 +558,18 @@
                 newState.IsKeyDown(Keys.Left))
             {
                 // If not down last update, key has just been pressed.
-                if (!this.previousKeyboardState.IsKeyDown(Keys.Up) ||
-                    !this.previousKeyboardState.IsKeyDown(Keys.Down) ||
-                    !this.previousKeyboardState.IsKeyDown(Keys.Right) ||
-                    !this.previousKeyboardState.IsKeyDown(Keys.Left))
+                if (!this.PreviousKeyboardState.IsKeyDown(Keys.Up) ||
+                    !this.PreviousKeyboardState.IsKeyDown(Keys.Down) ||
+                    !this.PreviousKeyboardState.IsKeyDown(Keys.Right) ||
+                    !this.PreviousKeyboardState.IsKeyDown(Keys.Left))
                 {
                     this.isMoving = true;
                 }
             }
-            else if (this.previousKeyboardState.IsKeyDown(Keys.Up) ||
-                     this.previousKeyboardState.IsKeyDown(Keys.Down) ||
-                     this.previousKeyboardState.IsKeyDown(Keys.Right) ||
-                     this.previousKeyboardState.IsKeyDown(Keys.Left))
+            else if (this.PreviousKeyboardState.IsKeyDown(Keys.Up) ||
+                     this.PreviousKeyboardState.IsKeyDown(Keys.Down) ||
+                     this.PreviousKeyboardState.IsKeyDown(Keys.Right) ||
+                     this.PreviousKeyboardState.IsKeyDown(Keys.Left))
             {
                 // Key was down last update, but not down now, so it has just been released.
                 this.isMoving = false;
@@ -581,7 +581,7 @@
             }
 
             // Update saved state.
-            this.previousKeyboardState = newState;
+            this.PreviousKeyboardState = newState;
         }
 
         private Item LootEnemy(ItemTypes type)

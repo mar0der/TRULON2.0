@@ -6,7 +6,7 @@
 
     public abstract class Entity : GameObject
     {
-        protected Direction previousDirection = Direction.Right;
+        private Direction previousDirection = Direction.Right;
 
         public int BaseAttack { get; protected set; }
 
@@ -31,6 +31,7 @@
         public Direction PreviousDirection
         {
             get { return this.previousDirection; }
+            set { this.previousDirection = value; }
         }
 
         public override void Update()

@@ -29,7 +29,7 @@
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            this.spriteBatch = new SpriteBatch(GraphicsDevice);
+            this.SpriteBatch = new SpriteBatch(GraphicsDevice);
             Content.RootDirectory = "Resources";
             this.backgroundMenu = Content.Load<Texture2D>("Images/Screens/StartScreen");
             this.backgroundCredits = Content.Load<Texture2D>("Images/Screens/CreditsScreen");
@@ -47,10 +47,10 @@
             }
 
             // Save previous state of the keyboard to determine single key presses
-            this.previousKeyboardState = this.currentKeyboardState;
+            this.PreviousKeyboardState = this.CurrentKeyboardState;
 
             // Read the current state of the keyboard and store it
-            this.currentKeyboardState = Keyboard.GetState();
+            this.CurrentKeyboardState = Keyboard.GetState();
             
             if (this.gameState == State.start)
             {
@@ -60,23 +60,23 @@
                     this.Exit();
                 }
 
-                if (currentKeyboardState.IsKeyDown(Keys.Enter))
+                if (CurrentKeyboardState.IsKeyDown(Keys.Enter))
                 {
                     this.gameState = State.play;
                 }
 
-                if (currentKeyboardState.IsKeyDown(Keys.C))
+                if (CurrentKeyboardState.IsKeyDown(Keys.C))
                 {
                     this.gameState = State.credits;
                 }
 
-                if (currentKeyboardState.IsKeyDown(Keys.V))
+                if (CurrentKeyboardState.IsKeyDown(Keys.V))
                 {
                     this.gameState = State.controls;
                 }
             }
 
-            if (currentKeyboardState.IsKeyDown(Keys.Back) && 
+            if (CurrentKeyboardState.IsKeyDown(Keys.Back) && 
                 (this.gameState == State.controls ||
                 this.gameState == State.credits))
             {
@@ -100,7 +100,7 @@
                 base.Update(gameTime);
             }
 
-            if (this.gameState == State.win && currentKeyboardState.IsKeyDown(Keys.Enter))
+            if (this.gameState == State.win && CurrentKeyboardState.IsKeyDown(Keys.Enter))
             {
                 this.gameState = State.start;
                 base.Initialize();
@@ -112,33 +112,33 @@
             if (this.gameState == State.start)
             {
                 GraphicsDevice.Clear(Color.Black);
-                spriteBatch.Begin();
-                this.spriteBatch.Draw(this.backgroundMenu, new Rectangle(0, 0, this.backgroundMenu.Width, this.backgroundMenu.Height), Color.White);
-                spriteBatch.End();
+                SpriteBatch.Begin();
+                this.SpriteBatch.Draw(this.backgroundMenu, new Rectangle(0, 0, this.backgroundMenu.Width, this.backgroundMenu.Height), Color.White);
+                SpriteBatch.End();
             }
 
             if (this.gameState == State.credits)
             {
                 GraphicsDevice.Clear(Color.Black);
-                spriteBatch.Begin();
-                this.spriteBatch.Draw(this.backgroundCredits, new Rectangle(0, 0, this.backgroundCredits.Width, this.backgroundCredits.Height), Color.White);
-                spriteBatch.End();
+                SpriteBatch.Begin();
+                this.SpriteBatch.Draw(this.backgroundCredits, new Rectangle(0, 0, this.backgroundCredits.Width, this.backgroundCredits.Height), Color.White);
+                SpriteBatch.End();
             }
 
             if (this.gameState == State.controls)
             {
                 GraphicsDevice.Clear(Color.Black);
-                spriteBatch.Begin();
-                this.spriteBatch.Draw(this.backgroundControls, new Rectangle(0, 0, this.backgroundControls.Width, this.backgroundControls.Height), Color.White);
-                spriteBatch.End();
+                SpriteBatch.Begin();
+                this.SpriteBatch.Draw(this.backgroundControls, new Rectangle(0, 0, this.backgroundControls.Width, this.backgroundControls.Height), Color.White);
+                SpriteBatch.End();
             }
 
             if (this.gameState == State.win)
             {
                 GraphicsDevice.Clear(Color.Black);
-                spriteBatch.Begin();
-                this.spriteBatch.Draw(this.backgroundVictory, new Rectangle(0, 0, this.backgroundVictory.Width, this.backgroundVictory.Height), Color.White);
-                spriteBatch.End(); 
+                SpriteBatch.Begin();
+                this.SpriteBatch.Draw(this.backgroundVictory, new Rectangle(0, 0, this.backgroundVictory.Width, this.backgroundVictory.Height), Color.White);
+                SpriteBatch.End(); 
             }
 
             if (this.gameState == State.play)
