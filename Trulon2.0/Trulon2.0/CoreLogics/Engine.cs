@@ -102,35 +102,35 @@
             // Goblin
             this.enemies[1] = new List<Enemy>
                                   {
-                                      new Goblin(400, 400),
-                                      new Goblin(500, 400),
+                                      new Goblin(400, 300),
+                                      new Goblin(450, 450),
                                       new Goblin(600, 400),
-                                      new Goblin(700, 400),
-                                      new Goblin(800, 400)
+                                      new Goblin(700, 280),
+                                      new Goblin(800, 460)
                                   };
             
             // Robo
             this.enemies[2] = new List<Enemy>
                                   {
-                                      new Robo(400, 400),
-                                      new Robo(500, 400),
-                                      new Robo(600, 400),
-                                      new Robo(700, 400),
-                                      new Robo(800, 400)
+                                      new Robo(300, 250),
+                                      new Robo(450, 350),
+                                      new Robo(600, 300),
+                                      new Robo(700, 180),
+                                      new Robo(800, 390)
                                   };
             
             // Ogre
             this.enemies[3] = new List<Enemy>
                                   {
-                                      new Ogre(400, 400),
-                                      new Ogre(500, 400),
-                                      new Ogre(600, 400),
-                                      new Ogre(700, 400),
-                                      new Ogre(800, 400)
+                                      new Ogre(240, 300),
+                                      new Ogre(440, 350),
+                                      new Ogre(590, 400),
+                                      new Ogre(740, 395),
+                                      new Ogre(970, 345)
                                   };
             
             // Boss
-            this.enemies[4] = new List<Enemy> { new Boss(400, 400) };
+            this.enemies[4] = new List<Enemy> { new Boss(450, 300) };
 
             // Items load
             this.AllEquipments[0] = new Boots();

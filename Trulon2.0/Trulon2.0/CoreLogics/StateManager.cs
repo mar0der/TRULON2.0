@@ -7,7 +7,7 @@
 
     public class StateManager : Engine
     {
-        private State gameState = State.start;
+        private State gameState = State.Start;
         private Texture2D backgroundMenu;
         private Texture2D backgroundCredits;
         private Texture2D backgroundControls;
@@ -52,7 +52,7 @@
             // Read the current state of the keyboard and store it
             this.CurrentKeyboardState = Keyboard.GetState();
             
-            if (this.gameState == State.start)
+            if (this.gameState == State.Start)
             {
                 // Allows the game to exit
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -62,54 +62,54 @@
 
                 if (CurrentKeyboardState.IsKeyDown(Keys.Enter))
                 {
-                    this.gameState = State.play;
+                    this.gameState = State.Play;
                 }
 
                 if (CurrentKeyboardState.IsKeyDown(Keys.C))
                 {
-                    this.gameState = State.credits;
+                    this.gameState = State.Credits;
                 }
 
                 if (CurrentKeyboardState.IsKeyDown(Keys.V))
                 {
-                    this.gameState = State.controls;
+                    this.gameState = State.Controls;
                 }
             }
 
             if (CurrentKeyboardState.IsKeyDown(Keys.Back) && 
-                (this.gameState == State.controls ||
-                this.gameState == State.credits))
+                (this.gameState == State.Controls ||
+                this.gameState == State.Credits))
             {
-                this.gameState = State.start;
+                this.gameState = State.Start;
             }
 
-            if (this.gameState == State.play)
+            if (this.gameState == State.Play)
             {
                 if (!this.Player.IsAlive)
                 {
-                    this.gameState = State.start;
+                    this.gameState = State.Start;
                     base.Initialize();
                 }
 
                 if (this.YouWon)
                 {
                     this.YouWon = false;
-                    this.gameState = State.win;
+                    this.gameState = State.Won;
                 }
 
                 base.Update(gameTime);
             }
 
-            if (this.gameState == State.win && CurrentKeyboardState.IsKeyDown(Keys.Enter))
+            if (this.gameState == State.Won && CurrentKeyboardState.IsKeyDown(Keys.Enter))
             {
-                this.gameState = State.start;
+                this.gameState = State.Start;
                 base.Initialize();
             }
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            if (this.gameState == State.start)
+            if (this.gameState == State.Start)
             {
                 GraphicsDevice.Clear(Color.Black);
                 SpriteBatch.Begin();
@@ -117,7 +117,7 @@
                 SpriteBatch.End();
             }
 
-            if (this.gameState == State.credits)
+            if (this.gameState == State.Credits)
             {
                 GraphicsDevice.Clear(Color.Black);
                 SpriteBatch.Begin();
@@ -125,7 +125,7 @@
                 SpriteBatch.End();
             }
 
-            if (this.gameState == State.controls)
+            if (this.gameState == State.Controls)
             {
                 GraphicsDevice.Clear(Color.Black);
                 SpriteBatch.Begin();
@@ -133,7 +133,7 @@
                 SpriteBatch.End();
             }
 
-            if (this.gameState == State.win)
+            if (this.gameState == State.Won)
             {
                 GraphicsDevice.Clear(Color.Black);
                 SpriteBatch.Begin();
@@ -141,7 +141,7 @@
                 SpriteBatch.End(); 
             }
 
-            if (this.gameState == State.play)
+            if (this.gameState == State.Play)
             {
                 base.Draw(gameTime);
             }

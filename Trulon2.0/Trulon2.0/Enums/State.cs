@@ -2,10 +2,10 @@
 {
     public enum State
     {
-        start,
-        credits,
-        controls,
-        play,
-        win
+        Start,
+        Credits,
+        Controls,
+        Play,
+        Won
     }
 }
